@@ -1,0 +1,50 @@
+using UnityEngine;
+
+public class GameMap : MonoBehaviour
+{
+	public GameObject compassIcon;
+	public float doorX;
+	public float doorY;
+	public string doorScene;
+	public string doorMapZone;
+	public float doorOriginOffsetX;
+	public float doorOriginOffsetY;
+	public float doorSceneWidth;
+	public float doorSceneHeight;
+	public bool inRoom;
+	public GameObject areaAncientBasin;
+	public GameObject areaCity;
+	public GameObject areaCliffs;
+	public GameObject areaCrossroads;
+	public GameObject areaCrystalPeak;
+	public GameObject areaDeepnest;
+	public GameObject areaFogCanyon;
+	public GameObject areaFungalWastes;
+	public GameObject areaGreenpath;
+	public GameObject areaKingdomsEdge;
+	public GameObject areaQueensGardens;
+	public GameObject areaRestingGrounds;
+	public GameObject areaDirtmouth;
+	public GameObject areaWaterways;
+	public GameObject flamePins;
+	public GameObject dreamerPins;
+	public GameObject shadeMarker;
+	public GameObject dreamGateMarker;
+	public bool displayNextArea;
+	public Vector3 currentScenePos;
+	public GameObject currentScene;
+	public bool canPan;
+	public float panSpeed;
+	public float panMinX;
+	public float panMaxX;
+	public float panMinY;
+	public float panMaxY;
+	public GameObject panArrowU;
+	public GameObject panArrowD;
+	public GameObject panArrowL;
+	public GameObject panArrowR;
+	public GameObject[] mapMarkersBlue;
+	public GameObject[] mapMarkersRed;
+	public GameObject[] mapMarkersYellow;
+	public GameObject[] mapMarkersWhite;
+}

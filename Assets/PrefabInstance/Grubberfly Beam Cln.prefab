@@ -1,0 +1,540 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1250085406740132}
+  m_IsPrefabParent: 1
+--- !u!1 &1250085406740132
+GameObject:
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4222806647312890}
+  - component: {fileID: 114201198421483476}
+  m_Layer: 0
+  m_Name: Grubberfly Beam Cln
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4222806647312890
+Transform:
+  m_GameObject: {fileID: 1250085406740132}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114201198421483476
+MonoBehaviour:
+  m_GameObject: {fileID: 1250085406740132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e5cf66a7de45ba4cb43d54244c0b1a8, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  version: 3
+  materialIdsValid: 1
+  needMaterialInstance: 0
+  spriteDefinitions:
+  - name: grub_blade0004
+    boundsData:
+    - {x: -1.078125, y: -0.125, z: 0}
+    - {x: 2.96875, y: 2.21875, z: 0}
+    untrimmedBoundsData:
+    - {x: 0.0078125, y: 0, z: 0}
+    - {x: 6.421875, y: 3.4375, z: 0}
+    texelSize: {x: 0.015625, y: 0.015625}
+    positions:
+    - {x: -2.5625, y: -1.234375, z: 0}
+    - {x: 0.4062499, y: -1.234375, z: 0}
+    - {x: -2.5625, y: 0.9843751, z: 0}
+    - {x: 0.4062499, y: 0.9843751, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: 0.4882832, y: 0.25879}
+    - {x: 0.859373, y: 0.25879}
+    - {x: 0.4882832, y: 0.39746}
+    - {x: 0.859373, y: 0.39746}
+    normalizedUvs:
+    - {x: 0, y: 0}
+    - {x: 1, y: 0}
+    - {x: 0, y: 1}
+    - {x: 1, y: 1}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: bd02ba686c2930d41b95a6b6894d3227, type: 2}
+    materialId: 0
+    sourceTextureGUID: d4cef482b0503a34387ddde291d922e5
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    flipped: 0
+    complexGeometry: 0
+    physicsEngine: 0
+    colliderType: 0
+    customColliders: []
+    colliderVertices: []
+    colliderIndicesFwd:
+    colliderIndicesBack:
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
+  - name: grub_blade0001
+    boundsData:
+    - {x: -0.8906249, y: -0.1953124, z: 0}
+    - {x: 3.8125, y: 2.390625, z: 0}
+    untrimmedBoundsData:
+    - {x: 0.0078125, y: 0, z: 0}
+    - {x: 6.421875, y: 3.4375, z: 0}
+    texelSize: {x: 0.015625, y: 0.015625}
+    positions:
+    - {x: -2.796875, y: -1.390625, z: 0}
+    - {x: 1.015625, y: -1.390625, z: 0}
+    - {x: -2.796875, y: 1, z: 0}
+    - {x: 1.015625, y: 1, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: 0.003908203, y: 0.1552744}
+    - {x: 0.4804668, y: 0.1552744}
+    - {x: 0.003908203, y: 0.3046865}
+    - {x: 0.4804668, y: 0.3046865}
+    normalizedUvs:
+    - {x: 0, y: 0}
+    - {x: 1, y: 0}
+    - {x: 0, y: 1}
+    - {x: 1, y: 1}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: bd02ba686c2930d41b95a6b6894d3227, type: 2}
+    materialId: 0
+    sourceTextureGUID: b5240a54d640ae34f89d5e65e8362254
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    flipped: 0
+    complexGeometry: 0
+    physicsEngine: 0
+    colliderType: 0
+    customColliders: []
+    colliderVertices: []
+    colliderIndicesFwd:
+    colliderIndicesBack:
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
+  - name: grub_blade0002
+    boundsData:
+    - {x: -0.7734375, y: -0.1484375, z: 0}
+    - {x: 4.046875, y: 2.390625, z: 0}
+    untrimmedBoundsData:
+    - {x: 0.0078125, y: 0, z: 0}
+    - {x: 6.421875, y: 3.4375, z: 0}
+    texelSize: {x: 0.015625, y: 0.015625}
+    positions:
+    - {x: -2.796875, y: -1.34375, z: 0}
+    - {x: 1.25, y: -1.34375, z: 0}
+    - {x: -2.796875, y: 1.046875, z: 0}
+    - {x: 1.25, y: 1.046875, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: 0.531252, y: 0.001954101}
+    - {x: 0.531252, y: 0.2548818}
+    - {x: 0.8300762, y: 0.001954101}
+    - {x: 0.8300762, y: 0.2548818}
+    normalizedUvs:
+    - {x: 0, y: 0}
+    - {x: 0, y: 1}
+    - {x: 1, y: 0}
+    - {x: 1, y: 1}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: bd02ba686c2930d41b95a6b6894d3227, type: 2}
+    materialId: 0
+    sourceTextureGUID: 8102c28740c63c444b0d4e5b4d761aba
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    flipped: 1
+    complexGeometry: 0
+    physicsEngine: 0
+    colliderType: 0
+    customColliders: []
+    colliderVertices: []
+    colliderIndicesFwd:
+    colliderIndicesBack:
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
+  - name: grub_blade0000
+    boundsData:
+    - {x: -0.546875, y: -0.2578126, z: 0}
+    - {x: 2.0625, y: 2.234375, z: 0}
+    untrimmedBoundsData:
+    - {x: 0.0078125, y: 0, z: 0}
+    - {x: 4.328125, y: 3.46875, z: 0}
+    texelSize: {x: 0.015625, y: 0.015625}
+    positions:
+    - {x: -1.578125, y: -1.375, z: 0}
+    - {x: 0.4843751, y: -1.375, z: 0}
+    - {x: -1.578125, y: 0.8593749, z: 0}
+    - {x: 0.4843751, y: 0.8593749, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: 0.3496113, y: 0.4013682}
+    - {x: 0.3496113, y: 0.5302725}
+    - {x: 0.6289043, y: 0.4013682}
+    - {x: 0.6289043, y: 0.5302725}
+    normalizedUvs:
+    - {x: 0, y: 0}
+    - {x: 0, y: 1}
+    - {x: 1, y: 0}
+    - {x: 1, y: 1}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: bd02ba686c2930d41b95a6b6894d3227, type: 2}
+    materialId: 0
+    sourceTextureGUID: 12246b9b69e001542af0fccbe75ce79c
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    flipped: 1
+    complexGeometry: 0
+    physicsEngine: 0
+    colliderType: 0
+    customColliders: []
+    colliderVertices: []
+    colliderIndicesFwd:
+    colliderIndicesBack:
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
+  - name: grub_blade0005
+    boundsData:
+    - {x: -1.664063, y: -0.2265625, z: 0}
+    - {x: 1.640625, y: 1.640625, z: 0}
+    untrimmedBoundsData:
+    - {x: 0.0078125, y: 0, z: 0}
+    - {x: 6.421875, y: 3.4375, z: 0}
+    texelSize: {x: 0.015625, y: 0.015625}
+    positions:
+    - {x: -2.484375, y: -1.046875, z: 0}
+    - {x: -0.84375, y: -1.046875, z: 0}
+    - {x: -2.484375, y: 0.5937501, z: 0}
+    - {x: -0.84375, y: 0.5937501, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: 0.6367207, y: 0.5224619}
+    - {x: 0.8417949, y: 0.5224619}
+    - {x: 0.6367207, y: 0.624999}
+    - {x: 0.8417949, y: 0.624999}
+    normalizedUvs:
+    - {x: 0, y: 0}
+    - {x: 1, y: 0}
+    - {x: 0, y: 1}
+    - {x: 1, y: 1}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: bd02ba686c2930d41b95a6b6894d3227, type: 2}
+    materialId: 0
+    sourceTextureGUID: 067c2c1cbcc437340a6bf468214e659a
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    flipped: 0
+    complexGeometry: 0
+    physicsEngine: 0
+    colliderType: 0
+    customColliders: []
+    colliderVertices: []
+    colliderIndicesFwd:
+    colliderIndicesBack:
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
+  - name: grub_blade0003
+    boundsData:
+    - {x: -0.6875001, y: -0.1171875, z: 0}
+    - {x: 4.15625, y: 2.390625, z: 0}
+    untrimmedBoundsData:
+    - {x: 0.0078125, y: 0, z: 0}
+    - {x: 6.421875, y: 3.4375, z: 0}
+    texelSize: {x: 0.015625, y: 0.015625}
+    positions:
+    - {x: -2.765625, y: -1.3125, z: 0}
+    - {x: 1.390625, y: -1.3125, z: 0}
+    - {x: -2.765625, y: 1.078125, z: 0}
+    - {x: 1.390625, y: 1.078125, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: 0.003908203, y: 0.001954101}
+    - {x: 0.5234355, y: 0.001954101}
+    - {x: 0.003908203, y: 0.1513662}
+    - {x: 0.5234355, y: 0.1513662}
+    normalizedUvs:
+    - {x: 0, y: 0}
+    - {x: 1, y: 0}
+    - {x: 0, y: 1}
+    - {x: 1, y: 1}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: bd02ba686c2930d41b95a6b6894d3227, type: 2}
+    materialId: 0
+    sourceTextureGUID: c9e4219d0a7ef6e40af792f6a69c1e1a
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    flipped: 0
+    complexGeometry: 0
+    physicsEngine: 0
+    colliderType: 0
+    customColliders: []
+    colliderVertices: []
+    colliderIndicesFwd:
+    colliderIndicesBack:
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
+  - name: grub_blade_impact0003
+    boundsData:
+    - {x: 0.3984375, y: 0.07031244, z: 0}
+    - {x: 1.203125, y: 2.546875, z: 0}
+    untrimmedBoundsData:
+    - {x: 0, y: 0, z: 0}
+    - {x: 4.125, y: 3.71875, z: 0}
+    texelSize: {x: 0.015625, y: 0.015625}
+    positions:
+    - {x: -0.2031251, y: -1.203125, z: 0}
+    - {x: 1, y: -1.203125, z: 0}
+    - {x: -0.2031251, y: 1.34375, z: 0}
+    - {x: 1, y: 1.34375, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: 0.8378926, y: 0.001954101}
+    - {x: 0.9882793, y: 0.001954101}
+    - {x: 0.8378926, y: 0.1611318}
+    - {x: 0.9882793, y: 0.1611318}
+    normalizedUvs:
+    - {x: 0, y: 0}
+    - {x: 1, y: 0}
+    - {x: 0, y: 1}
+    - {x: 1, y: 1}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: bd02ba686c2930d41b95a6b6894d3227, type: 2}
+    materialId: 0
+    sourceTextureGUID: 998dea6450648664187c77cf3d632f55
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    flipped: 0
+    complexGeometry: 0
+    physicsEngine: 0
+    colliderType: 0
+    customColliders: []
+    colliderVertices: []
+    colliderIndicesFwd:
+    colliderIndicesBack:
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
+  - name: grub_blade_impact0001
+    boundsData:
+    - {x: 0.1328125, y: 0.0703125, z: 0}
+    - {x: 2.203125, y: 2.703125, z: 0}
+    untrimmedBoundsData:
+    - {x: 0, y: 0, z: 0}
+    - {x: 4.125, y: 3.71875, z: 0}
+    texelSize: {x: 0.015625, y: 0.015625}
+    positions:
+    - {x: -0.9687501, y: -1.28125, z: 0}
+    - {x: 1.234375, y: -1.28125, z: 0}
+    - {x: -0.9687501, y: 1.421875, z: 0}
+    - {x: 1.234375, y: 1.421875, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: 0.003908203, y: 0.3085947}
+    - {x: 0.003908203, y: 0.4462881}
+    - {x: 0.3417949, y: 0.3085947}
+    - {x: 0.3417949, y: 0.4462881}
+    normalizedUvs:
+    - {x: 0, y: 0}
+    - {x: 0, y: 1}
+    - {x: 1, y: 0}
+    - {x: 1, y: 1}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: bd02ba686c2930d41b95a6b6894d3227, type: 2}
+    materialId: 0
+    sourceTextureGUID: 1627952ab82a28a4f82e0219e2daa0a3
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    flipped: 1
+    complexGeometry: 0
+    physicsEngine: 0
+    colliderType: 0
+    customColliders: []
+    colliderVertices: []
+    colliderIndicesFwd:
+    colliderIndicesBack:
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
+  - name: grub_blade_impact0000
+    boundsData:
+    - {x: -0.421875, y: -0.00781253, z: 0}
+    - {x: 1.875, y: 1.890625, z: 0}
+    untrimmedBoundsData:
+    - {x: 0, y: 0, z: 0}
+    - {x: 4.125, y: 3.71875, z: 0}
+    texelSize: {x: 0.015625, y: 0.015625}
+    positions:
+    - {x: -1.359375, y: -0.953125, z: 0}
+    - {x: 0.515625, y: -0.953125, z: 0}
+    - {x: -1.359375, y: 0.9374999, z: 0}
+    - {x: 0.515625, y: 0.9374999, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: 0.6367207, y: 0.4013682}
+    - {x: 0.6367207, y: 0.5185537}
+    - {x: 0.8730449, y: 0.4013682}
+    - {x: 0.8730449, y: 0.5185537}
+    normalizedUvs:
+    - {x: 0, y: 0}
+    - {x: 0, y: 1}
+    - {x: 1, y: 0}
+    - {x: 1, y: 1}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: bd02ba686c2930d41b95a6b6894d3227, type: 2}
+    materialId: 0
+    sourceTextureGUID: 8b74d1cc357ce59488936838a4f3efad
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    flipped: 1
+    complexGeometry: 0
+    physicsEngine: 0
+    colliderType: 0
+    customColliders: []
+    colliderVertices: []
+    colliderIndicesFwd:
+    colliderIndicesBack:
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
+  - name: grub_blade_impact0002
+    boundsData:
+    - {x: 0.3124999, y: 0.03906244, z: 0}
+    - {x: 1.625, y: 2.734375, z: 0}
+    untrimmedBoundsData:
+    - {x: 0, y: 0, z: 0}
+    - {x: 4.125, y: 3.71875, z: 0}
+    texelSize: {x: 0.015625, y: 0.015625}
+    positions:
+    - {x: -0.5, y: -1.328125, z: 0}
+    - {x: 1.125, y: -1.328125, z: 0}
+    - {x: -0.5, y: 1.40625, z: 0}
+    - {x: 1.125, y: 1.40625, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: 0.003908203, y: 0.4501963}
+    - {x: 0.2070293, y: 0.4501963}
+    - {x: 0.003908203, y: 0.6210928}
+    - {x: 0.2070293, y: 0.6210928}
+    normalizedUvs:
+    - {x: 0, y: 0}
+    - {x: 1, y: 0}
+    - {x: 0, y: 1}
+    - {x: 1, y: 1}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: bd02ba686c2930d41b95a6b6894d3227, type: 2}
+    materialId: 0
+    sourceTextureGUID: 5facca6efa4326844bc3212abdf13338
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    flipped: 0
+    complexGeometry: 0
+    physicsEngine: 0
+    colliderType: 0
+    customColliders: []
+    colliderVertices: []
+    colliderIndicesFwd:
+    colliderIndicesBack:
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
+  premultipliedAlpha: 0
+  material: {fileID: 0}
+  materials:
+  - {fileID: 2100000, guid: bd02ba686c2930d41b95a6b6894d3227, type: 2}
+  textures:
+  - {fileID: 2800000, guid: 2b252b720155d1449b69815c21492f38, type: 3}
+  pngTextures: []
+  materialPngTextureId: 00000000
+  textureFilterMode: 1
+  textureMipMaps: 0
+  allowMultipleAtlases: 0
+  spriteCollectionGUID: ca3bf20a7f5b7374ca0415cc19ec9923
+  spriteCollectionName: Grubberfly Beam Cln
+  assetName:
+  loadable: 0
+  invOrthoSize: 2
+  halfTargetHeight: 32
+  buildKey: 211862055
+  dataGuid: 4abf31d3694dcd94f8ef9dd175cf4027
+  managedSpriteCollection: 0
+  hasPlatformData: 0
+  spriteCollectionPlatforms: []
+  spriteCollectionPlatformGUIDs: []

@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53d6e49fd20b34841998ebcc0c6ef20b, type: 3}
+  m_Name: None
+  m_EditorClassIdentifier:
+  originalMusicEventName: NONE
+  originalMusicTrackNumber: 0
+  snapshot: {fileID: 0, guid: 0000000deadbeef15deadf00d0000000, type: 3}
+  channelInfos:
+  - clip: {fileID: 0}
+    sync: 0
+  - clip: {fileID: 0}
+    sync: 0
+  - clip: {fileID: 0}
+    sync: 0
+  - clip: {fileID: 0}
+    sync: 0
+  - clip: {fileID: 0}
+    sync: 0
+  - clip: {fileID: 0}
+    sync: 0
+  alternatives: []

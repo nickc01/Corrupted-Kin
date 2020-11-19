@@ -1,0 +1,469 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1330062550479797}
+  m_IsPrefabParent: 1
+--- !u!1 &1330062550479797
+GameObject:
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4640039179667165}
+  - component: {fileID: 50989256713279750}
+  - component: {fileID: 114357859210967647}
+  m_Layer: 0
+  m_Name: Corpse Orange Scuttler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4640039179667165
+Transform:
+  m_GameObject: {fileID: 1330062550479797}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 85.759, y: 156.0863, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4549672826694386}
+  - {fileID: 4071348514650427}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &50989256713279750
+Rigidbody2D:
+  serializedVersion: 4
+  m_GameObject: {fileID: 1330062550479797}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!114 &114357859210967647
+MonoBehaviour:
+  m_GameObject: {fileID: 1330062550479797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ffaffa362f34f74083910202f724426, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  fsm:
+    dataVersion: 1
+    usedInTemplate: {fileID: 0}
+    name: Spatter
+    startState: Spatter
+    states:
+    - name: Spatter
+      description:
+      colorIndex: 0
+      position:
+        serializedVersion: 2
+        x: 50
+        y: 100
+        width: 100
+        height: 16
+      isBreakpoint: 0
+      isSequence: 0
+      hideUnused: 0
+      transitions: []
+      actionData:
+        actionNames:
+        - HutongGames.PlayMaker.Actions.GetOwner
+        - HutongGames.PlayMaker.Actions.AudioPlayerOneShotSingle
+        - SpawnBlood
+        - HutongGames.PlayMaker.Actions.SetVelocity2d
+        customNames:
+        -
+        -
+        -
+        -
+        actionEnabled: 01010101
+        actionIsOpen: 01010101
+        actionStartIndex: 00000000010000000900000012000000
+        actionHashCodes: 5c00450560137100b098d200efa8d304
+        unityObjectParams: []
+        fsmGameObjectParams:
+        - useVariable: 1
+          name: Self
+          tooltip:
+          showInInspector: 0
+          networkSync: 0
+          value: {fileID: 0}
+        - useVariable: 0
+          name:
+          tooltip:
+          showInInspector: 0
+          networkSync: 0
+          value: {fileID: 1827670603024905, guid: eb87eced5d5f9ab44aea59db250137f9, type: 2}
+        - useVariable: 1
+          name: Self
+          tooltip:
+          showInInspector: 0
+          networkSync: 0
+          value: {fileID: 0}
+        - useVariable: 0
+          name:
+          tooltip:
+          showInInspector: 0
+          networkSync: 0
+          value: {fileID: 0}
+        - useVariable: 1
+          name: Self
+          tooltip:
+          showInInspector: 0
+          networkSync: 0
+          value: {fileID: 0}
+        fsmOwnerDefaultParams:
+        - ownerOption: 0
+          gameObject:
+            useVariable: 0
+            name:
+            tooltip:
+            showInInspector: 0
+            networkSync: 0
+            value: {fileID: 0}
+        animationCurveParams: []
+        functionCallParams: []
+        fsmTemplateControlParams: []
+        fsmEventTargetParams: []
+        fsmPropertyParams: []
+        layoutOptionParams: []
+        fsmStringParams: []
+        fsmObjectParams:
+        - useVariable: 0
+          name:
+          tooltip:
+          showInInspector: 0
+          networkSync: 0
+          typeName: UnityEngine.AudioClip
+          value: {fileID: 8300000, guid: abf9f1657053a2b4aaea66341087f945, type: 3}
+        fsmVarParams: []
+        fsmArrayParams: []
+        fsmEnumParams: []
+        fsmFloatParams: []
+        fsmIntParams: []
+        fsmBoolParams: []
+        fsmVector2Params: []
+        fsmVector3Params: []
+        fsmColorParams: []
+        fsmRectParams: []
+        fsmQuaternionParams: []
+        stringParams: []
+        byteData: 9a99993f009a99993f000000803f000000000000000000000000000000000000000500000000050000000000002041000000a04100000020420000000c43000000000000000000000000000000803f010000000000000000010000000000000000000000
+        arrayParamSizes:
+        arrayParamTypes: []
+        customTypeSizes:
+        customTypeNames: []
+        paramDataType: 130000001300000013000000180000000f0000000f0000000f0000000f00000013000000130000001c00000010000000100000000f0000000f0000000f0000000f0000001900000014000000250000000f0000000f00000001000000
+        paramName:
+        - storeGameObject
+        - audioPlayer
+        - spawnPoint
+        - audioClip
+        - pitchMin
+        - pitchMax
+        - volume
+        - delay
+        - storePlayer
+        - spawnPoint
+        - position
+        - spawnMin
+        - spawnMax
+        - speedMin
+        - speedMax
+        - angleMin
+        - angleMax
+        - colorOverride
+        - gameObject
+        - vector
+        - x
+        - y
+        - everyFrame
+        paramDataPos: 0000000001000000020000000000000000000000050000000a0000000f00000003000000040000001400000021000000260000002b00000030000000350000003a0000003f0000000000000050000000590000005e00000063000000
+        paramByteDataSize: 000000000000000000000000000000000500000005000000050000000500000000000000000000000d000000050000000500000005000000050000000500000005000000110000000000000009000000050000000500000001000000
+    events: []
+    globalTransitions: []
+    variables:
+      floatVariables: []
+      intVariables: []
+      boolVariables: []
+      stringVariables: []
+      vector2Variables: []
+      vector3Variables: []
+      colorVariables: []
+      rectVariables: []
+      quaternionVariables: []
+      gameObjectVariables:
+      - useVariable: 1
+        name: Self
+        tooltip:
+        showInInspector: 0
+        networkSync: 0
+        value: {fileID: 0}
+      objectVariables: []
+      materialVariables: []
+      textureVariables: []
+      arrayVariables: []
+      enumVariables: []
+      categories:
+      -
+      variableCategoryIDs: 00000000
+    description:
+    docUrl:
+    showStateLabel: 1
+    maxLoopCount: 0
+    watermark:
+    password:
+    locked: 0
+    manualUpdate: 0
+    keepDelayedEventsOnStateExit: 0
+    preprocessed: 1
+    ExposedEvents: []
+    RestartOnEnable: 1
+    EnableDebugFlow: 0
+    EnableBreakpoints: 1
+    editorFlags: 3
+    activeStateName:
+    mouseEvents: 0
+    handleLevelLoaded: 0
+    handleTriggerEnter2D: 0
+    handleTriggerExit2D: 0
+    handleTriggerStay2D: 0
+    handleCollisionEnter2D: 0
+    handleCollisionExit2D: 0
+    handleCollisionStay2D: 0
+    handleTriggerEnter: 0
+    handleTriggerExit: 0
+    handleTriggerStay: 0
+    handleCollisionEnter: 0
+    handleCollisionExit: 0
+    handleCollisionStay: 0
+    handleParticleCollision: 0
+    handleControllerColliderHit: 0
+    handleJointBreak: 0
+    handleJointBreak2D: 0
+    handleOnGUI: 0
+    handleFixedUpdate: 0
+    handleApplicationEvents: 0
+    handleAnimatorMove: 0
+    handleAnimatorIK: 0
+  fsmTemplate: {fileID: 0}
+  eventHandlerComponentsAdded: 1
+--- !u!1 &1220140720081901
+GameObject:
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4549672826694386}
+  - component: {fileID: 33317164480638346}
+  - component: {fileID: 23321002817114287}
+  - component: {fileID: 114501658043586322}
+  - component: {fileID: 114359492481085486}
+  - component: {fileID: 114082151024455709}
+  m_Layer: 0
+  m_Name: Splat Effect
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4549672826694386
+Transform:
+  m_GameObject: {fileID: 1220140720081901}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.06, y: -0.17, z: -0.001}
+  m_LocalScale: {x: 1.261267, y: 1.261267, z: 0.6817659}
+  m_Children: []
+  m_Father: {fileID: 4640039179667165}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &33317164480638346
+MeshFilter:
+  m_GameObject: {fileID: 1220140720081901}
+  m_Mesh: {fileID: 0}
+--- !u!23 &23321002817114287
+MeshRenderer:
+  m_GameObject: {fileID: 1220140720081901}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 1a50fa2780eb364488671b610fb3b737, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!114 &114501658043586322
+MonoBehaviour:
+  m_GameObject: {fileID: 1220140720081901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf4af41f681158a41ba88d5fd91cb1a4, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  collection: {fileID: 114906746157026713, guid: dff6affe50424c04693146e69f4a2144, type: 2}
+  _color: {r: 1, g: 0.5568628, b: 0.2078432, a: 1}
+  _scale: {x: 1, y: 1, z: 1}
+  _spriteId: 76
+  boxCollider2D: {fileID: 0}
+  polygonCollider2D: []
+  edgeCollider2D: []
+  boxCollider: {fileID: 0}
+  meshCollider: {fileID: 0}
+  meshColliderPositions: []
+  meshColliderMesh: {fileID: 0}
+  renderLayer: 0
+--- !u!114 &114359492481085486
+MonoBehaviour:
+  m_GameObject: {fileID: 1220140720081901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f81a695033d807f4dbcd4ec7b92d164e, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  library: {fileID: 114645688716684075, guid: c0a356ad528ef6042a48ab6f6ed0fbb1, type: 2}
+  defaultClipId: 7
+  playAutomatically: 1
+--- !u!114 &114082151024455709
+MonoBehaviour:
+  m_GameObject: {fileID: 1220140720081901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a717379090bc75949aef05cc146692c1, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  spriteAnimator: {fileID: 114359492481085486}
+--- !u!1 &1970180766289158
+GameObject:
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4071348514650427}
+  - component: {fileID: 33796545677269736}
+  - component: {fileID: 23266356760070934}
+  - component: {fileID: 114309570546927683}
+  - component: {fileID: 114940490735073238}
+  - component: {fileID: 114239628970010289}
+  m_Layer: 13
+  m_Name: Spit Effect
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4071348514650427
+Transform:
+  m_GameObject: {fileID: 1970180766289158}
+  m_LocalRotation: {x: 0, y: 0, z: -0.7090665, w: 0.7051417}
+  m_LocalPosition: {x: 0.28, y: 1.3, z: -0.001}
+  m_LocalScale: {x: 0.8039739, y: 0.9228649, z: 0.6268163}
+  m_Children: []
+  m_Father: {fileID: 4640039179667165}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90.31802}
+--- !u!33 &33796545677269736
+MeshFilter:
+  m_GameObject: {fileID: 1970180766289158}
+  m_Mesh: {fileID: 0}
+--- !u!23 &23266356760070934
+MeshRenderer:
+  m_GameObject: {fileID: 1970180766289158}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 1a50fa2780eb364488671b610fb3b737, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!114 &114309570546927683
+MonoBehaviour:
+  m_GameObject: {fileID: 1970180766289158}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf4af41f681158a41ba88d5fd91cb1a4, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  collection: {fileID: 114906746157026713, guid: dff6affe50424c04693146e69f4a2144, type: 2}
+  _color: {r: 1, g: 0.5568628, b: 0.2078432, a: 1}
+  _scale: {x: 0.7730216, y: 1.76373, z: 1}
+  _spriteId: 113
+  boxCollider2D: {fileID: 0}
+  polygonCollider2D: []
+  edgeCollider2D: []
+  boxCollider: {fileID: 0}
+  meshCollider: {fileID: 0}
+  meshColliderPositions: []
+  meshColliderMesh: {fileID: 0}
+  renderLayer: 0
+--- !u!114 &114940490735073238
+MonoBehaviour:
+  m_GameObject: {fileID: 1970180766289158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f81a695033d807f4dbcd4ec7b92d164e, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  library: {fileID: 114645688716684075, guid: c0a356ad528ef6042a48ab6f6ed0fbb1, type: 2}
+  defaultClipId: 15
+  playAutomatically: 1
+--- !u!114 &114239628970010289
+MonoBehaviour:
+  m_GameObject: {fileID: 1970180766289158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a717379090bc75949aef05cc146692c1, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  spriteAnimator: {fileID: 114940490735073238}

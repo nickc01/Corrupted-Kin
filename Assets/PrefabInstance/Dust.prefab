@@ -1,0 +1,183 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1615780472016168}
+  m_IsPrefabParent: 1
+--- !u!1 &1615780472016168
+GameObject:
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4785797368826867}
+  - component: {fileID: 114450691516564514}
+  m_Layer: 0
+  m_Name: Dust
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &4785797368826867
+Transform:
+  m_GameObject: {fileID: 1615780472016168}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114450691516564514
+MonoBehaviour:
+  m_GameObject: {fileID: 1615780472016168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eaab439d62b3b904eb953b80ab863a7d, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  clips:
+  - name:
+    frames: []
+    fps: 30
+    loopStart: 0
+    wrapMode: 0
+  - name:
+    frames: []
+    fps: 30
+    loopStart: 0
+    wrapMode: 0
+  - name: Dash Puff
+    frames:
+    - spriteCollection: {fileID: 114672265804952372, guid: 522563087154124468be8b6b04928511, type: 2}
+      spriteId: 15
+      triggerEvent: 0
+      eventInfo:
+      eventInt: 0
+      eventFloat: 0
+    - spriteCollection: {fileID: 114672265804952372, guid: 522563087154124468be8b6b04928511, type: 2}
+      spriteId: 17
+      triggerEvent: 0
+      eventInfo:
+      eventInt: 0
+      eventFloat: 0
+    - spriteCollection: {fileID: 114672265804952372, guid: 522563087154124468be8b6b04928511, type: 2}
+      spriteId: 19
+      triggerEvent: 0
+      eventInfo:
+      eventInt: 0
+      eventFloat: 0
+    - spriteCollection: {fileID: 114672265804952372, guid: 522563087154124468be8b6b04928511, type: 2}
+      spriteId: 14
+      triggerEvent: 0
+      eventInfo:
+      eventInt: 0
+      eventFloat: 0
+    - spriteCollection: {fileID: 114672265804952372, guid: 522563087154124468be8b6b04928511, type: 2}
+      spriteId: 18
+      triggerEvent: 0
+      eventInfo:
+      eventInt: 0
+      eventFloat: 0
+    - spriteCollection: {fileID: 114672265804952372, guid: 522563087154124468be8b6b04928511, type: 2}
+      spriteId: 20
+      triggerEvent: 0
+      eventInfo:
+      eventInt: 0
+      eventFloat: 0
+    - spriteCollection: {fileID: 114672265804952372, guid: 522563087154124468be8b6b04928511, type: 2}
+      spriteId: 21
+      triggerEvent: 0
+      eventInfo:
+      eventInt: 0
+      eventFloat: 0
+    - spriteCollection: {fileID: 114672265804952372, guid: 522563087154124468be8b6b04928511, type: 2}
+      spriteId: 16
+      triggerEvent: 0
+      eventInfo:
+      eventInt: 0
+      eventFloat: 0
+    fps: 20
+    loopStart: 0
+    wrapMode: 2
+  - name: Jump Puff
+    frames:
+    - spriteCollection: {fileID: 114672265804952372, guid: 522563087154124468be8b6b04928511, type: 2}
+      spriteId: 13
+      triggerEvent: 0
+      eventInfo:
+      eventInt: 0
+      eventFloat: 0
+    - spriteCollection: {fileID: 114672265804952372, guid: 522563087154124468be8b6b04928511, type: 2}
+      spriteId: 12
+      triggerEvent: 0
+      eventInfo:
+      eventInt: 0
+      eventFloat: 0
+    - spriteCollection: {fileID: 114672265804952372, guid: 522563087154124468be8b6b04928511, type: 2}
+      spriteId: 11
+      triggerEvent: 0
+      eventInfo:
+      eventInt: 0
+      eventFloat: 0
+    - spriteCollection: {fileID: 114672265804952372, guid: 522563087154124468be8b6b04928511, type: 2}
+      spriteId: 10
+      triggerEvent: 0
+      eventInfo:
+      eventInt: 0
+      eventFloat: 0
+    - spriteCollection: {fileID: 114672265804952372, guid: 522563087154124468be8b6b04928511, type: 2}
+      spriteId: 9
+      triggerEvent: 0
+      eventInfo:
+      eventInt: 0
+      eventFloat: 0
+    fps: 20
+    loopStart: 0
+    wrapMode: 2
+  - name: Wall Puff
+    frames:
+    - spriteCollection: {fileID: 114672265804952372, guid: 522563087154124468be8b6b04928511, type: 2}
+      spriteId: 30
+      triggerEvent: 0
+      eventInfo:
+      eventInt: 0
+      eventFloat: 0
+    - spriteCollection: {fileID: 114672265804952372, guid: 522563087154124468be8b6b04928511, type: 2}
+      spriteId: 31
+      triggerEvent: 0
+      eventInfo:
+      eventInt: 0
+      eventFloat: 0
+    - spriteCollection: {fileID: 114672265804952372, guid: 522563087154124468be8b6b04928511, type: 2}
+      spriteId: 32
+      triggerEvent: 0
+      eventInfo:
+      eventInt: 0
+      eventFloat: 0
+    - spriteCollection: {fileID: 114672265804952372, guid: 522563087154124468be8b6b04928511, type: 2}
+      spriteId: 33
+      triggerEvent: 0
+      eventInfo:
+      eventInt: 0
+      eventFloat: 0
+    - spriteCollection: {fileID: 114672265804952372, guid: 522563087154124468be8b6b04928511, type: 2}
+      spriteId: 34
+      triggerEvent: 0
+      eventInfo:
+      eventInt: 0
+      eventFloat: 0
+    - spriteCollection: {fileID: 114672265804952372, guid: 522563087154124468be8b6b04928511, type: 2}
+      spriteId: 35
+      triggerEvent: 0
+      eventInfo:
+      eventInt: 0
+      eventFloat: 0
+    fps: 20
+    loopStart: 0
+    wrapMode: 2

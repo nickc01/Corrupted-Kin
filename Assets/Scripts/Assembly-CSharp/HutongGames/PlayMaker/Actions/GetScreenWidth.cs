@@ -1,0 +1,9 @@
+using HutongGames.PlayMaker;
+
+namespace HutongGames.PlayMaker.Actions
+{
+	public class GetScreenWidth : FsmStateAction
+	{
+		public FsmFloat storeScreenWidth;
+	}
+}

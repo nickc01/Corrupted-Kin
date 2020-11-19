@@ -1,0 +1,1668 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1612985706938100}
+  m_IsPrefabParent: 1
+--- !u!1 &1612985706938100
+GameObject:
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4957800575051026}
+  - component: {fileID: 114645766278115110}
+  m_Layer: 0
+  m_Name: Knight Dream Gate Cln
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4957800575051026
+Transform:
+  m_GameObject: {fileID: 1612985706938100}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114645766278115110
+MonoBehaviour:
+  m_GameObject: {fileID: 1612985706938100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e5cf66a7de45ba4cb43d54244c0b1a8, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  version: 3
+  materialIdsValid: 1
+  needMaterialInstance: 0
+  spriteDefinitions:
+  - name: Knight_Dream_Gate_Create0004
+    boundsData:
+    - {x: 0.2031251, y: -0.5625, z: 0}
+    - {x: 1.4375, y: 2.0625, z: 0}
+    untrimmedBoundsData:
+    - {x: 0, y: 0, z: 0}
+    - {x: 7.6875, y: 6.3125, z: 0}
+    texelSize: {x: 0.015625, y: 0.015625}
+    positions:
+    - {x: -0.5156249, y: -1.59375, z: 0}
+    - {x: 0.9218751, y: -1.59375, z: 0}
+    - {x: -0.5156249, y: 0.4687501, z: 0}
+    - {x: 0.9218751, y: 0.4687501, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: 0.500002, y: 0.1308604}
+    - {x: 0.6796855, y: 0.1308604}
+    - {x: 0.500002, y: 0.2597646}
+    - {x: 0.6796855, y: 0.2597646}
+    normalizedUvs:
+    - {x: 0, y: 0}
+    - {x: 1, y: 0}
+    - {x: 0, y: 1}
+    - {x: 1, y: 1}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: ff56ce010aff5274c9934bce8129f3ab, type: 2}
+    materialId: 0
+    sourceTextureGUID: a1a83aa0158c1d2478620b7d65e54c23
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    flipped: 0
+    complexGeometry: 0
+    physicsEngine: 0
+    colliderType: 0
+    customColliders: []
+    colliderVertices: []
+    colliderIndicesFwd:
+    colliderIndicesBack:
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
+  - name: Knight_Dream_Gate_Create0006
+    boundsData:
+    - {x: 0.1015624, y: -0.6093749, z: 0}
+    - {x: 1.234375, y: 1.65625, z: 0}
+    untrimmedBoundsData:
+    - {x: 0, y: 0, z: 0}
+    - {x: 7.6875, y: 6.3125, z: 0}
+    texelSize: {x: 0.015625, y: 0.015625}
+    positions:
+    - {x: -0.5156249, y: -1.4375, z: 0}
+    - {x: 0.7187498, y: -1.4375, z: 0}
+    - {x: -0.5156249, y: 0.2187501, z: 0}
+    - {x: 0.7187498, y: 0.2187501, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: 0.8046895, y: 0.7382822}
+    - {x: 0.9589824, y: 0.7382822}
+    - {x: 0.8046895, y: 0.8417959}
+    - {x: 0.9589824, y: 0.8417959}
+    normalizedUvs:
+    - {x: 0, y: 0}
+    - {x: 1, y: 0}
+    - {x: 0, y: 1}
+    - {x: 1, y: 1}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: ff56ce010aff5274c9934bce8129f3ab, type: 2}
+    materialId: 0
+    sourceTextureGUID: d0979a016a4418a4f94ada27ed028c42
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    flipped: 0
+    complexGeometry: 0
+    physicsEngine: 0
+    colliderType: 0
+    customColliders: []
+    colliderVertices: []
+    colliderIndicesFwd:
+    colliderIndicesBack:
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
+  - name: Knight_Dream_Gate_Create0002
+    boundsData:
+    - {x: -0.03906244, y: -0.046875, z: 0}
+    - {x: 1.671875, y: 1.9375, z: 0}
+    untrimmedBoundsData:
+    - {x: 0, y: 0, z: 0}
+    - {x: 7.6875, y: 6.3125, z: 0}
+    texelSize: {x: 0.015625, y: 0.015625}
+    positions:
+    - {x: -0.8750001, y: -1.015625, z: 0}
+    - {x: 0.7968752, y: -1.015625, z: 0}
+    - {x: -0.8750001, y: 0.921875, z: 0}
+    - {x: 0.7968752, y: 0.921875, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: 0.003908203, y: 0.1308604}
+    - {x: 0.003908203, y: 0.2353506}
+    - {x: 0.2460918, y: 0.1308604}
+    - {x: 0.2460918, y: 0.2353506}
+    normalizedUvs:
+    - {x: 0, y: 0}
+    - {x: 0, y: 1}
+    - {x: 1, y: 0}
+    - {x: 1, y: 1}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: ff56ce010aff5274c9934bce8129f3ab, type: 2}
+    materialId: 0
+    sourceTextureGUID: f2d72331c10466648a590b7b352355d1
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    flipped: 1
+    complexGeometry: 0
+    physicsEngine: 0
+    colliderType: 0
+    customColliders: []
+    colliderVertices: []
+    colliderIndicesFwd:
+    colliderIndicesBack:
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
+  - name: Knight_Dream_Gate_Create0003
+    boundsData:
+    - {x: 0.02343759, y: -0.2500001, z: 0}
+    - {x: 1.546875, y: 1.78125, z: 0}
+    untrimmedBoundsData:
+    - {x: 0, y: 0, z: 0}
+    - {x: 7.6875, y: 6.3125, z: 0}
+    texelSize: {x: 0.015625, y: 0.015625}
+    positions:
+    - {x: -0.75, y: -1.140625, z: 0}
+    - {x: 0.7968752, y: -1.140625, z: 0}
+    - {x: -0.75, y: 0.6406249, z: 0}
+    - {x: 0.7968752, y: 0.6406249, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: 0.687502, y: 0.2490244}
+    - {x: 0.687502, y: 0.3457021}
+    - {x: 0.9101543, y: 0.2490244}
+    - {x: 0.9101543, y: 0.3457021}
+    normalizedUvs:
+    - {x: 0, y: 0}
+    - {x: 0, y: 1}
+    - {x: 1, y: 0}
+    - {x: 1, y: 1}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: ff56ce010aff5274c9934bce8129f3ab, type: 2}
+    materialId: 0
+    sourceTextureGUID: 08c5e3d20befae0458b5d7354b1b15c6
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    flipped: 1
+    complexGeometry: 0
+    physicsEngine: 0
+    colliderType: 0
+    customColliders: []
+    colliderVertices: []
+    colliderIndicesFwd:
+    colliderIndicesBack:
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
+  - name: Knight_Dream_Gate_Create0007
+    boundsData:
+    - {x: 0.2421876, y: -0.3906251, z: 0}
+    - {x: 1.203125, y: 2.03125, z: 0}
+    untrimmedBoundsData:
+    - {x: 0, y: 0, z: 0}
+    - {x: 7.6875, y: 6.3125, z: 0}
+    texelSize: {x: 0.015625, y: 0.015625}
+    positions:
+    - {x: -0.3593749, y: -1.40625, z: 0}
+    - {x: 0.8437501, y: -1.40625, z: 0}
+    - {x: -0.3593749, y: 0.6249998, z: 0}
+    - {x: 0.8437501, y: 0.6249998, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: 0.6503926, y: 0.44629}
+    - {x: 0.6503926, y: 0.5214834}
+    - {x: 0.9042949, y: 0.44629}
+    - {x: 0.9042949, y: 0.5214834}
+    normalizedUvs:
+    - {x: 0, y: 0}
+    - {x: 0, y: 1}
+    - {x: 1, y: 0}
+    - {x: 1, y: 1}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: ff56ce010aff5274c9934bce8129f3ab, type: 2}
+    materialId: 0
+    sourceTextureGUID: 0ea4d058575de4f499bdfe23b0eb70b0
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    flipped: 1
+    complexGeometry: 0
+    physicsEngine: 0
+    colliderType: 0
+    customColliders: []
+    colliderVertices: []
+    colliderIndicesFwd:
+    colliderIndicesBack:
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
+  - name: Knight_Dream_Gate_Create0005
+    boundsData:
+    - {x: 0.2031251, y: -0.453125, z: 0}
+    - {x: 1.4375, y: 1.96875, z: 0}
+    untrimmedBoundsData:
+    - {x: 0, y: 0, z: 0}
+    - {x: 7.6875, y: 6.3125, z: 0}
+    texelSize: {x: 0.015625, y: 0.015625}
+    positions:
+    - {x: -0.5156249, y: -1.4375, z: 0}
+    - {x: 0.9218751, y: -1.4375, z: 0}
+    - {x: -0.5156249, y: 0.53125, z: 0}
+    - {x: 0.9218751, y: 0.53125, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: 0.2539082, y: 0.2333994}
+    - {x: 0.4335918, y: 0.2333994}
+    - {x: 0.2539082, y: 0.3564443}
+    - {x: 0.4335918, y: 0.3564443}
+    normalizedUvs:
+    - {x: 0, y: 0}
+    - {x: 1, y: 0}
+    - {x: 0, y: 1}
+    - {x: 1, y: 1}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: ff56ce010aff5274c9934bce8129f3ab, type: 2}
+    materialId: 0
+    sourceTextureGUID: 3e74e77921812e645bc6d6a60bf3bbb4
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    flipped: 0
+    complexGeometry: 0
+    physicsEngine: 0
+    colliderType: 0
+    customColliders: []
+    colliderVertices: []
+    colliderIndicesFwd:
+    colliderIndicesBack:
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
+  - name: Knight_Dream_Gate_Create0000
+    boundsData:
+    - {x: 0.07812503, y: -0.5312501, z: 0}
+    - {x: 1.40625, y: 1.6875, z: 0}
+    untrimmedBoundsData:
+    - {x: 0, y: 0, z: 0}
+    - {x: 7.6875, y: 6.3125, z: 0}
+    texelSize: {x: 0.015625, y: 0.015625}
+    positions:
+    - {x: -0.6250001, y: -1.375, z: 0}
+    - {x: 0.7812502, y: -1.375, z: 0}
+    - {x: -0.6250001, y: 0.3124999, z: 0}
+    - {x: 0.7812502, y: 0.3124999, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: 0.003908203, y: 0.5957041}
+    - {x: 0.1796855, y: 0.5957041}
+    - {x: 0.003908203, y: 0.7011709}
+    - {x: 0.1796855, y: 0.7011709}
+    normalizedUvs:
+    - {x: 0, y: 0}
+    - {x: 1, y: 0}
+    - {x: 0, y: 1}
+    - {x: 1, y: 1}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: ff56ce010aff5274c9934bce8129f3ab, type: 2}
+    materialId: 0
+    sourceTextureGUID: 966b3c9bc695207418922d84f7874b52
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    flipped: 0
+    complexGeometry: 0
+    physicsEngine: 0
+    colliderType: 0
+    customColliders: []
+    colliderVertices: []
+    colliderIndicesFwd:
+    colliderIndicesBack:
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
+  - name: Knight_Dream_Gate_Create0001
+    boundsData:
+    - {x: -1.192093E-07, y: -0.5625, z: 0}
+    - {x: 1.4375, y: 1.65625, z: 0}
+    untrimmedBoundsData:
+    - {x: 0, y: 0, z: 0}
+    - {x: 7.6875, y: 6.3125, z: 0}
+    texelSize: {x: 0.015625, y: 0.015625}
+    positions:
+    - {x: -0.71875, y: -1.390625, z: 0}
+    - {x: 0.7187498, y: -1.390625, z: 0}
+    - {x: -0.71875, y: 0.265625, z: 0}
+    - {x: 0.7187498, y: 0.265625, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: 0.4199238, y: 0.5498056}
+    - {x: 0.4199238, y: 0.6396475}
+    - {x: 0.6269512, y: 0.5498056}
+    - {x: 0.6269512, y: 0.6396475}
+    normalizedUvs:
+    - {x: 0, y: 0}
+    - {x: 0, y: 1}
+    - {x: 1, y: 0}
+    - {x: 1, y: 1}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: ff56ce010aff5274c9934bce8129f3ab, type: 2}
+    materialId: 0
+    sourceTextureGUID: 81f5e4df723460941b5587bc76794645
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    flipped: 1
+    complexGeometry: 0
+    physicsEngine: 0
+    colliderType: 0
+    customColliders: []
+    colliderVertices: []
+    colliderIndicesFwd:
+    colliderIndicesBack:
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
+  - name: Knight_dream_gate_enter0007
+    boundsData:
+    - {x: 0.1250001, y: -0.3515624, z: 0}
+    - {x: 1.4375, y: 1.765625, z: 0}
+    untrimmedBoundsData:
+    - {x: 0, y: 0, z: 0}
+    - {x: 7.6875, y: 6.3125, z: 0}
+    texelSize: {x: 0.015625, y: 0.015625}
+    positions:
+    - {x: -0.5937499, y: -1.234375, z: 0}
+    - {x: 0.8437501, y: -1.234375, z: 0}
+    - {x: -0.5937499, y: 0.53125, z: 0}
+    - {x: 0.8437501, y: 0.53125, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: 0.1914082, y: 0.4570322}
+    - {x: 0.1914082, y: 0.546874}
+    - {x: 0.4121074, y: 0.4570322}
+    - {x: 0.4121074, y: 0.546874}
+    normalizedUvs:
+    - {x: 0, y: 0}
+    - {x: 0, y: 1}
+    - {x: 1, y: 0}
+    - {x: 1, y: 1}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: ff56ce010aff5274c9934bce8129f3ab, type: 2}
+    materialId: 0
+    sourceTextureGUID: 5e94f1d07c9d75e4f86827784d1a2ced
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    flipped: 1
+    complexGeometry: 0
+    physicsEngine: 0
+    colliderType: 0
+    customColliders: []
+    colliderVertices: []
+    colliderIndicesFwd:
+    colliderIndicesBack:
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
+  - name: Knight_dream_gate_enter0006
+    boundsData:
+    - {x: 0.1328125, y: -0.3437499, z: 0}
+    - {x: 1.484375, y: 1.78125, z: 0}
+    untrimmedBoundsData:
+    - {x: 0, y: 0, z: 0}
+    - {x: 7.6875, y: 6.3125, z: 0}
+    texelSize: {x: 0.015625, y: 0.015625}
+    positions:
+    - {x: -0.6093751, y: -1.234375, z: 0}
+    - {x: 0.8750001, y: -1.234375, z: 0}
+    - {x: -0.6093751, y: 0.5468751, z: 0}
+    - {x: 0.8750001, y: 0.5468751, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: 0.1914082, y: 0.3603525}
+    - {x: 0.1914082, y: 0.453124}
+    - {x: 0.4140605, y: 0.3603525}
+    - {x: 0.4140605, y: 0.453124}
+    normalizedUvs:
+    - {x: 0, y: 0}
+    - {x: 0, y: 1}
+    - {x: 1, y: 0}
+    - {x: 1, y: 1}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: ff56ce010aff5274c9934bce8129f3ab, type: 2}
+    materialId: 0
+    sourceTextureGUID: b64c9431edcb2b94e86e8c003a900aa7
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    flipped: 1
+    complexGeometry: 0
+    physicsEngine: 0
+    colliderType: 0
+    customColliders: []
+    colliderVertices: []
+    colliderIndicesFwd:
+    colliderIndicesBack:
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
+  - name: Knight_dream_gate_enter0012
+    boundsData:
+    - {x: 0.1718749, y: -0.0390625, z: 0}
+    - {x: 2, y: 5.578125, z: 0}
+    untrimmedBoundsData:
+    - {x: 0, y: 0, z: 0}
+    - {x: 7.6875, y: 6.3125, z: 0}
+    texelSize: {x: 0.015625, y: 0.015625}
+    positions:
+    - {x: -0.8281249, y: -2.828125, z: 0}
+    - {x: 1.171875, y: -2.828125, z: 0}
+    - {x: -0.8281249, y: 2.75, z: 0}
+    - {x: 1.171875, y: 2.75, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: 0.003908203, y: 0.001954101}
+    - {x: 0.003908203, y: 0.1269521}
+    - {x: 0.7011699, y: 0.001954101}
+    - {x: 0.7011699, y: 0.1269521}
+    normalizedUvs:
+    - {x: 0, y: 0}
+    - {x: 0, y: 1}
+    - {x: 1, y: 0}
+    - {x: 1, y: 1}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: ff56ce010aff5274c9934bce8129f3ab, type: 2}
+    materialId: 0
+    sourceTextureGUID: 3ebbe071b03cd4c48acecda61986a55d
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    flipped: 1
+    complexGeometry: 0
+    physicsEngine: 0
+    colliderType: 0
+    customColliders: []
+    colliderVertices: []
+    colliderIndicesFwd:
+    colliderIndicesBack:
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
+  - name: Knight_dream_gate_enter0009
+    boundsData:
+    - {x: 0.1640626, y: -0.3515624, z: 0}
+    - {x: 1.484375, y: 1.765625, z: 0}
+    untrimmedBoundsData:
+    - {x: 0, y: 0, z: 0}
+    - {x: 7.6875, y: 6.3125, z: 0}
+    texelSize: {x: 0.015625, y: 0.015625}
+    positions:
+    - {x: -0.5781249, y: -1.234375, z: 0}
+    - {x: 0.9062501, y: -1.234375, z: 0}
+    - {x: -0.5781249, y: 0.53125, z: 0}
+    - {x: 0.9062501, y: 0.53125, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: 0.6699238, y: 0.3496104}
+    - {x: 0.6699238, y: 0.4423818}
+    - {x: 0.890623, y: 0.3496104}
+    - {x: 0.890623, y: 0.4423818}
+    normalizedUvs:
+    - {x: 0, y: 0}
+    - {x: 0, y: 1}
+    - {x: 1, y: 0}
+    - {x: 1, y: 1}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: ff56ce010aff5274c9934bce8129f3ab, type: 2}
+    materialId: 0
+    sourceTextureGUID: f1d3d672547e1894580f4060d8cc1468
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    flipped: 1
+    complexGeometry: 0
+    physicsEngine: 0
+    colliderType: 0
+    customColliders: []
+    colliderVertices: []
+    colliderIndicesFwd:
+    colliderIndicesBack:
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
+  - name: Knight_dream_gate_enter0000
+    boundsData:
+    - {x: 0.07812503, y: -0.5312501, z: 0}
+    - {x: 1.40625, y: 1.6875, z: 0}
+    untrimmedBoundsData:
+    - {x: 0, y: 0, z: 0}
+    - {x: 7.6875, y: 6.3125, z: 0}
+    texelSize: {x: 0.015625, y: 0.015625}
+    positions:
+    - {x: -0.6250001, y: -1.375, z: 0}
+    - {x: 0.7812502, y: -1.375, z: 0}
+    - {x: -0.6250001, y: 0.3124999, z: 0}
+    - {x: 0.7812502, y: 0.3124999, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: 0.6347676, y: 0.6123056}
+    - {x: 0.6347676, y: 0.7001944}
+    - {x: 0.8457012, y: 0.6123056}
+    - {x: 0.8457012, y: 0.7001944}
+    normalizedUvs:
+    - {x: 0, y: 0}
+    - {x: 0, y: 1}
+    - {x: 1, y: 0}
+    - {x: 1, y: 1}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: ff56ce010aff5274c9934bce8129f3ab, type: 2}
+    materialId: 0
+    sourceTextureGUID: 9531482a93d29294796d97bfed045dc1
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    flipped: 1
+    complexGeometry: 0
+    physicsEngine: 0
+    colliderType: 0
+    customColliders: []
+    colliderVertices: []
+    colliderIndicesFwd:
+    colliderIndicesBack:
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
+  - name: Knight_dream_gate_enter0011
+    boundsData:
+    - {x: 0.1484375, y: -0.3828124, z: 0}
+    - {x: 1.953125, y: 2.390625, z: 0}
+    untrimmedBoundsData:
+    - {x: 0, y: 0, z: 0}
+    - {x: 7.6875, y: 6.3125, z: 0}
+    texelSize: {x: 0.015625, y: 0.015625}
+    positions:
+    - {x: -0.8281249, y: -1.578125, z: 0}
+    - {x: 1.125, y: -1.578125, z: 0}
+    - {x: -0.8281249, y: 0.8125001, z: 0}
+    - {x: 1.125, y: 0.8125001, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: 0.7089863, y: 0.001954101}
+    - {x: 0.953123, y: 0.001954101}
+    - {x: 0.7089863, y: 0.1513662}
+    - {x: 0.953123, y: 0.1513662}
+    normalizedUvs:
+    - {x: 0, y: 0}
+    - {x: 1, y: 0}
+    - {x: 0, y: 1}
+    - {x: 1, y: 1}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: ff56ce010aff5274c9934bce8129f3ab, type: 2}
+    materialId: 0
+    sourceTextureGUID: 9ae4f54b6846d354f8d48f77fac6ccb5
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    flipped: 0
+    complexGeometry: 0
+    physicsEngine: 0
+    colliderType: 0
+    customColliders: []
+    colliderVertices: []
+    colliderIndicesFwd:
+    colliderIndicesBack:
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
+  - name: Knight_dream_gate_enter0004
+    boundsData:
+    - {x: 0.234375, y: -0.3437499, z: 0}
+    - {x: 1.4375, y: 1.78125, z: 0}
+    untrimmedBoundsData:
+    - {x: 0, y: 0, z: 0}
+    - {x: 7.6875, y: 6.3125, z: 0}
+    texelSize: {x: 0.015625, y: 0.015625}
+    positions:
+    - {x: -0.484375, y: -1.234375, z: 0}
+    - {x: 0.953125, y: -1.234375, z: 0}
+    - {x: -0.484375, y: 0.5468751, z: 0}
+    - {x: 0.953125, y: 0.5468751, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: 0.003908203, y: 0.3662119}
+    - {x: 0.1835918, y: 0.3662119}
+    - {x: 0.003908203, y: 0.4775381}
+    - {x: 0.1835918, y: 0.4775381}
+    normalizedUvs:
+    - {x: 0, y: 0}
+    - {x: 1, y: 0}
+    - {x: 0, y: 1}
+    - {x: 1, y: 1}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: ff56ce010aff5274c9934bce8129f3ab, type: 2}
+    materialId: 0
+    sourceTextureGUID: db65c3dbc9e94e3448a71f17483cb40c
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    flipped: 0
+    complexGeometry: 0
+    physicsEngine: 0
+    colliderType: 0
+    customColliders: []
+    colliderVertices: []
+    colliderIndicesFwd:
+    colliderIndicesBack:
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
+  - name: Knight_dream_gate_enter0013
+    boundsData:
+    - {x: 0.1484376, y: -0.1093751, z: 0}
+    - {x: 0.484375, y: 4.25, z: 0}
+    untrimmedBoundsData:
+    - {x: 0, y: 0, z: 0}
+    - {x: 7.6875, y: 6.3125, z: 0}
+    texelSize: {x: 0.015625, y: 0.015625}
+    positions:
+    - {x: -0.09374991, y: -2.234375, z: 0}
+    - {x: 0.3906251, y: -2.234375, z: 0}
+    - {x: -0.09374991, y: 2.015625, z: 0}
+    - {x: 0.3906251, y: 2.015625, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: 0.9179707, y: 0.2490244}
+    - {x: 0.9785137, y: 0.2490244}
+    - {x: 0.9179707, y: 0.5146475}
+    - {x: 0.9785137, y: 0.5146475}
+    normalizedUvs:
+    - {x: 0, y: 0}
+    - {x: 1, y: 0}
+    - {x: 0, y: 1}
+    - {x: 1, y: 1}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: ff56ce010aff5274c9934bce8129f3ab, type: 2}
+    materialId: 0
+    sourceTextureGUID: 2156e93cd290b104ebd0e991fc1e4801
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    flipped: 0
+    complexGeometry: 0
+    physicsEngine: 0
+    colliderType: 0
+    customColliders: []
+    colliderVertices: []
+    colliderIndicesFwd:
+    colliderIndicesBack:
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
+  - name: Knight_dream_gate_enter0008
+    boundsData:
+    - {x: 0.1484376, y: -0.3437499, z: 0}
+    - {x: 1.359375, y: 1.78125, z: 0}
+    untrimmedBoundsData:
+    - {x: 0, y: 0, z: 0}
+    - {x: 7.6875, y: 6.3125, z: 0}
+    texelSize: {x: 0.015625, y: 0.015625}
+    positions:
+    - {x: -0.5312499, y: -1.234375, z: 0}
+    - {x: 0.8281251, y: -1.234375, z: 0}
+    - {x: -0.5312499, y: 0.5468751, z: 0}
+    - {x: 0.8281251, y: 0.5468751, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: 0.4199238, y: 0.4609385}
+    - {x: 0.4199238, y: 0.5458975}
+    - {x: 0.6425762, y: 0.4609385}
+    - {x: 0.6425762, y: 0.5458975}
+    normalizedUvs:
+    - {x: 0, y: 0}
+    - {x: 0, y: 1}
+    - {x: 1, y: 0}
+    - {x: 1, y: 1}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: ff56ce010aff5274c9934bce8129f3ab, type: 2}
+    materialId: 0
+    sourceTextureGUID: 54f5c2ac5bcf8554d9b6a60d49e7ba70
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    flipped: 1
+    complexGeometry: 0
+    physicsEngine: 0
+    colliderType: 0
+    customColliders: []
+    colliderVertices: []
+    colliderIndicesFwd:
+    colliderIndicesBack:
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
+  - name: Knight_dream_gate_enter0002
+    boundsData:
+    - {x: 0.1171876, y: -0.3828126, z: 0}
+    - {x: 1.421875, y: 1.765625, z: 0}
+    untrimmedBoundsData:
+    - {x: 0, y: 0, z: 0}
+    - {x: 7.6875, y: 6.3125, z: 0}
+    texelSize: {x: 0.015625, y: 0.015625}
+    positions:
+    - {x: -0.5937499, y: -1.265625, z: 0}
+    - {x: 0.8281251, y: -1.265625, z: 0}
+    - {x: -0.5937499, y: 0.4999999, z: 0}
+    - {x: 0.8281251, y: 0.4999999, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: 0.003908203, y: 0.4814463}
+    - {x: 0.1816387, y: 0.4814463}
+    - {x: 0.003908203, y: 0.5917959}
+    - {x: 0.1816387, y: 0.5917959}
+    normalizedUvs:
+    - {x: 0, y: 0}
+    - {x: 1, y: 0}
+    - {x: 0, y: 1}
+    - {x: 1, y: 1}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: ff56ce010aff5274c9934bce8129f3ab, type: 2}
+    materialId: 0
+    sourceTextureGUID: fd4704ec276f73943951458fdc97a5c0
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    flipped: 0
+    complexGeometry: 0
+    physicsEngine: 0
+    colliderType: 0
+    customColliders: []
+    colliderVertices: []
+    colliderIndicesFwd:
+    colliderIndicesBack:
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
+  - name: Knight_dream_gate_enter0003
+    boundsData:
+    - {x: 0.1640624, y: -0.3515624, z: 0}
+    - {x: 1.546875, y: 1.765625, z: 0}
+    untrimmedBoundsData:
+    - {x: 0, y: 0, z: 0}
+    - {x: 7.6875, y: 6.3125, z: 0}
+    texelSize: {x: 0.015625, y: 0.015625}
+    positions:
+    - {x: -0.6093751, y: -1.234375, z: 0}
+    - {x: 0.9375, y: -1.234375, z: 0}
+    - {x: -0.6093751, y: 0.53125, z: 0}
+    - {x: 0.9375, y: 0.53125, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: 0.4414082, y: 0.2636729}
+    - {x: 0.4414082, y: 0.3603506}
+    - {x: 0.6621074, y: 0.2636729}
+    - {x: 0.6621074, y: 0.3603506}
+    normalizedUvs:
+    - {x: 0, y: 0}
+    - {x: 0, y: 1}
+    - {x: 1, y: 0}
+    - {x: 1, y: 1}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: ff56ce010aff5274c9934bce8129f3ab, type: 2}
+    materialId: 0
+    sourceTextureGUID: 93dc8e4d4ad9d2d4099e98772006306c
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    flipped: 1
+    complexGeometry: 0
+    physicsEngine: 0
+    colliderType: 0
+    customColliders: []
+    colliderVertices: []
+    colliderIndicesFwd:
+    colliderIndicesBack:
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
+  - name: Knight_dream_gate_enter0005
+    boundsData:
+    - {x: 0.1640626, y: -0.3515624, z: 0}
+    - {x: 1.484375, y: 1.765625, z: 0}
+    untrimmedBoundsData:
+    - {x: 0, y: 0, z: 0}
+    - {x: 7.6875, y: 6.3125, z: 0}
+    texelSize: {x: 0.015625, y: 0.015625}
+    positions:
+    - {x: -0.5781249, y: -1.234375, z: 0}
+    - {x: 0.9062501, y: -1.234375, z: 0}
+    - {x: -0.5781249, y: 0.53125, z: 0}
+    - {x: 0.9062501, y: 0.53125, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: 0.421877, y: 0.3642588}
+    - {x: 0.421877, y: 0.4570303}
+    - {x: 0.6425762, y: 0.3642588}
+    - {x: 0.6425762, y: 0.4570303}
+    normalizedUvs:
+    - {x: 0, y: 0}
+    - {x: 0, y: 1}
+    - {x: 1, y: 0}
+    - {x: 1, y: 1}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: ff56ce010aff5274c9934bce8129f3ab, type: 2}
+    materialId: 0
+    sourceTextureGUID: c3c3bbcd393af1c40a780e0a3e289600
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    flipped: 1
+    complexGeometry: 0
+    physicsEngine: 0
+    colliderType: 0
+    customColliders: []
+    colliderVertices: []
+    colliderIndicesFwd:
+    colliderIndicesBack:
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
+  - name: Knight_dream_gate_enter0010
+    boundsData:
+    - {x: 0.1328125, y: -0.3281251, z: 0}
+    - {x: 1.578125, y: 1.90625, z: 0}
+    untrimmedBoundsData:
+    - {x: 0, y: 0, z: 0}
+    - {x: 7.6875, y: 6.3125, z: 0}
+    texelSize: {x: 0.015625, y: 0.015625}
+    positions:
+    - {x: -0.6562501, y: -1.28125, z: 0}
+    - {x: 0.9218751, y: -1.28125, z: 0}
+    - {x: -0.6562501, y: 0.6249998, z: 0}
+    - {x: 0.9218751, y: 0.6249998, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: 0.2539082, y: 0.1308604}
+    - {x: 0.2539082, y: 0.2294912}
+    - {x: 0.4921855, y: 0.1308604}
+    - {x: 0.4921855, y: 0.2294912}
+    normalizedUvs:
+    - {x: 0, y: 0}
+    - {x: 0, y: 1}
+    - {x: 1, y: 0}
+    - {x: 1, y: 1}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: ff56ce010aff5274c9934bce8129f3ab, type: 2}
+    materialId: 0
+    sourceTextureGUID: 1b22f34e9871e9b4cbe020a47579de55
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    flipped: 1
+    complexGeometry: 0
+    physicsEngine: 0
+    colliderType: 0
+    customColliders: []
+    colliderVertices: []
+    colliderIndicesFwd:
+    colliderIndicesBack:
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
+  - name: Knight_dream_gate_enter0001
+    boundsData:
+    - {x: -1.192093E-07, y: -0.5625, z: 0}
+    - {x: 1.4375, y: 1.65625, z: 0}
+    untrimmedBoundsData:
+    - {x: 0, y: 0, z: 0}
+    - {x: 7.6875, y: 6.3125, z: 0}
+    texelSize: {x: 0.015625, y: 0.015625}
+    positions:
+    - {x: -0.71875, y: -1.390625, z: 0}
+    - {x: 0.7187498, y: -1.390625, z: 0}
+    - {x: -0.71875, y: 0.265625, z: 0}
+    - {x: 0.7187498, y: 0.265625, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: 0.1894551, y: 0.5507822}
+    - {x: 0.1894551, y: 0.640624}
+    - {x: 0.3964824, y: 0.5507822}
+    - {x: 0.3964824, y: 0.640624}
+    normalizedUvs:
+    - {x: 0, y: 0}
+    - {x: 0, y: 1}
+    - {x: 1, y: 0}
+    - {x: 1, y: 1}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: ff56ce010aff5274c9934bce8129f3ab, type: 2}
+    materialId: 0
+    sourceTextureGUID: 2e72a76ee6f556142b27323f6cf4d282
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    flipped: 1
+    complexGeometry: 0
+    physicsEngine: 0
+    colliderType: 0
+    customColliders: []
+    colliderVertices: []
+    colliderIndicesFwd:
+    colliderIndicesBack:
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
+  - name: Knight_Dream_Gate_Create0005_b
+    boundsData:
+    - {x: 0.2031251, y: -0.453125, z: 0}
+    - {x: 1.4375, y: 1.96875, z: 0}
+    untrimmedBoundsData:
+    - {x: 0, y: 0, z: 0}
+    - {x: 7.6875, y: 6.3125, z: 0}
+    texelSize: {x: 0.015625, y: 0.015625}
+    positions:
+    - {x: -0.5156249, y: -1.4375, z: 0}
+    - {x: 0.9218751, y: -1.4375, z: 0}
+    - {x: -0.5156249, y: 0.53125, z: 0}
+    - {x: 0.9218751, y: 0.53125, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: 0.003908203, y: 0.2392588}
+    - {x: 0.1835918, y: 0.2392588}
+    - {x: 0.003908203, y: 0.3623037}
+    - {x: 0.1835918, y: 0.3623037}
+    normalizedUvs:
+    - {x: 0, y: 0}
+    - {x: 1, y: 0}
+    - {x: 0, y: 1}
+    - {x: 1, y: 1}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: ff56ce010aff5274c9934bce8129f3ab, type: 2}
+    materialId: 0
+    sourceTextureGUID: 6356cfb2eb0cf8a4f89d9539bb321fa5
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    flipped: 0
+    complexGeometry: 0
+    physicsEngine: 0
+    colliderType: 0
+    customColliders: []
+    colliderVertices: []
+    colliderIndicesFwd:
+    colliderIndicesBack:
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
+  - name: Knight_Dream_Gate_Create0005_c
+    boundsData:
+    - {x: 0.2031251, y: -0.453125, z: 0}
+    - {x: 1.4375, y: 1.96875, z: 0}
+    untrimmedBoundsData:
+    - {x: 0, y: 0, z: 0}
+    - {x: 7.6875, y: 6.3125, z: 0}
+    texelSize: {x: 0.015625, y: 0.015625}
+    positions:
+    - {x: -0.5156249, y: -1.4375, z: 0}
+    - {x: 0.9218751, y: -1.4375, z: 0}
+    - {x: -0.5156249, y: 0.53125, z: 0}
+    - {x: 0.9218751, y: 0.53125, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: 0.687502, y: 0.1552744}
+    - {x: 0.687502, y: 0.2451162}
+    - {x: 0.9335918, y: 0.1552744}
+    - {x: 0.9335918, y: 0.2451162}
+    normalizedUvs:
+    - {x: 0, y: 0}
+    - {x: 0, y: 1}
+    - {x: 1, y: 0}
+    - {x: 1, y: 1}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: ff56ce010aff5274c9934bce8129f3ab, type: 2}
+    materialId: 0
+    sourceTextureGUID: 3f81d814cda0bc24ea0c8ff3bcf2acab
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    flipped: 1
+    complexGeometry: 0
+    physicsEngine: 0
+    colliderType: 0
+    customColliders: []
+    colliderVertices: []
+    colliderIndicesFwd:
+    colliderIndicesBack:
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
+  - name: knight_sprint0000
+    boundsData:
+    - {x: -0.03906241, y: -0.4375, z: 0}
+    - {x: 1.171875, y: 1.9375, z: 0}
+    untrimmedBoundsData:
+    - {x: 0.0078125, y: 0, z: 0}
+    - {x: 5.453125, y: 2.90625, z: 0}
+    texelSize: {x: 0.015625, y: 0.015625}
+    positions:
+    - {x: -0.6249999, y: -1.40625, z: 0}
+    - {x: 0.5468751, y: -1.40625, z: 0}
+    - {x: -0.6249999, y: 0.53125, z: 0}
+    - {x: 0.5468751, y: 0.53125, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: 0.4042988, y: 0.6435556}
+    - {x: 0.5507793, y: 0.6435556}
+    - {x: 0.4042988, y: 0.7646475}
+    - {x: 0.5507793, y: 0.7646475}
+    normalizedUvs:
+    - {x: 0, y: 0}
+    - {x: 1, y: 0}
+    - {x: 0, y: 1}
+    - {x: 1, y: 1}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: ff56ce010aff5274c9934bce8129f3ab, type: 2}
+    materialId: 0
+    sourceTextureGUID: d7c6d77ac2c14cd4381b4f3af3053675
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    flipped: 0
+    complexGeometry: 0
+    physicsEngine: 0
+    colliderType: 0
+    customColliders: []
+    colliderVertices: []
+    colliderIndicesFwd:
+    colliderIndicesBack:
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
+  - name: knight_sprint0002
+    boundsData:
+    - {x: -0.0546875, y: -0.4296875, z: 0}
+    - {x: 1.140625, y: 1.953125, z: 0}
+    untrimmedBoundsData:
+    - {x: 0.0078125, y: 0, z: 0}
+    - {x: 5.453125, y: 2.90625, z: 0}
+    texelSize: {x: 0.015625, y: 0.015625}
+    positions:
+    - {x: -0.6249999, y: -1.40625, z: 0}
+    - {x: 0.5156249, y: -1.40625, z: 0}
+    - {x: -0.6249999, y: 0.546875, z: 0}
+    - {x: 0.5156249, y: 0.546875, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: 0.8535176, y: 0.6123056}
+    - {x: 0.9960918, y: 0.6123056}
+    - {x: 0.8535176, y: 0.734374}
+    - {x: 0.9960918, y: 0.734374}
+    normalizedUvs:
+    - {x: 0, y: 0}
+    - {x: 1, y: 0}
+    - {x: 0, y: 1}
+    - {x: 1, y: 1}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: ff56ce010aff5274c9934bce8129f3ab, type: 2}
+    materialId: 0
+    sourceTextureGUID: ca4004beaf25edb43aed08fce6b3ad89
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    flipped: 0
+    complexGeometry: 0
+    physicsEngine: 0
+    colliderType: 0
+    customColliders: []
+    colliderVertices: []
+    colliderIndicesFwd:
+    colliderIndicesBack:
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
+  - name: knight_sprint0004
+    boundsData:
+    - {x: -0.04687503, y: -0.46875, z: 0}
+    - {x: 1.15625, y: 1.90625, z: 0}
+    untrimmedBoundsData:
+    - {x: 0.0078125, y: 0, z: 0}
+    - {x: 5.453125, y: 2.90625, z: 0}
+    texelSize: {x: 0.015625, y: 0.015625}
+    positions:
+    - {x: -0.6249999, y: -1.421875, z: 0}
+    - {x: 0.5312499, y: -1.421875, z: 0}
+    - {x: -0.6249999, y: 0.4843751, z: 0}
+    - {x: 0.5312499, y: 0.4843751, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: 0.5585957, y: 0.7041025}
+    - {x: 0.5585957, y: 0.7763662}
+    - {x: 0.796873, y: 0.7041025}
+    - {x: 0.796873, y: 0.7763662}
+    normalizedUvs:
+    - {x: 0, y: 0}
+    - {x: 0, y: 1}
+    - {x: 1, y: 0}
+    - {x: 1, y: 1}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: ff56ce010aff5274c9934bce8129f3ab, type: 2}
+    materialId: 0
+    sourceTextureGUID: 58806a60ffabfc34a872322fad29700c
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    flipped: 1
+    complexGeometry: 0
+    physicsEngine: 0
+    colliderType: 0
+    customColliders: []
+    colliderVertices: []
+    colliderIndicesFwd:
+    colliderIndicesBack:
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
+  - name: knight_sprint0005
+    boundsData:
+    - {x: -0.06249997, y: -0.421875, z: 0}
+    - {x: 1.125, y: 1.9375, z: 0}
+    untrimmedBoundsData:
+    - {x: 0.0078125, y: 0, z: 0}
+    - {x: 5.453125, y: 2.90625, z: 0}
+    texelSize: {x: 0.015625, y: 0.015625}
+    positions:
+    - {x: -0.6249999, y: -1.390625, z: 0}
+    - {x: 0.5, y: -1.390625, z: 0}
+    - {x: -0.6249999, y: 0.546875, z: 0}
+    - {x: 0.5, y: 0.546875, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: 0.003908203, y: 0.8320322}
+    - {x: 0.1445293, y: 0.8320322}
+    - {x: 0.003908203, y: 0.953124}
+    - {x: 0.1445293, y: 0.953124}
+    normalizedUvs:
+    - {x: 0, y: 0}
+    - {x: 1, y: 0}
+    - {x: 0, y: 1}
+    - {x: 1, y: 1}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: ff56ce010aff5274c9934bce8129f3ab, type: 2}
+    materialId: 0
+    sourceTextureGUID: cc060c59fdfc2ea4f876476a17610f66
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    flipped: 0
+    complexGeometry: 0
+    physicsEngine: 0
+    colliderType: 0
+    customColliders: []
+    colliderVertices: []
+    colliderIndicesFwd:
+    colliderIndicesBack:
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
+  - name: knight_sprint0001
+    boundsData:
+    - {x: -0.0546875, y: -0.4609375, z: 0}
+    - {x: 1.140625, y: 1.890625, z: 0}
+    untrimmedBoundsData:
+    - {x: 0.0078125, y: 0, z: 0}
+    - {x: 5.453125, y: 2.90625, z: 0}
+    texelSize: {x: 0.015625, y: 0.015625}
+    positions:
+    - {x: -0.6249999, y: -1.40625, z: 0}
+    - {x: 0.5156249, y: -1.40625, z: 0}
+    - {x: -0.6249999, y: 0.4843751, z: 0}
+    - {x: 0.5156249, y: 0.4843751, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: 0.1523457, y: 0.8457041}
+    - {x: 0.2949199, y: 0.8457041}
+    - {x: 0.1523457, y: 0.9638662}
+    - {x: 0.2949199, y: 0.9638662}
+    normalizedUvs:
+    - {x: 0, y: 0}
+    - {x: 1, y: 0}
+    - {x: 0, y: 1}
+    - {x: 1, y: 1}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: ff56ce010aff5274c9934bce8129f3ab, type: 2}
+    materialId: 0
+    sourceTextureGUID: d982c97bc7e66084fa8856079d8a44c6
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    flipped: 0
+    complexGeometry: 0
+    physicsEngine: 0
+    colliderType: 0
+    customColliders: []
+    colliderVertices: []
+    colliderIndicesFwd:
+    colliderIndicesBack:
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
+  - name: knight_sprint0003
+    boundsData:
+    - {x: -0.06249997, y: -0.421875, z: 0}
+    - {x: 1.125, y: 1.96875, z: 0}
+    untrimmedBoundsData:
+    - {x: 0.0078125, y: 0, z: 0}
+    - {x: 5.453125, y: 2.90625, z: 0}
+    texelSize: {x: 0.015625, y: 0.015625}
+    positions:
+    - {x: -0.6249999, y: -1.40625, z: 0}
+    - {x: 0.5, y: -1.40625, z: 0}
+    - {x: -0.6249999, y: 0.5625, z: 0}
+    - {x: 0.5, y: 0.5625, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: 0.003908203, y: 0.7050791}
+    - {x: 0.1445293, y: 0.7050791}
+    - {x: 0.003908203, y: 0.828124}
+    - {x: 0.1445293, y: 0.828124}
+    normalizedUvs:
+    - {x: 0, y: 0}
+    - {x: 1, y: 0}
+    - {x: 0, y: 1}
+    - {x: 1, y: 1}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: ff56ce010aff5274c9934bce8129f3ab, type: 2}
+    materialId: 0
+    sourceTextureGUID: cf310db1a7d401e408351fb3e5fabd48
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    flipped: 0
+    complexGeometry: 0
+    physicsEngine: 0
+    colliderType: 0
+    customColliders: []
+    colliderVertices: []
+    colliderIndicesFwd:
+    colliderIndicesBack:
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
+  - name: Knight_idle_to_sprint0000
+    boundsData:
+    - {x: 0.0078125, y: -0.4921875, z: 0}
+    - {x: 1.234375, y: 1.828125, z: 0}
+    untrimmedBoundsData:
+    - {x: 0.0078125, y: 0, z: 0}
+    - {x: 5.453125, y: 2.90625, z: 0}
+    texelSize: {x: 0.015625, y: 0.015625}
+    positions:
+    - {x: -0.609375, y: -1.40625, z: 0}
+    - {x: 0.625, y: -1.40625, z: 0}
+    - {x: -0.609375, y: 0.4218749, z: 0}
+    - {x: 0.625, y: 0.4218749, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: 0.187502, y: 0.6445322}
+    - {x: 0.3417949, y: 0.6445322}
+    - {x: 0.187502, y: 0.7587881}
+    - {x: 0.3417949, y: 0.7587881}
+    normalizedUvs:
+    - {x: 0, y: 0}
+    - {x: 1, y: 0}
+    - {x: 0, y: 1}
+    - {x: 1, y: 1}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: ff56ce010aff5274c9934bce8129f3ab, type: 2}
+    materialId: 0
+    sourceTextureGUID: 36f569042b342d847925717363ddd320
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    flipped: 0
+    complexGeometry: 0
+    physicsEngine: 0
+    colliderType: 0
+    customColliders: []
+    colliderVertices: []
+    colliderIndicesFwd:
+    colliderIndicesBack:
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
+  - name: Knight_idle_to_sprint0002
+    boundsData:
+    - {x: 0.0390625, y: -0.5078125, z: 0}
+    - {x: 1.328125, y: 1.796875, z: 0}
+    untrimmedBoundsData:
+    - {x: 0.0078125, y: 0, z: 0}
+    - {x: 5.453125, y: 2.90625, z: 0}
+    texelSize: {x: 0.015625, y: 0.015625}
+    positions:
+    - {x: -0.6249999, y: -1.40625, z: 0}
+    - {x: 0.7031249, y: -1.40625, z: 0}
+    - {x: -0.6249999, y: 0.390625, z: 0}
+    - {x: 0.7031249, y: 0.390625, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: 0.6503926, y: 0.5253916}
+    - {x: 0.6503926, y: 0.6083975}
+    - {x: 0.874998, y: 0.5253916}
+    - {x: 0.874998, y: 0.6083975}
+    normalizedUvs:
+    - {x: 0, y: 0}
+    - {x: 0, y: 1}
+    - {x: 1, y: 0}
+    - {x: 1, y: 1}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: ff56ce010aff5274c9934bce8129f3ab, type: 2}
+    materialId: 0
+    sourceTextureGUID: c903f78ae632d6a48b4de5b4bd279110
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    flipped: 1
+    complexGeometry: 0
+    physicsEngine: 0
+    colliderType: 0
+    customColliders: []
+    colliderVertices: []
+    colliderIndicesFwd:
+    colliderIndicesBack:
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
+  - name: Knight_idle_to_sprint0003
+    boundsData:
+    - {x: -0.07812497, y: -0.4609375, z: 0}
+    - {x: 1.15625, y: 1.890625, z: 0}
+    untrimmedBoundsData:
+    - {x: 0.0078125, y: 0, z: 0}
+    - {x: 5.453125, y: 2.90625, z: 0}
+    texelSize: {x: 0.015625, y: 0.015625}
+    positions:
+    - {x: -0.6562499, y: -1.40625, z: 0}
+    - {x: 0.5, y: -1.40625, z: 0}
+    - {x: -0.6562499, y: 0.4843751, z: 0}
+    - {x: 0.5, y: 0.4843751, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: 0.3789082, y: 0.7685556}
+    - {x: 0.5234355, y: 0.7685556}
+    - {x: 0.3789082, y: 0.8867178}
+    - {x: 0.5234355, y: 0.8867178}
+    normalizedUvs:
+    - {x: 0, y: 0}
+    - {x: 1, y: 0}
+    - {x: 0, y: 1}
+    - {x: 1, y: 1}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: ff56ce010aff5274c9934bce8129f3ab, type: 2}
+    materialId: 0
+    sourceTextureGUID: e383990c4508a0d449475217998b2984
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    flipped: 0
+    complexGeometry: 0
+    physicsEngine: 0
+    colliderType: 0
+    customColliders: []
+    colliderVertices: []
+    colliderIndicesFwd:
+    colliderIndicesBack:
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
+  - name: Knight_idle_to_sprint0001
+    boundsData:
+    - {x: 0.02343741, y: -0.53125, z: 0}
+    - {x: 1.265625, y: 1.75, z: 0}
+    untrimmedBoundsData:
+    - {x: 0.0078125, y: 0, z: 0}
+    - {x: 5.453125, y: 2.90625, z: 0}
+    texelSize: {x: 0.015625, y: 0.015625}
+    positions:
+    - {x: -0.609375, y: -1.40625, z: 0}
+    - {x: 0.6562498, y: -1.40625, z: 0}
+    - {x: -0.609375, y: 0.34375, z: 0}
+    - {x: 0.6562498, y: 0.34375, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: 0.1523457, y: 0.7626963}
+    - {x: 0.1523457, y: 0.8417959}
+    - {x: 0.3710918, y: 0.7626963}
+    - {x: 0.3710918, y: 0.8417959}
+    normalizedUvs:
+    - {x: 0, y: 0}
+    - {x: 0, y: 1}
+    - {x: 1, y: 0}
+    - {x: 1, y: 1}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: ff56ce010aff5274c9934bce8129f3ab, type: 2}
+    materialId: 0
+    sourceTextureGUID: 053e1c9f6ad0c94479e2eabc8380ddf0
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    flipped: 1
+    complexGeometry: 0
+    physicsEngine: 0
+    colliderType: 0
+    customColliders: []
+    colliderVertices: []
+    colliderIndicesFwd:
+    colliderIndicesBack:
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
+  premultipliedAlpha: 0
+  material: {fileID: 0}
+  materials:
+  - {fileID: 2100000, guid: ff56ce010aff5274c9934bce8129f3ab, type: 2}
+  textures:
+  - {fileID: 2800000, guid: b1cbbdbd6e3608b4eae2b9b5dd23d179, type: 3}
+  pngTextures: []
+  materialPngTextureId: 00000000
+  textureFilterMode: 1
+  textureMipMaps: 0
+  allowMultipleAtlases: 0
+  spriteCollectionGUID: a78bb16dff9015a4fb18c7c0a0ea2c78
+  spriteCollectionName: Knight Dream Gate Cln
+  assetName:
+  loadable: 0
+  invOrthoSize: 2
+  halfTargetHeight: 32
+  buildKey: 1888661346
+  dataGuid: 4da9c200a15ebfc49aa7d86265349cd1
+  managedSpriteCollection: 0
+  hasPlatformData: 0
+  spriteCollectionPlatforms: []
+  spriteCollectionPlatformGUIDs: []

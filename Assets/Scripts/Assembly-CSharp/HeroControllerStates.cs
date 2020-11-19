@@ -1,0 +1,61 @@
+using System;
+
+[Serializable]
+public class HeroControllerStates
+{
+	public bool facingRight;
+	public bool onGround;
+	public bool jumping;
+	public bool wallJumping;
+	public bool doubleJumping;
+	public bool nailCharging;
+	public bool shadowDashing;
+	public bool swimming;
+	public bool falling;
+	public bool dashing;
+	public bool superDashing;
+	public bool superDashOnWall;
+	public bool backDashing;
+	public bool touchingWall;
+	public bool wallSliding;
+	public bool transitioning;
+	public bool attacking;
+	public bool lookingUp;
+	public bool lookingDown;
+	public bool lookingUpAnim;
+	public bool lookingDownAnim;
+	public bool altAttack;
+	public bool upAttacking;
+	public bool downAttacking;
+	public bool bouncing;
+	public bool shroomBouncing;
+	public bool recoilingRight;
+	public bool recoilingLeft;
+	public bool dead;
+	public bool hazardDeath;
+	public bool hazardRespawning;
+	public bool willHardLand;
+	public bool recoilFrozen;
+	public bool recoiling;
+	public bool invulnerable;
+	public bool casting;
+	public bool castRecoiling;
+	public bool preventDash;
+	public bool preventBackDash;
+	public bool dashCooldown;
+	public bool backDashCooldown;
+	public bool nearBench;
+	public bool inWalkZone;
+	public bool isPaused;
+	public bool onConveyor;
+	public bool onConveyorV;
+	public bool inConveyorZone;
+	public bool spellQuake;
+	public bool freezeCharge;
+	public bool focusing;
+	public bool inAcid;
+	public bool slidingLeft;
+	public bool slidingRight;
+	public bool touchingNonSlider;
+	public bool wasOnGround;
+}

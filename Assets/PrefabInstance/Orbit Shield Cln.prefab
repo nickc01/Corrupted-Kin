@@ -1,0 +1,1010 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1686501042991051}
+  m_IsPrefabParent: 1
+--- !u!1 &1686501042991051
+GameObject:
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4247034538380304}
+  - component: {fileID: 114912951598931477}
+  m_Layer: 0
+  m_Name: Orbit Shield Cln
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4247034538380304
+Transform:
+  m_GameObject: {fileID: 1686501042991051}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114912951598931477
+MonoBehaviour:
+  m_GameObject: {fileID: 1686501042991051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e5cf66a7de45ba4cb43d54244c0b1a8, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  version: 3
+  materialIdsValid: 1
+  needMaterialInstance: 0
+  spriteDefinitions:
+  - name: grimm_shield_attack0005
+    boundsData:
+    - {x: 0.046875, y: 0.0078125, z: 0}
+    - {x: 1.875, y: 4.203125, z: 0}
+    untrimmedBoundsData:
+    - {x: 0.0078125, y: 0, z: 0}
+    - {x: 4.796875, y: 7.15625, z: 0}
+    texelSize: {x: 0.015625, y: 0.015625}
+    positions:
+    - {x: -0.890625, y: -2.09375, z: 0}
+    - {x: 0.984375, y: -2.09375, z: 0}
+    - {x: -0.890625, y: 2.109375, z: 0}
+    - {x: 0.984375, y: 2.109375, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: 0.5537119, y: 0.6367197}
+    - {x: 0.5537119, y: 0.7539053}
+    - {x: 0.8164053, y: 0.6367197}
+    - {x: 0.8164053, y: 0.7539053}
+    normalizedUvs:
+    - {x: 0, y: 0}
+    - {x: 0, y: 1}
+    - {x: 1, y: 0}
+    - {x: 1, y: 1}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: 8ecc645727314264382ae2ff7e605ef1, type: 2}
+    materialId: 0
+    sourceTextureGUID: e87f9200d13d3fa45a38733cae8c7ec5
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    flipped: 1
+    complexGeometry: 0
+    physicsEngine: 0
+    colliderType: 0
+    customColliders: []
+    colliderVertices: []
+    colliderIndicesFwd:
+    colliderIndicesBack:
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
+  - name: Grimm_moth_shield0000
+    boundsData:
+    - {x: 0.00781248, y: 0.007812398, z: 0}
+    - {x: 0.01562496, y: 0.0156248, z: 0}
+    untrimmedBoundsData:
+    - {x: 0, y: 0, z: 0}
+    - {x: 3.34375, y: 7.15625, z: 0}
+    texelSize: {x: 0.015625, y: 0.015625}
+    positions:
+    - {x: 0, y: 0, z: 0}
+    - {x: 0.01562496, y: 0, z: 0}
+    - {x: 0, y: 0.0156248, z: 0}
+    - {x: 0.01562496, y: 0.0156248, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: 0.001954101, y: 0.9941416}
+    - {x: -0.0009775391, y: 0.9941416}
+    - {x: 0.001954101, y: 0.99121}
+    - {x: -0.0009775391, y: 0.99121}
+    normalizedUvs:
+    - {x: 1, y: 1}
+    - {x: 0, y: 1}
+    - {x: 1, y: 0}
+    - {x: 0, y: 0}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: 8ecc645727314264382ae2ff7e605ef1, type: 2}
+    materialId: 0
+    sourceTextureGUID: b0c5af514f22a8943981fbf15c97ad47
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    flipped: 0
+    complexGeometry: 0
+    physicsEngine: 0
+    colliderType: 0
+    customColliders: []
+    colliderVertices: []
+    colliderIndicesFwd:
+    colliderIndicesBack:
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
+  - name: Grimm_moth_shield0008
+    boundsData:
+    - {x: -0.1875, y: -0.01562512, z: 0}
+    - {x: 1.5625, y: 3.46875, z: 0}
+    untrimmedBoundsData:
+    - {x: 0, y: 0, z: 0}
+    - {x: 3.34375, y: 7.15625, z: 0}
+    texelSize: {x: 0.015625, y: 0.015625}
+    positions:
+    - {x: -0.96875, y: -1.75, z: 0}
+    - {x: 0.5937501, y: -1.75, z: 0}
+    - {x: -0.96875, y: 1.71875, z: 0}
+    - {x: 0.5937501, y: 1.71875, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: 0.743165, y: 0.3291025}
+    - {x: 0.743165, y: 0.4267568}
+    - {x: 0.95996, y: 0.3291025}
+    - {x: 0.95996, y: 0.4267568}
+    normalizedUvs:
+    - {x: 0, y: 0}
+    - {x: 0, y: 1}
+    - {x: 1, y: 0}
+    - {x: 1, y: 1}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: 8ecc645727314264382ae2ff7e605ef1, type: 2}
+    materialId: 0
+    sourceTextureGUID: cf41c7128d689b44f9d03472f2a489e4
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    flipped: 1
+    complexGeometry: 0
+    physicsEngine: 0
+    colliderType: 0
+    customColliders: []
+    colliderVertices: []
+    colliderIndicesFwd:
+    colliderIndicesBack:
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
+  - name: Grimm_moth_shield0002
+    boundsData:
+    - {x: 0.1796875, y: -0.015625, z: 0}
+    - {x: 2.984375, y: 6.46875, z: 0}
+    untrimmedBoundsData:
+    - {x: 0, y: 0, z: 0}
+    - {x: 3.34375, y: 7.15625, z: 0}
+    texelSize: {x: 0.015625, y: 0.015625}
+    positions:
+    - {x: -1.3125, y: -3.25, z: 0}
+    - {x: 1.671875, y: -3.25, z: 0}
+    - {x: -1.3125, y: 3.21875, z: 0}
+    - {x: 1.671875, y: 3.21875, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: 0.001954101, y: 0.001954101}
+    - {x: 0.1884756, y: 0.001954101}
+    - {x: 0.001954101, y: 0.406249}
+    - {x: 0.1884756, y: 0.406249}
+    normalizedUvs:
+    - {x: 0, y: 0}
+    - {x: 1, y: 0}
+    - {x: 0, y: 1}
+    - {x: 1, y: 1}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: 8ecc645727314264382ae2ff7e605ef1, type: 2}
+    materialId: 0
+    sourceTextureGUID: 0c50b0a4d8da5764db983d32c26141d1
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    flipped: 0
+    complexGeometry: 0
+    physicsEngine: 0
+    colliderType: 0
+    customColliders: []
+    colliderVertices: []
+    colliderIndicesFwd:
+    colliderIndicesBack:
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
+  - name: Grimm_moth_shield0016
+    boundsData:
+    - {x: -0.2421875, y: -0.07031254, z: 0}
+    - {x: 1.453125, y: 0.609375, z: 0}
+    untrimmedBoundsData:
+    - {x: 0, y: 0, z: 0}
+    - {x: 3.34375, y: 7.15625, z: 0}
+    texelSize: {x: 0.015625, y: 0.015625}
+    positions:
+    - {x: -0.96875, y: -0.375, z: 0}
+    - {x: 0.4843749, y: -0.375, z: 0}
+    - {x: -0.96875, y: 0.2343749, z: 0}
+    - {x: 0.4843749, y: 0.2343749, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: 0.001954101, y: 0.9521494}
+    - {x: 0.09277246, y: 0.9521494}
+    - {x: 0.001954101, y: 0.9902334}
+    - {x: 0.09277246, y: 0.9902334}
+    normalizedUvs:
+    - {x: 0, y: 0}
+    - {x: 1, y: 0}
+    - {x: 0, y: 1}
+    - {x: 1, y: 1}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: 8ecc645727314264382ae2ff7e605ef1, type: 2}
+    materialId: 0
+    sourceTextureGUID: c84024a4d17d2c54698fa374c91b7aef
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    flipped: 0
+    complexGeometry: 0
+    physicsEngine: 0
+    colliderType: 0
+    customColliders: []
+    colliderVertices: []
+    colliderIndicesFwd:
+    colliderIndicesBack:
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
+  - name: Grimm_moth_shield0012
+    boundsData:
+    - {x: 0.2265625, y: -0.015625, z: 0}
+    - {x: 2.890625, y: 6.28125, z: 0}
+    untrimmedBoundsData:
+    - {x: 0, y: 0, z: 0}
+    - {x: 3.34375, y: 7.15625, z: 0}
+    texelSize: {x: 0.015625, y: 0.015625}
+    positions:
+    - {x: -1.21875, y: -3.15625, z: 0}
+    - {x: 1.671875, y: -3.15625, z: 0}
+    - {x: -1.21875, y: 3.125, z: 0}
+    - {x: 1.671875, y: 3.125, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: 0.1923838, y: 0.001954101}
+    - {x: 0.3730459, y: 0.001954101}
+    - {x: 0.1923838, y: 0.3945303}
+    - {x: 0.3730459, y: 0.3945303}
+    normalizedUvs:
+    - {x: 0, y: 0}
+    - {x: 1, y: 0}
+    - {x: 0, y: 1}
+    - {x: 1, y: 1}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: 8ecc645727314264382ae2ff7e605ef1, type: 2}
+    materialId: 0
+    sourceTextureGUID: 39d32826ffcaebe488edc6e1fd93457c
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    flipped: 0
+    complexGeometry: 0
+    physicsEngine: 0
+    colliderType: 0
+    customColliders: []
+    colliderVertices: []
+    colliderIndicesFwd:
+    colliderIndicesBack:
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
+  - name: Grimm_moth_shield0007
+    boundsData:
+    - {x: -0.140625, y: 0.03124994, z: 0}
+    - {x: 1.65625, y: 3.3125, z: 0}
+    untrimmedBoundsData:
+    - {x: 0, y: 0, z: 0}
+    - {x: 3.34375, y: 7.15625, z: 0}
+    texelSize: {x: 0.015625, y: 0.015625}
+    positions:
+    - {x: -0.96875, y: -1.625, z: 0}
+    - {x: 0.6875, y: -1.625, z: 0}
+    - {x: -0.96875, y: 1.6875, z: 0}
+    - {x: 0.6875, y: 1.6875, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: 0.5615244, y: 0.2216807}
+    - {x: 0.5615244, y: 0.3251943}
+    - {x: 0.7685537, y: 0.2216807}
+    - {x: 0.7685537, y: 0.3251943}
+    normalizedUvs:
+    - {x: 0, y: 0}
+    - {x: 0, y: 1}
+    - {x: 1, y: 0}
+    - {x: 1, y: 1}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: 8ecc645727314264382ae2ff7e605ef1, type: 2}
+    materialId: 0
+    sourceTextureGUID: dd9ddb5665474694390cba1a01296dd6
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    flipped: 1
+    complexGeometry: 0
+    physicsEngine: 0
+    colliderType: 0
+    customColliders: []
+    colliderVertices: []
+    colliderIndicesFwd:
+    colliderIndicesBack:
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
+  - name: Grimm_moth_shield0005
+    boundsData:
+    - {x: -0.1171875, y: -0.05468744, z: 0}
+    - {x: 1.703125, y: 3.359375, z: 0}
+    untrimmedBoundsData:
+    - {x: 0, y: 0, z: 0}
+    - {x: 3.34375, y: 7.15625, z: 0}
+    texelSize: {x: 0.015625, y: 0.015625}
+    positions:
+    - {x: -0.96875, y: -1.734375, z: 0}
+    - {x: 0.7343751, y: -1.734375, z: 0}
+    - {x: -0.96875, y: 1.625, z: 0}
+    - {x: 0.7343751, y: 1.625, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: 0.781251, y: 0.7578135}
+    - {x: 0.781251, y: 0.8642569}
+    - {x: 0.99121, y: 0.7578135}
+    - {x: 0.99121, y: 0.8642569}
+    normalizedUvs:
+    - {x: 0, y: 0}
+    - {x: 0, y: 1}
+    - {x: 1, y: 0}
+    - {x: 1, y: 1}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: 8ecc645727314264382ae2ff7e605ef1, type: 2}
+    materialId: 0
+    sourceTextureGUID: db73aea6381eb1a4492adce81e1d2f52
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    flipped: 1
+    complexGeometry: 0
+    physicsEngine: 0
+    colliderType: 0
+    customColliders: []
+    colliderVertices: []
+    colliderIndicesFwd:
+    colliderIndicesBack:
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
+  - name: Grimm_moth_shield0004
+    boundsData:
+    - {x: -0.1875, y: -0.0234375, z: 0}
+    - {x: 1.71875, y: 3.796875, z: 0}
+    untrimmedBoundsData:
+    - {x: 0, y: 0, z: 0}
+    - {x: 3.34375, y: 7.15625, z: 0}
+    texelSize: {x: 0.015625, y: 0.015625}
+    positions:
+    - {x: -1.046875, y: -1.921875, z: 0}
+    - {x: 0.6718751, y: -1.921875, z: 0}
+    - {x: -1.046875, y: 1.875, z: 0}
+    - {x: 0.6718751, y: 1.875, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: 0.6699228, y: 0.7578135}
+    - {x: 0.7773428, y: 0.7578135}
+    - {x: 0.6699228, y: 0.9951162}
+    - {x: 0.7773428, y: 0.9951162}
+    normalizedUvs:
+    - {x: 0, y: 0}
+    - {x: 1, y: 0}
+    - {x: 0, y: 1}
+    - {x: 1, y: 1}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: 8ecc645727314264382ae2ff7e605ef1, type: 2}
+    materialId: 0
+    sourceTextureGUID: 376b617828f1dc24a93e3a34360bdd6a
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    flipped: 0
+    complexGeometry: 0
+    physicsEngine: 0
+    colliderType: 0
+    customColliders: []
+    colliderVertices: []
+    colliderIndicesFwd:
+    colliderIndicesBack:
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
+  - name: Grimm_moth_shield0015
+    boundsData:
+    - {x: 0.2656249, y: -0.03906238, z: 0}
+    - {x: 2.71875, y: 6.359375, z: 0}
+    untrimmedBoundsData:
+    - {x: 0, y: 0, z: 0}
+    - {x: 3.34375, y: 7.15625, z: 0}
+    texelSize: {x: 0.015625, y: 0.015625}
+    positions:
+    - {x: -1.09375, y: -3.21875, z: 0}
+    - {x: 1.625, y: -3.21875, z: 0}
+    - {x: -1.09375, y: 3.140625, z: 0}
+    - {x: 1.625, y: 3.140625, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: 0.2685557, y: 0.8222666}
+    - {x: 0.2685557, y: 0.9921865}
+    - {x: 0.6660147, y: 0.8222666}
+    - {x: 0.6660147, y: 0.9921865}
+    normalizedUvs:
+    - {x: 0, y: 0}
+    - {x: 0, y: 1}
+    - {x: 1, y: 0}
+    - {x: 1, y: 1}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: 8ecc645727314264382ae2ff7e605ef1, type: 2}
+    materialId: 0
+    sourceTextureGUID: cf4710199855afa4dadefa1e900c63cc
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    flipped: 1
+    complexGeometry: 0
+    physicsEngine: 0
+    colliderType: 0
+    customColliders: []
+    colliderVertices: []
+    colliderIndicesFwd:
+    colliderIndicesBack:
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
+  - name: grimm_shield_attack0004
+    boundsData:
+    - {x: -0.625, y: 0.07031238, z: 0}
+    - {x: 2.96875, y: 3.765625, z: 0}
+    untrimmedBoundsData:
+    - {x: 0.0078125, y: 0, z: 0}
+    - {x: 4.796875, y: 7.15625, z: 0}
+    texelSize: {x: 0.015625, y: 0.015625}
+    positions:
+    - {x: -2.109375, y: -1.8125, z: 0}
+    - {x: 0.8593751, y: -1.8125, z: 0}
+    - {x: -2.109375, y: 1.953125, z: 0}
+    - {x: 0.8593751, y: 1.953125, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: 0.5537119, y: 0.3974619}
+    - {x: 0.7392569, y: 0.3974619}
+    - {x: 0.5537119, y: 0.6328115}
+    - {x: 0.7392569, y: 0.6328115}
+    normalizedUvs:
+    - {x: 0, y: 0}
+    - {x: 1, y: 0}
+    - {x: 0, y: 1}
+    - {x: 1, y: 1}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: 8ecc645727314264382ae2ff7e605ef1, type: 2}
+    materialId: 0
+    sourceTextureGUID: a16b6f69e6259744e8c43cac9e8fa814
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    flipped: 0
+    complexGeometry: 0
+    physicsEngine: 0
+    colliderType: 0
+    customColliders: []
+    colliderVertices: []
+    colliderIndicesFwd:
+    colliderIndicesBack:
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
+  - name: Grimm_moth_shield0006
+    boundsData:
+    - {x: -0.1328125, y: -0.04687488, z: 0}
+    - {x: 1.671875, y: 3.28125, z: 0}
+    untrimmedBoundsData:
+    - {x: 0, y: 0, z: 0}
+    - {x: 3.34375, y: 7.15625, z: 0}
+    texelSize: {x: 0.015625, y: 0.015625}
+    positions:
+    - {x: -0.96875, y: -1.6875, z: 0}
+    - {x: 0.7031249, y: -1.6875, z: 0}
+    - {x: -0.96875, y: 1.59375, z: 0}
+    - {x: 0.7031249, y: 1.59375, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: 0.5615244, y: 0.001954101}
+    - {x: 0.6660147, y: 0.001954101}
+    - {x: 0.5615244, y: 0.2070303}
+    - {x: 0.6660147, y: 0.2070303}
+    normalizedUvs:
+    - {x: 0, y: 0}
+    - {x: 1, y: 0}
+    - {x: 0, y: 1}
+    - {x: 1, y: 1}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: 8ecc645727314264382ae2ff7e605ef1, type: 2}
+    materialId: 0
+    sourceTextureGUID: ab9a32b9b8a12da49bd5ab92f9d40d74
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    flipped: 0
+    complexGeometry: 0
+    physicsEngine: 0
+    colliderType: 0
+    customColliders: []
+    colliderVertices: []
+    colliderIndicesFwd:
+    colliderIndicesBack:
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
+  - name: Grimm_moth_shield0001
+    boundsData:
+    - {x: 0.0625, y: 0.140625, z: 0}
+    - {x: 2.875, y: 6.53125, z: 0}
+    untrimmedBoundsData:
+    - {x: 0, y: 0, z: 0}
+    - {x: 3.34375, y: 7.15625, z: 0}
+    texelSize: {x: 0.015625, y: 0.015625}
+    positions:
+    - {x: -1.375, y: -3.125, z: 0}
+    - {x: 1.5, y: -3.125, z: 0}
+    - {x: -1.375, y: 3.40625, z: 0}
+    - {x: 1.5, y: 3.40625, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: 0.1865244, y: 0.4101572}
+    - {x: 0.36621, y: 0.4101572}
+    - {x: 0.1865244, y: 0.8183584}
+    - {x: 0.36621, y: 0.8183584}
+    normalizedUvs:
+    - {x: 0, y: 0}
+    - {x: 1, y: 0}
+    - {x: 0, y: 1}
+    - {x: 1, y: 1}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: 8ecc645727314264382ae2ff7e605ef1, type: 2}
+    materialId: 0
+    sourceTextureGUID: 217588c936fd16347914928c93128a0b
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    flipped: 0
+    complexGeometry: 0
+    physicsEngine: 0
+    colliderType: 0
+    customColliders: []
+    colliderVertices: []
+    colliderIndicesFwd:
+    colliderIndicesBack:
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
+  - name: Grimm_moth_shield0011
+    boundsData:
+    - {x: 0.2265625, y: 0.015625, z: 0}
+    - {x: 2.890625, y: 6.65625, z: 0}
+    untrimmedBoundsData:
+    - {x: 0, y: 0, z: 0}
+    - {x: 3.34375, y: 7.15625, z: 0}
+    texelSize: {x: 0.015625, y: 0.015625}
+    positions:
+    - {x: -1.21875, y: -3.3125, z: 0}
+    - {x: 1.671875, y: -3.3125, z: 0}
+    - {x: -1.21875, y: 3.34375, z: 0}
+    - {x: 1.671875, y: 3.34375, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: 0.001954101, y: 0.4101572}
+    - {x: 0.1826162, y: 0.4101572}
+    - {x: 0.001954101, y: 0.8261709}
+    - {x: 0.1826162, y: 0.8261709}
+    normalizedUvs:
+    - {x: 0, y: 0}
+    - {x: 1, y: 0}
+    - {x: 0, y: 1}
+    - {x: 1, y: 1}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: 8ecc645727314264382ae2ff7e605ef1, type: 2}
+    materialId: 0
+    sourceTextureGUID: d5a47e8cb11b3f7498c7340b524f65e2
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    flipped: 0
+    complexGeometry: 0
+    physicsEngine: 0
+    colliderType: 0
+    customColliders: []
+    colliderVertices: []
+    colliderIndicesFwd:
+    colliderIndicesBack:
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
+  - name: Grimm_moth_shield0010
+    boundsData:
+    - {x: -0.2265625, y: -0.01562512, z: 0}
+    - {x: 1.609375, y: 3.46875, z: 0}
+    untrimmedBoundsData:
+    - {x: 0, y: 0, z: 0}
+    - {x: 3.34375, y: 7.15625, z: 0}
+    texelSize: {x: 0.015625, y: 0.015625}
+    positions:
+    - {x: -1.03125, y: -1.75, z: 0}
+    - {x: 0.5781251, y: -1.75, z: 0}
+    - {x: -1.03125, y: 1.71875, z: 0}
+    - {x: 0.5781251, y: 1.71875, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: 0.781251, y: 0.868165}
+    - {x: 0.781251, y: 0.968749}
+    - {x: 0.9980459, y: 0.868165}
+    - {x: 0.9980459, y: 0.968749}
+    normalizedUvs:
+    - {x: 0, y: 0}
+    - {x: 0, y: 1}
+    - {x: 1, y: 0}
+    - {x: 1, y: 1}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: 8ecc645727314264382ae2ff7e605ef1, type: 2}
+    materialId: 0
+    sourceTextureGUID: ec59d93d0b244334a8ac870eb0cc930c
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    flipped: 1
+    complexGeometry: 0
+    physicsEngine: 0
+    colliderType: 0
+    customColliders: []
+    colliderVertices: []
+    colliderIndicesFwd:
+    colliderIndicesBack:
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
+  - name: grimm_shield_attack0006
+    boundsData:
+    - {x: 0.02343753, y: -0.007812619, z: 0}
+    - {x: 1.609375, y: 3.453125, z: 0}
+    untrimmedBoundsData:
+    - {x: 0.0078125, y: 0, z: 0}
+    - {x: 4.796875, y: 7.15625, z: 0}
+    texelSize: {x: 0.015625, y: 0.015625}
+    positions:
+    - {x: -0.78125, y: -1.734375, z: 0}
+    - {x: 0.8281251, y: -1.734375, z: 0}
+    - {x: -0.78125, y: 1.71875, z: 0}
+    - {x: 0.8281251, y: 1.71875, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: 0.8203135, y: 0.001954101}
+    - {x: 0.9208975, y: 0.001954101}
+    - {x: 0.8203135, y: 0.2177725}
+    - {x: 0.9208975, y: 0.2177725}
+    normalizedUvs:
+    - {x: 0, y: 0}
+    - {x: 1, y: 0}
+    - {x: 0, y: 1}
+    - {x: 1, y: 1}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: 8ecc645727314264382ae2ff7e605ef1, type: 2}
+    materialId: 0
+    sourceTextureGUID: 17e08c5ebc1199a4b8617f743bc68e8e
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    flipped: 0
+    complexGeometry: 0
+    physicsEngine: 0
+    colliderType: 0
+    customColliders: []
+    colliderVertices: []
+    colliderIndicesFwd:
+    colliderIndicesBack:
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
+  - name: Grimm_moth_shield0009
+    boundsData:
+    - {x: 0.2421874, y: -0.0390625, z: 0}
+    - {x: 1.546875, y: 3.171875, z: 0}
+    untrimmedBoundsData:
+    - {x: 0, y: 0, z: 0}
+    - {x: 3.34375, y: 7.15625, z: 0}
+    texelSize: {x: 0.015625, y: 0.015625}
+    positions:
+    - {x: -0.53125, y: -1.625, z: 0}
+    - {x: 1.015625, y: -1.625, z: 0}
+    - {x: -0.53125, y: 1.546875, z: 0}
+    - {x: 1.015625, y: 1.546875, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: 0.6699228, y: 0.001954101}
+    - {x: 0.7666006, y: 0.001954101}
+    - {x: 0.6699228, y: 0.2001943}
+    - {x: 0.7666006, y: 0.2001943}
+    normalizedUvs:
+    - {x: 0, y: 0}
+    - {x: 1, y: 0}
+    - {x: 0, y: 1}
+    - {x: 1, y: 1}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: 8ecc645727314264382ae2ff7e605ef1, type: 2}
+    materialId: 0
+    sourceTextureGUID: 7d710cdfcda02e44bafef0b5cbc9e060
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    flipped: 0
+    complexGeometry: 0
+    physicsEngine: 0
+    colliderType: 0
+    customColliders: []
+    colliderVertices: []
+    colliderIndicesFwd:
+    colliderIndicesBack:
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
+  - name: Grimm_moth_shield0014
+    boundsData:
+    - {x: 0.234375, y: 0.01562512, z: 0}
+    - {x: 2.875, y: 6.3125, z: 0}
+    untrimmedBoundsData:
+    - {x: 0, y: 0, z: 0}
+    - {x: 3.34375, y: 7.15625, z: 0}
+    texelSize: {x: 0.015625, y: 0.015625}
+    positions:
+    - {x: -1.203125, y: -3.140625, z: 0}
+    - {x: 1.671875, y: -3.140625, z: 0}
+    - {x: -1.203125, y: 3.171875, z: 0}
+    - {x: 1.671875, y: 3.171875, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: 0.3701182, y: 0.3984385}
+    - {x: 0.5498037, y: 0.3984385}
+    - {x: 0.3701182, y: 0.7929678}
+    - {x: 0.5498037, y: 0.7929678}
+    normalizedUvs:
+    - {x: 0, y: 0}
+    - {x: 1, y: 0}
+    - {x: 0, y: 1}
+    - {x: 1, y: 1}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: 8ecc645727314264382ae2ff7e605ef1, type: 2}
+    materialId: 0
+    sourceTextureGUID: 3fdeb0ef927e69d43ad9ae53603cb403
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    flipped: 0
+    complexGeometry: 0
+    physicsEngine: 0
+    colliderType: 0
+    customColliders: []
+    colliderVertices: []
+    colliderIndicesFwd:
+    colliderIndicesBack:
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
+  - name: Grimm_moth_shield0013
+    boundsData:
+    - {x: 0.2265625, y: 0.0234375, z: 0}
+    - {x: 2.890625, y: 6.265625, z: 0}
+    untrimmedBoundsData:
+    - {x: 0, y: 0, z: 0}
+    - {x: 3.34375, y: 7.15625, z: 0}
+    texelSize: {x: 0.015625, y: 0.015625}
+    positions:
+    - {x: -1.21875, y: -3.109375, z: 0}
+    - {x: 1.671875, y: -3.109375, z: 0}
+    - {x: -1.21875, y: 3.15625, z: 0}
+    - {x: 1.671875, y: 3.15625, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: 0.3769541, y: 0.001954101}
+    - {x: 0.5576162, y: 0.001954101}
+    - {x: 0.3769541, y: 0.3935537}
+    - {x: 0.5576162, y: 0.3935537}
+    normalizedUvs:
+    - {x: 0, y: 0}
+    - {x: 1, y: 0}
+    - {x: 0, y: 1}
+    - {x: 1, y: 1}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: 8ecc645727314264382ae2ff7e605ef1, type: 2}
+    materialId: 0
+    sourceTextureGUID: 8c528def57425e34db880a029c7eb3ce
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    flipped: 0
+    complexGeometry: 0
+    physicsEngine: 0
+    colliderType: 0
+    customColliders: []
+    colliderVertices: []
+    colliderIndicesFwd:
+    colliderIndicesBack:
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
+  - name: Grimm_moth_shield0003
+    boundsData:
+    - {x: -0.05468747, y: 0.0390625, z: 0}
+    - {x: 1.890625, y: 4.203125, z: 0}
+    untrimmedBoundsData:
+    - {x: 0, y: 0, z: 0}
+    - {x: 3.34375, y: 7.15625, z: 0}
+    texelSize: {x: 0.015625, y: 0.015625}
+    positions:
+    - {x: -1, y: -2.0625, z: 0}
+    - {x: 0.8906251, y: -2.0625, z: 0}
+    - {x: -1, y: 2.140625, z: 0}
+    - {x: 0.8906251, y: 2.140625, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: 0.001954101, y: 0.8300791}
+    - {x: 0.001954101, y: 0.9482412}
+    - {x: 0.2646475, y: 0.8300791}
+    - {x: 0.2646475, y: 0.9482412}
+    normalizedUvs:
+    - {x: 0, y: 0}
+    - {x: 0, y: 1}
+    - {x: 1, y: 0}
+    - {x: 1, y: 1}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: 8ecc645727314264382ae2ff7e605ef1, type: 2}
+    materialId: 0
+    sourceTextureGUID: 65050bffe7bb56d4685660020774b420
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    flipped: 1
+    complexGeometry: 0
+    physicsEngine: 0
+    colliderType: 0
+    customColliders: []
+    colliderVertices: []
+    colliderIndicesFwd:
+    colliderIndicesBack:
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
+  premultipliedAlpha: 0
+  material: {fileID: 0}
+  materials:
+  - {fileID: 2100000, guid: 8ecc645727314264382ae2ff7e605ef1, type: 2}
+  textures:
+  - {fileID: 2800000, guid: 70b03036223d5e742b58885a1767e6b7, type: 3}
+  pngTextures: []
+  materialPngTextureId: 00000000
+  textureFilterMode: 1
+  textureMipMaps: 0
+  allowMultipleAtlases: 0
+  spriteCollectionGUID: fccbcaac32e876645ad509661f331219
+  spriteCollectionName: Orbit Shield Cln
+  assetName:
+  loadable: 0
+  invOrthoSize: 2
+  halfTargetHeight: 32
+  buildKey: 154209265
+  dataGuid: 2aea427b982de424bad937506e54da13
+  managedSpriteCollection: 0
+  hasPlatformData: 0
+  spriteCollectionPlatforms: []
+  spriteCollectionPlatformGUIDs: []
