@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: atlas0 material_94
-  m_Shader: {fileID: 4800000, guid: 2e3cd66a3379fd64db941b41d4c18254, type: 3}
+  m_Shader: {fileID: 4800000, guid: bf82aa03cf4b08e4696a6db2685ae576, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
   m_EnableInstancingVariants: 0

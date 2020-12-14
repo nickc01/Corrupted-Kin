@@ -1,0 +1,168 @@
+fileFormatVersion: 2
+guid: f18ba112e15b06b48adb73341bc71c4f
+timeCreated: 1602781716
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: ruind_bridge_roof_02
+  externalObjects: {}
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 4
+  maxTextureSize: 354
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 16
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 9
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 64
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: ruind_bridge_roof_02
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 345.9523
+        height: 354
+      alignment: 9
+      pivot: {x: 0.5029595, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 80.02385, y: 87}
+        - {x: 78.02385, y: 89}
+        - {x: 78.02385, y: 93}
+        - {x: 79.02385, y: 95}
+        - {x: 83.02385, y: 95}
+        - {x: 88.02385, y: 90}
+        - {x: 88.02385, y: 88}
+        - {x: 83.02385, y: 86}
+      - - {x: -166.9762, y: -177}
+        - {x: -168.9762, y: -175}
+        - {x: -168.9762, y: 63}
+        - {x: -172.9762, y: 63}
+        - {x: -172.9762, y: 68}
+        - {x: -169.9762, y: 68}
+        - {x: -168.9762, y: 177}
+        - {x: -134.9762, y: 177}
+        - {x: -131.9762, y: 174}
+        - {x: -127.9762, y: 168}
+        - {x: -127.9762, y: 163}
+        - {x: -102.9762, y: 158}
+        - {x: -73.97615, y: 147}
+        - {x: -23.97615, y: 126}
+        - {x: 33.02385, y: 99}
+        - {x: 41.02385, y: 92}
+        - {x: 43.02385, y: 84}
+        - {x: 68.02385, y: 64}
+        - {x: 91.02385, y: 39}
+        - {x: 124.0238, y: -8}
+        - {x: 141.0238, y: -39}
+        - {x: 151.0238, y: -66}
+        - {x: 152.0238, y: -75}
+        - {x: 165.0238, y: -77}
+        - {x: 164.0238, y: -76}
+        - {x: 164.0238, y: -67}
+        - {x: 165.0238, y: -64}
+        - {x: 168.0238, y: -63}
+        - {x: 170.0238, y: -65}
+        - {x: 169.0238, y: -77}
+        - {x: 167.0238, y: -78}
+        - {x: 170.0238, y: -78}
+        - {x: 172.0238, y: -89}
+        - {x: 173.0238, y: -106}
+        - {x: 173.0238, y: -167}
+        - {x: 172.0238, y: -173}
+        - {x: 168.0238, y: -177}
+      physicsShape:
+      - - {x: 171.0238, y: -148}
+        - {x: 170.0238, y: -131}
+        - {x: 171.0238, y: -103}
+        - {x: 171.0238, y: -89}
+        - {x: 167.0238, y: -80}
+        - {x: 157.0238, y: -80}
+        - {x: 154.0238, y: -84}
+        - {x: 141.0238, y: -47}
+        - {x: 130.0238, y: -24}
+        - {x: 120.0238, y: -6}
+        - {x: 99.02385, y: 25}
+        - {x: 79.02385, y: 49}
+        - {x: 54.02385, y: 73}
+        - {x: 43.02385, y: 82}
+        - {x: 22.02385, y: 97}
+        - {x: 3.023849, y: 109}
+        - {x: -41.97615, y: 133}
+        - {x: -83.97615, y: 150}
+        - {x: -109.9762, y: 157}
+        - {x: -128.9762, y: 162}
+        - {x: -127.9762, y: 167}
+        - {x: -131.9762, y: 174}
+        - {x: -135.9762, y: 177}
+        - {x: -168.9762, y: 177}
+        - {x: -168.9762, y: -175}
+        - {x: -166.9762, y: -177}
+        - {x: 152.0238, y: -177}
+        - {x: 163.0238, y: -176}
+        - {x: 169.0238, y: -175}
+        - {x: 171.0238, y: -171}
+      tessellationDetail: 0
+    outline: []
+    physicsShape: []
+  spritePackingTag:
+  userData:
+  assetBundleName:
+  assetBundleVariant:

@@ -1,0 +1,639 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 552bf9a645d63214590fd3a3a3d299a7, type: 3}
+  m_Name: map_set_room_compass
+  m_EditorClassIdentifier:
+  category: General
+  fsm:
+    dataVersion: 1
+    usedInTemplate: {fileID: 11400000}
+    name: Set Compass Point
+    startState: Idle
+    states:
+    - name: Idle
+      description:
+      colorIndex: 0
+      position:
+        serializedVersion: 2
+        x: 50
+        y: 100
+        width: 164
+        height: 32
+      isBreakpoint: 0
+      isSequence: 0
+      hideUnused: 0
+      transitions:
+      - fsmEvent:
+          name: SET COMPASS POINT
+          isSystemEvent: 0
+          isGlobal: 0
+        toState: Set
+        linkStyle: 0
+        linkConstraint: 0
+        colorIndex: 0
+      actionData:
+        actionNames: []
+        customNames: []
+        actionEnabled:
+        actionIsOpen:
+        actionStartIndex:
+        actionHashCodes:
+        unityObjectParams: []
+        fsmGameObjectParams: []
+        fsmOwnerDefaultParams: []
+        animationCurveParams: []
+        functionCallParams: []
+        fsmTemplateControlParams: []
+        fsmEventTargetParams: []
+        fsmPropertyParams: []
+        layoutOptionParams: []
+        fsmStringParams: []
+        fsmObjectParams: []
+        fsmVarParams: []
+        fsmArrayParams: []
+        fsmEnumParams: []
+        fsmFloatParams: []
+        fsmIntParams: []
+        fsmBoolParams: []
+        fsmVector2Params: []
+        fsmVector3Params: []
+        fsmColorParams: []
+        fsmRectParams: []
+        fsmQuaternionParams: []
+        stringParams: []
+        byteData:
+        arrayParamSizes:
+        arrayParamTypes: []
+        customTypeSizes:
+        customTypeNames: []
+        paramDataType:
+        paramName: []
+        paramDataPos:
+        paramByteDataSize:
+    - name: Set
+      description:
+      colorIndex: 0
+      position:
+        serializedVersion: 2
+        x: 83
+        y: 168
+        width: 100
+        height: 32
+      isBreakpoint: 0
+      isSequence: 0
+      hideUnused: 0
+      transitions:
+      - fsmEvent:
+          name: FINISHED
+          isSystemEvent: 1
+          isGlobal: 0
+        toState: Idle
+        linkStyle: 0
+        linkConstraint: 0
+        colorIndex: 0
+      actionData:
+        actionNames:
+        - HutongGames.PlayMaker.Actions.GetPosition2D
+        - HutongGames.PlayMaker.Actions.CallMethodProper
+        - HutongGames.PlayMaker.Actions.CallMethodProper
+        - HutongGames.PlayMaker.Actions.CallMethodProper
+        - HutongGames.PlayMaker.Actions.SetPlayerDataFloat
+        - HutongGames.PlayMaker.Actions.SetPlayerDataFloat
+        - HutongGames.PlayMaker.Actions.SetPlayerDataString
+        - HutongGames.PlayMaker.Actions.SetPlayerDataString
+        - HutongGames.PlayMaker.Actions.CallMethodProper
+        customNames:
+        -
+        -
+        -
+        -
+        -
+        -
+        -
+        -
+        -
+        actionEnabled: 010101010101010101
+        actionIsOpen: 010101010101010101
+        actionStartIndex: 00000000060000000b00000010000000190000001c0000001f0000002200000025000000
+        actionHashCodes: 68fde304d2971501d2971501d29715010018a7030018a7037fb0a3047fb0a304d2971501
+        unityObjectParams: []
+        fsmGameObjectParams: []
+        fsmOwnerDefaultParams:
+        - ownerOption: 1
+          gameObject:
+            useVariable: 1
+            name: Hero
+            tooltip:
+            showInInspector: 0
+            networkSync: 0
+            value: {fileID: 0}
+        - ownerOption: 1
+          gameObject:
+            useVariable: 1
+            name: GameManager
+            tooltip:
+            showInInspector: 0
+            networkSync: 0
+            value: {fileID: 0}
+        - ownerOption: 1
+          gameObject:
+            useVariable: 1
+            name: GameManager
+            tooltip:
+            showInInspector: 0
+            networkSync: 0
+            value: {fileID: 0}
+        - ownerOption: 1
+          gameObject:
+            useVariable: 1
+            name: Game Map
+            tooltip:
+            showInInspector: 0
+            networkSync: 0
+            value: {fileID: 0}
+        - ownerOption: 1
+          gameObject:
+            useVariable: 1
+            name: GameManager
+            tooltip:
+            showInInspector: 0
+            networkSync: 0
+            value: {fileID: 0}
+        - ownerOption: 1
+          gameObject:
+            useVariable: 1
+            name: GameManager
+            tooltip:
+            showInInspector: 0
+            networkSync: 0
+            value: {fileID: 0}
+        - ownerOption: 1
+          gameObject:
+            useVariable: 1
+            name: GameManager
+            tooltip:
+            showInInspector: 0
+            networkSync: 0
+            value: {fileID: 0}
+        - ownerOption: 1
+          gameObject:
+            useVariable: 1
+            name: GameManager
+            tooltip:
+            showInInspector: 0
+            networkSync: 0
+            value: {fileID: 0}
+        - ownerOption: 1
+          gameObject:
+            useVariable: 1
+            name: Game Map
+            tooltip:
+            showInInspector: 0
+            networkSync: 0
+            value: {fileID: 0}
+        animationCurveParams: []
+        functionCallParams: []
+        fsmTemplateControlParams: []
+        fsmEventTargetParams: []
+        fsmPropertyParams: []
+        layoutOptionParams: []
+        fsmStringParams:
+        - useVariable: 0
+          name:
+          tooltip:
+          showInInspector: 0
+          networkSync: 0
+          value: GameManager
+        - useVariable: 0
+          name:
+          tooltip:
+          showInInspector: 0
+          networkSync: 0
+          value: GetSceneNameString
+        - useVariable: 0
+          name:
+          tooltip:
+          showInInspector: 0
+          networkSync: 0
+          value: GameManager
+        - useVariable: 0
+          name:
+          tooltip:
+          showInInspector: 0
+          networkSync: 0
+          value: GetCurrentMapZone
+        - useVariable: 0
+          name:
+          tooltip:
+          showInInspector: 0
+          networkSync: 0
+          value: GameMap
+        - useVariable: 0
+          name:
+          tooltip:
+          showInInspector: 0
+          networkSync: 0
+          value: SetDoorValues
+        - useVariable: 0
+          name:
+          tooltip:
+          showInInspector: 0
+          networkSync: 0
+          value: gMap_doorX
+        - useVariable: 0
+          name:
+          tooltip:
+          showInInspector: 0
+          networkSync: 0
+          value: gMap_doorY
+        - useVariable: 0
+          name:
+          tooltip:
+          showInInspector: 0
+          networkSync: 0
+          value: gMap_doorScene
+        - useVariable: 1
+          name: Scene Name
+          tooltip:
+          showInInspector: 0
+          networkSync: 0
+          value:
+        - useVariable: 0
+          name:
+          tooltip:
+          showInInspector: 0
+          networkSync: 0
+          value: gMap_doorMapZone
+        - useVariable: 1
+          name: Map Zone
+          tooltip:
+          showInInspector: 0
+          networkSync: 0
+          value:
+        - useVariable: 0
+          name:
+          tooltip:
+          showInInspector: 0
+          networkSync: 0
+          value: GameMap
+        - useVariable: 0
+          name:
+          tooltip:
+          showInInspector: 0
+          networkSync: 0
+          value: SetCompassPoint
+        fsmObjectParams: []
+        fsmVarParams:
+        - variableName: Scene Name
+          objectType: UnityEngine.Object
+          useVariable: 1
+          type: 4
+          floatValue: 0
+          intValue: 0
+          boolValue: 0
+          stringValue:
+          vector4Value: {x: 0, y: 0, z: 0, w: 0}
+          objectReference: {fileID: 0}
+          arrayValue:
+            useVariable: 0
+            name:
+            tooltip:
+            showInInspector: 0
+            networkSync: 0
+            type: -1
+            objectTypeName:
+            floatValues: []
+            intValues:
+            boolValues:
+            stringValues: []
+            vector4Values: []
+            objectReferences: []
+        - variableName: Map Zone
+          objectType: UnityEngine.Object
+          useVariable: 1
+          type: 4
+          floatValue: 0
+          intValue: 0
+          boolValue: 0
+          stringValue:
+          vector4Value: {x: 0, y: 0, z: 0, w: 0}
+          objectReference: {fileID: 0}
+          arrayValue:
+            useVariable: 0
+            name:
+            tooltip:
+            showInInspector: 0
+            networkSync: 0
+            type: -1
+            objectTypeName:
+            floatValues: []
+            intValues:
+            boolValues:
+            stringValues: []
+            vector4Values: []
+            objectReferences: []
+        - variableName: Hero X
+          objectType: UnityEngine.Object
+          useVariable: 1
+          type: 0
+          floatValue: 0
+          intValue: 0
+          boolValue: 0
+          stringValue:
+          vector4Value: {x: 0, y: 0, z: 0, w: 0}
+          objectReference: {fileID: 0}
+          arrayValue:
+            useVariable: 0
+            name:
+            tooltip:
+            showInInspector: 0
+            networkSync: 0
+            type: -1
+            objectTypeName:
+            floatValues: []
+            intValues:
+            boolValues:
+            stringValues: []
+            vector4Values: []
+            objectReferences: []
+        - variableName: Hero Y
+          objectType: UnityEngine.Object
+          useVariable: 1
+          type: 0
+          floatValue: 0
+          intValue: 0
+          boolValue: 0
+          stringValue:
+          vector4Value: {x: 0, y: 0, z: 0, w: 0}
+          objectReference: {fileID: 0}
+          arrayValue:
+            useVariable: 0
+            name:
+            tooltip:
+            showInInspector: 0
+            networkSync: 0
+            type: -1
+            objectTypeName:
+            floatValues: []
+            intValues:
+            boolValues:
+            stringValues: []
+            vector4Values: []
+            objectReferences: []
+        - variableName: Scene Name
+          objectType: UnityEngine.Object
+          useVariable: 1
+          type: 4
+          floatValue: 0
+          intValue: 0
+          boolValue: 0
+          stringValue:
+          vector4Value: {x: 0, y: 0, z: 0, w: 0}
+          objectReference: {fileID: 0}
+          arrayValue:
+            useVariable: 0
+            name:
+            tooltip:
+            showInInspector: 0
+            networkSync: 0
+            type: -1
+            objectTypeName:
+            floatValues: []
+            intValues:
+            boolValues:
+            stringValues: []
+            vector4Values: []
+            objectReferences: []
+        - variableName: Map Zone
+          objectType: UnityEngine.Object
+          useVariable: 1
+          type: 4
+          floatValue: 0
+          intValue: 0
+          boolValue: 0
+          stringValue:
+          vector4Value: {x: 0, y: 0, z: 0, w: 0}
+          objectReference: {fileID: 0}
+          arrayValue:
+            useVariable: 0
+            name:
+            tooltip:
+            showInInspector: 0
+            networkSync: 0
+            type: -1
+            objectTypeName:
+            floatValues: []
+            intValues:
+            boolValues:
+            stringValues: []
+            vector4Values: []
+            objectReferences: []
+        - variableName:
+          objectType: UnityEngine.Object
+          useVariable: 1
+          type: 0
+          floatValue: 0
+          intValue: 0
+          boolValue: 0
+          stringValue:
+          vector4Value: {x: 0, y: 0, z: 0, w: 0}
+          objectReference: {fileID: 0}
+          arrayValue:
+            useVariable: 0
+            name:
+            tooltip:
+            showInInspector: 0
+            networkSync: 0
+            type: -1
+            objectTypeName:
+            floatValues: []
+            intValues:
+            boolValues:
+            stringValues: []
+            vector4Values: []
+            objectReferences: []
+        - variableName:
+          objectType: UnityEngine.Object
+          useVariable: 1
+          type: 0
+          floatValue: 0
+          intValue: 0
+          boolValue: 0
+          stringValue:
+          vector4Value: {x: 0, y: 0, z: 0, w: 0}
+          objectReference: {fileID: 0}
+          arrayValue:
+            useVariable: 0
+            name:
+            tooltip:
+            showInInspector: 0
+            networkSync: 0
+            type: -1
+            objectTypeName:
+            floatValues: []
+            intValues:
+            boolValues:
+            stringValues: []
+            vector4Values: []
+            objectReferences: []
+        fsmArrayParams: []
+        fsmEnumParams: []
+        fsmFloatParams: []
+        fsmIntParams: []
+        fsmBoolParams: []
+        fsmVector2Params: []
+        fsmVector3Params: []
+        fsmColorParams: []
+        fsmRectParams: []
+        fsmQuaternionParams: []
+        stringParams: []
+        byteData: 00000000000000000100000000014865726f205800000000014865726f2059000000000000000000014865726f205800000000014865726f2059
+        arrayParamSizes: 00000000000000000400000000000000
+        arrayParamTypes:
+        - HutongGames.PlayMaker.FsmVar
+        - HutongGames.PlayMaker.FsmVar
+        - HutongGames.PlayMaker.FsmVar
+        - HutongGames.PlayMaker.FsmVar
+        customTypeSizes:
+        customTypeNames: []
+        paramDataType: 14000000250000000f0000000f00000007000000010000001400000012000000120000000c000000270000001400000012000000120000000c000000270000001400000012000000120000000c000000270000002700000027000000270000002700000014000000120000000f00000014000000120000000f0000001400000012000000120000001400000012000000120000001400000012000000120000000c00000027000000
+        paramName:
+        - gameObject
+        - vector
+        - x
+        - y
+        - space
+        - everyFrame
+        - gameObject
+        - behaviour
+        - methodName
+        - parameters
+        - storeResult
+        - gameObject
+        - behaviour
+        - methodName
+        - parameters
+        - storeResult
+        - gameObject
+        - behaviour
+        - methodName
+        - parameters
+        -
+        -
+        -
+        -
+        - storeResult
+        - gameObject
+        - floatName
+        - value
+        - gameObject
+        - floatName
+        - value
+        - gameObject
+        - stringName
+        - value
+        - gameObject
+        - stringName
+        - value
+        - gameObject
+        - behaviour
+        - methodName
+        - parameters
+        - storeResult
+        paramDataPos: 000000000000000009000000140000001f000000230000000100000000000000010000000000000000000000020000000200000003000000010000000100000003000000040000000500000002000000020000000300000004000000050000000600000004000000060000002400000005000000070000002f000000060000000800000009000000070000000a0000000b000000080000000c0000000d0000000300000007000000
+        paramByteDataSize: 00000000090000000b0000000b00000004000000010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000b00000000000000000000000b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+    events:
+    - name: FINISHED
+      isSystemEvent: 1
+      isGlobal: 0
+    - name: SET COMPASS POINT
+      isSystemEvent: 0
+      isGlobal: 0
+    globalTransitions: []
+    variables:
+      floatVariables:
+      - useVariable: 1
+        name: Hero X
+        tooltip:
+        showInInspector: 0
+        networkSync: 0
+        value: 0
+      - useVariable: 1
+        name: Hero Y
+        tooltip:
+        showInInspector: 0
+        networkSync: 0
+        value: 0
+      intVariables: []
+      boolVariables: []
+      stringVariables:
+      - useVariable: 1
+        name: Map Zone
+        tooltip:
+        showInInspector: 0
+        networkSync: 0
+        value:
+      - useVariable: 1
+        name: Scene Name
+        tooltip:
+        showInInspector: 0
+        networkSync: 0
+        value:
+      vector2Variables: []
+      vector3Variables: []
+      colorVariables: []
+      rectVariables: []
+      quaternionVariables: []
+      gameObjectVariables: []
+      objectVariables: []
+      materialVariables: []
+      textureVariables: []
+      arrayVariables: []
+      enumVariables: []
+      categories:
+      -
+      variableCategoryIDs: 00000000000000000000000000000000
+    description:
+    docUrl:
+    showStateLabel: 1
+    maxLoopCount: 0
+    watermark:
+    password:
+    locked: 0
+    manualUpdate: 0
+    keepDelayedEventsOnStateExit: 0
+    preprocessed: 0
+    ExposedEvents: []
+    RestartOnEnable: 1
+    EnableDebugFlow: 0
+    EnableBreakpoints: 1
+    editorFlags: 3
+    activeStateName:
+    mouseEvents: 0
+    handleLevelLoaded: 0
+    handleTriggerEnter2D: 0
+    handleTriggerExit2D: 0
+    handleTriggerStay2D: 0
+    handleCollisionEnter2D: 0
+    handleCollisionExit2D: 0
+    handleCollisionStay2D: 0
+    handleTriggerEnter: 0
+    handleTriggerExit: 0
+    handleTriggerStay: 0
+    handleCollisionEnter: 0
+    handleCollisionExit: 0
+    handleCollisionStay: 0
+    handleParticleCollision: 0
+    handleControllerColliderHit: 0
+    handleJointBreak: 0
+    handleJointBreak2D: 0
+    handleOnGUI: 0
+    handleFixedUpdate: 0
+    handleApplicationEvents: 0
+    handleAnimatorMove: 0
+    handleAnimatorIK: 0

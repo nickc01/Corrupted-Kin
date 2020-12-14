@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f14eb909e69e44499609a80f368d77c, type: 3}
+  m_Name: platform_dirt_fall
+  m_EditorClassIdentifier:
+  options:
+  - Clip: {fileID: 8300000, guid: 53470d2dc889ae342912cdb0306e9184, type: 3}
+    Weight: 1
+  - Clip: {fileID: 8300000, guid: 135a2d5aee3238f43bb2230389cc2b2e, type: 3}
+    Weight: 1
+  - Clip: {fileID: 8300000, guid: 744b3cffb921d1c4ebe7c4e4f9a70d71, type: 3}
+    Weight: 1
+  pitchMin: 1
+  pitchMax: 1

@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1971901291879441}
+  m_IsPrefabParent: 1
+--- !u!1 &1971901291879441
+GameObject:
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4829424791018917}
+  - component: {fileID: 114527781611469710}
+  - component: {fileID: 114678541838259035}
+  - component: {fileID: 50187651434842871}
+  m_Layer: 2
+  m_Name: Particle Rock Tiny Transient
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4829424791018917
+Transform:
+  m_GameObject: {fileID: 1971901291879441}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 62.25988, y: 10.47175, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114527781611469710
+MonoBehaviour:
+  m_GameObject: {fileID: 1971901291879441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dedc780d385297d4d966c2e799d69a93, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+--- !u!114 &114678541838259035
+MonoBehaviour:
+  m_GameObject: {fileID: 1971901291879441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6629d7f039ff3264fbfbb18e436d8743, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  afterEvent: 2
+  timeToWait: 0
+--- !u!50 &50187651434842871
+Rigidbody2D:
+  serializedVersion: 4
+  m_GameObject: {fileID: 1971901291879441}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
