@@ -122,7 +122,7 @@ public class CorruptedKin : BossReplacement
 
 		yield return animator.PlayAnimationTillDone("Roar Start");
 
-		Debug.Log("C");
+		//Debug.Log("C");
 
 		if (!Boss.InPantheon)
 		{
@@ -143,15 +143,16 @@ public class CorruptedKin : BossReplacement
 		animator.PlayAnimation("Roar Loop");
 
 		//TODO - AREA TITLE
+		WeaverCore.Assets.AreaTitle.Spawn("Lost", "Kin");
 
 		yield return Roar(2.4f, HollowKnightScream);
 
-		Debug.Log("F");
+		//Debug.Log("F");
 
 		yield return animator.PlayAnimationTillDone("Roar End");
 
 
-		Debug.Log("G");
+		//Debug.Log("G");
 		//TODO - START SPAWN EVENT (Possibbly the balloons that spawn throughout the battle)
 
 		EntityHealth.Invincible = false;
