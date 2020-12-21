@@ -9,7 +9,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 0}
-  m_Name: Player Animations
+  m_Name: Player Animations BROKEN
   m_EditorClassIdentifier: WeaverCore:WeaverCore.Utilities:WeaverAnimationData
   clipNames:
   - Idle

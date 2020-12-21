@@ -1,5 +1,7 @@
 fileFormatVersion: 2
-guid: acfe0175c57994e458d550d9ce74dfb0
+guid: c0e99abafe6d6644ab5ddf780676fb49
+timeCreated: 1602781465
+licenseType: Free
 TextureImporter:
   fileIDToRecycleName: {}
   externalObjects: {}
@@ -26,7 +28,7 @@ TextureImporter:
   cubemapConvolution: 0
   seamlessCubemap: 0
   textureFormat: 4
-  maxTextureSize: 2048
+  maxTextureSize: 250
   textureSettings:
     serializedVersion: 2
     filterMode: 1
@@ -70,7 +72,7 @@ TextureImporter:
     sprites: []
     outline: []
     physicsShape: []
-  spritePackingTag: 
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
+  spritePackingTag:
+  userData:
+  assetBundleName:
+  assetBundleVariant:

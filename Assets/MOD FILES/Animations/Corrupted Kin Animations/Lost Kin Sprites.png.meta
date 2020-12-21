@@ -169,12 +169,15 @@ TextureImporter:
     21300328: rest_to_wake0014
     21300330: rest_to_wake0015
     21300332: rest_to_wake0016
+    21300334: Empty
+    21300336: Empty
     21300338: roar0000
     21300340: roar0001
     21300342: roar0002
     21300344: roar0003
     21300346: roar0004
     21300348: roar0005
+    21300350: Empty
     21300352: roar0007
     21300354: roar0008
   externalObjects: {}
@@ -1946,7 +1949,7 @@ TextureImporter:
         width: 169
         height: 154
       alignment: 9
-      pivot: {x: 1, y: 0.76470584}
+      pivot: {x: 1.45, y: 0.76470584}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2582,7 +2585,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: 
+      name: Empty
       rect:
         serializedVersion: 2
         x: 402
@@ -2596,7 +2599,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: 
+      name: Empty
       rect:
         serializedVersion: 2
         x: 398
@@ -2694,7 +2697,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: 
+      name: Empty
       rect:
         serializedVersion: 2
         x: 398

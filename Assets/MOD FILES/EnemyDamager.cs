@@ -17,18 +17,24 @@ public class EnemyDamager : MonoBehaviour
 
 	void OnTriggerEnter2D(Collider2D collider)
 	{
-		IHittable hittable = null;
-		if ((hittable = collider.GetComponent<IHittable>()) != null)
+		var obj = collider.transform;
+
+		while (obj != null)
 		{
-			hittable.Hit(new HitInfo()
+			IHittable hittable = obj.GetComponent<IHittable>();
+			if (hittable != null)
 			{
-				Attacker = gameObject,
-				Damage = damage,
-				AttackStrength = 1f,
-				AttackType = attackType,
-				Direction = hitDirection.ToDegrees(),
-				IgnoreInvincible = false
-			});
+				hittable.Hit(new HitInfo()
+				{
+					Attacker = gameObject,
+					Damage = damage,
+					AttackStrength = 1f,
+					AttackType = attackType,
+					Direction = hitDirection.ToDegrees(),
+					IgnoreInvincible = false
+				});
+			}
+			obj = obj.parent;
 		}
 	}
 }

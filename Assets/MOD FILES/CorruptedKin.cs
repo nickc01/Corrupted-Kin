@@ -1,9 +1,14 @@
-﻿using System;
+﻿using HutongGames.PlayMaker;
+using Modding;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 using UnityEngine;
 using UnityEngine.Audio;
 using WeaverCore;
+using WeaverCore.Assets.Components;
 using WeaverCore.Components;
 using WeaverCore.Features;
 using WeaverCore.Utilities;
@@ -17,6 +22,7 @@ public class CorruptedKin : BossReplacement
 	new SpriteRenderer renderer;
 	new Rigidbody2D rigidbody;
 	WeaverAudioPlayer audioPlayer;
+	CorruptedKinHealth healthManager;
 
 	[Header("General Stuff")]
 	[SerializeField]
@@ -33,8 +39,6 @@ public class CorruptedKin : BossReplacement
 	float rightX = 36.53f;
 	[SerializeField]
 	float jumpHeight = 60f;
-	[SerializeField]
-	CorruptedKinHealth HealthManager;
 
 
 
@@ -70,14 +74,14 @@ public class CorruptedKin : BossReplacement
 	[SerializeField]
 	float evadeSpeed = 25f;
 	[SerializeField]
-	TouchingPlayer EvadeChecker;
+	BoxCollider2D EvadeChecker;
 
 	[Space]
 	[Header("Overhead Slash")]
 	[SerializeField]
 	WeaverAnimationPlayer OverheadSlash;
 	[SerializeField]
-	TouchingPlayer OverheadSlashChecker;
+	BoxCollider2D OverheadSlashChecker;
 
 
 	[Space]
@@ -85,7 +89,7 @@ public class CorruptedKin : BossReplacement
 	[SerializeField]
 	float MinDownstabHeight = 33.31f;
 	[SerializeField]
-	TouchingPlayer DownstabChecker;
+	BoxCollider2D DownstabChecker;
 	[SerializeField]
 	AudioClip DownstabPrepareSound;
 	[SerializeField]
@@ -96,13 +100,17 @@ public class CorruptedKin : BossReplacement
 	GameObject DownstabBurst;
 	[SerializeField]
 	GameObject DownstabSlam;
+	[SerializeField]
+	KinProjectile KinProjectilePrefab;
+	[SerializeField]
+	Vector3 KinProjectileOffset = new Vector3(0f,-0.5f,0f);
 
 	[Space]
 	[Header("Airdash")]
 	[SerializeField]
 	float AirDashHeight = 31.5f;
 	[SerializeField]
-	TouchingPlayer DashChecker;
+	BoxCollider2D DashChecker;
 	[SerializeField]
 	float dashSpeed = 32f;
 	[SerializeField]
@@ -120,11 +128,30 @@ public class CorruptedKin : BossReplacement
 	[Space]
 	[Header("Stun")]
 	[SerializeField]
-	GameObject StunEffect;
-	[SerializeField]
 	float StunPushAmount = 10f;
 	[SerializeField]
 	ParticleSystem ShakeGas;
+
+	[Space]
+	[Header("Death")]
+	[SerializeField]
+	AudioClip BossFinalHitSound;
+	[SerializeField]
+	GameObject InfectedDeathWavePrefab;
+	[SerializeField]
+	AudioClip BossGushingSound;
+	[SerializeField]
+	GameObject BossDeathPuffPrefab;
+
+
+	[SerializeField]
+	float bloodSpawnDelay = 0.1f;
+	[SerializeField]
+	AudioClip BossExplosionSound;
+	[SerializeField]
+	GameObject DeathExplosionPrefab;
+	[SerializeField]
+	ParticleSystem CorpseSteam;
 
 
 
@@ -135,7 +162,16 @@ public class CorruptedKin : BossReplacement
 	{
 		get
 		{
-			return DownstabChecker.IsTouchingPlayer;
+			//return true;
+			//NORMAL
+			//return DownstabChecker.IsTouchingPlayer;
+			var playerX = Player.Player1.transform.GetXPosition();
+			var selfX = transform.GetXPosition();
+
+			float dStabRange = 1.42f;
+
+
+			return playerX >= selfX - (dStabRange / 2f) && playerX <= selfX + (dStabRange / 2f);
 		}
 	}
 
@@ -144,7 +180,7 @@ public class CorruptedKin : BossReplacement
 	{
 		get
 		{
-			return EvadeChecker.IsTouchingPlayer;
+			return IsWithinBox(EvadeChecker, Player.Player1.transform);//EvadeChecker.IsTouchingPlayer;
 		}
 	}
 	public bool EvadeCheck { get; set; }
@@ -154,7 +190,10 @@ public class CorruptedKin : BossReplacement
 	{
 		get
 		{
-			return OverheadSlashChecker.IsTouchingPlayer;
+			//return true;
+			//Normal
+			//return OverheadSlashChecker.IsTouchingPlayer;
+			return IsWithinBox(OverheadSlashChecker, Player.Player1.transform);
 		}
 	}
 
@@ -164,7 +203,8 @@ public class CorruptedKin : BossReplacement
 	{
 		get
 		{
-			return DashChecker.IsTouchingPlayer;
+			//return DashChecker.IsTouchingPlayer;
+			return IsWithinBox(DashChecker, Player.Player1.transform);
 		}
 	}
 	public bool Angry { get; set; }
@@ -212,6 +252,10 @@ public class CorruptedKin : BossReplacement
 		animator = GetComponent<WeaverAnimationPlayer>();
 		renderer = GetComponent<SpriteRenderer>();
 		audioPlayer = GetComponent<WeaverAudioPlayer>();
+		healthManager = GetComponent<CorruptedKinHealth>();
+		KinProjectile.InitializePool(KinProjectilePrefab);
+
+
 
 		rigidbody.isKinematic = true;
 
@@ -223,8 +267,15 @@ public class CorruptedKin : BossReplacement
 		renderer.enabled = false;
 
 		gravityScaleCache = rigidbody.gravityScale;
+		rigidbody.velocity = default(Vector2);
 
 		base.Awake();
+
+		var quarterHealth = healthManager.Health / 4;
+
+		AddStunMilestone(quarterHealth);
+		AddStunMilestone(quarterHealth * 2);
+		AddStunMilestone(quarterHealth * 3);
 
 		if (CoreInfo.LoadState == WeaverCore.Enums.RunningState.Editor)
 		{
@@ -323,6 +374,7 @@ public class CorruptedKin : BossReplacement
 
 		IdleCounter = 0.75f;
 
+		//OnDeath();
 		yield return Idle();
 	}
 
@@ -331,11 +383,36 @@ public class CorruptedKin : BossReplacement
 	{
 		while (true)
 		{
+
+			//WillEvade = true;
+			//WillOverhead = true;
+			//yield return Overhead();
+			//yield return Attack_DownStab();
+
+
+
+			//continue;
+			//NORMAL STUFF
+			Debug.Log("IDLING");
 			DownStabbing = false;
 
 			animator.PlayAnimation("Walk");
 
 			FacePlayer();
+
+			if (WillEvade && InEvadeRange)
+			{
+				Debug.Log("EVADING");
+				yield return Evade();
+				continue;
+			}
+
+			if (WillOverhead & InOverHeadRange)
+			{
+				Debug.Log("OVERHEADING");
+				yield return Overhead();
+				continue;
+			}
 
 			//Get random walkspeed
 			var walkSpeed = Random.Range(idleMovementSpeedMin, idleMovementSpeedMax);
@@ -343,29 +420,21 @@ public class CorruptedKin : BossReplacement
 			//Flip at random
 			walkSpeed = Random.value >= 0.5f ? walkSpeed : -walkSpeed;
 
-
 			rigidbody.velocity = new Vector2(walkSpeed, 0f);
-
-			if (WillEvade && InEvadeRange)
-			{
-				yield return Evade();
-				continue;
-			}
-
-			if (WillOverhead & InOverHeadRange)
-			{
-				yield return Overhead();
-				continue;
-			}
+			Debug.Log("SETTING VELOCITY = " + rigidbody.velocity);
 
 			var waitTime = Random.Range(idleTimeMin, idleTimeMax);
 			if (IdleCounter < waitTime)
 			{
 				waitTime = IdleCounter;
 			}
+			Debug.Log("WAITING FOR = " + waitTime);
 			yield return new WaitForSeconds(waitTime);
 			IdleCounter -= waitTime;
 
+			rigidbody.velocity = new Vector2(0f, 0f);
+
+			Debug.Log("ATTACKING");
 			yield return DoAttack();
 		}
 	}
@@ -378,34 +447,53 @@ public class CorruptedKin : BossReplacement
 			yield return Attack_Jump();
 			yield break;
 		}
+
+		WillEvade = false;
+
 		rigidbody.velocity = default(Vector2);
 
-		FacePlayer(false);
+		yield return FacePlayerRoutine();
 
 		var xScale = transform.GetXLocalScale();
 
 		var speed = evadeSpeed * xScale;
 
-		if (!IsFacingRight)
+		if (IsFacingRight)
 		{
 			speed *= -1f;
 		}
 
 		yield return animator.PlayAnimationTillDone("Evade Antic");
 
+		rigidbody.gravityScale = 0f;
 		rigidbody.velocity = new Vector2(speed,0f);
 
 		WeaverAudio.PlayAtPoint(JumpSound, transform.position);
 
-		yield return new WaitForSeconds(0.19f);
+		//yield return animator.PlayAnimationTillDone("Evade");
+
+		animator.PlayAnimation("Evade");
+
+		for (float timer = 0; timer < 0.19f; timer += Time.deltaTime)
+		{
+			if (animator.PlayingClip != "Evade")
+			{
+				break;
+			}
+			yield return null;
+		}
+
+		//yield return new WaitForSeconds(0.19f);
 
 		rigidbody.velocity = default(Vector2);
+		rigidbody.gravityScale = gravityScaleCache;
 		WeaverAudio.PlayAtPoint(LandSound, transform.position);
 
 		yield return animator.PlayAnimationTillDone("Evade Recover");
 
 		//TODO : LOOK AT "To Attack?" event, that is where this continues
-		throw new NotImplementedException();
+		//throw new NotImplementedException();
+		yield return ToNextAttack();
 	}
 
 	//Overhead jump
@@ -418,11 +506,11 @@ public class CorruptedKin : BossReplacement
 
 		yield return new WaitForSeconds(0.65f);
 
-		StartBoundRoutine(PlaySlashSounds(4,0.25f));
-
 		OverheadSlash.gameObject.SetActive(true);
 
 		OverheadSlash.PlayAnimation("Overhead Slash");
+
+		StartBoundRoutine(PlaySlashSounds());
 
 		yield return animator.PlayAnimationTillDone("Overhead Slashing");
 
@@ -441,10 +529,10 @@ public class CorruptedKin : BossReplacement
 		{
 			WillEvade = true;
 		}
-		else
-		{
-			WillEvade = false;
-		}
+		//else
+		//{
+		//	WillEvade = false;
+		//}
 
 		RanFloat = Random.Range(0f, 100f);
 
@@ -452,10 +540,10 @@ public class CorruptedKin : BossReplacement
 		{
 			WillOverhead = true;
 		}
-		else
-		{
-			WillOverhead = false;
-		}
+		//else
+		//{
+		//	WillOverhead = false;
+		//}
 	}
 
 	//Picks an attack to do
@@ -483,6 +571,7 @@ public class CorruptedKin : BossReplacement
 		}
 		else
 		{
+			Debug.Log("DASHING!!!");
 			yield return Attack_Dash();
 			TimesDashed++;
 			yield break;
@@ -500,18 +589,20 @@ public class CorruptedKin : BossReplacement
 		rigidbody.velocity = default(Vector2);
 		DidAirDash = false;
 
-		yield return FacePlayerRoutine();
+		//Debug.Log("D_A");
 
+		yield return FacePlayerRoutine(true);
+		//Debug.Log("D_B");
 		yield return animator.PlayAnimationTillDone("Jump Antic");
-
+		//Debug.Log("D_C");
 		float jumpX = 0f;
 
 		if (DownStabbing)
 		{
 			var selfX = transform.GetXPosition();
-			var heroX = transform.GetXPosition();
+			var heroX = Player.Player1.transform.GetXPosition();
 
-			jumpX = (selfX - heroX) * 2.5f;
+			jumpX = Mathf.LerpUnclamped(selfX,heroX,2.5f) - selfX;
 		}
 		else
 		{
@@ -520,6 +611,7 @@ public class CorruptedKin : BossReplacement
 			jumpX -= selfX;
 			jumpX *= 1.25f;
 		}
+		//Debug.Log("D_D");
 
 		WeaverAudio.PlayAtPoint(JumpSound, transform.position);
 
@@ -529,12 +621,14 @@ public class CorruptedKin : BossReplacement
 
 		rigidbody.velocity = new Vector2(jumpX,jumpY);
 
+		//Debug.Log("D_E");
 		yield return null;
 
 		bool falling = false;
 
 		while (true)
 		{
+			//Debug.Log("D_F");
 			yield return null;
 
 			bool aboveDownstabHeight = false;
@@ -542,40 +636,44 @@ public class CorruptedKin : BossReplacement
 
 			if (transform.position.y > MinDownstabHeight)
 			{
-				Debug.Log("Above Down stab height");
+				//Debug.Log("Above Down stab height");
 				aboveDownstabHeight = true;
 			}
 			if (transform.position.y > AirDashHeight)
 			{
-				Debug.Log("Above Air Dash Height");
+				//Debug.Log("Above Air Dash Height");
 				aboveAirDashHeight = true;
 			}
 
 			if (!falling && rigidbody.velocity.y < 0f)
 			{
-				Debug.Log("Falling");
+				//Debug.Log("Falling");
 				falling = true;
 			}
 
 			if (falling && IsGrounded)
 			{
-				Debug.Log("IS GROUNDED!");
+				//Debug.Log("IS GROUNDED!");
 				//LAND logic
 				WeaverAudio.PlayAtPoint(LandSound, transform.position);
 				rigidbody.velocity = default(Vector2);
+				//Debug.Log("A");
 				yield return animator.PlayAnimationTillDone("Land");
+				//Debug.Log("B");
 				yield return ToNextAttack();
+				//Debug.Log("C");
 				yield break;
 			}
 
 			if (DownStabbing && InDownstabRange && aboveDownstabHeight)
 			{
-				Debug.Log("DOWNSTABBING");
+				//Debug.Log("DOWNSTABBING");
 				WeaverAudio.PlayAtPoint(DownstabPrepareSound, transform.position);
 				rigidbody.velocity = default(Vector2);
 				rigidbody.gravityScale = 0f;
+				//Debug.Log("D_G");
 				yield return animator.PlayAnimationTillDone("Downstab Antic Quick");
-
+				//Debug.Log("D_H");
 				WeaverAudio.PlayAtPoint(DownstabDashSound, transform.position);
 				animator.PlayAnimation("Downstab");
 
@@ -584,6 +682,7 @@ public class CorruptedKin : BossReplacement
 
 				DownstabBurst.SetActive(true);
 
+				//Debug.Log("D_I");
 				yield return WaitTillTouchingGround();
 
 				WeaverAudio.PlayAtPoint(DownstabImpactSound, transform.position);
@@ -594,18 +693,26 @@ public class CorruptedKin : BossReplacement
 
 				//TODO - SPAWN PROJECTILES
 
+				KinProjectile.Spawn(transform.position + KinProjectileOffset, new Vector2(8,0));
+				KinProjectile.Spawn(transform.position + KinProjectileOffset, new Vector2(15,0));
+				KinProjectile.Spawn(transform.position + KinProjectileOffset, new Vector2(-8,0));
+				KinProjectile.Spawn(transform.position + KinProjectileOffset, new Vector2(15,0));
+				KinProjectile.Spawn(transform.position + KinProjectileOffset, new Vector2(21,0));
+				KinProjectile.Spawn(transform.position + KinProjectileOffset, new Vector2(-21,0));
+
+				//Debug.Log("D_J");
 				yield return animator.PlayAnimationTillDone("Downstab Land");
 
 				animator.PlayAnimation("Idle");
 
+				//Debug.Log("D_K");
 				yield return new WaitForSeconds(0.35f);
-
 				UpdateCounters();
 				break;
 			}
 			if (aboveAirDashHeight && WillAirDash)
 			{
-				Debug.Log("AIR DASHING");
+				//Debug.Log("AIR DASHING");
 				transform.SetYPosition(AirDashHeight);
 				rigidbody.gravityScale = 0f;
 
@@ -637,6 +744,7 @@ public class CorruptedKin : BossReplacement
 
 			if (randVal < 0.33f)
 			{
+				Debug.Log("DOWNSTABBING");
 				yield return Attack_DownStab();
 			}
 			else
@@ -650,7 +758,7 @@ public class CorruptedKin : BossReplacement
 	{
 		//TODO
 		//throw new NotImplementedException();
-		if (InDashRange)
+		if (!InDashRange)
 		{
 			//THERE IS A COUNTER HERE IN THE ORIGINAL
 			yield return Attack_DownStab();
@@ -664,7 +772,7 @@ public class CorruptedKin : BossReplacement
 				WeaverAudio.PlayAtPoint(PrepareSound, transform.position);
 				rigidbody.gravityScale = 0f;
 
-				FacePlayer(false);
+				yield return FacePlayerRoutine(false);
 
 				var scale = transform.GetXLocalScale();
 
@@ -754,7 +862,7 @@ public class CorruptedKin : BossReplacement
 		//If the object is to the right
 		if (t.position.x > transform.position.x)
 		{
-			if (renderer.flipX == false)
+			if (renderer.flipX == true)
 			{
 				if (playAnimation)
 				{
@@ -769,7 +877,7 @@ public class CorruptedKin : BossReplacement
 		//If the object is to the left
 		else if (t.position.x < transform.position.x)
 		{
-			if (renderer.flipX == true)
+			if (renderer.flipX == false)
 			{
 				if (playAnimation)
 				{
@@ -785,10 +893,13 @@ public class CorruptedKin : BossReplacement
 
 	public IEnumerator FaceObjectRoutine(Transform t, bool playAnimation = true)
 	{
+		Debug.Log("FACING OBJECT");
+		Debug.Log("Self Position = " + transform.position);
+		Debug.Log("Player Position = " + Player.Player1.transform.position);
 		//If the object is to the right
 		if (t.position.x > transform.position.x)
 		{
-			if (renderer.flipX == false)
+			if (renderer.flipX == true)
 			{
 				if (playAnimation)
 				{
@@ -801,9 +912,9 @@ public class CorruptedKin : BossReplacement
 			}
 		}
 		//If the object is to the left
-		else if (t.position.x < transform.position.x)
+		else// if (t.position.x < transform.position.x)
 		{
-			if (renderer.flipX == true)
+			if (renderer.flipX == false)
 			{
 				if (playAnimation)
 				{
@@ -820,14 +931,16 @@ public class CorruptedKin : BossReplacement
 	IEnumerator FlipDirection(string animation)
 	{
 		var previousAnimation = animator.PlayingClip;
-
-		yield return animator.PlayAnimationTillDone(animation);
-
+		//Debug.Log("FLIPPING_Before");
+		//Debug.Log("Previous Animation = " + previousAnimation);
+		//Debug.Log("Playing Animation = " + animation);
+		yield return animator.PlayAnimationTillDone(animation,true);
+		//Debug.Log("FLIPPING_AFTER");
 		renderer.flipX = !renderer.flipX;
 
 		if (previousAnimation != null)
 		{
-			animator.PlayAnimation(animation);
+			animator.PlayAnimation(previousAnimation);
 		}
 	}
 
@@ -849,13 +962,21 @@ public class CorruptedKin : BossReplacement
 		}
 	}
 
-	IEnumerator PlaySlashSounds(int times, float delayBetweenSounds = 0.25f)
+	IEnumerator PlaySlashSounds()
 	{
-		for (int i = 0; i < times; i++)
-		{
-			WeaverAudio.PlayAtPoint(SwordSlashSound, transform.position);
-			yield return new WaitForSeconds(delayBetweenSounds);
-		}
+		WeaverAudio.PlayAtPoint(SwordSlashSound, transform.position);
+
+		yield return new WaitUntil(() => animator.PlayingFrame == 4);
+
+		WeaverAudio.PlayAtPoint(SwordSlashSound, transform.position);
+
+		yield return new WaitUntil(() => animator.PlayingFrame == 9);
+
+		WeaverAudio.PlayAtPoint(SwordSlashSound, transform.position);
+
+		yield return new WaitUntil(() => animator.PlayingFrame == 14);
+
+		WeaverAudio.PlayAtPoint(SwordSlashSound, transform.position);
 	}
 
 	List<GameObject> terrainCollisions = new List<GameObject>();
@@ -887,10 +1008,148 @@ public class CorruptedKin : BossReplacement
 		StartCoroutine(DeathRoutine());
 	}
 
+	float emissionRate = 50f;
+	float emissionSpeed = 5f;
 	IEnumerator DeathRoutine()
 	{
-		throw new NotImplementedException();
+		//HERE IS WHERE A SetPlayerDataBool is located. It sets corn_abyssLeft to true
+
+		Reset();
+
+		WeaverCam.Instance.Shaker.Shake(WeaverCore.Enums.ShakeType.AverageShake);
+
+		WeaverAudio.PlayAtPoint(BossFinalHitSound, transform.position);
+
+		DeactivateBattleScene();
+
+		var deathWave = GameObject.Instantiate(InfectedDeathWavePrefab, transform.position, Quaternion.identity);
+
+		deathWave.transform.localScale = new Vector3(3f,3f,0f);
+
+		yield return WaitTillTouchingGround();
+
+		animator.PlayAnimation("Death Land");
+
+		rigidbody.velocity = default(Vector2);
+
+		yield return new WaitForSeconds(1f);
+
+		//TODO : SPAWN BLOOD TIME
+
+		animator.PlayAnimation("Death");
+
+		WeaverAudio.PlayAtPoint(BossGushingSound, transform.position);
+
+		var deathPuff = GameObject.Instantiate(BossDeathPuffPrefab, transform.position + new Vector3(0f,0f,-5f), Quaternion.identity);
+		var deathParticles = deathPuff.GetComponent<ParticleSystem>();
+
+
+		WeaverCam.Instance.Shaker.Shake(WeaverCore.Enums.ShakeType.BigShake);
+		WeaverCam.Instance.Shaker.SetRumble(WeaverCore.Enums.RumbleType.RumblingMed);
+
+		float bloodTimer = 0f;
+
+		for (float t = 0; t <= 3f; t += Time.deltaTime)
+		{
+			yield return null;
+			bloodTimer += Time.deltaTime;
+			if (bloodTimer >= bloodSpawnDelay)
+			{
+				bloodTimer -= bloodSpawnDelay;
+				//SpawnBloodParticle();
+				Blood.SpawnRandomBlood(transform.position);
+			}
+
+
+			emissionRate += (5f * 60f) * Time.deltaTime;
+			emissionSpeed += (1f * 60f) * Time.deltaTime;
+			if (emissionSpeed > 110f)
+			{
+				emissionSpeed = 110f;
+			}
+			var main = deathParticles.main;
+			var emission = deathParticles.emission;
+
+			main.startSpeed = emissionSpeed;
+			emission.rateOverTime = emissionRate;
+		}
+
+		var previousSpeed = emissionSpeed;
+		var previousRate = emissionRate;
+
+		for (float t = 0; t < 0.5f; t += Time.deltaTime)
+		{
+			emissionSpeed = Mathf.Lerp(previousSpeed, 0f,t / 0.5f);
+			emissionRate = Mathf.Lerp(previousSpeed,0f,t / 0.5f);
+			yield return null;
+		}
+
+		yield return new WaitForSeconds(0.5f);
+
+		WeaverCam.Instance.Shaker.SetRumble(WeaverCore.Enums.RumbleType.None);
+		WeaverAudio.PlayAtPoint(BossExplosionSound, transform.position);
+
+		GameObject.Instantiate(DeathExplosionPrefab, transform.position, Quaternion.identity);
+
+		WeaverCam.Instance.Shaker.Shake(WeaverCore.Enums.ShakeType.BigShake);
+
+
+		EndBattleScene();
+
+		deathParticles.Stop(true, ParticleSystemStopBehavior.StopEmitting);
+
+		CorpseSteam.Play();
+
+		yield return animator.PlayAnimationTillDone("Death 2");
+
+		yield return new WaitForSeconds(5.25f);
+
+		WeaverEvents.BroadcastEvent("IK GATE OPEN", gameObject);
+
+		EndBossBattle();
 	}
+
+
+	/*public void SpawnBloodParticle()
+	{
+		SpawnBlood(transform.position + bloodSpawnOffset, bloodSpawnMin, bloodSpawnMax, bloodSpeedMin, bloodSpeedMax, bloodAngleMin, bloodAngleMax, null);
+	}
+
+	private ParticleSystem.MinMaxGradient initialBloodColour;
+	public void SpawnBlood(Vector3 position, short minCount, short maxCount, float minSpeed, float maxSpeed, float angleMin = 0f, float angleMax = 360f, Color? colorOverride = null)
+	{
+		if (this.bloodSplatterParticle)
+		{
+			var component = GameObject.Instantiate(bloodSplatterParticle, default(Vector3), Quaternion.identity).GetComponent<ParticleSystem>();
+			//ParticleSystem component = this.bloodSplatterParticle.Spawn().GetComponent<ParticleSystem>();
+			if (component)
+			{
+				component.Stop();
+				component.emission.SetBursts(new ParticleSystem.Burst[]
+				{
+					new ParticleSystem.Burst(0f, (short)Mathf.RoundToInt((float)minCount * bloodAmountMultiplier), (short)Mathf.RoundToInt((float)maxCount * bloodAmountMultiplier))
+				});
+				ParticleSystem.MainModule main = component.main;
+				main.maxParticles = Mathf.RoundToInt((float)maxCount * bloodAmountMultiplier);
+				main.startSpeed = new ParticleSystem.MinMaxCurve(minSpeed * bloodSpeedMultiplier, maxSpeed * bloodSpeedMultiplier);
+				if (colorOverride == null)
+				{
+					main.startColor = initialBloodColour;
+				}
+				else
+				{
+					main.startColor = new ParticleSystem.MinMaxGradient(colorOverride.Value);
+				}
+				ParticleSystem.ShapeModule shape = component.shape;
+				float arc = angleMax - angleMin;
+				shape.arc = arc;
+				//component.transform.SetRotation2D(angleMin);
+				component.transform.SetZRotation(angleMin);
+				component.transform.position = position;
+				component.Play();
+			}
+		}
+	}*/
 
 	protected override void OnStun()
 	{
@@ -902,10 +1161,124 @@ public class CorruptedKin : BossReplacement
 
 	IEnumerator StunRoutine()
 	{
-		GameObject.Instantiate(StunEffect, transform.position, Quaternion.identity);
+		//GameObject.Instantiate(StunEffect, transform.position, Quaternion.identity);
+		StunEffect.Spawn(transform.position);
 
 		FacePlayer(false);
 
+		/*var xScale = transform.GetXLocalScale();
+		var movementAmount = xScale * StunPushAmount;
+
+		if (IsFacingRight)
+		{
+			movementAmount = -movementAmount;
+		}*/
+
+		animator.PlayAnimation("Stun Air");
+
+		Reset();
+
+		//TODO - SET RECOIL SPEED
+
+		//ShakeGas.Stop(false, ParticleSystemStopBehavior.StopEmitting);
+
+		//rigidbody.gravityScale = gravityScaleCache;
+
+		//rigidbody.velocity = new Vector2(movementAmount,20f);
+
+		//DashSlashHit.SetActive(false);
+		//DashSlash.SetActive(false);
+		//OverheadSlash.gameObject.SetActive(false);
+
+		yield return WaitTillTouchingGround();
+
+		rigidbody.velocity = default(Vector2);
+
+		animator.PlayAnimation("Stun");
+
+		float timesHitBefore = healthManager.TimesHit;
+		Debug.Log("Times Hit Before = " + timesHitBefore);
+
+		for (float i = 0; i < 3f; i += Time.deltaTime)
+		{
+			Debug.Log("Times Hit = " + healthManager.TimesHit);
+			if (healthManager.TimesHit > timesHitBefore)
+			{
+				break;
+			}
+			yield return null;
+		}
+
+		yield return animator.PlayAnimationTillDone("Stun Recover");
+
+
+		StartBoundRoutine(Idle());
+	}
+
+
+	Component fsmCache = null;
+	Type pmType = null;
+
+	Component GetBattleControlFSM()
+	{
+		if (fsmCache == null)
+		{
+			var battleSceneObj = GameObject.FindGameObjectWithTag("Battle Scene");
+			if (battleSceneObj != null)
+			{
+				var playMakerAssembly = Assembly.Load("PlayMaker");
+				//var playMakerAssembly = AppDomain.CurrentDomain.GetAssemblies().First(a => a.FullName.Contains("PlayMaker"));
+
+				pmType = playMakerAssembly.GetType("PlayMakerFSM");
+
+				var actionHelperType = playMakerAssembly.GetType();
+
+				var fsmGetter = actionHelperType.GetMethod("GetGameObjectFsm");
+
+
+				fsmCache = (Component)fsmGetter.Invoke(null, new object[] { battleSceneObj, "Battle Control" });
+			}
+		}
+		return fsmCache;
+	}
+
+	//Not sure if this is required for anything yet, but may remove it if it does nothing
+	void DeactivateBattleScene()
+	{
+		if (CoreInfo.LoadState == WeaverCore.Enums.RunningState.Game)
+		{
+			var fsm = GetBattleControlFSM();
+
+			if (fsm != null)
+			{
+				var fsmVariables = pmType.GetProperty("FsmVariables").GetValue(fsm, null);
+				var fsmVarType = fsmVariables.GetType();
+
+				var fsmBool = fsmVarType.GetMethod("FindFsmBool").Invoke(fsmVariables, new object[] { "Activated" });
+				if (fsmBool != null)
+				{
+					var fsmBoolType = fsmBool.GetType();
+
+					fsmBoolType.GetProperty("Value").SetValue(fsmBool, false, null);
+				}
+			}
+		}
+	}
+
+	void EndBattleScene()
+	{
+		if (CoreInfo.LoadState == WeaverCore.Enums.RunningState.Game)
+		{
+			var fsm = GetBattleControlFSM();
+			if (fsm != null)
+			{
+				WeaverEvents.SendEventToObject(fsm.gameObject, "END");
+			}
+		}
+	}
+
+	void Reset()
+	{
 		var xScale = transform.GetXLocalScale();
 		var movementAmount = xScale * StunPushAmount;
 
@@ -914,40 +1287,15 @@ public class CorruptedKin : BossReplacement
 			movementAmount = -movementAmount;
 		}
 
-		animator.PlayAnimation("Stun Air");
-
-		//TODO - SET RECOIL SPEED
-
-		ShakeGas.Stop(false, ParticleSystemStopBehavior.StopEmitting);
-
 		rigidbody.gravityScale = gravityScaleCache;
 
-		rigidbody.velocity = new Vector2(movementAmount,20f);
+		rigidbody.velocity = new Vector2(movementAmount, 20f);
 
 		DashSlashHit.SetActive(false);
 		DashSlash.SetActive(false);
 		OverheadSlash.gameObject.SetActive(false);
 
-		yield return WaitTillTouchingGround();
-
-		rigidbody.velocity = default(Vector2);
-
-		animator.PlayAnimation("Stun");
-
-		float timesHitBefore = HealthManager.TimesHit;
-
-		for (float i = 0; i < 3f; i += Time.deltaTime)
-		{
-			if (HealthManager.TimesHit > timesHitBefore)
-			{
-				break;
-			}
-		}
-
-		yield return animator.PlayAnimationTillDone("Stun Recover");
-
-
-		StartBoundRoutine(Idle());
+		ShakeGas.Stop(false, ParticleSystemStopBehavior.StopEmitting);
 	}
 
 
@@ -960,5 +1308,15 @@ public class CorruptedKin : BossReplacement
 	public T GetChild<T>(string name)
 	{
 		return transform.Find(name).GetComponent<T>();
+	}
+
+	public bool IsWithinBox(Collider2D box, Transform obj)
+	{
+		var bounds = box.bounds;
+
+		var objX = obj.GetXPosition();
+		var objY = obj.GetYPosition();
+
+		return objX > bounds.min.x && objY > bounds.min.y && objX < bounds.max.x && objY < bounds.max.y;
 	}
 }
