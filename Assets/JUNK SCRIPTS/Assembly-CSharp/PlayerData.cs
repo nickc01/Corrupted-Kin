@@ -3,7 +3,7 @@ using GlobalEnums;
 using UnityEngine;
 using System.Collections.Generic;
 
-[Serializable]
+/*[Serializable]
 public class PlayerData
 {
 	public string version;
@@ -1529,4 +1529,4 @@ public class PlayerData
 	public bool zoteStatueWallBroken;
 	public bool seenGGWastes;
 	public bool ordealAchieved;
-}
+}*/

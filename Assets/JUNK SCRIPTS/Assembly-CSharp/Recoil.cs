@@ -1,6 +1,8 @@
 using UnityEngine;
 
-public class Recoil : MonoBehaviour
+
+//OLD RECOIL
+/*public class Recoil : MonoBehaviour
 {
 	[SerializeField]
 	public bool freezeInPlace;
@@ -12,4 +14,4 @@ public class Recoil : MonoBehaviour
 	private float recoilSpeedBase;
 	[SerializeField]
 	private float recoilDuration;
-}
+}*/

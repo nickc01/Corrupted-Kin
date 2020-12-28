@@ -2,7 +2,7 @@ using UnityEngine;
 using GlobalEnums;
 using UnityEngine.Audio;
 
-public class GameManager : MonoBehaviour
+/*public class GameManager : MonoBehaviour
 {
 	public enum SceneLoadVisualizations
 	{
@@ -46,4 +46,4 @@ public class GameManager : MonoBehaviour
 	private WorldInfo worldInfo;
 	[SerializeField]
 	private StandaloneLoadingSpinner standaloneLoadingSpinnerPrefab;
-}
+}*/

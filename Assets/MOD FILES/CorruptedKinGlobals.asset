@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2c72b70a15ce194781f83014aee06ae, type: 3}
+  m_Name: CorruptedKinGlobals
+  m_EditorClassIdentifier: 
+  KinProjectilePrefab: {fileID: 114089827754991978, guid: c1425175c34607f4583f41ad82c168ac,
+    type: 2}
+  BalloonPrefab: {fileID: 114880935671402824, guid: bacc65aab4a9ddd48a60b26828a2cfa3,
+    type: 2}
