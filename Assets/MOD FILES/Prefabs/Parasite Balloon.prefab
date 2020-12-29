@@ -45,11 +45,11 @@ GameObject:
   - component: {fileID: 114610625571347924}
   - component: {fileID: 114149179352297984}
   - component: {fileID: 114757695686691876}
-  - component: {fileID: 114675983802093182}
   - component: {fileID: 114880935671402824}
   - component: {fileID: 114191766900902392}
   - component: {fileID: 114645239283026392}
-  - component: {fileID: 114559138956682690}
+  - component: {fileID: 114101126737880024}
+  - component: {fileID: 114636028667085702}
   m_Layer: 11
   m_Name: Parasite Balloon
   m_TagString: Extra Tag
@@ -245,6 +245,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &114101126737880024
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1480072514845144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 213c567d1a2ca584e841cfdfb851c6a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  freezeInPlace: 0
+  stopVelocityXWhenRecoilingUp: 0
+  preventRecoilUp: 0
+  recoilSpeedBase: 15
+  recoilDuration: 0.15
 --- !u!114 &114149179352297984
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -318,32 +334,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: 10
-  receiveExtraDamage: 1
   DecreaseHealth: 1
   Invincible: 0
   DeflectBlows: 0
   EvasionTime: 0.15
   GainSoul: 1
   EffectsOffset: {x: 0, y: 0, z: 0}
+  receiveExtraDamage: 1
   SmallGeo: 0
   MediumGeo: 0
   LargeGeo: 0
---- !u!114 &114559138956682690
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1480072514845144}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 167ac28f565ac804099c78364ec90fb3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  freezeInPlace: 0
-  stopVelocityXWhenRecoilingUp: 0
-  preventRecoilUp: 0
-  recoilSpeedBase: 15
-  recoilDuration: 0.15
 --- !u!114 &114610625571347924
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -358,6 +358,23 @@ MonoBehaviour:
   flashColor: {r: 1, g: 1, b: 1, a: 1}
   flashIntensity: 0
   CustomFlasherMaterial: {fileID: 0}
+--- !u!114 &114636028667085702
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1480072514845144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4f743e237aba354f9e1cb7e41aa039d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  JournalEntryName: OrangeBalloon
+  FreezeGameOnDeath: 0
+  EffectsOffset: {x: 0, y: 0, z: 0}
+  EssenceCollectPrefab: {fileID: 1789806019252700, guid: 9bc98ffeb4427aa46ab203eda017b4a4,
+    type: 2}
+  doEssenceChance: 1
 --- !u!114 &114645239283026392
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -369,23 +386,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65a6abec551ce95408d93cbfa3708833, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114675983802093182
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1480072514845144}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d014df96547fad4088482889e41be03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  JournalEntryName: OrangeBalloon
-  FreezeGameOnDeath: 0
-  EffectsOffset: {x: 0, y: 0, z: 0}
-  EssenceCollectPrefab: {fileID: 1728282148586846, guid: 2881ee8998783da45a4c8b6d85999cab,
-    type: 2}
-  doEssenceChance: 1
 --- !u!114 &114757695686691876
 MonoBehaviour:
   m_ObjectHideFlags: 1
