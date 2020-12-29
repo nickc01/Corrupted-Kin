@@ -1,11 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using WeaverCore.Audio;
 using WeaverCore.Components;
 
 public class Test : MonoBehaviour 
 {
-	WeaverAnimationPlayer animPlayer;
+	void Start()
+	{
+		var source = GetComponent<AudioSource>();
+
+		source.outputAudioMixerGroup = Music.MainGroup;
+	}
+
+
+	/*WeaverAnimationPlayer animPlayer;
 	// Use this for initialization
 	void Start () 
 	{
@@ -33,5 +42,5 @@ public class Test : MonoBehaviour
 				//yield return new WaitForSeconds(2f);
 			}
 		}
-	}
+	}*/
 }

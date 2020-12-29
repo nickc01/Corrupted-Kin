@@ -44,6 +44,8 @@ public class CorruptedKin : BossReplacement
 	CorruptedKinGlobals Globals;
 	[SerializeField]
 	BoxCollider2D awakeRange;
+	[SerializeField]
+	MusicPack BossMusicPack;
 
 
 
@@ -405,6 +407,8 @@ public class CorruptedKin : BossReplacement
 
 		if (!Boss.InPantheon)
 		{
+			WeaverCore.Audio.Music.PlayMusicPack(BossMusicPack,0f,0f,false);
+			WeaverCore.Audio.Music.ApplyMusicSnapshot(WeaverCore.Audio.Music.SnapshotType.Normal, 0f, 0f);
 			//TODO - MUSIC CUE
 #if !UNITY_EDITOR
 			var snapshots = Resources.FindObjectsOfTypeAll<AudioMixerSnapshot>();
@@ -1088,9 +1092,11 @@ public class CorruptedKin : BossReplacement
 
 		yield return WaitTillTouchingGround();
 
+		WeaverLog.Log("Applying Music Cue!");
 		if (!Boss.InGodHomeArena)
 		{
 			//STOP MUSIC
+			WeaverCore.Audio.Music.ApplyMusicSnapshot(WeaverCore.Audio.Music.SnapshotType.Silent, 0f,2f);
 		}
 
 		animator.PlayAnimation("Death Land");

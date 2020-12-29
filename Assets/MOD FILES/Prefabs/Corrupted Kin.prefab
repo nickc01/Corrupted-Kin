@@ -1119,6 +1119,7 @@ MonoBehaviour:
   jumpHeight: 60
   Globals: {fileID: 11400000, guid: bde239292bbb1ce4fa2c5b5fbeffa8b1, type: 2}
   awakeRange: {fileID: 61381357514452128}
+  BossMusicPack: {fileID: 11400000, guid: f8971090c6ea6094eabdbb9033621b4b, type: 2}
   leftSpawnPoint: 20.59
   rightSpawnPoint: 33.58
   fallYPosition: 41.82

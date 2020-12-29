@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82f2fc1ab730fcd46804267532d6106e, type: 3}
+  m_Name: Corrupted Kin Music
+  m_EditorClassIdentifier: 
+  MainTrack: {fileID: 8300000, guid: 97f5fa7b109257047bdfac34d33644a3, type: 3}
+  MainTrackSync: 0
+  MainAltTrack: {fileID: 0}
+  MainAltTrackSync: 0
+  ActionTrack: {fileID: 0}
+  ActionTrackSync: 0
+  SubTrack: {fileID: 0}
+  SubTrackSync: 0
+  TensionTrack: {fileID: 0}
+  TensionTrackSync: 0
+  ExtraTrack: {fileID: 0}
+  ExtraTrackSync: 0
+  Snapshot: 0
+  delay: 0
+  snapshotTransitionTime: 0
+  applySnapshot: 1
