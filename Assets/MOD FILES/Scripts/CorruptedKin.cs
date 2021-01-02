@@ -11,224 +11,180 @@ using WeaverCore.Assets.Components;
 using WeaverCore.Components;
 using WeaverCore.Features;
 using WeaverCore.Utilities;
-
 using Random = UnityEngine.Random;
 
 public class CorruptedKin : BossReplacement
 {
-	GameObject Shadow;
-	WeaverAnimationPlayer animator;
-	new SpriteRenderer renderer;
-	new Rigidbody2D rigidbody;
-	WeaverAudioPlayer audioPlayer;
-	CorruptedKinHealth healthManager;
-	new Collider2D collider;
-	WeaverCore.Components.DamageHero damager;
+	/*public enum DistanceZone
+	{
+		None,
+		LeftZone,
+		CenterZone,
+		RightZone
+	}*/
+	//public List<CorruptedKinMove> Moves { get; private set; }
+	public WeaverAnimationPlayer Animator { get; private set; }
+	public SpriteRenderer Renderer { get; private set; }
+	public Rigidbody2D Rigidbody { get; private set; }
+	public WeaverAudioPlayer AudioPlayer { get; private set; }
+	public CorruptedKinHealth HealthManager { get; private set; }
+	public Collider2D Collider { get; private set; }
+	public WeaverCore.Components.DamageHero Damager { get; private set; }
 
 	[Header("General Stuff")]
-	[SerializeField]
-	AudioClip JumpSound;
-	[SerializeField]
-	AudioClip LandSound;
-	[SerializeField]
-	AudioClip SwordSlashSound;
-	[SerializeField]
-	AudioClip PrepareSound;
-	[SerializeField]
-	float leftX = 16.06f;
-	[SerializeField]
-	float rightX = 36.53f;
-	[SerializeField]
-	float jumpHeight = 60f;
-	[SerializeField]
-	CorruptedKinGlobals Globals;
-	[SerializeField]
-	BoxCollider2D awakeRange;
-	[SerializeField]
-	MusicPack BossMusicPack;
+	public AudioClip JumpSound;
+	public AudioClip LandSound;
+	public AudioClip SwordSlashSound;
+	public AudioClip PrepareSound;
+	public float leftX = 16.06f;
+	public float rightX = 36.53f;
+	public float floorY = 0f;
+	public CorruptedKinGlobals Globals;
+	public BoxCollider2D awakeRange;
+	public MusicPack BossMusicPack;
+	//public float CenterZoneLeft = 20.06f;
+	//public float CenterZoneRight = 32.53f;
+	//public float CenterZoneSize = 12f;
+	public bool DebugShowZones = false;
+	[Tooltip("The time the player must stay on the wall before the boss registers that the player is staying on the wall")]
+	public float playerWallTestDuration = 0.5f;
 
-
+	[Space]
+	[Header("Moves")]
+	public bool DownslashEnabled = true;
+	public bool JumpEnabled = true;
+	public bool EvadeEnabled = true;
+	public bool DashEnabled = true;
+	public bool AirDashEnabled = true;
+	public bool OverheadSlashEnabled = true;
 
 	[Space]
 	[Header("Intro")]
-	[SerializeField]
-	float leftSpawnPoint = 20.59f;
-	[SerializeField]
-	float rightSpawnPoint = 33.58f;
-	[SerializeField]
-	float fallYPosition = 41.82f;
-	[SerializeField]
-	AudioClip FallSoundEffect;
-	[SerializeField]
-	AudioClip LandSoundEffect;
-	[SerializeField]
-	AudioClip HollowKnightScream;
-	[SerializeField]
-	float fallDelay = 0.3f;
+	public float leftSpawnPoint = 20.59f;
+	public float rightSpawnPoint = 33.58f;
+	public float fallYPosition = 41.82f;
+	public AudioClip FallSoundEffect;
+	public AudioClip LandSoundEffect;
+	public AudioClip HollowKnightScream;
+	public float fallDelay = 0.3f;
 
 	[Space]
 	[Header("Idle Move")]
-	[SerializeField]
-	float idleMovementSpeedMin = 0.5f;
-	[SerializeField]
-	float idleMovementSpeedMax = 1.25f;
+	public float idleMovementSpeedMin = 0.5f;
+	public float idleMovementSpeedMax = 1.25f;
+	public float idleTimeMin = 1f;
+	public float idleTimeMax = 1.5f;
 
-	[SerializeField]
-	float idleTimeMin = 1f;
-	[SerializeField]
-	float idleTimeMax = 1.5f;
+	[Space]
+	[Header("Jump Move")]
+	public float JumpHeight = 8.8f;
 
 	[Space]
 	[Header("Evade")]
-	[SerializeField]
-	float evadeSpeed = 25f;
-	[SerializeField]
-	BoxCollider2D EvadeChecker;
+	public float evadeSpeed = 25f;
 
 	[Space]
 	[Header("Overhead Slash")]
-	[SerializeField]
-	WeaverAnimationPlayer OverheadSlash;
-	[SerializeField]
-	BoxCollider2D OverheadSlashChecker;
+	public WeaverAnimationPlayer OverheadSlash;
+	[Tooltip("The minimum distance between the boss and the player in order for the move to execute")]
+	public float MinXDistance = 3.5f;
 
 
 	[Space]
 	[Header("Downstab")]
-	[SerializeField]
-	float MinDownstabHeight = 33.31f;
-	[SerializeField]
-	BoxCollider2D DownstabChecker;
-	[SerializeField]
-	AudioClip DownstabPrepareSound;
-	[SerializeField]
-	AudioClip DownstabDashSound;
-	[SerializeField]
-	AudioClip DownstabImpactSound;
-	[SerializeField]
-	GameObject DownstabBurst;
-	[SerializeField]
-	GameObject DownstabSlam;
-	[SerializeField]
-	KinProjectile KinProjectilePrefab;
-	[SerializeField]
-	Vector3 KinProjectileOffset = new Vector3(0f,-0.5f,0f);
+	public float MinDownstabHeight = 33.31f;
+	public float DownstabActivationRange = 1.5f;
+	public float DownstabVelocity = -60f;
+	public AudioClip DownstabPrepareSound;
+	public AudioClip DownstabDashSound;
+	public AudioClip DownstabImpactSound;
+	public GameObject DownstabBurst;
+	public GameObject DownstabSlam;
+	public KinProjectile KinProjectilePrefab;
+	public Vector3 KinProjectileOffset = new Vector3(0f,-0.5f,0f);
 
 	[Space]
 	[Header("Airdash")]
-	[SerializeField]
-	float AirDashHeight = 31.5f;
-	[SerializeField]
-	BoxCollider2D DashChecker;
-	[SerializeField]
-	float dashSpeed = 32f;
-	[SerializeField]
-	float reverseDashSpeed = 20f;
-	[SerializeField]
-	AudioClip DashSoundEffect;
-	[SerializeField]
-	GameObject DashBurst;
-	[SerializeField]
-	GameObject DashSlash;
-	[SerializeField]
-	GameObject DashSlashHit;
+	public float AirDashHeight = 31.5f;
+	public float dashSpeed = 32f;
+	public float reverseDashSpeed = 20f;
+	public AudioClip DashSoundEffect;
+	public GameObject DashBurst;
+	public GameObject DashSlash;
+	public GameObject DashSlashHit;
 
 
 	[Space]
 	[Header("Stun")]
-	[SerializeField]
-	float StunPushAmount = 10f;
-	[SerializeField]
-	ParticleSystem ShakeGas;
+	public float StunPushAmount = 10f;
+	public ParticleSystem ShakeGas;
 
 	[Space]
 	[Header("Death")]
-	[SerializeField]
-	AudioClip BossFinalHitSound;
-	[SerializeField]
-	GameObject InfectedDeathWavePrefab;
-	[SerializeField]
-	AudioClip BossGushingSound;
-	[SerializeField]
-	GameObject BossDeathPuffPrefab;
-	[SerializeField]
-	AudioClip DreamExitSound;
+	public AudioClip BossFinalHitSound;
+	public GameObject InfectedDeathWavePrefab;
+	public AudioClip BossGushingSound;
+	public GameObject BossDeathPuffPrefab;
+	public AudioClip DreamExitSound;
+	public float bloodSpawnDelay = 0.1f;
+	public AudioClip BossExplosionSound;
+	public GameObject DeathExplosionPrefab;
+	public ParticleSystem CorpseSteam;
 
 
-	[SerializeField]
-	float bloodSpawnDelay = 0.1f;
-	[SerializeField]
-	AudioClip BossExplosionSound;
-	[SerializeField]
-	GameObject DeathExplosionPrefab;
-	[SerializeField]
-	ParticleSystem CorpseSteam;
-
-
-
-	public float IdleCounter { get; set; }
-	public float RanFloat { get; set; }
-	public bool DownStabbing { get; set; }
-	public bool InDownstabRange
+	public float GravityScale { get; private set; }
+	public bool PlayerIsOnWall { get; private set; }
+	public float ArenaWidth
 	{
 		get
 		{
-			//return true;
-			//NORMAL
-			//return DownstabChecker.IsTouchingPlayer;
-			var playerX = Player.Player1.transform.GetXPosition();
-			var selfX = transform.GetXPosition();
-
-			float dStabRange = 1.42f;
-
-
-			return playerX >= selfX - (dStabRange / 2f) && playerX <= selfX + (dStabRange / 2f);
+			return rightX - leftX;
 		}
 	}
-
-	public bool WillEvade { get; set; }
-	public bool InEvadeRange
+	List<CorruptedKinMove> _moves = new List<CorruptedKinMove>();
+	public IEnumerable<CorruptedKinMove> Moves
 	{
 		get
 		{
-			return IsWithinBox(EvadeChecker, Player.Player1.transform);//EvadeChecker.IsTouchingPlayer;
+			return _moves;
 		}
 	}
-	public bool EvadeCheck { get; set; }
-
-	public bool WillOverhead { get; set; }
-	public bool InOverHeadRange
-	{
-		get
-		{
-			//return true;
-			//Normal
-			//return OverheadSlashChecker.IsTouchingPlayer;
-			return IsWithinBox(OverheadSlashChecker, Player.Player1.transform);
-		}
-	}
-
-	public bool DidAirDash { get; set; }
-	public bool WillAirDash { get; set; }
-	public bool InDashRange
-	{
-		get
-		{
-			//return DashChecker.IsTouchingPlayer;
-			return IsWithinBox(DashChecker, Player.Player1.transform);
-		}
-	}
-	public bool Angry { get; set; }
-
-
-	float jumpWeight = 1f;
-	float downstabWeight = 0.5f;
-	float dashWeight = 1f;
-
-	float gravityScaleCache = 0f;
-
 
 	/// <summary>
+	/// Gets the percentage distance to boss. 0% means they are at the same position, 100% means they are at polar opposite ends of the arena
+	/// </summary>
+	/// <param name="obj"></param>
+	/// <returns></returns>
+	public float GetPercentageToBoss(Transform obj)
+	{
+		return GetDistanceToBoss(obj) / ArenaWidth;
+	}
+
+	/// <summary>
+	/// Gets the distance to the boss
+	/// </summary>
+	/// <param name="obj"></param>
+	/// <returns></returns>
+	public float GetDistanceToBoss(Transform obj)
+	{
+		return Mathf.Abs(transform.GetXPosition() - obj.transform.GetXPosition());
+	}
+
+	public void DrawPercentageLine(float percentageToBoss, Transform target)
+	{
+		var distance = percentageToBoss * ArenaWidth;
+
+
+
+		if (target.transform.position.x < transform.position.x)
+		{
+			distance = -distance;
+		}
+		Debug.DrawLine(transform.position, new Vector3(transform.position.x + distance, transform.position.y, transform.position.z),Color.red,0.5f);
+	}
+
+
+	/*/// <summary>
 	/// The amount of times corrupted kin has jump attacked
 	/// </summary>
 	public int TimesJumped { get; private set; }
@@ -239,7 +195,7 @@ public class CorruptedKin : BossReplacement
 	/// <summary>
 	/// The amount of times corrupted kin has Dash attacked
 	/// </summary>
-	public int TimesDashed { get; private set; }
+	public int TimesDashed { get; private set; }*/
 
 	public bool IsGrounded
 	{
@@ -248,50 +204,146 @@ public class CorruptedKin : BossReplacement
 			return terrainCollisions.Count > 0;
 		}
 	}
+	/*public ArenaZone CurrentZone
+	{
+		get
+		{
+		}
+	}*/
+
+	/*public DistanceZone PlayerZone
+	{
+		get
+		{
+			return GetZoneOfObject(Player.Player1.gameObject);
+		}
+	}*/
+
+	/*DistanceZone GetZoneOfObject(GameObject obj)
+	{
+		var x = obj.transform.GetXPosition();
+		var leftEdge = transform.position.x - (CenterZoneSize / 2f);
+		var rightEdge = transform.position.x + (CenterZoneSize / 2f);
+
+		if (x < leftEdge)
+		{
+			return DistanceZone.LeftZone;
+		}
+		else if (x < rightEdge)
+		{
+			return DistanceZone.CenterZone;
+		}
+		else
+		{
+			return DistanceZone.RightZone;
+		}
+	}*/
+
+	/*public bool InAdjacentZone(DistanceZone a, DistanceZone b)
+	{
+		return a != b && (a == DistanceZone.CenterZone || b == DistanceZone.CenterZone);
+	}
+
+	public bool InFarCorners(DistanceZone a, DistanceZone b)
+	{
+		return (a == DistanceZone.LeftZone && b == DistanceZone.RightZone) || (a == DistanceZone.RightZone && b == DistanceZone.LeftZone);
+	}*/
+
+	/// <summary>
+	/// Gets the positional percentage of the boss. 0% means the boss is at the left side of the arena, and 100% means it's at the right side
+	/// </summary>
+	public float BossPositionPercentage
+	{
+		get
+		{
+			return Mathf.InverseLerp(leftX,rightX,transform.position.x);
+		}
+	}
 
 	public bool IsFacingRight
 	{
 		get
 		{
-			return !renderer.flipX;
+			return !Renderer.flipX;
 		}
+	}
+
+	public bool IsFacingPlayer
+	{
+		get
+		{
+			//If facing left
+			if (Renderer.flipX)
+			{
+				return Player.Player1.transform.position.x < transform.position.x;
+			}
+			//If facing right
+			else
+			{
+				return Player.Player1.transform.position.x >= transform.position.x;
+			}
+		}
+	}
+
+	public T GetMove<T>() where T : CorruptedKinMove
+	{
+		return Moves.First(m => m is T) as T;
 	}
 
 	protected override void Awake()
 	{
-		WeaverLog.Log("BOSS AWAKE!");
+		WeaverLog.Log("Corrupted Kin has Awoken");
+
+		//Find all corrupted kin moves
+		var moveTypes = typeof(CorruptedKin).Assembly.GetTypes().Where(t => !t.IsAbstract && typeof(CorruptedKinMove).IsAssignableFrom(t));
+
+		//Moves = new List<CorruptedKinMove>();
+
+		foreach (var moveType in moveTypes)
+		{
+			var move = (CorruptedKinMove)Activator.CreateInstance(moveType);
+			move.Kin = this;
+			_moves.Add(move);
+			//AddMove(move);
+			//Moves.Add(move);
+		}
 
 		CorruptedKinGlobals.Instance = Globals;
 
-		rigidbody = GetComponent<Rigidbody2D>();
-		animator = GetComponent<WeaverAnimationPlayer>();
-		renderer = GetComponent<SpriteRenderer>();
-		audioPlayer = GetComponent<WeaverAudioPlayer>();
-		healthManager = GetComponent<CorruptedKinHealth>();
-		collider = GetComponent<Collider2D>();
-		damager = GetComponent<WeaverCore.Components.DamageHero>();
+		Rigidbody = GetComponent<Rigidbody2D>();
+		Animator = GetComponent<WeaverAnimationPlayer>();
+		Renderer = GetComponent<SpriteRenderer>();
+		AudioPlayer = GetComponent<WeaverAudioPlayer>();
+		HealthManager = GetComponent<CorruptedKinHealth>();
+		Collider = GetComponent<Collider2D>();
+		Damager = GetComponent<WeaverCore.Components.DamageHero>();
 
 
 
-		rigidbody.isKinematic = true;
+		Rigidbody.isKinematic = true;
 
-		rigidbody.gravityScale = 3.25f;
-		Shadow = GetChild("Shadow");
-		animator.PlayAnimation("Idle");
-		Shadow.SetActive(false);
+		Rigidbody.gravityScale = 3.25f;
+		//Shadow = GetChild("Shadow");
+		Animator.PlayAnimation("Idle");
+		//Shadow.SetActive(false);
 		EntityHealth.Invincible = true;
-		renderer.enabled = false;
+		Renderer.enabled = false;
 
-		gravityScaleCache = rigidbody.gravityScale;
-		rigidbody.velocity = default(Vector2);
+		GravityScale = Rigidbody.gravityScale;
+		Rigidbody.velocity = default(Vector2);
 
 		base.Awake();
 
-		var quarterHealth = healthManager.Health / 4;
+		var quarterHealth = HealthManager.Health / 4;
 
 		AddStunMilestone(quarterHealth);
 		AddStunMilestone(quarterHealth * 2);
 		AddStunMilestone(quarterHealth * 3);
+
+		foreach (var move in Moves)
+		{
+			move.OnMoveAwake();
+		}
 
 		if (CoreInfo.LoadState == WeaverCore.Enums.RunningState.Editor)
 		{
@@ -299,25 +351,33 @@ public class CorruptedKin : BossReplacement
 		}
 		else
 		{
-			WeaverLog.Log("WAITING FOR PLAYER!");
-			WeaverLog.Log("ENABLED = " + gameObject.activeSelf);
 			StartCoroutine(WaitForPlayer());
 		}
+	}
+
+	void Update()
+	{
+		/*if (DebugShowZones)
+		{
+			var leftEdge = transform.position.x - (CenterZoneSize / 2f);
+			var rightEdge = transform.position.x + (CenterZoneSize / 2f);
+
+			//Debug.DrawLine(new Vector3(leftX, transform.position.y, transform.position.z), new Vector3(CenterZoneLeft, transform.position.y, transform.position.z), Color.red);
+			Debug.DrawLine(new Vector3(leftX, transform.position.y, transform.position.z), new Vector3(leftEdge, transform.position.y, transform.position.z), Color.red);
+			Debug.DrawLine(new Vector3(leftEdge, transform.position.y, transform.position.z), new Vector3(rightEdge, transform.position.y, transform.position.z), Color.green);
+			Debug.DrawLine(new Vector3(rightEdge, transform.position.y, transform.position.z), new Vector3(rightX, transform.position.y, transform.position.z), Color.blue);
+		}*/
 	}
 
 	IEnumerator WaitForPlayer()
 	{
 		var playerCollider = Player.Player1.GetComponent<Collider2D>();
 
-		WeaverLog.Log("Waiting for player");
-
-
 		while (true)
 		{
 			var pBounds = playerCollider.bounds;
 			var awakeBounds = awakeRange.bounds;
 
-			//if (pBounds.max.y < awakeBounds.max.y && pBounds.max.x >= awakeBounds.min.x && pBounds.min.x <= awakeBounds.max.x)
 			if (Player.Player1.transform.position.y <= transform.position.y + 1f && pBounds.max.x >= leftX && pBounds.min.x <= rightX)
 			{
 				break;
@@ -327,15 +387,7 @@ public class CorruptedKin : BossReplacement
 
 		awakeRange.gameObject.SetActive(false);
 
-		/*while (!IsWithinBox(playerCollider,awakeRange))
-		{
-			WeaverLog.Log("Player not in box");
-			WeaverLog.Log("Player Pos = " + playerCollider.transform.position);
-			WeaverLog.Log("Awake Range = " + awakeRange.transform.position);
-			yield return null;
-		}*/
 
-		WeaverLog.Log("Starting Battle!");
 		StartBossBattle();
 	}
 
@@ -348,13 +400,13 @@ public class CorruptedKin : BossReplacement
 	IEnumerator StartBossBattleRoutine()
 	{
 		WeaverEvents.BroadcastEvent("DREAM GATE CLOSE", gameObject);
-		rigidbody.isKinematic = false;
+		Rigidbody.isKinematic = false;
 
 		if (Boss.InGodHomeArena)
 		{
 			//TODO
 			transform.SetXPosition(rightSpawnPoint);
-			renderer.flipX = true;
+			Renderer.flipX = true;
 		}
 		else
 		{
@@ -367,678 +419,167 @@ public class CorruptedKin : BossReplacement
 			else
 			{
 				transform.SetXPosition(rightSpawnPoint);
-				renderer.flipX = true;
+				Renderer.flipX = true;
 			}
 		}
 
-		animator.PlayAnimation("Fall");
+		Animator.PlayAnimation("Fall");
 
-		audioPlayer.Play(FallSoundEffect);
+		AudioPlayer.Play(FallSoundEffect);
 
 		transform.SetYPosition(fallYPosition);
 
 		EntityHealth.Invincible = false;
 
-		renderer.enabled = true;
-
-		/*if (Player.Player1 != null)
-		{
-			WeaverLog.Log("Player Location = " + Player.Player1.transform.position);
-			WeaverLog.Log("Enemy Location = " + transform.position);
-		}*/
+		Renderer.enabled = true;
 
 		yield return new WaitForSeconds(fallDelay);
 
 		yield return WaitTillTouchingGround();
 
-		Debug.Log("Ground Touched!");
+		floorY = transform.position.y;
 
-		audioPlayer.Play(LandSoundEffect);
-
-
-		yield return animator.PlayAnimationTillDone("Land");
+		AudioPlayer.Play(LandSoundEffect);
 
 
-		//SEND MESSAGE SOMETHING???
+		yield return Animator.PlayAnimationTillDone("Land");
 
-		yield return animator.PlayAnimationTillDone("Roar Start");
-
-		//Debug.Log("C");
+		yield return Animator.PlayAnimationTillDone("Roar Start");
 
 		if (!Boss.InPantheon)
 		{
 			WeaverCore.Audio.Music.PlayMusicPack(BossMusicPack,0f,0f,false);
 			WeaverCore.Audio.Music.ApplyMusicSnapshot(WeaverCore.Audio.Music.SnapshotType.Normal, 0f, 0f);
-			//TODO - MUSIC CUE
-#if !UNITY_EDITOR
-			var snapshots = Resources.FindObjectsOfTypeAll<AudioMixerSnapshot>();
-			foreach (var snapshot in snapshots)
-			{
-				if (snapshot.name == "Normal" && snapshot.audioMixer.name == "Music")
-				{
-					snapshot.TransitionTo(0f);
-					break;
-				}
-			}
-#endif
 		}
 
-		animator.PlayAnimation("Roar Loop");
+		Animator.PlayAnimation("Roar Loop");
 
 		WeaverCore.Assets.AreaTitle.Spawn("Corrupted", "Kin");
 
 		yield return Roar(2.4f, HollowKnightScream);
 
-		yield return animator.PlayAnimationTillDone("Roar End");
+		yield return Animator.PlayAnimationTillDone("Roar End");
 
 
 		EntityHealth.Invincible = false;
 
-		IdleCounter = 0.75f;
+		//IdleCounter = 0.75f;
 
-		//OnDeath();
-		yield return Idle();
+		StartCoroutine(PlayerWallDetector());
+
+		yield return BossController();
 	}
 
-
-	public IEnumerator Idle()
+	public IEnumerator BossController()
 	{
+		/*while (true)
+		{
+			yield return Animator.PlayAnimationTillDone("TurnToWalk",true);
+
+
+			yield return null;
+		}*/
+
+		var idleMove = GetMove<IdleMove>();
+		var overheadMove = GetMove<OverheadSlashMove>();
 		while (true)
 		{
-
-			//WillEvade = true;
-			//WillOverhead = true;
-			//yield return Overhead();
-			//yield return Attack_DownStab();
-
-
-
-			//continue;
-			//NORMAL STUFF
-			Debug.Log("IDLING");
-			DownStabbing = false;
-
-			animator.PlayAnimation("Walk");
-
-			FacePlayer();
-
-			if (WillEvade && InEvadeRange)
+			if (idleMove.MoveEnabled && idleMove.CanDoAttack())
 			{
-				Debug.Log("EVADING");
-				yield return Evade();
-				continue;
+				Debug.Log("Idling");
+				yield return RunMove(idleMove);
 			}
-
-			if (WillOverhead & InOverHeadRange)
+			if (PlayerIsOnWall)
 			{
-				Debug.Log("OVERHEADING");
-				yield return Overhead();
-				continue;
-			}
+				//TODO - Make Aspid Move here
 
-			//Get random walkspeed
-			var walkSpeed = Random.Range(idleMovementSpeedMin, idleMovementSpeedMax);
-
-			//Flip at random
-			walkSpeed = Random.value >= 0.5f ? walkSpeed : -walkSpeed;
-
-			rigidbody.velocity = new Vector2(walkSpeed, 0f);
-			Debug.Log("SETTING VELOCITY = " + rigidbody.velocity);
-
-			var waitTime = Random.Range(idleTimeMin, idleTimeMax);
-			if (IdleCounter < waitTime)
-			{
-				waitTime = IdleCounter;
-			}
-			Debug.Log("WAITING FOR = " + waitTime);
-			yield return new WaitForSeconds(waitTime);
-			IdleCounter -= waitTime;
-
-			rigidbody.velocity = new Vector2(0f, 0f);
-
-			Debug.Log("ATTACKING");
-			yield return DoAttack();
-		}
-	}
-
-	//Sideways evade
-	IEnumerator Evade()
-	{
-		if (EvadeCheck == true)
-		{
-			yield return Attack_Jump();
-			yield break;
-		}
-
-		WillEvade = false;
-
-		rigidbody.velocity = default(Vector2);
-
-		yield return FacePlayerRoutine();
-
-		var xScale = transform.GetXLocalScale();
-
-		var speed = evadeSpeed * xScale;
-
-		if (IsFacingRight)
-		{
-			speed *= -1f;
-		}
-
-		yield return animator.PlayAnimationTillDone("Evade Antic");
-
-		rigidbody.gravityScale = 0f;
-		rigidbody.velocity = new Vector2(speed,0f);
-
-		WeaverAudio.PlayAtPoint(JumpSound, transform.position);
-
-		//yield return animator.PlayAnimationTillDone("Evade");
-
-		animator.PlayAnimation("Evade");
-
-		for (float timer = 0; timer < 0.19f; timer += Time.deltaTime)
-		{
-			if (animator.PlayingClip != "Evade")
-			{
-				break;
-			}
-			yield return null;
-		}
-
-		//yield return new WaitForSeconds(0.19f);
-
-		rigidbody.velocity = default(Vector2);
-		rigidbody.gravityScale = gravityScaleCache;
-		WeaverAudio.PlayAtPoint(LandSound, transform.position);
-
-		yield return animator.PlayAnimationTillDone("Evade Recover");
-
-		//TODO : LOOK AT "To Attack?" event, that is where this continues
-		//throw new NotImplementedException();
-		yield return ToNextAttack();
-	}
-
-	//Overhead jump
-	IEnumerator Overhead()
-	{
-		WillOverhead = false;
-
-		animator.PlayAnimation("Overhead Antic");
-		rigidbody.velocity = default(Vector2);
-
-		yield return new WaitForSeconds(0.65f);
-
-		OverheadSlash.gameObject.SetActive(true);
-
-		OverheadSlash.PlayAnimation("Overhead Slash");
-
-		StartBoundRoutine(PlaySlashSounds());
-
-		yield return animator.PlayAnimationTillDone("Overhead Slashing");
-
-		OverheadSlash.gameObject.SetActive(false);
-
-		UpdateCounters();
-	}
-
-	void UpdateCounters()
-	{
-		IdleCounter = Random.Range(0.5f,0.75f);
-
-		RanFloat = Random.Range(0f, 100f);
-
-		if (RanFloat > 55f)
-		{
-			WillEvade = true;
-		}
-		//else
-		//{
-		//	WillEvade = false;
-		//}
-
-		RanFloat = Random.Range(0f, 100f);
-
-		if (RanFloat > 75f)
-		{
-			WillOverhead = true;
-		}
-		//else
-		//{
-		//	WillOverhead = false;
-		//}
-	}
-
-	//Picks an attack to do
-
-	//ALSO: The original version has a "miss" system, where it keeps track of how many times an attack
-	//wasn't executed, and will force it to run after a set amount of times
-	IEnumerator DoAttack()
-	{
-		float totalWeight = jumpWeight + downstabWeight + dashWeight;
-
-		var randomValue = Random.Range(0, totalWeight);
-
-		if (randomValue <= jumpWeight)
-		{
-			yield return Attack_Jump();
-			TimesJumped++;
-			yield break;
-		}
-		randomValue -= jumpWeight;
-		if (randomValue <= downstabWeight)
-		{
-			yield return Attack_DownStab();
-			TimesDownstabbing++;
-			yield break;
-		}
-		else
-		{
-			Debug.Log("DASHING!!!");
-			yield return Attack_Dash();
-			TimesDashed++;
-			yield break;
-		}
-	}
-
-	IEnumerator Attack_DownStab()
-	{
-		DownStabbing = true;
-		yield return Attack_Jump();
-	}
-
-	IEnumerator Attack_Jump()
-	{
-		rigidbody.velocity = default(Vector2);
-		DidAirDash = false;
-
-		//Debug.Log("D_A");
-
-		yield return FacePlayerRoutine(true);
-		//Debug.Log("D_B");
-		yield return animator.PlayAnimationTillDone("Jump Antic");
-		//Debug.Log("D_C");
-		float jumpX = 0f;
-
-		if (DownStabbing)
-		{
-			var selfX = transform.GetXPosition();
-			var heroX = Player.Player1.transform.GetXPosition();
-
-			jumpX = Mathf.LerpUnclamped(selfX,heroX,2.5f) - selfX;
-		}
-		else
-		{
-			jumpX = Random.Range(leftX, rightX);
-			var selfX = transform.GetXPosition();
-			jumpX -= selfX;
-			jumpX *= 1.25f;
-		}
-		//Debug.Log("D_D");
-
-		WeaverAudio.PlayAtPoint(JumpSound, transform.position);
-
-		animator.PlayAnimation("Jump");
-
-		var jumpY = jumpHeight;
-
-		rigidbody.velocity = new Vector2(jumpX,jumpY);
-
-		//Debug.Log("D_E");
-		yield return null;
-
-		bool falling = false;
-
-		while (true)
-		{
-			//Debug.Log("D_F");
-			yield return null;
-
-			bool aboveDownstabHeight = false;
-			bool aboveAirDashHeight = false;
-
-			if (transform.position.y > MinDownstabHeight)
-			{
-				//Debug.Log("Above Down stab height");
-				aboveDownstabHeight = true;
-			}
-			if (transform.position.y > AirDashHeight)
-			{
-				//Debug.Log("Above Air Dash Height");
-				aboveAirDashHeight = true;
-			}
-
-			if (!falling && rigidbody.velocity.y < 0f)
-			{
-				//Debug.Log("Falling");
-				falling = true;
-			}
-
-			if (falling && IsGrounded)
-			{
-				//Debug.Log("IS GROUNDED!");
-				//LAND logic
-				WeaverAudio.PlayAtPoint(LandSound, transform.position);
-				rigidbody.velocity = default(Vector2);
-				//Debug.Log("A");
-				yield return animator.PlayAnimationTillDone("Land");
-				//Debug.Log("B");
-				yield return ToNextAttack();
-				//Debug.Log("C");
-				yield break;
-			}
-
-			if (DownStabbing && InDownstabRange && aboveDownstabHeight)
-			{
-				//Debug.Log("DOWNSTABBING");
-				WeaverAudio.PlayAtPoint(DownstabPrepareSound, transform.position);
-				rigidbody.velocity = default(Vector2);
-				rigidbody.gravityScale = 0f;
-				//Debug.Log("D_G");
-				yield return animator.PlayAnimationTillDone("Downstab Antic Quick");
-				//Debug.Log("D_H");
-				WeaverAudio.PlayAtPoint(DownstabDashSound, transform.position);
-				animator.PlayAnimation("Downstab");
-
-				rigidbody.velocity = new Vector2(0f, -60f);
-				rigidbody.gravityScale = gravityScaleCache;
-
-				DownstabBurst.SetActive(true);
-
-				//Debug.Log("D_I");
-				yield return WaitTillTouchingGround();
-
-				WeaverAudio.PlayAtPoint(DownstabImpactSound, transform.position);
-				rigidbody.velocity = default(Vector2);
-				DownstabSlam.SetActive(true);
-
-				WeaverCam.Instance.Shaker.Shake(WeaverCore.Enums.ShakeType.EnemyKillShake);
-
-				//TODO - SPAWN PROJECTILES
-
-				KinProjectile.Spawn(transform.position + KinProjectileOffset, new Vector2(21, 0));
-				KinProjectile.Spawn(transform.position + KinProjectileOffset, new Vector2(15, 0));
-				KinProjectile.Spawn(transform.position + KinProjectileOffset, new Vector2(8,0));
-				KinProjectile.Spawn(transform.position + KinProjectileOffset, new Vector2(-8,0));
-				KinProjectile.Spawn(transform.position + KinProjectileOffset, new Vector2(-15,0));
-				KinProjectile.Spawn(transform.position + KinProjectileOffset, new Vector2(-21,0));
-
-				//Debug.Log("D_J");
-				yield return animator.PlayAnimationTillDone("Downstab Land");
-
-				animator.PlayAnimation("Idle");
-
-				//Debug.Log("D_K");
-				yield return new WaitForSeconds(0.35f);
-				UpdateCounters();
-				break;
-			}
-			if (aboveAirDashHeight && WillAirDash)
-			{
-				//Debug.Log("AIR DASHING");
-				transform.SetYPosition(AirDashHeight);
-				rigidbody.gravityScale = 0f;
-
-				FacePlayer(false);
-
-				rigidbody.velocity = default(Vector2);
-
-				yield return animator.PlayAnimationTillDone("Dash Antic 1");
-
-				yield return DashPart2();
-				break;
-			}
-		}
-	}
-
-	IEnumerator ToNextAttack()
-	{
-		if (Angry)
-		{
-			UpdateCounters();
-		}
-		else if (DidAirDash)
-		{
-			UpdateCounters();
-		}
-		else
-		{
-			var randVal = Random.Range(0f, 1f);
-
-			if (randVal < 0.33f)
-			{
-				Debug.Log("DOWNSTABBING");
-				yield return Attack_DownStab();
+				//TODO - Make bomb toss move here
+				Debug.Log("Player On Wall");
 			}
 			else
 			{
-				UpdateCounters();
-			}
-		}
-	}
-
-	IEnumerator Attack_Dash()
-	{
-		//TODO
-		//throw new NotImplementedException();
-		if (!InDashRange)
-		{
-			//THERE IS A COUNTER HERE IN THE ORIGINAL
-			yield return Attack_DownStab();
-		}
-		else
-		{
-			WillAirDash = false;
-			if (Random.value <= 0.7f)
-			{
-				//DASH
-				WeaverAudio.PlayAtPoint(PrepareSound, transform.position);
-				rigidbody.gravityScale = 0f;
-
-				yield return FacePlayerRoutine(false);
-
-				var scale = transform.GetXLocalScale();
-
-				var reverseSpeed = reverseDashSpeed * scale;
-
-				if (IsFacingRight)
+				if (overheadMove.MoveEnabled && overheadMove.CanDoAttack())
 				{
-					reverseSpeed = -reverseSpeed;
-				}
-
-				rigidbody.velocity = new Vector2(reverseSpeed,0f);
-
-				yield return animator.PlayAnimationTillDone("Dash Antic 1");
-
-				yield return DashPart2();
-			}
-			else
-			{
-				WillAirDash = true;
-			}
-		}
-	}
-
-	IEnumerator DashPart2()
-	{
-		var scale = transform.GetXLocalScale();
-
-		var speed = dashSpeed * scale;
-
-		if (!IsFacingRight)
-		{
-			speed = -speed;
-		}
-
-		animator.PlayAnimation("Dash Antic 2");
-
-		rigidbody.velocity = default(Vector2);
-
-		yield return new WaitForSeconds(0.4f);
-
-		animator.PlayAnimation("Dash Antic 3");
-
-		WeaverAudio.PlayAtPoint(DashSoundEffect, transform.position);
-
-		DashBurst.SetActive(true);
-
-		rigidbody.velocity = new Vector2(speed,0f);
-
-		yield return animator.PlayAnimationTillDone("Dash Attack 1");
-
-		WeaverAudio.PlayAtPoint(DashSoundEffect, transform.position);
-
-		DashSlash.SetActive(true);
-		DashSlashHit.SetActive(true);
-
-		yield return animator.PlayAnimationTillDone("Dash Attack 2");
-
-		DashSlashHit.SetActive(false);
-
-		yield return animator.PlayAnimationTillDone("Dash Attack 3");
-
-		rigidbody.velocity = default(Vector2);
-
-		rigidbody.gravityScale = gravityScaleCache;
-
-		if (WillAirDash)
-		{
-			//FALL LOGIC
-			animator.PlayAnimation("Fall");
-			WillAirDash = false;
-			DidAirDash = true;
-
-			yield return WaitTillTouchingGround();
-
-			yield return ToNextAttack();
-		}
-		else
-		{
-			yield return animator.PlayAnimationTillDone("Dash Recover");
-			UpdateCounters();
-		}
-	}
-
-
-	public void FaceObject(Transform t, bool playAnimation = true)
-	{
-		//If the object is to the right
-		if (t.position.x > transform.position.x)
-		{
-			if (renderer.flipX == true)
-			{
-				if (playAnimation)
-				{
-					StartCoroutine(FlipDirection("TurnToWalk"));
+					Debug.Log("M_C");
+					yield return RunMove(overheadMove);
 				}
 				else
 				{
-					renderer.flipX = !renderer.flipX;
+					Debug.Log("M_A");
+					bool didMove = false;
+					foreach (var randomMove in GetRandomMoveList())
+					{
+						CorruptedKinMove kinMove = (CorruptedKinMove)randomMove;
+						if (kinMove.MoveEnabled && kinMove.CanDoAttack())
+						{
+							Debug.Log("Doing Move = " + kinMove.GetType().Name);
+							didMove = true;
+							yield return RunMove(kinMove);
+							break;
+						}
+					}
+					if (!didMove)
+					{
+						Debug.Log("M_B");
+						var move = (CorruptedKinMove)GetRandomMove();
+						if (move.MoveEnabled)
+						{
+							yield return RunMove(move);
+						}
+					}
 				}
 			}
 		}
-		//If the object is to the left
-		else if (t.position.x < transform.position.x)
+	}
+
+	IEnumerable<CorruptedKinMove> GetRandomMoveList()
+	{
+		List<CorruptedKinMove> moves = new List<CorruptedKinMove>(Moves.Where(m => m.ShowsUpInRandomizer));
+
+		moves.Sort(Randomizer<CorruptedKinMove>.Instance);
+
+		return moves;
+	}
+
+	CorruptedKinMove GetRandomMove()
+	{
+		List<CorruptedKinMove> moves = new List<CorruptedKinMove>(Moves.Where(m => m.ShowsUpInRandomizer));
+
+		return moves[Random.Range(0,moves.Count)];
+	}
+
+	public IEnumerator TurnTowardsPlayer()
+	{
+		if (!IsFacingPlayer)
 		{
-			if (renderer.flipX == false)
+			Animator.PlayAnimation("Turn Quick");
+			var playingGUID = Animator.PlayingGUID;
+			var frameTime = 1f / Animator.AnimationData.GetClipFPS("Turn Quick");
+
+			yield return new WaitForSeconds(frameTime);
+
+			Renderer.flipX = !Renderer.flipX;
+
+			while (playingGUID == Animator.PlayingGUID)
 			{
-				if (playAnimation)
-				{
-					StartCoroutine(FlipDirection("TurnToWalk"));
-				}
-				else
-				{
-					renderer.flipX = !renderer.flipX;
-				}
+				yield return null;
 			}
 		}
 	}
 
-	public IEnumerator FaceObjectRoutine(Transform t, bool playAnimation = true)
+	public void TurnTowardsPlayerInstant()
 	{
-		Debug.Log("FACING OBJECT");
-		Debug.Log("Self Position = " + transform.position);
-		Debug.Log("Player Position = " + Player.Player1.transform.position);
-		//If the object is to the right
-		if (t.position.x > transform.position.x)
+		if (!IsFacingPlayer)
 		{
-			if (renderer.flipX == true)
-			{
-				if (playAnimation)
-				{
-					yield return FlipDirection("TurnToWalk");
-				}
-				else
-				{
-					renderer.flipX = !renderer.flipX;
-				}
-			}
-		}
-		//If the object is to the left
-		else// if (t.position.x < transform.position.x)
-		{
-			if (renderer.flipX == false)
-			{
-				if (playAnimation)
-				{
-					yield return FlipDirection("TurnToWalk");
-				}
-				else
-				{
-					renderer.flipX = !renderer.flipX;
-				}
-			}
+			Renderer.flipX = !Renderer.flipX;
 		}
 	}
-
-	IEnumerator FlipDirection(string animation)
-	{
-		var previousAnimation = animator.PlayingClip;
-		//Debug.Log("FLIPPING_Before");
-		//Debug.Log("Previous Animation = " + previousAnimation);
-		//Debug.Log("Playing Animation = " + animation);
-		yield return animator.PlayAnimationTillDone(animation,true);
-		//Debug.Log("FLIPPING_AFTER");
-		renderer.flipX = !renderer.flipX;
-
-		if (previousAnimation != null)
-		{
-			animator.PlayAnimation(previousAnimation);
-		}
-	}
-
-	public void FacePlayer(bool playAnimation = true)
-	{
-		FaceObject(Player.Player1.transform,playAnimation);
-	}
-
-	public IEnumerator FacePlayerRoutine(bool playAnimation = true)
-	{
-		yield return FaceObjectRoutine(Player.Player1.transform,playAnimation);
-	}
-
-	IEnumerator WaitTillTouchingGround()
+	public IEnumerator WaitTillTouchingGround()
 	{
 		while (!IsGrounded)
 		{
 			yield return null;
 		}
-	}
-
-	IEnumerator PlaySlashSounds()
-	{
-		WeaverAudio.PlayAtPoint(SwordSlashSound, transform.position);
-
-		yield return new WaitUntil(() => animator.PlayingFrame == 4);
-
-		WeaverAudio.PlayAtPoint(SwordSlashSound, transform.position);
-
-		yield return new WaitUntil(() => animator.PlayingFrame == 9);
-
-		WeaverAudio.PlayAtPoint(SwordSlashSound, transform.position);
-
-		yield return new WaitUntil(() => animator.PlayingFrame == 14);
-
-		WeaverAudio.PlayAtPoint(SwordSlashSound, transform.position);
 	}
 
 	List<GameObject> terrainCollisions = new List<GameObject>();
@@ -1047,7 +588,6 @@ public class CorruptedKin : BossReplacement
 	{
 		if (collision.gameObject.layer == LayerMask.NameToLayer("Terrain"))
 		{
-			Debug.Log("Touching Ground Tile");
 			terrainCollisions.Add(collision.gameObject);
 		}
 	}
@@ -1056,7 +596,6 @@ public class CorruptedKin : BossReplacement
 	{
 		if (collision.gameObject.layer == LayerMask.NameToLayer("Terrain"))
 		{
-			Debug.Log("Stopped touching Ground Tile");
 			terrainCollisions.Remove(collision.gameObject);
 		}
 	}
@@ -1076,9 +615,9 @@ public class CorruptedKin : BossReplacement
 	{
 		//HERE IS WHERE A SetPlayerDataBool is located. It sets corn_abyssLeft to true
 
-		Reset();
+		ResetState();
 
-		damager.DamageDealt = 0;
+		Damager.DamageDealt = 0;
 
 		WeaverCam.Instance.Shaker.Shake(WeaverCore.Enums.ShakeType.AverageShake);
 
@@ -1092,20 +631,19 @@ public class CorruptedKin : BossReplacement
 
 		yield return WaitTillTouchingGround();
 
-		WeaverLog.Log("Applying Music Cue!");
 		if (!Boss.InGodHomeArena)
 		{
 			//STOP MUSIC
 			WeaverCore.Audio.Music.ApplyMusicSnapshot(WeaverCore.Audio.Music.SnapshotType.Silent, 0f,2f);
 		}
 
-		animator.PlayAnimation("Death Land");
+		Animator.PlayAnimation("Death Land");
 
-		rigidbody.velocity = default(Vector2);
+		Rigidbody.velocity = default(Vector2);
 
 		yield return new WaitForSeconds(1f);
 
-		animator.PlayAnimation("Death");
+		Animator.PlayAnimation("Death");
 
 		WeaverAudio.PlayAtPoint(BossGushingSound, transform.position);
 
@@ -1125,7 +663,6 @@ public class CorruptedKin : BossReplacement
 			if (bloodTimer >= bloodSpawnDelay)
 			{
 				bloodTimer -= bloodSpawnDelay;
-				//SpawnBloodParticle();
 				Blood.SpawnRandomBlood(transform.position);
 			}
 
@@ -1178,9 +715,8 @@ public class CorruptedKin : BossReplacement
 
 		CorpseSteam.Play();
 
-		yield return animator.PlayAnimationTillDone("Death 2");
+		yield return Animator.PlayAnimationTillDone("Death 2");
 
-		//yield return new WaitForSeconds(5.25f);
 		yield return new WaitForSeconds(0.5f);
 
 		WeaverEvents.BroadcastEvent("IK GATE OPEN", gameObject);
@@ -1198,48 +734,6 @@ public class CorruptedKin : BossReplacement
 		}
 	}
 
-
-	/*public void SpawnBloodParticle()
-	{
-		SpawnBlood(transform.position + bloodSpawnOffset, bloodSpawnMin, bloodSpawnMax, bloodSpeedMin, bloodSpeedMax, bloodAngleMin, bloodAngleMax, null);
-	}
-
-	private ParticleSystem.MinMaxGradient initialBloodColour;
-	public void SpawnBlood(Vector3 position, short minCount, short maxCount, float minSpeed, float maxSpeed, float angleMin = 0f, float angleMax = 360f, Color? colorOverride = null)
-	{
-		if (this.bloodSplatterParticle)
-		{
-			var component = GameObject.Instantiate(bloodSplatterParticle, default(Vector3), Quaternion.identity).GetComponent<ParticleSystem>();
-			//ParticleSystem component = this.bloodSplatterParticle.Spawn().GetComponent<ParticleSystem>();
-			if (component)
-			{
-				component.Stop();
-				component.emission.SetBursts(new ParticleSystem.Burst[]
-				{
-					new ParticleSystem.Burst(0f, (short)Mathf.RoundToInt((float)minCount * bloodAmountMultiplier), (short)Mathf.RoundToInt((float)maxCount * bloodAmountMultiplier))
-				});
-				ParticleSystem.MainModule main = component.main;
-				main.maxParticles = Mathf.RoundToInt((float)maxCount * bloodAmountMultiplier);
-				main.startSpeed = new ParticleSystem.MinMaxCurve(minSpeed * bloodSpeedMultiplier, maxSpeed * bloodSpeedMultiplier);
-				if (colorOverride == null)
-				{
-					main.startColor = initialBloodColour;
-				}
-				else
-				{
-					main.startColor = new ParticleSystem.MinMaxGradient(colorOverride.Value);
-				}
-				ParticleSystem.ShapeModule shape = component.shape;
-				float arc = angleMax - angleMin;
-				shape.arc = arc;
-				//component.transform.SetRotation2D(angleMin);
-				component.transform.SetZRotation(angleMin);
-				component.transform.position = position;
-				component.Play();
-			}
-		}
-	}*/
-
 	protected override void OnStun()
 	{
 		//TODO
@@ -1250,123 +744,65 @@ public class CorruptedKin : BossReplacement
 
 	IEnumerator StunRoutine()
 	{
-		//GameObject.Instantiate(StunEffect, transform.position, Quaternion.identity);
 		StunEffect.Spawn(transform.position);
 
-		FacePlayer(false);
+		//FacePlayer(false);
+		TurnTowardsPlayerInstant();
 
-		/*var xScale = transform.GetXLocalScale();
-		var movementAmount = xScale * StunPushAmount;
+		Animator.PlayAnimation("Stun Air");
 
-		if (IsFacingRight)
-		{
-			movementAmount = -movementAmount;
-		}*/
-
-		animator.PlayAnimation("Stun Air");
-
-		Reset();
+		ResetState();
 
 		//TODO - SET RECOIL SPEED
 
-		//ShakeGas.Stop(false, ParticleSystemStopBehavior.StopEmitting);
-
-		//rigidbody.gravityScale = gravityScaleCache;
-
-		//rigidbody.velocity = new Vector2(movementAmount,20f);
-
-		//DashSlashHit.SetActive(false);
-		//DashSlash.SetActive(false);
-		//OverheadSlash.gameObject.SetActive(false);
-
 		yield return WaitTillTouchingGround();
 
-		rigidbody.velocity = default(Vector2);
+		Rigidbody.velocity = default(Vector2);
 
-		animator.PlayAnimation("Stun");
+		Animator.PlayAnimation("Stun");
 
-		float timesHitBefore = healthManager.TimesHit;
-		Debug.Log("Times Hit Before = " + timesHitBefore);
+		float timesHitBefore = HealthManager.TimesHit;
 
 		for (float i = 0; i < 3f; i += Time.deltaTime)
 		{
-			Debug.Log("Times Hit = " + healthManager.TimesHit);
-			if (healthManager.TimesHit > timesHitBefore)
+			if (HealthManager.TimesHit > timesHitBefore)
 			{
 				break;
 			}
 			yield return null;
 		}
 
-		yield return animator.PlayAnimationTillDone("Stun Recover");
+		yield return Animator.PlayAnimationTillDone("Stun Recover");
 
 
-		StartBoundRoutine(Idle());
+		StartBoundRoutine(BossController());
 	}
 
-
-	Component fsmCache = null;
-	Type pmType = null;
-
-	Component GetBattleControlFSM()
+	GameObject GetBattleSceneObject()
 	{
-		if (fsmCache == null)
-		{
-			var battleSceneObj = GameObject.FindGameObjectWithTag("Battle Scene");
-			if (battleSceneObj != null)
-			{
-				var playMakerAssembly = Assembly.Load("PlayMaker");
-				//var playMakerAssembly = AppDomain.CurrentDomain.GetAssemblies().First(a => a.FullName.Contains("PlayMaker"));
-
-				pmType = playMakerAssembly.GetType("PlayMakerFSM");
-
-				var actionHelperType = playMakerAssembly.GetType();
-
-				var fsmGetter = actionHelperType.GetMethod("GetGameObjectFsm");
-
-
-				fsmCache = (Component)fsmGetter.Invoke(null, new object[] { battleSceneObj, "Battle Control" });
-			}
-		}
-		return fsmCache;
+		return GameObject.FindGameObjectWithTag("Battle Scene");
 	}
 
 	//Not sure if this is required for anything yet, but may remove it if it does nothing
 	void DeactivateBattleScene()
 	{
-		if (CoreInfo.LoadState == WeaverCore.Enums.RunningState.Game)
+		var battleSceneObject = GetBattleSceneObject();
+		if (battleSceneObject != null)
 		{
-			var fsm = GetBattleControlFSM();
-
-			if (fsm != null)
-			{
-				var fsmVariables = pmType.GetProperty("FsmVariables").GetValue(fsm, null);
-				var fsmVarType = fsmVariables.GetType();
-
-				var fsmBool = fsmVarType.GetMethod("FindFsmBool").Invoke(fsmVariables, new object[] { "Activated" });
-				if (fsmBool != null)
-				{
-					var fsmBoolType = fsmBool.GetType();
-
-					fsmBoolType.GetProperty("Value").SetValue(fsmBool, false, null);
-				}
-			}
+			PlayMakerUtilities.SetFsmBool(battleSceneObject, "Battle Control", "Activated", false);
 		}
 	}
 
 	void EndBattleScene()
 	{
-		if (CoreInfo.LoadState == WeaverCore.Enums.RunningState.Game)
+		var battleSceneObject = GetBattleSceneObject();
+		if (battleSceneObject != null)
 		{
-			var fsm = GetBattleControlFSM();
-			if (fsm != null)
-			{
-				WeaverEvents.SendEventToObject(fsm.gameObject, "END");
-			}
+			WeaverEvents.SendEventToObject(battleSceneObject, "END");
 		}
 	}
 
-	void Reset()
+	void ResetState()
 	{
 		var xScale = transform.GetXLocalScale();
 		var movementAmount = xScale * StunPushAmount;
@@ -1376,9 +812,9 @@ public class CorruptedKin : BossReplacement
 			movementAmount = -movementAmount;
 		}
 
-		rigidbody.gravityScale = gravityScaleCache;
+		Rigidbody.gravityScale = GravityScale;
 
-		rigidbody.velocity = new Vector2(movementAmount, 20f);
+		Rigidbody.velocity = new Vector2(movementAmount, 20f);
 
 		DashSlashHit.SetActive(false);
 		DashSlash.SetActive(false);
@@ -1399,26 +835,31 @@ public class CorruptedKin : BossReplacement
 		return transform.Find(name).GetComponent<T>();
 	}
 
-	public bool IsWithinBox(Collider2D box, Transform obj)
+	IEnumerator PlayerWallDetector()
 	{
-		var bounds = box.bounds;
+		while (true)
+		{
+			PlayerIsOnWall = false;
 
-		var objX = obj.GetXPosition();
-		var objY = obj.GetYPosition();
+			var playerX = Player.Player1.transform.GetXPosition();
 
-		return objX > bounds.min.x && objY > bounds.min.y && objX < bounds.max.x && objY < bounds.max.y;
-	}
+			float timer = 0f;
 
-	public bool IsWithinBox(Collider2D box, Collider2D other)
-	{
-		var bounds = box.bounds;
-		var otherBounds = other.bounds;
+			//If the x position of the player hasn't changed and the player is above the floor
+			while (playerX == Player.Player1.transform.GetXPosition() && Player.Player1.transform.GetYPosition() > (floorY + 2f))
+			{
+				yield return null;
+				timer += Time.deltaTime;
+				//If the player has been on the wall for a specified amount of time
+				if (timer >= playerWallTestDuration)
+				{
+					PlayerIsOnWall = true;
+				}
+			}
+			PlayerIsOnWall = false;
 
-		return bounds.Intersects(otherBounds);
 
-		/*var objX = obj.GetXPosition();
-		var objY = obj.GetYPosition();
-
-		return objX > bounds.min.x && objY > bounds.min.y && objX < bounds.max.x && objY < bounds.max.y;*/
+			yield return null;
+		}
 	}
 }

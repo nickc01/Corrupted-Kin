@@ -1,7 +1,5 @@
 fileFormatVersion: 2
 guid: 163eef47e39d5254fb30f50bb39eef8e
-timeCreated: 1602781474
-licenseType: Free
 TextureImporter:
   fileIDToRecycleName: {}
   externalObjects: {}
@@ -72,7 +70,7 @@ TextureImporter:
     sprites: []
     outline: []
     physicsShape: []
-  spritePackingTag:
-  userData:
-  assetBundleName:
-  assetBundleVariant:
+  spritePackingTag: 
+  userData: 
+  assetBundleName: corruptedkin_bundle
+  assetBundleVariant: 
