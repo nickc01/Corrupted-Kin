@@ -1,0 +1,436 @@
+fileFormatVersion: 2
+guid: 090425400bcc76e42a5b0cdb2f6ff8ab
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: shot_orange0003
+    21300002: shot_orange0000
+    21300004: shot_orange0001
+    21300006: shot_orange0002
+    21300008: shot_impact0005
+    21300010: shot_impact0003
+    21300012: shot_impact0004
+    21300014: shot_impact0002
+    21300016: shot_impact0001
+    21300018: shot_impact0006
+    21300020: Shockwave0006
+    21300022: Shockwave0002
+    21300024: Shockwave0004
+    21300026: Shockwave0005
+    21300028: Shockwave0000
+    21300030: Shockwave0001
+    21300032: Shockwave0007
+    21300034: Shockwave0003
+    21300036: shockwave0004
+    21300038: shockwave0005
+    21300040: shockwave0003
+    21300042: shockwave0001
+    21300044: shockwave0002
+    21300046: shockwave0000
+  externalObjects: {}
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 64.76801
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: shot_orange0003
+      rect:
+        serializedVersion: 2
+        x: 772
+        y: 0
+        width: 95
+        height: 93
+      alignment: 9
+      pivot: {x: 0.48936176, y: 0.5108695}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: shot_orange0000
+      rect:
+        serializedVersion: 2
+        x: 868
+        y: 0
+        width: 95
+        height: 93
+      alignment: 9
+      pivot: {x: 0.48936176, y: 0.5108695}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: shot_orange0001
+      rect:
+        serializedVersion: 2
+        x: 580
+        y: 95
+        width: 95
+        height: 93
+      alignment: 9
+      pivot: {x: 0.48936176, y: 0.5108695}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: shot_orange0002
+      rect:
+        serializedVersion: 2
+        x: 580
+        y: 189
+        width: 95
+        height: 93
+      alignment: 9
+      pivot: {x: 0.48936176, y: 0.5108695}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: shot_impact0005
+      rect:
+        serializedVersion: 2
+        x: 677
+        y: 0
+        width: 94
+        height: 94
+      alignment: 9
+      pivot: {x: 0.5268817, y: 0.3655914}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: shot_impact0003
+      rect:
+        serializedVersion: 2
+        x: 580
+        y: 388
+        width: 76
+        height: 108
+      alignment: 9
+      pivot: {x: 0.53333336, y: 0.5794392}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: shot_impact0004
+      rect:
+        serializedVersion: 2
+        x: 580
+        y: 283
+        width: 83
+        height: 104
+      alignment: 9
+      pivot: {x: 0.51219517, y: 0.54368925}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: shot_impact0002
+      rect:
+        serializedVersion: 2
+        x: 676
+        y: 95
+        width: 69
+        height: 92
+      alignment: 9
+      pivot: {x: 0.5441176, y: 0.6923077}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: shot_impact0001
+      rect:
+        serializedVersion: 2
+        x: 676
+        y: 188
+        width: 65
+        height: 96
+      alignment: 9
+      pivot: {x: 0.515625, y: 0.7157895}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: shot_impact0006
+      rect:
+        serializedVersion: 2
+        x: 580
+        y: 0
+        width: 96
+        height: 94
+      alignment: 9
+      pivot: {x: 0.50526315, y: 0.30107528}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: Shockwave0006
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 338
+        width: 166
+        height: 127
+      alignment: 9
+      pivot: {x: 0.37575758, y: 0.8015873}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: Shockwave0002
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 205
+        height: 216
+      alignment: 9
+      pivot: {x: 0.5147059, y: 0.5069767}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: Shockwave0004
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 0
+        width: 176
+        height: 176
+      alignment: 9
+      pivot: {x: 0.42857146, y: 0.61142856}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: Shockwave0005
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 177
+        width: 173
+        height: 160
+      alignment: 9
+      pivot: {x: 0.45348835, y: 0.6415094}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: Shockwave0000
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 415
+        width: 172
+        height: 77
+      alignment: 9
+      pivot: {x: 0.5847953, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: Shockwave0001
+      rect:
+        serializedVersion: 2
+        x: 383
+        y: 156
+        width: 157
+        height: 111
+      alignment: 9
+      pivot: {x: 0.44871795, y: 0.89090914}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: Shockwave0007
+      rect:
+        serializedVersion: 2
+        x: 383
+        y: 0
+        width: 196
+        height: 155
+      alignment: 9
+      pivot: {x: 0.46153843, y: 0.64285713}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: Shockwave0003
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 217
+        width: 163
+        height: 197
+      alignment: 9
+      pivot: {x: 0.39506173, y: 0.5153061}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: shockwave0004
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 217
+        width: 41
+        height: 107
+      alignment: 9
+      pivot: {x: 0.625, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: shockwave0005
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 325
+        width: 33
+        height: 55
+      alignment: 9
+      pivot: {x: 0.53125, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: shockwave0003
+      rect:
+        serializedVersion: 2
+        x: 524
+        y: 268
+        width: 50
+        height: 128
+      alignment: 9
+      pivot: {x: 0.5714286, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: shockwave0001
+      rect:
+        serializedVersion: 2
+        x: 455
+        y: 268
+        width: 68
+        height: 160
+      alignment: 9
+      pivot: {x: 0.53731346, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: shockwave0002
+      rect:
+        serializedVersion: 2
+        x: 383
+        y: 268
+        width: 71
+        height: 185
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: shockwave0000
+      rect:
+        serializedVersion: 2
+        x: 455
+        y: 429
+        width: 62
+        height: 79
+      alignment: 9
+      pivot: {x: 0.4918033, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    outline: []
+    physicsShape: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

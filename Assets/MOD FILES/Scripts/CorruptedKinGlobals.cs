@@ -15,5 +15,13 @@ public class CorruptedKinGlobals : ScriptableObject
 
 	public KinProjectile KinProjectilePrefab;
 	public ParasiteBalloon BalloonPrefab;
+	public AspidShot AspidShotPrefab;
+	public InfectedExplosion InfectedExplosionPrefab;
+	public ScuttlerBomb ScuttlerBombPrefab;
+	public Scuttler ScuttlerPrefab;
+	public TransformationBlob TransBlobPrefab;
+	public TransformationAspidShot TransAspidShotPrefab;
+	public GameObject WallBlockerPrefab;
+	public WallSplats WallSplatsPrefab;
 }
 

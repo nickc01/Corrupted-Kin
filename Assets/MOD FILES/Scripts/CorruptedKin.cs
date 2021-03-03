@@ -15,6 +15,7 @@ using Random = UnityEngine.Random;
 
 public class CorruptedKin : BossReplacement
 {
+	public static CorruptedKin Instance { get; private set; }
 	/*public enum DistanceZone
 	{
 		None,
@@ -30,6 +31,7 @@ public class CorruptedKin : BossReplacement
 	public CorruptedKinHealth HealthManager { get; private set; }
 	public Collider2D Collider { get; private set; }
 	public WeaverCore.Components.DamageHero Damager { get; private set; }
+	public SpriteFlasher Flasher { get; private set; }
 
 	[Header("General Stuff")]
 	public AudioClip JumpSound;
@@ -39,6 +41,7 @@ public class CorruptedKin : BossReplacement
 	public float leftX = 16.06f;
 	public float rightX = 36.53f;
 	public float floorY = 0f;
+	public float arenaHeight = 0f;
 	public CorruptedKinGlobals Globals;
 	public BoxCollider2D awakeRange;
 	public MusicPack BossMusicPack;
@@ -57,6 +60,7 @@ public class CorruptedKin : BossReplacement
 	public bool DashEnabled = true;
 	public bool AirDashEnabled = true;
 	public bool OverheadSlashEnabled = true;
+	public bool BombTossEnabled = true;
 
 	[Space]
 	[Header("Intro")]
@@ -113,6 +117,51 @@ public class CorruptedKin : BossReplacement
 	public GameObject DashSlash;
 	public GameObject DashSlashHit;
 
+	[Space]
+	[Header("Bomb Toss")]
+	public AudioClip BombTossPrepareSound;
+	public float TossPrepareDelay = 0.55f;
+	public ParticleSystem TossParticles;
+	public float TossParticlesSpeed = 7.5f;
+	public float TossDeathWaveSize = 0.5f;
+	public int TossTimes = 2;
+	public float DelayBetweenTosses = 0.45f;
+	public AudioClip TossSound;
+	[Tooltip("The delay between starting the toss and actually tossing the bomb")]
+	public float TossingDelay = 0.05f;
+	public float TossBloodAngleMin = 15f;
+	public float TossBloodAngleMax = 85f;
+	public float BombAngularVelocity = 45f;
+	public Vector3 TossBloodSpawnOffset;
+	public Vector3 ScuttlerBombSpawnOffset;
+	public float ScuttlerBombAirTime = 0.8f;
+
+	[Space]
+	[Header("Transformation")]
+	public float transScutterSpawnY = 27.86f;
+	public float transScutterSpawnMinX = 3f;
+	public float transScutterSpawnMaxX = 6f;
+	public float transScutterSpawnDelayMin = 0.1f;
+	public float transScutterSpawnDelayMax = 0.2f;
+	public Transform TargetsChild;
+	public Vector2 BlobScaleMin = new Vector2(1f,1f);
+	public Vector2 BlobScaleMax = new Vector2(1.4f,1.4f);
+	public float transExplosionWaitTime = 0.7f;
+	public float transBlobSizeIncrease = 3f;
+	public float transBlobExpansionTime = 0.4f;
+	public float transSummonGrassZ = 0.5f;
+	public AnimationCurve transBlobSizeCurve;
+	public int transTargetCount { get { return TargetsChild.childCount; } }
+	public WallSplats TransformationSplats { get; private set; }
+
+	[Space]
+	[Header("Post Transformation")]
+	public AudioClip transBlobExplodeSound;
+	public float transBlobExplodeVolume = 1f;
+	public float transEndDelay = 0.8f;
+	public float transAspidShotMinSize = 0.7f;
+	public float transAspidShotMaxSize = 1.3f;
+
 
 	[Space]
 	[Header("Stun")]
@@ -122,7 +171,7 @@ public class CorruptedKin : BossReplacement
 	[Space]
 	[Header("Death")]
 	public AudioClip BossFinalHitSound;
-	public GameObject InfectedDeathWavePrefab;
+	//public GameObject InfectedDeathWavePrefab;
 	public AudioClip BossGushingSound;
 	public GameObject BossDeathPuffPrefab;
 	public AudioClip DreamExitSound;
@@ -292,6 +341,7 @@ public class CorruptedKin : BossReplacement
 
 	protected override void Awake()
 	{
+		Instance = this;
 		WeaverLog.Log("Corrupted Kin has Awoken");
 
 		//Find all corrupted kin moves
@@ -317,6 +367,7 @@ public class CorruptedKin : BossReplacement
 		HealthManager = GetComponent<CorruptedKinHealth>();
 		Collider = GetComponent<Collider2D>();
 		Damager = GetComponent<WeaverCore.Components.DamageHero>();
+		Flasher = GetComponent<SpriteFlasher>();
 
 
 
@@ -444,6 +495,8 @@ public class CorruptedKin : BossReplacement
 
 		yield return Animator.PlayAnimationTillDone("Land");
 
+		TransformationSplats = WallSplats.Spawn(leftX, floorY);
+
 		yield return Animator.PlayAnimationTillDone("Roar Start");
 
 		if (!Boss.InPantheon)
@@ -509,7 +562,7 @@ public class CorruptedKin : BossReplacement
 					bool didMove = false;
 					foreach (var randomMove in GetRandomMoveList())
 					{
-						CorruptedKinMove kinMove = (CorruptedKinMove)randomMove;
+						CorruptedKinMove kinMove = randomMove;
 						if (kinMove.MoveEnabled && kinMove.CanDoAttack())
 						{
 							Debug.Log("Doing Move = " + kinMove.GetType().Name);
@@ -521,7 +574,7 @@ public class CorruptedKin : BossReplacement
 					if (!didMove)
 					{
 						Debug.Log("M_B");
-						var move = (CorruptedKinMove)GetRandomMove();
+						var move = GetRandomMove();
 						if (move.MoveEnabled)
 						{
 							yield return RunMove(move);
@@ -625,7 +678,8 @@ public class CorruptedKin : BossReplacement
 
 		DeactivateBattleScene();
 
-		var deathWave = GameObject.Instantiate(InfectedDeathWavePrefab, transform.position, Quaternion.identity);
+		//var deathWave = GameObject.Instantiate(InfectedDeathWavePrefab, transform.position, Quaternion.identity);
+		var deathWave = DeathWave.Spawn(transform.position,1f);
 
 		deathWave.transform.localScale = new Vector3(3f,3f,0f);
 
