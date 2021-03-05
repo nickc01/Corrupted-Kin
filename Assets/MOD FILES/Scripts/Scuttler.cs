@@ -111,6 +111,7 @@ public class Scuttler : MonoBehaviour
 
 	void Awake()
 	{
+		SplatEvent = null;
 		if (animator == null)
 		{
 			animator = GetComponent<WeaverAnimationPlayer>();

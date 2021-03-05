@@ -79,8 +79,8 @@
 
 				float4 input = v.vertex;
 				input.z += _EdgeZ;
+				input.y += _EdgeHeight;
 				o.vertex = UnityObjectToClipPos(input);
-				o.vertex.y += _EdgeHeight;
 				o.uv.xy = TRANSFORM_TEX(v.uv.xy, _MainTex);
 				//UNITY_TRANSFER_FOG(o,o.vertex);
 
@@ -113,7 +113,7 @@
 			{
 				// sample the texture
 				//fixed4 col = tex2D(_MainTex, i.uv);
-				fixed4 col = lerp(tex2D(_MainTex, i.uv),_BlankingColor,i.uv.z);
+				fixed4 col = lerp(tex2D(_MainTex, i.uv),_BlankingColor,clamp(i.uv.z,0,1));
 			// apply fog
 			//UNITY_APPLY_FOG(i.fogCoord, col);
 			return col;
