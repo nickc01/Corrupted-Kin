@@ -32177,25 +32177,32 @@ MonoBehaviour:
   m_GameObject: {fileID: 781406890}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f68801acacd1e84eb1501bbadeba78f, type: 3}
+  m_Script: {fileID: 11500000, guid: 02cbc3b8be7da5748854d462afea4424, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   wavePoints: 100
-  baseHeight: 0.5
-  squashFactor: 0.7
+  baseHeight: 1.2
+  squashFactor: 1
   colliderOffset: {x: 0, y: -0.08}
+  colliderQuality: 2
   splitCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 2
       time: 0
-      value: 0
+      value: -0.009521484
       inSlope: 0.20380951
       outSlope: 0.20380951
       tangentMode: 0
     - serializedVersion: 2
+      time: 0.49178028
+      value: 0.826442
+      inSlope: 0.9337602
+      outSlope: 0.9337602
+      tangentMode: 0
+    - serializedVersion: 2
       time: 1
-      value: 1
+      value: 0.9904785
       inSlope: -0.025474122
       outSlope: -0.025474122
       tangentMode: 0
@@ -32205,14 +32212,14 @@ MonoBehaviour:
   blankingColorDecay: 0.5
   ambientMovement: 0.04
   test_waveX: 0.5
-  test_acceleration: 0.2
-  test_terminalVelocity: 0.3
+  test_acceleration: 0.4
+  test_terminalVelocity: 0.4
   test_deacceleration: 0.2
   test_startingIntensity: 2
-  test_startingWaitTime: 0.5
+  test_startingWaitTime: 0.2
   test_spread: 0.1
   test_decayRate: 1.2
-  SplitTime: 4
+  SplitTime: 5
   SplitAmount: 16
 --- !u!23 &781406892
 MeshRenderer:
@@ -32290,9 +32297,10 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 781406890}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 27, y: 22, z: -1.2}
+  m_LocalPosition: {x: 27, y: 21.58, z: -1.2}
   m_LocalScale: {x: 40, y: 4, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 2146945111}
   m_Father: {fileID: 0}
   m_RootOrder: 35
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -68124,3 +68132,46 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!1 &2146945110
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 2146945111}
+  - component: {fileID: 2146945112}
+  m_Layer: 0
+  m_Name: Ambient Wave
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2146945111
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2146945110}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 781406895}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2146945112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2146945110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a352889ee8ae9246951d1bd40711957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scale: {x: 20, y: 0.5}
+  speed: -5
+  oscillationSpeed: 0.2

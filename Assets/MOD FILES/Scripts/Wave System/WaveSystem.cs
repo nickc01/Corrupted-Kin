@@ -1,17 +1,11 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using WeaverCore.Utilities;
 
-/*public abstract class WaveGenerator
-{
-	public InfectionWave Wave { get; set; }
-
-	public abstract float Calculate(float x);
-}*/
-
-public class InfectionWave : MonoBehaviour 
+public class WaveSystem : MonoBehaviour 
 {
 	//Used for sorting the splits list whenever one gets added. They are sorted by vertex position, from left to right on the wave
 	class SplitSorter : IComparer<SplitPoint>
@@ -29,9 +23,23 @@ public class InfectionWave : MonoBehaviour
 		}
 	}
 
+	class GeneratorSorter : IComparer<IWaveGenerator>
+	{
+		Comparer<int> numberComparer;
+
+		public GeneratorSorter()
+		{
+			numberComparer = Comparer<int>.Default;
+		}
+
+		int IComparer<IWaveGenerator>.Compare(IWaveGenerator x, IWaveGenerator y)
+		{
+			return numberComparer.Compare(x.Priority, y.Priority);
+		}
+	}
 
 
-	struct SplitPoint
+	class SplitPoint
 	{
 		public float WaveX; //The x position of where the split is located
 		public int VertexPoint; //The vertex the split is occuring at
@@ -41,10 +49,9 @@ public class InfectionWave : MonoBehaviour
 		public bool OutOfBounds; //Whether the split is on the wave, or out of bounds. Out of bounds waves are easier to calculate
 
 		public float _timer; //The internal timer of the split
-		//public float _extraUVOffset; //Any extra UV offset if any. Used internally
 	}
 
-	struct BlankerLine
+	class BlankerLine
 	{
 		public float WaveX; //The current position of the blanker
 		public int Vertex; //The current vertex of the blanker
@@ -62,7 +69,7 @@ public class InfectionWave : MonoBehaviour
 	}
 
 	[SerializeField]
-	[Range(50,500)]
+	[Range(50,1000)]
 	[Tooltip("Determines how many verticies the wave will have. The more points, the higher quality the wave will be, but it can get laggier with high values")]
 	int wavePoints = 50;
 	[SerializeField]
@@ -75,6 +82,13 @@ public class InfectionWave : MonoBehaviour
 	[SerializeField]
 	[Tooltip("An offset to the polygon collider")]
 	Vector2 colliderOffset;
+	[SerializeField]
+	[Tooltip("Determines the quality of the polygon collider. 1 is the highest quality, and higher values result in lower quality")]
+	[Range(1, 100)]
+	int colliderQuality = 1;
+
+
+
 	[Space]
 	[Header("Internal")]
 	[SerializeField]
@@ -102,9 +116,9 @@ public class InfectionWave : MonoBehaviour
 	public float SplitTime;
 	public int SplitAmount;
 
-	List<Vector3> verticies;
-	List<int> triangles;
-	List<Vector3> uv;
+	List<Vector3> meshVerticies;
+	List<int> meshTriangles;
+	List<Vector3> meshUVs;
 	List<Vector2> colliderPoints;
 	Mesh mesh;
 
@@ -113,15 +127,14 @@ public class InfectionWave : MonoBehaviour
 	MeshFilter filter;
 	PolygonCollider2D polyCollider;
 
-	//int xTileID;
-	//int yTileID;
-
 	SplitSorter splitSorter = new SplitSorter();
 	List<SplitPoint> splits = new List<SplitPoint>();
-	HashSet<int> splitVerticies = new HashSet<int>();
+
+	HashSet<int> verticiesThatAreSplit = new HashSet<int>();
 	List<BlankerLine> blankers = new List<BlankerLine>();
 
-	//MeshCollider meshCollider;
+	GeneratorSorter generatorSorter = new GeneratorSorter();
+	List<IWaveGenerator> generators = new List<IWaveGenerator>();
 
 	public float WaveWidth
 	{
@@ -131,18 +144,16 @@ public class InfectionWave : MonoBehaviour
 		}
 	}
 
-	void Awake()
+	protected virtual void Awake()
 	{
-		mesh = GenerateWaveMesh(out verticies,out triangles,out uv);
+		mesh = GenerateWaveMesh(out meshVerticies,out meshTriangles,out meshUVs);
 		renderer = GetComponent<MeshRenderer>();
 		filter = GetComponent<MeshFilter>();
 		polyCollider = GetComponent<PolygonCollider2D>();
-		colliderPoints = GenerateColliderPoints(verticies);
+		colliderPoints = GenerateColliderPoints(meshVerticies);
 		UpdatePolygonCollider(colliderPoints);
 		filter.mesh = mesh;
 
-		//xTileID = Shader.PropertyToID("_TilingX");
-		//yTileID = Shader.PropertyToID("_TilingY");
 		waveMaterial = renderer.sharedMaterial;
 		RunWaveCalculation();
 
@@ -174,7 +185,9 @@ public class InfectionWave : MonoBehaviour
 		yield return new WaitForSeconds(1f);
 		//AddSplitPoint(0.5f, 1, 2f);
 
-		AddSplitPoint(0f, SplitAmount, SplitTime);
+		//AddSplitPoint(-1f, SplitAmount * 10, SplitTime);
+
+		/*AddSplitPoint(0f, SplitAmount, SplitTime);
 		AddSplitPoint(0.2f, SplitAmount, SplitTime);
 		AddSplitPoint(0.4f, SplitAmount, SplitTime);
 		AddSplitPoint(0.6f, SplitAmount, SplitTime);
@@ -186,9 +199,9 @@ public class InfectionWave : MonoBehaviour
 		AddSplitPoint(0.4f, SplitAmount, SplitTime);
 		AddSplitPoint(0.6f, SplitAmount, SplitTime);
 		AddSplitPoint(0.8f, SplitAmount, SplitTime);
-		AddSplitPoint(1f, SplitAmount, SplitTime);
+		AddSplitPoint(1f, SplitAmount, SplitTime);*/
 
-		for (int i = 0; i < splits.Count; i++)
+		/*for (int i = 0; i < splits.Count; i++)
 		{
 			Debug.Log("FINAL SPLIT = " + splits[i].VertexPoint);
 		}
@@ -199,15 +212,15 @@ public class InfectionWave : MonoBehaviour
 			{
 				Debug.Log("SPLIT FOUND: Left = " + (i - 2) + " Right = " + i);
 			}
-		}
+		}*/
 
-
-		//AddBlankerLine(test_waveX, test_acceleration, test_terminalVelocity, test_deacceleration, 1 + (blankingColorDecay * SplitTime), test_startingWaitTime, test_spread, test_decayRate);
-		//AddBlankerLine(test_waveX, -test_acceleration, -test_terminalVelocity, -test_deacceleration, 1 + (blankingColorDecay * SplitTime), test_startingWaitTime, test_spread, test_decayRate);
+		AddSplitPoint(test_waveX, SplitAmount, SplitTime);
+		AddBlankerLine(test_waveX, test_acceleration, test_terminalVelocity, test_deacceleration, 1 + (blankingColorDecay * SplitTime), test_startingWaitTime, test_spread, test_decayRate);
+		AddBlankerLine(test_waveX, -test_acceleration, -test_terminalVelocity, -test_deacceleration, 1 + (blankingColorDecay * SplitTime), test_startingWaitTime, test_spread, test_decayRate);
 
 	}
 
-	void Update()
+	protected virtual void Update()
 	{
 		CalculateSplits();
 		CalculateBlankerLines();
@@ -219,92 +232,106 @@ public class InfectionWave : MonoBehaviour
 	private void DecayBlankers()
 	{
 		var decay = blankingColorDecay * Time.deltaTime;
-		for (int i = 0; i < uv.Count; i++)
+		var ambientOffset = ambientMovement * Time.deltaTime;
+		//THIS CAN BE MADE TO RUN IN PARALLEL FOR FASTER EXECUTION
+		for (int i = 0; i < meshUVs.Count; i++)
 		{
-			var uvTemp = uv[i];
-			uvTemp.z -= decay;
-			uvTemp.x -= ambientMovement * Time.deltaTime;
-			//TODO : FIGURE OUT METHOD TO HAVE UV RESET
-			//if (splits.Count == 0)
-			//{
-
-				/*if (uvTemp.x < 0f)
-				{
-					uvTemp.x += 1f;
-				}
-				if (uvTemp.x > 1f)
-				{
-					uvTemp.x -= 1f;
-				}*/
-			//}
-			if (uvTemp.z < 0f)
+			var uv = meshUVs[i];
+			uv.z -= decay;
+			uv.x -= ambientOffset;
+			if (uv.z < 0f)
 			{
-				uvTemp.z = 0f;
+				uv.z = 0f;
 			}
-			uv[i] = uvTemp;
+			meshUVs[i] = uv;
 
+#if UNITY_EDITOR
 			if (i - 1 >= 0)
 			{
-				//0.01010102
-				var diff = (uv[i].x - uv[i - 1].x);
-				if (diff > 0.02010102f)
+				var diff = (meshUVs[i].x - meshUVs[i - 1].x);
+				if (diff > 0.01f + ((float)1 / wavePoints))
 				{
 					Debug.Log("ERROR: DIFF = " + diff);
 					Debug.Log("LEFT V = " + (i - 1));
 					Debug.Log("RIGHT V = " + (i - 1));
 				}
-				//Debug.Log("UV DIFF WITH PREVIOUS = " + (uv[i].x - uv[i - 1].x));
+			}
+#endif
+		}
+
+		if (meshUVs[meshUVs.Count - 2].x > 2f)
+		{
+			for (int i = 0; i < meshUVs.Count; i++)
+			{
+				var uv = meshUVs[i];
+				uv.z -= 1f;
+			}
+		}
+		else if (meshUVs[0].x < -1f)
+		{
+			for (int i = 0; i < meshUVs.Count; i++)
+			{
+				var uv = meshUVs[i];
+				uv.z += 1f;
 			}
 		}
 	}
 
 	private void CalculateBlankerLines()
 	{
-		//for (int i = 0; i < blankers.Count; i++)
+		//Loop over all the currently running blankers
 		for (int i = blankers.Count - 1; i >= 0; i--)
 		{
-			//Debug.Log("RUNNING BLANKER");
 			var blanker = blankers[i];
 
+			//If the blanker's intensity is now zero
 			if (blanker._intensity <= 0f)
 			{
+				//Remove it and continue to the next blanker
 				blankers.RemoveAt(i);
 				continue;
 			}
 
 			float intensity = 0;
+			//If the blanker is still waiting to start, then interpolate to the max intensity based on the wait time
 			if (blanker.StartingWaitTime > 0f && blanker._waitTime > 0f)
 			{
 				intensity = ((blanker.StartingWaitTime - blanker._waitTime) / blanker.StartingWaitTime) * blanker._intensity;
 			}
+			//Otherwise, just use the intensity as is
 			else
 			{
 				intensity = blanker._intensity;
 			}
 
-			//Debug.Log("INTENSITY = " + intensity);
-
+			//If the blanker is moving
 			if (blanker._waitTime == 0f)
 			{
-				//Do movement
+				//If the blanker has already reached its terminal velocity
 				if (blanker._reachedTerminalVelocity)
 				{
+					//Store the sign of the velocity
 					var signBefore = Mathf.Sign(blanker._velocity);
-					//var previous = blanker._velocity;
+
+					//Apply deacceleration
 					blanker._velocity -= blanker.Deacceleration * Time.deltaTime;
+					//Get the new sign of the velocity
 					var signAfter = Mathf.Sign(blanker._velocity);
+
+					//If the direction of the velocity changed
 					if (signBefore != signAfter)
 					{
-						//Debug.Log("SIGN FLIP");
-						//Debug.Log("PREVIOUS VALUE = " + previous);
-						//Debug.Log("Current Value = " + blanker._velocity);
+						//Reset the velocity to zero
 						blanker._velocity = 0f;
 						blanker.Deacceleration = 0f;
 					}
 				}
+				//If the blanker has not yet reached its terminal velocity
 				else
 				{
+					//Increase the velocity
 					blanker._velocity += blanker.Acceleration * Time.deltaTime;
+					//If the velocity has reached the terminal velocity
 					if ((blanker.TerminalVelocity >= 0f && blanker._velocity >= blanker.TerminalVelocity) || (blanker.TerminalVelocity < 0f && blanker._velocity <= blanker.TerminalVelocity))
 					{
 						blanker._reachedTerminalVelocity = true;
@@ -314,32 +341,44 @@ public class InfectionWave : MonoBehaviour
 
 				var oldVertex = blanker.Vertex;
 
+				//Move the blanker by a set amount
 				blanker.WaveX += blanker._velocity * Time.deltaTime;
+				//Update it's wave x position
 				blanker.Vertex = GetVertexAtWaveX(blanker.WaveX);
 
+				//Set the blanking color of any verticies the blanker has passed along the way
 				if (blanker.Vertex >= oldVertex)
 				{
-					for (int b = oldVertex; b < blanker.Vertex; b++)
+					for (int b = oldVertex; b < blanker.Vertex; b += 2)
 					{
-						SetBlankIntensity(b, intensity);
+						if (b >= 0 && b < meshVerticies.Count)
+						{
+							SetBlankIntensity(b, intensity);
+						}
 					}
 				}
 				else
 				{
-					for (int b = blanker.Vertex - 1; b >= oldVertex; b--)
+					for (int b = blanker.Vertex - 1; b >= oldVertex; b -= 2)
 					{
-						SetBlankIntensity(b, intensity);
+						if (b >= 0 && b < meshVerticies.Count)
+						{
+							SetBlankIntensity(b, intensity);
+						}
 					}
 				}
 
+#if UNITY_EDITOR
 				var worldPos = ConvertToWorldCoordinates(blanker.WaveX, 1f);
 				Debug.DrawLine(worldPos, (Vector3)worldPos + new Vector3(0f, 10f, 0f), Color.magenta);
-
+#endif
+				//Decay the intensity by a set amount
 				blanker._intensity -= blanker.DecayRate * Time.deltaTime;
 			}
+			//If the blanker is waiting to start
 			else
 			{
-				//Decrease the timer
+				//Decrease the timer. When the timer's zero, the blanker can move
 				blanker._waitTime -= Time.deltaTime;
 				if (blanker._waitTime < 0f)
 				{
@@ -347,30 +386,19 @@ public class InfectionWave : MonoBehaviour
 				}
 			}
 
-			SetBlankIntensity(blanker.Vertex, intensity);
-			SetBlankIntensity(blanker.Vertex + 1, intensity);
-
-			if (splitVerticies.Contains(blanker.Vertex))
+			if (blanker.Vertex >= 0 && blanker.Vertex < meshVerticies.Count)
 			{
-				SetBlankIntensity(blanker.Vertex + 2, intensity);
-				SetBlankIntensity(blanker.Vertex + 3, intensity);
+				SetBlankIntensity(blanker.Vertex, intensity);
 			}
 
-			if (splitVerticies.Contains(blanker.Vertex - 2))
-			{
-				SetBlankIntensity(blanker.Vertex - 2, intensity);
-				SetBlankIntensity(blanker.Vertex - 1, intensity);
-			}
-
+			//SPREAD CODE
 			int spreadVertexCounter = blanker.Vertex;
 			for (int z = 0; z < blanker.Spread; z++)
 			{
-				if (spreadVertexCounter >= 0)
+				if (spreadVertexCounter >= 0 && spreadVertexCounter < meshVerticies.Count)
 				{
 					SetBlankIntensity(spreadVertexCounter, Mathf.Min(intensity,1f) * (1 - (z / (float)blanker.Spread)));
-					SetBlankIntensity(spreadVertexCounter + 1, Mathf.Min(intensity, 1f) * (1 - (z / (float)blanker.Spread)));
-
-					if (splitVerticies.Contains(spreadVertexCounter - 2))
+					if (verticiesThatAreSplit.Contains(spreadVertexCounter - 2))
 					{
 						z--;
 					}
@@ -387,12 +415,10 @@ public class InfectionWave : MonoBehaviour
 
 			for (int z = 0; z < blanker.Spread; z++)
 			{
-				if (spreadVertexCounter < verticies.Count)
+				if (spreadVertexCounter >= 0 && spreadVertexCounter < meshVerticies.Count)
 				{
 					SetBlankIntensity(spreadVertexCounter,  Mathf.Min(intensity, 1f) * (1 - (z / (float)blanker.Spread)));
-					SetBlankIntensity(spreadVertexCounter + 1, Mathf.Min(intensity, 1f) * (1 - (z / (float)blanker.Spread)));
-
-					if (splitVerticies.Contains(spreadVertexCounter))
+					if (verticiesThatAreSplit.Contains(spreadVertexCounter))
 					{
 						z--;
 					}
@@ -404,8 +430,6 @@ public class InfectionWave : MonoBehaviour
 					break;
 				}
 			}
-
-			blankers[i] = blanker;
 		}
 	}
 
@@ -416,36 +440,16 @@ public class InfectionWave : MonoBehaviour
 		{
 			var split = splits[s];
 
+#if UNITY_EDITOR
 			var worldPos = ConvertToWorldCoordinates(split.WaveX, 0f);
 			Debug.DrawLine(worldPos, worldPos + new Vector2(0f, 10f), Color.green);
+#endif
 
+			//If the split time is up
 			if (split._timer >= split.SplitTime)
 			{
-				//Debug.Log("Out of Bounds = " + split.OutOfBounds);
-				//Debug.Log("Split Vertex = " + split.VertexPoint);
-				//Debug.Log("Splits At Vertex = " + GetSplitsOnVertex(split.VertexPoint));
-				if (!split.OutOfBounds && GetSplitsOnVertex(split.VertexPoint) == 1)
-				{
-					Debug.Log("REMOVING SPLIT At Position = " + split.WaveX);
-					RemoveSplit(split);
-					splitVerticies.Remove(split.VertexPoint);
-					//TODO : TAKE INTO ACCOUNT ALL THE UV SUBTRACTIONS OF ALL THE SPLITS
-				}
-				/*else
-				{
-					for (int z = 0; z < splits.Count; z++)
-					{
-						if (z != s && splits[z].VertexPoint == split.VertexPoint)
-						{
-							//var uvDifference = uv[split.VertexPoint].x - uv[split.VertexPoint + 4].x;
-							//var zTemp = splits[z];
-							//zTemp._extraUVOffset += uvDifference;
-							//splits[z] = zTemp;
-						}
-					}
-				}*/
-
-				splits.RemoveAt(s);
+				//Remove the split
+				RemoveSplit(split);
 				continue;
 			}
 
@@ -455,7 +459,7 @@ public class InfectionWave : MonoBehaviour
 			{
 				split._timer = split.SplitTime;
 			}
-			splits[s] = split;
+
 			var nextValue = splitCurve.Evaluate(split._timer / split.SplitTime);
 
 			var difference = ((nextValue - previousValue) * split.SplitAmount) / textureScale.x;
@@ -464,74 +468,70 @@ public class InfectionWave : MonoBehaviour
 			{
 				if (split.WaveX >= 1f)
 				{
-					for (int i = 0; i < uv.Count; i++)
+					//CAN BE MADE PARRALEL
+					for (int i = 0; i < meshUVs.Count; i++)
 					{
-						uv[i] = uv[i] + new Vector3(difference / 2f, 0f, 0f);
+						meshUVs[i] = meshUVs[i] + new Vector3(difference / 2f, 0f, 0f);
 					}
 				}
 				else if (split.WaveX <= 0f)
 				{
-					for (int i = 0; i < uv.Count; i++)
+					//CAN BE MADE PARRALEL
+					for (int i = 0; i < meshUVs.Count; i++)
 					{
-						uv[i] = uv[i] - new Vector3(difference / 2f, 0f, 0f);
+						meshUVs[i] = meshUVs[i] - new Vector3(difference / 2f, 0f, 0f);
 					}
 				}
 			}
 			else
 			{
-				for (int i = 0; i < uv.Count; i++)
+				//CAN BE MADE PARRALEL
+				for (int i = 0; i < meshUVs.Count; i++)
 				{
 					if (i <= (split.VertexPoint + 1))
 					{
-						uv[i] = uv[i] + new Vector3(difference / 2f, 0f, 0f);
+						meshUVs[i] = meshUVs[i] + new Vector3(difference / 2f, 0f, 0f);
 					}
 					else
 					{
-						uv[i] = uv[i] - new Vector3(difference / 2f, 0f, 0f);
+						meshUVs[i] = meshUVs[i] - new Vector3(difference / 2f, 0f, 0f);
 					}
 				}
 			}
 		}
 	}
 
+	float WaveXToWorld(float waveX)
+	{
+		var scale = transform.localScale;
+		//var position = transform.position - (scale / 2f);
+		//return Mathf.LerpUnclamped(position.x - (scale.x / 2f), position.x + (scale.x / 2f), waveX);
+
+		return (scale.x * waveX) + (transform.position.x - (scale.x / 2f));
+	}
+
 	void RunWaveCalculation()
 	{
-		//for (int i = 0; i < wavePoints; i++)
-
-		for (int i = 0; i < verticies.Count; i += 2)
+		//THIS CAN BE RUN IN PARALLEL
+		for (int i = 0; i < meshVerticies.Count; i += 2)
 		{
-			var waveX = verticies[i].x;
+			var waveX = meshVerticies[i].x;
 
-			var heightValue = baseHeight - 0.5f + CalculateWave(waveX);
-			/*if (heightValue <= 0.1f)
-			{
-				Debug.Log("Height Value = " + heightValue);
-			}*/
+			var heightValue = baseHeight - 0.5f + CalculateWave(WaveXToWorld(waveX));
 
-			//heightValue + 0.5f
-
-			verticies[1 + i] = new Vector3(waveX, heightValue, 0f);
-			uv[1 + i] = new Vector3(uv[1 + i].x, Mathf.Lerp(heightValue + 0.5f,1f,squashFactor), uv[1 + i].z);
-
-			/*var bottomUV = uv[i];
-			bottomUV.z = blankingTest;
-			uv[i] = bottomUV;*/
+			meshVerticies[1 + i] = new Vector3(waveX, heightValue, 0f);
+			meshUVs[1 + i] = new Vector3(meshUVs[1 + i].x, Mathf.Lerp(heightValue + 0.5f,1f,squashFactor), meshUVs[1 + i].z);
 		}
 		mesh.Clear();
-		mesh.SetVertices(verticies);
-		mesh.SetTriangles(triangles, 0);
-		//mesh.vertices = verticies;
-		mesh.SetUVs(0, uv);
-		//mesh.uv = uv;
+		mesh.SetVertices(meshVerticies);
+		mesh.SetTriangles(meshTriangles, 0);
+		mesh.SetUVs(0, meshUVs);
 
 		mesh.RecalculateNormals();
 		mesh.RecalculateBounds();
 
-		UpdateColliderPoints(colliderPoints, verticies);
+		UpdateColliderPoints(colliderPoints, meshVerticies);
 		UpdatePolygonCollider(colliderPoints);
-
-		//waveMaterial.SetFloat(xTileID, transform.localScale.x);
-		//waveMaterial.SetFloat(yTileID, transform.localScale.y);
 	}
 
 	Mesh GenerateWaveMesh(out List<Vector3> verticies, out List<int> triangles, out List<Vector3> uv)
@@ -540,8 +540,6 @@ public class InfectionWave : MonoBehaviour
 
 		mesh.MarkDynamic();
 
-		//verticies = new Vector3[wavePoints * 2];
-		//triangles = new int[(wavePoints - 1) * 6];
 		verticies = new List<Vector3>(wavePoints * 2);
 		triangles = new List<int>((wavePoints - 1) * 6);
 		//uv = new Vector3[wavePoints * 2];
@@ -549,27 +547,15 @@ public class InfectionWave : MonoBehaviour
 
 		for (int i = 0; i < wavePoints; i++)
 		{
-			//verticies[i * 2] = new Vector3(-0.5f + (i / (wavePoints - 1f)), -0.5f, 0f);
-			//verticies[(i * 2) + 1] = new Vector3(-0.5f + (i / (wavePoints - 1f)), 0.5f, 0f);
-
 			verticies.Add(new Vector3(-0.5f + (i / (wavePoints - 1f)), -0.5f, 0f));
 			verticies.Add(new Vector3(-0.5f + (i / (wavePoints - 1f)), 0.5f, 0f));
 
 			uv.Add(new Vector3(i / (wavePoints - 1f), 0f, 0f));
 			uv.Add(new Vector3(i / (wavePoints - 1f), 1f, 0f));
-			//uv[i * 2] = new Vector3(i / (wavePoints - 1f), 0f,0f);
-			//uv[(i * 2) + 1] = new Vector3(i / (wavePoints - 1f), 1f,0f);
 		}
 
 		for (int i = 0; i < (wavePoints - 1); i++)
 		{
-			/*triangles[0 + (i * 6)] = 0 + (i * 2);
-			triangles[1 + (i * 6)] = 1 + (i * 2);
-			triangles[2 + (i * 6)] = 2 + (i * 2);
-
-			triangles[3 + (i * 6)] = 1 + (i * 2);
-			triangles[4 + (i * 6)] = 3 + (i * 2);
-			triangles[5 + (i * 6)] = 2 + (i * 2);*/
 			triangles.Add(0 + (i * 2));
 			triangles.Add(1 + (i * 2));
 			triangles.Add(2 + (i * 2));
@@ -579,15 +565,10 @@ public class InfectionWave : MonoBehaviour
 			triangles.Add(2 + (i * 2));
 		}
 
-		//mesh.vertices = verticies;
-		//mesh.triangles = triangles;
 		mesh.SetVertices(verticies);
 		mesh.SetTriangles(triangles, 0);
 		mesh.SetUVs(0, uv);
-		//mesh.uv = uv;
 		mesh.RecalculateNormals();
-
-
 
 		return mesh;
 	}
@@ -595,7 +576,6 @@ public class InfectionWave : MonoBehaviour
 	List<Vector2> GenerateColliderPoints(List<Vector3> verticies)
 	{
 		var length = verticies.Count;
-		//Vector2[] colliderPoints = new Vector2[(length / 2) + 2];
 		List<Vector2> colliderPoints = new List<Vector2>((length / 2) + 2);
 
 		for (int i = 0; i < (length / 2) + 2; i++)
@@ -622,24 +602,28 @@ public class InfectionWave : MonoBehaviour
 
 	void UpdatePolygonCollider(List<Vector2> colliderPoints)
 	{
-		if (tempArray == null || tempArray.GetLength(0) != colliderPoints.Count)
+		var retainedPoints = (((colliderPoints.Count - 2) / 2) / colliderQuality) + 3;
+
+		var rejectedPoints = ((colliderPoints.Count - 2) / 2) - retainedPoints;
+
+		if (tempArray == null || tempArray.GetLength(0) != (retainedPoints))
 		{
-			tempArray = new Vector2[colliderPoints.Count];
+			tempArray = new Vector2[retainedPoints];
 		}
 
-		for (int i = 0; i < colliderPoints.Count; i++)
+		for (int i = 0; i < (colliderPoints.Count - 2) / 2; i++)
 		{
-			tempArray[i] = colliderPoints[i];
+			if (i % colliderQuality == 0)
+			{
+				tempArray[i / colliderQuality] = colliderPoints[i * 2];
+			}
 		}
+
+		tempArray[retainedPoints - 3] = colliderPoints[colliderPoints.Count - 3];
+		tempArray[retainedPoints - 2] = colliderPoints[colliderPoints.Count - 2];
+		tempArray[retainedPoints - 1] = colliderPoints[colliderPoints.Count - 1];
 
 		polyCollider.points = tempArray;
-	}
-
-
-
-	float CalculateWave(float x)
-	{
-		return 1f + Mathf.Sin((x + Time.time) * Mathf.PI * 2f);
 	}
 
 	Vector2 ConvertToWorldCoordinates(float waveX, float waveY)
@@ -650,9 +634,11 @@ public class InfectionWave : MonoBehaviour
 	Vector2 ConvertToWorldCoordinates(Vector2 waveCoords)
 	{
 		var scale = transform.localScale;
-		var position = transform.position;
+		var position = transform.position - (scale / 2f);
 
-		return new Vector2(Mathf.LerpUnclamped(position.x - (scale.x / 2f), position.x + (scale.x / 2f),waveCoords.x), Mathf.LerpUnclamped(position.y - (scale.y / 2f), position.y + (scale.y / 2f), waveCoords.y + baseHeight + 0.5f));
+		return new Vector2((waveCoords.x * scale.x) + position.x,(waveCoords.y * scale.y) + position.y);
+
+		//return new Vector2(Mathf.LerpUnclamped(position.x - (scale.x / 2f), position.x + (scale.x / 2f),waveCoords.x), Mathf.LerpUnclamped(position.y - (scale.y / 2f), position.y + (scale.y / 2f), waveCoords.y + baseHeight + 0.5f));
 	}
 
 	Vector2 ConvertToWaveCoordinates(float worldX, float worldY)
@@ -663,95 +649,73 @@ public class InfectionWave : MonoBehaviour
 	Vector2 ConvertToWaveCoordinates(Vector2 worldCoords)
 	{
 		var scale = transform.localScale;
-		var position = transform.position;
+		var position = transform.position - (scale / 2f);
 
-		return new Vector2(UnclampedInverseLerp(position.x - (scale.x / 2f), position.x + (scale.x / 2f), worldCoords.x), UnclampedInverseLerp(position.y - (scale.y / 2f), position.y + (scale.y / 2f), worldCoords.y) - baseHeight - 0.5f);
+		return new Vector2((worldCoords.x - position.x) / scale.x, (worldCoords.y - position.y) / scale.y);
+
+		//return new Vector2(UnclampedInverseLerp(position.x - (scale.x / 2f), position.x + (scale.x / 2f), worldCoords.x), UnclampedInverseLerp(position.y - (scale.y / 2f), position.y + (scale.y / 2f), worldCoords.y) - baseHeight - 0.5f);
 	}
 
-	static void UpdateUV(List<Vector3> list, int index, float x = float.NaN, float y = float.NaN, float z = float.NaN)
+	//Rounds a wave x position to the nearest vertex
+	float RoundWaveXToNearestVertex(float waveX)
 	{
-		var oldValue = list[index];
-		list[index] = new Vector3(x == float.NaN ? oldValue.x : x, y == float.NaN ? oldValue.y : y, z == float.NaN ? oldValue.z : z);
-	}
-
-	float UnclampedInverseLerp(float a, float b, float value)
-	{
-		return (value - a) / (b - a);
+		return Mathf.RoundToInt(waveX * (wavePoints - 1f)) / (wavePoints - 1f);
 	}
 
 	void AddSplitPoint(float waveX, int splitAmount, float splitTime)
 	{
-		float roundedPosition = Mathf.RoundToInt(waveX * (wavePoints - 1f)) / (wavePoints - 1f);
+		//Round the wave x position to the nearest vertex
+		waveX = RoundWaveXToNearestVertex(waveX);
 
 
-		bool splitAlreadyExists = false;
-		SplitPoint sharedSplit = default(SplitPoint);
+		//Gets the split that is already at that wave x position, if there is one
+		SplitPoint sharedSplit = GetSplitAtWaveX(waveX);
 
-		for (int i = 0; i < splits.Count; i++)
-		{
-			if (splits[i].WaveX == roundedPosition)
-			{
-				//Debug.Log("Split Already Exists");
-				splitAlreadyExists = true;
-				sharedSplit = splits[i];
-				break;
-			}
-		}
+		//Check if the split is being spawned outside of the wave's visible area.
+		//Out of bounds splits are handled differently
+		bool outOfBounds = waveX <= 0f || waveX >= 1f;
 
-		bool outOfBounds = roundedPosition <= 0f || roundedPosition >= 1f;
-
+		//Create the split object
 		var split = new SplitPoint
 		{
-			WaveX = roundedPosition,
+			WaveX = waveX,
 			SplitAmount = splitAmount,
 			SplitTime = splitTime,
 			OutOfBounds = outOfBounds,
 			_timer = 0
 		};
 
-		if (splitAlreadyExists)
+		//If the new split is being shared with another split
+		if (sharedSplit != null)
 		{
+			//Set it to use the same vertex points as the shared one
 			split.VertexPoint = sharedSplit.VertexPoint;
 			split.BaseVertexPoint = sharedSplit.BaseVertexPoint;
 		}
 
-		Debug.Log("WAVE X = " + roundedPosition);
+		//Debug.Log("WAVE X = " + waveX);
 		//Debug.Log("OUT OF BOUNDS WAVE = " + outOfBounds);
 
-
-		if (!outOfBounds && !splitAlreadyExists)
+		//If the split is not out of bounds and is not shared with any other split, then it will split the mesh apart
+		if (!outOfBounds && sharedSplit == null)
 		{
 			int baseVertexPosition = 0;
-			int vertexPosition = GetVertexAtWaveX(roundedPosition, out baseVertexPosition);
-			//var baseVertexPosition = Mathf.RoundToInt((roundedPosition * (wavePoints - 1)) * 2f);
-			//var vertexPosition = baseVertexPosition;
+			//Calculate the vertex position of the split. Also get the base vertex position, which doesn't account for previous splits
+			int vertexPosition = GetVertexAtWaveX(waveX, out baseVertexPosition);
 
-
-			/*for (int i = 0; i < splits.Count; i++)
-			{
-				if (splits[i].WaveX < waveX)
-				{
-					vertexPosition += 2;
-				}
-			}*/
-
+			//Set the vertex points
 			split.VertexPoint = vertexPosition;
 			split.BaseVertexPoint = baseVertexPosition;
 
-			Debug.Log("VERTEX POINT = " + split.VertexPoint);
+			//Add the vertex to the list of verticies that are being split apart
+			verticiesThatAreSplit.Add(split.VertexPoint);
 
-			splitVerticies.Add(split.VertexPoint);
 
 			for (int i = 0; i < splits.Count; i++)
 			{
-				if (!splits[i].OutOfBounds && splits[i].WaveX > roundedPosition)
+				if (!splits[i].OutOfBounds && splits[i].WaveX > waveX)
 				{
-					var splitTemp = splits[i];
-					//splitDictionary.Remove(splitTemp.VertexPoint);
-					splitTemp.VertexPoint += 2;
-					splitTemp.WaveX = GetWaveXAtVertex(splitTemp.VertexPoint);
-					//splitDictionary.Add(splitTemp.VertexPoint, splitTemp);
-					splits[i] = splitTemp;
+					splits[i].VertexPoint += 2;
 				}
 			}
 
@@ -759,136 +723,87 @@ public class InfectionWave : MonoBehaviour
 			{
 				if (blankers[i].WaveX <= 1f && blankers[i].WaveX >= 0f && blankers[i].Vertex > vertexPosition)
 				{
-					var blankerTemp = blankers[i];
-					blankerTemp.Vertex += 2;
-					blankerTemp.WaveX = GetWaveXAtVertex(blankerTemp.Vertex);
-					blankers[i] = blankerTemp;
+					blankers[i].Vertex += 2;
 				}
 			}
 
-			/*Debug.Log("SPLIT COUNT = " + splits.Count);
+			var bottomVertex = meshVerticies[vertexPosition];
+			var topVertex = meshVerticies[vertexPosition + 1];
 
-			if (splits.Count == 1)
-			{
-				var worldPos = ConvertToWorldCoordinates(split.WaveX, 0f);
-				Debug.Log("WORLD POS = " + worldPos);
-				Debug.DrawLine(worldPos,worldPos + new Vector2(0f,20f),Color.cyan,10f);
-			}*/
+			meshVerticies.Insert(vertexPosition + 2, topVertex);
+			meshVerticies.Insert(vertexPosition + 2, bottomVertex);
 
-			var bottomVertex = verticies[vertexPosition];
-			var topVertex = verticies[vertexPosition + 1];
+			var uvBottom = meshUVs[vertexPosition];
+			var uvTop = meshUVs[vertexPosition + 1];
 
-			//Debug.Log("Split Left" + vertexPosition);
-			//Debug.Log("Split Right" + (vertexPosition + 2));
-
-			verticies.Insert(vertexPosition + 2, topVertex);
-			verticies.Insert(vertexPosition + 2, bottomVertex);
-
-			var uvBottom = uv[vertexPosition];
-			var uvTop = uv[vertexPosition + 1];
-
-			/*var temp = uv[vertexPosition];
-			temp.z = 1f;
-			uv[vertexPosition] = temp;*/
-
-			/*var temp = uv[vertexPosition];
-			temp.z = 10f;
-			uv[vertexPosition] = temp;
-
-			temp = uv[vertexPosition + 1];
-			temp.z = 10f;
-			uv[vertexPosition + 1] = temp;*/
-
-			//uvBottom.z = 1f;
-			//uvTop.z = 1f;
-
-			uv.Insert(vertexPosition + 2, uvTop);
-			uv.Insert(vertexPosition + 2,uvBottom);
-
-			//Debug.Log("Split Left Value = " + uv[vertexPosition]);
-			//Debug.Log("Split Right Value = " + uv[vertexPosition + 2]);
+			meshUVs.Insert(vertexPosition + 2, uvTop);
+			meshUVs.Insert(vertexPosition + 2,uvBottom);
 
 			colliderPoints.Insert((vertexPosition / 2) + 1,colliderPoints[vertexPosition / 2]);
 
 			var trianglePosition = baseVertexPosition * 3;
 
-			for (int i = trianglePosition; i < triangles.Count; i++)
+			for (int i = trianglePosition; i < meshTriangles.Count; i++)
 			{
-				triangles[i] += 2;
+				meshTriangles[i] += 2;
 			}
 		}
 
 		splits.Add(split);
-		//splitDictionary.Add(split.VertexPoint, split);
 		splits.Sort(splitSorter);
 	}
 
 	void RemoveSplit(SplitPoint split)
 	{
-		Debug.Log("Removing with Vertex Point = " + split.VertexPoint);
-		//Debug.Log("Left UV = " + uv[split.VertexPoint].x);
-		//Debug.Log("Right UV = " + uv[split.VertexPoint + 2].x);
-
-		var uvDifference = uv[split.VertexPoint].x - uv[split.VertexPoint + 2].x;// + split._extraUVOffset;
-		//Debug.Log("________________Removing With Difference = " + uvDifference);
-
-		for (int i = 0; i < splits.Count; i++)
+		//If the split is out of bounds or there is no singular split on the vertex, then verticies do not need to be rearranged, so exit out
+		if (split.OutOfBounds || GetSplitsOnVertex(split.VertexPoint) != 1)
 		{
-			if (!splits[i].OutOfBounds && splits[i].VertexPoint > split.VertexPoint)
-			{
-				var splitTemp = splits[i];
-				splitTemp.VertexPoint -= 2;
-				splits[i] = splitTemp;
-			}
+			return;
 		}
+		//Remove the split from the list of verticies that are split
+		verticiesThatAreSplit.Remove(split.VertexPoint);
 
-		if (Mathf.Abs(verticies[split.VertexPoint].x - verticies[split.VertexPoint + 2].x) < 0.00110102f)
-		{
-			Debug.Log("Vertex at " + split.VertexPoint + " is a valid split!");
-		}
-		else
-		{
-			Debug.Log("Vertex at " + split.VertexPoint + " is NOT a valid split!");
+		//Calculate the difference between the left side of the split and the right side of the split
+		//This is used later to adjust the UV values
+		var uvDifference = meshUVs[split.VertexPoint].x - meshUVs[split.VertexPoint + 2].x;
 
-			for (int i = 0; i < verticies.Count; i += 2)
-			{
-				if (i - 2 >= 0 && Mathf.Abs(verticies[i - 2].x - verticies[i].x) < 0.00110102f)
-				{
-					Debug.Log("But the vertex at " + (i - 2) + "is a valid split!");
-					break;
-				}
-			}
-		}
+		//Any splits that are to the right of this split get shifted back to compensate
+		ShiftBackOtherSplits(split.VertexPoint);
 
-		verticies.RemoveAt(split.VertexPoint + 3);
-		verticies.RemoveAt(split.VertexPoint + 2);
+		//Remove the mesh verticies at the split
+		meshVerticies.RemoveAt(split.VertexPoint + 3);
+		meshVerticies.RemoveAt(split.VertexPoint + 2);
 
-		uv.RemoveAt(split.VertexPoint + 3);
-		uv.RemoveAt(split.VertexPoint + 2);
+		//Remove the mesh UVs at the split
+		meshUVs.RemoveAt(split.VertexPoint + 3);
+		meshUVs.RemoveAt(split.VertexPoint + 2);
 
+		//Remove the collider points at the split
 		colliderPoints.RemoveAt((split.VertexPoint / 2) + 1);
 
-		for (int i = split.VertexPoint + 2; i < uv.Count; i++)
+		//All UVS that are to the right of the vertex point get their uvs shifted
+		for (int i = split.VertexPoint + 2; i < meshUVs.Count; i++)
 		{
-			var currentUV = uv[i];
-			currentUV.x += uvDifference;// + split._extraUVOffset;
-			uv[i] = currentUV;
+			var currentUV = meshUVs[i];
+			currentUV.x += uvDifference;
+			meshUVs[i] = currentUV;
 		}
 
+		//Calculate the triangle that is located at the split point
 		var trianglePosition = split.BaseVertexPoint * 3;
 
-		for (int i = trianglePosition; i < triangles.Count; i++)
+		//All triangles after it get shifted back to remove the split
+		for (int i = trianglePosition; i < meshTriangles.Count; i++)
 		{
-			triangles[i] -= 2;
+			meshTriangles[i] -= 2;
 		}
 
-		//Debug.Log("UV DIFFERENCE = " + uvDifference);
-		//Debug.Log("UV Difference After = " + (uv[split.VertexPoint].x - uv[split.VertexPoint + 2].x));
+		splits.Remove(split);
 	}
 
 	void AddBlankerLine(float waveX, float acceleration, float terminalVelocity, float deacceleration, float startingIntensity, float startingWaitTime, float spread, float decayRate)
 	{
-		Debug.Log("___ADDING BLANKER");
+		//Debug.Log("___ADDING BLANKER");
 		blankers.Add(new BlankerLine
 		{
 			Acceleration = acceleration,
@@ -904,9 +819,38 @@ public class InfectionWave : MonoBehaviour
 		});
 	}
 
-	static float SmoothEval(float t)
+	/// <summary>
+	/// Gets the split at the specified wave X. Returns null if no split was found
+	/// </summary>
+	/// <param name="waveX">The wave x position</param>
+	/// <returns>The split at that position. Returns null if no split was found</returns>
+	SplitPoint GetSplitAtWaveX(float waveX)
 	{
-		return (6 * Mathf.Pow(t, 5f)) - (15 * Mathf.Pow(t, 4f)) + (10 * Mathf.Pow(t,3f));
+		for (int i = 0; i < splits.Count; i++)
+		{
+			if (splits[i].WaveX == waveX)
+			{
+				return splits[i];
+			}
+		}
+		return null;
+	}
+
+	/// <summary>
+	/// Gets the split at the specified vertex. Returns null if no split was found
+	/// </summary>
+	/// <param name="vertex">The vertex position</param>
+	/// <returns>The split at that position. Returns null if no split was found</returns>
+	SplitPoint GetSplitAtVertex(int vertex)
+	{
+		for (int i = 0; i < splits.Count; i++)
+		{
+			if (splits[i].VertexPoint == vertex)
+			{
+				return splits[i];
+			}
+		}
+		return null;
 	}
 
 
@@ -932,22 +876,60 @@ public class InfectionWave : MonoBehaviour
 		return vertexPosition;
 	}
 
-	float GetWaveXAtVertex(int vertexPosition)
+	/*float GetWaveXAtVertex(int vertexPosition)
 	{
-		for (int i = splits.Count - 1; i >= 0; i--)
-		{
-			if (vertexPosition > splits[i].VertexPoint)
-			{
-				vertexPosition -= 2;
-			}
-		}
-		return (vertexPosition / 2) / (wavePoints - 1f);
-	}
+		return meshVerticies[vertexPosition].x;
+	}*/
 
 	void SetBlankIntensity(int uvPoint, float intensity)
 	{
-		var point = uv[uvPoint];
-		uv[uvPoint] = point.With(z: Math.Max(point.z,intensity));
+		var point = meshUVs[uvPoint];
+		meshUVs[uvPoint] = point.With(z: Math.Max(point.z, intensity));
+		meshUVs[uvPoint + 1] = point.With(z: Math.Max(point.z, intensity));
+
+		if (verticiesThatAreSplit.Contains(uvPoint))
+		{
+			point = meshUVs[uvPoint + 2];
+			meshUVs[uvPoint + 2] = point.With(z: Math.Max(point.z, intensity));
+			meshUVs[uvPoint + 3] = point.With(z: Math.Max(point.z, intensity));
+		}
+
+		if (verticiesThatAreSplit.Contains(uvPoint - 2))
+		{
+			point = meshUVs[uvPoint - 2];
+			meshUVs[uvPoint - 2] = point.With(z: Math.Max(point.z, intensity));
+			meshUVs[uvPoint - 1] = point.With(z: Math.Max(point.z, intensity));
+		}
+	}
+
+	/// <summary>
+	/// Any splits that are to the right of the specified <paramref name="vertex"/> will be shifted left by 2 verticies to compensate
+	/// </summary>
+	/// <param name="vertex"></param>
+	void ShiftBackOtherSplits(int vertex)
+	{
+		for (int i = splits.Count - 1; i >= 0; i--)
+		{
+			if (!splits[i].OutOfBounds && splits[i].VertexPoint > vertex)
+			{
+				splits[i].VertexPoint -= 2;
+			}
+		}
+	}
+
+	/// <summary>
+	/// Any splits that are to the right of the specified <paramref name="vertex"/> will be shifted right by 2 verticies
+	/// </summary>
+	/// <param name="vertex"></param>
+	void ShiftSplitsPastVertex(int vertex)
+	{
+		for (int i = 0; i < splits.Count; i++)
+		{
+			if (!splits[i].OutOfBounds && splits[i].VertexPoint > vertex)
+			{
+				splits[i].VertexPoint += 2;
+			}
+		}
 	}
 
 	int GetSplitsOnVertex(int vertex)
@@ -961,5 +943,27 @@ public class InfectionWave : MonoBehaviour
 			}
 		}
 		return sharedCount;
+	}
+
+	float CalculateWave(float x)
+	{
+		float value = 0f;
+		for (int i = 0; i < generators.Count; i++)
+		{
+			value = generators[i].Calculate(x, value);
+		}
+		return value;
+	}
+
+	public void AddGenerator(IWaveGenerator generator)
+	{
+		generators.Add(generator);
+		generators.Sort(generatorSorter);
+	}
+
+	public void RemoveGenerator(IWaveGenerator generator)
+	{
+		generators.Remove(generator);
+		generators.Sort(generatorSorter);
 	}
 }
