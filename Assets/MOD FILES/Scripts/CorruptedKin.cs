@@ -32,8 +32,10 @@ public class CorruptedKin : BossReplacement
 	public Collider2D Collider { get; private set; }
 	public WeaverCore.Components.DamageHero Damager { get; private set; }
 	public SpriteFlasher Flasher { get; private set; }
+	public WaveSystem InfectionWave { get; set; }
 
 	[Header("General Stuff")]
+	public WaveSystem InfectionWavePrefab;
 	public AudioClip JumpSound;
 	public AudioClip LandSound;
 	public AudioClip SwordSlashSound;
@@ -339,10 +341,28 @@ public class CorruptedKin : BossReplacement
 		return Moves.First(m => m is T) as T;
 	}
 
+	void MoveSceneryBack()
+	{
+		var scenery = GameObject.FindObjectsOfType<SpriteRenderer>();
+		foreach (var obj in scenery)
+		{
+			if (GameManager.instance.sm.mapZone == GlobalEnums.MapZone.GODS_GLORY)
+			{
+				WeaverLog.Log("CHANGING SCENERY!!!");
+				if (obj.transform.position.z < 0f && (obj.name.Contains("GG_scenery") || obj.name.Contains("fg_stones") || obj.name.Contains("black_grass")))
+				{
+					var oldPosition = obj.transform.position;
+					obj.transform.position = oldPosition.With(oldPosition.z / 2f);
+				}
+			}
+		}
+	}
+
 	protected override void Awake()
 	{
 		Instance = this;
 		WeaverLog.Log("Corrupted Kin has Awoken");
+		//MoveSceneryBack();
 
 		//Find all corrupted kin moves
 		var moveTypes = typeof(CorruptedKin).Assembly.GetTypes().Where(t => !t.IsAbstract && typeof(CorruptedKinMove).IsAssignableFrom(t));

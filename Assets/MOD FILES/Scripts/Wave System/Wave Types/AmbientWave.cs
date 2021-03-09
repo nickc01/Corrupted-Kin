@@ -58,7 +58,10 @@ public class AmbientWave : MonoBehaviour, IWaveGenerator
 
 	float IWaveGenerator.Calculate(float x, float previousValue)
 	{
-		return (_oscillator * Mathf.Sin((x + _timer) * Mathf.PI * 2f / scale.x) + 1f) / 2f * scale.y;
+		//var value = _oscillator * Mathf.Sin((x + _timer) * Mathf.PI * 2f / scale.x) * scale.y;
+		//return Mathf.Lerp(value, previousValue, previousValue - 1f);
+		return _oscillator * Mathf.Sin((x + _timer) * Mathf.PI * 2f / scale.x) * scale.y;
+		//return value > previousValue ? value : previousValue;
 	}
 
 	void IWaveGenerator.OnWaveEnd(WaveSystem source)

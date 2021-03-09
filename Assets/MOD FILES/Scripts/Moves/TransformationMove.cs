@@ -61,6 +61,13 @@ public class TransformationMove : CorruptedKinMove
 		summonGrass.transform.position = new Vector3(Kin.leftX + (26.33213f - 16.06f), Kin.floorY + (27.10731f - 28.19727f), Kin.transSummonGrassZ);
 
 		summonGrass.gameObject.SetActive(true);
+#if UNITY_EDITOR
+		Kin.InfectionWave = GameObject.FindObjectOfType<WaveSystem>();
+#endif
+		if (Kin.InfectionWave == null)
+		{
+			Kin.InfectionWave = GameObject.Instantiate(Kin.InfectionWavePrefab, new Vector3(Kin.leftX + (27f - 16.06f), Kin.floorY + (22.84f - 28.19727f), Kin.InfectionWavePrefab.transform.position.z), Quaternion.identity);
+		}
 
 		var summonParticles = summonGrass.GetComponent<ParticleSystem>();
 

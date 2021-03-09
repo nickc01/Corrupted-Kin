@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 922cb16af1fb181429d4b9431319abbf
+guid: e282e0c783a191b40a4b7dd2798d093a
 TextureImporter:
   fileIDToRecycleName: {}
   externalObjects: {}
@@ -29,12 +29,12 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 2
+    filterMode: -1
     aniso: -1
     mipBias: -1
-    wrapU: 2
-    wrapV: 2
-    wrapW: 2
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -46,8 +46,8 @@ TextureImporter:
   spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
-  alphaUsage: 0
-  alphaIsTransparency: 0
+  alphaUsage: 1
+  alphaIsTransparency: 1
   spriteTessellationDetail: -1
   textureType: 0
   textureShape: 1

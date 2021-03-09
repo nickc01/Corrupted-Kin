@@ -1915,6 +1915,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _bossStage: 1
   enemyToReplace: Lost Kin
+  InfectionWavePrefab: {fileID: 114394611532683104, guid: 85d28e5160fc19646a05e81a230358ac,
+    type: 2}
   JumpSound: {fileID: 8300000, guid: 6f17ebcec5879774690f4c90395bfe8b, type: 3}
   LandSound: {fileID: 8300000, guid: fe175303b3a154a4b81494664d5ac3f8, type: 3}
   SwordSlashSound: {fileID: 8300000, guid: 60e9fc1b7b96e8b458f3dad2659a1ba0, type: 3}
@@ -2018,7 +2020,7 @@ MonoBehaviour:
   transBlobExplodeSound: {fileID: 8300000, guid: 167b35ff9b3450947aa7228e76c0a0c0,
     type: 3}
   transBlobExplodeVolume: 1
-  transEndDelay: 0.8
+  transEndDelay: 1.6
   transAspidShotMinSize: 0.7
   transAspidShotMaxSize: 1.3
   StunPushAmount: 10

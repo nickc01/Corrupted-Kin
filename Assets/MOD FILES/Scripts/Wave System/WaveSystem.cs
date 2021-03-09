@@ -76,7 +76,7 @@ public class WaveSystem : MonoBehaviour
 	[Tooltip("The base height of the wave. Use this to adjust the overall height")]
 	float baseHeight = 0.5f;
 	[SerializeField]
-	[Range(0f,1f)]
+	[Range(0f,5f)]
 	[Tooltip("How squished the contents of the wave can get")]
 	float squashFactor = 0f;
 	[SerializeField]
@@ -214,10 +214,16 @@ public class WaveSystem : MonoBehaviour
 			}
 		}*/
 
-		AddSplitPoint(test_waveX, SplitAmount, SplitTime);
-		AddBlankerLine(test_waveX, test_acceleration, test_terminalVelocity, test_deacceleration, 1 + (blankingColorDecay * SplitTime), test_startingWaitTime, test_spread, test_decayRate);
-		AddBlankerLine(test_waveX, -test_acceleration, -test_terminalVelocity, -test_deacceleration, 1 + (blankingColorDecay * SplitTime), test_startingWaitTime, test_spread, test_decayRate);
+		//AddSplitPoint(test_waveX, SplitAmount, SplitTime);
+		//AddSplitPoint(test_waveX, SplitAmount, SplitTime);
+		//AddBlankerLine(test_waveX, test_acceleration, test_terminalVelocity, test_deacceleration, 1 + (blankingColorDecay * SplitTime), test_startingWaitTime, test_spread, test_decayRate);
+		//AddBlankerLine(test_waveX, -test_acceleration, -test_terminalVelocity, -test_deacceleration, 1 + (blankingColorDecay * SplitTime), test_startingWaitTime, test_spread, test_decayRate);
 
+		foreach (var generator in GetComponentsInChildren<SlamWave>())
+		{
+			AddGenerator(generator);
+		}
+		//AddGenerator(GetComponentInChildren<SlamWave>());
 	}
 
 	protected virtual void Update()
@@ -504,10 +510,17 @@ public class WaveSystem : MonoBehaviour
 	float WaveXToWorld(float waveX)
 	{
 		var scale = transform.localScale;
-		//var position = transform.position - (scale / 2f);
-		//return Mathf.LerpUnclamped(position.x - (scale.x / 2f), position.x + (scale.x / 2f), waveX);
 
 		return (scale.x * waveX) + (transform.position.x - (scale.x / 2f));
+	}
+
+	float WorldToWaveX(float position)
+	{
+		var scale = transform.localScale;
+
+		//return (scale.x * waveX) + (transform.position.x - (scale.x / 2f));
+
+		return (position - (transform.position.x - (scale.x / 2f))) / scale.x;
 	}
 
 	void RunWaveCalculation()
@@ -520,7 +533,7 @@ public class WaveSystem : MonoBehaviour
 			var heightValue = baseHeight - 0.5f + CalculateWave(WaveXToWorld(waveX));
 
 			meshVerticies[1 + i] = new Vector3(waveX, heightValue, 0f);
-			meshUVs[1 + i] = new Vector3(meshUVs[1 + i].x, Mathf.Lerp(heightValue + 0.5f,1f,squashFactor), meshUVs[1 + i].z);
+			meshUVs[1 + i] = new Vector3(meshUVs[1 + i].x, Mathf.LerpUnclamped(heightValue + 0.5f,1f,squashFactor), meshUVs[1 + i].z);
 		}
 		mesh.Clear();
 		mesh.SetVertices(meshVerticies);
@@ -662,7 +675,7 @@ public class WaveSystem : MonoBehaviour
 		return Mathf.RoundToInt(waveX * (wavePoints - 1f)) / (wavePoints - 1f);
 	}
 
-	void AddSplitPoint(float waveX, int splitAmount, float splitTime)
+	void Internal_AddSplitPoint(float waveX, int splitAmount, float splitTime)
 	{
 		//Round the wave x position to the nearest vertex
 		waveX = RoundWaveXToNearestVertex(waveX);
@@ -801,7 +814,7 @@ public class WaveSystem : MonoBehaviour
 		splits.Remove(split);
 	}
 
-	void AddBlankerLine(float waveX, float acceleration, float terminalVelocity, float deacceleration, float startingIntensity, float startingWaitTime, float spread, float decayRate)
+	void Internal_AddBlankerLine(float waveX, float acceleration, float terminalVelocity, float deacceleration, float startingIntensity, float startingWaitTime, float spread, float decayRate)
 	{
 		//Debug.Log("___ADDING BLANKER");
 		blankers.Add(new BlankerLine
@@ -947,6 +960,7 @@ public class WaveSystem : MonoBehaviour
 
 	float CalculateWave(float x)
 	{
+		x += WaveWidth / 2f;
 		float value = 0f;
 		for (int i = 0; i < generators.Count; i++)
 		{
@@ -959,11 +973,32 @@ public class WaveSystem : MonoBehaviour
 	{
 		generators.Add(generator);
 		generators.Sort(generatorSorter);
+		generator.OnWaveStart(this);
 	}
 
 	public void RemoveGenerator(IWaveGenerator generator)
 	{
+		generator.OnWaveEnd(this);
 		generators.Remove(generator);
 		generators.Sort(generatorSorter);
+	}
+
+	public void AddBlanker(float position, float acceleration, float terminalVelocity, float deacceleration, float startingIntensity, float startingWaitTime, float spread, float decayRate)
+	{
+		var wavePosition = WorldToWaveX(position);
+		var waveAcceleration = acceleration / WaveWidth;
+		var waveTerminalVelocity = terminalVelocity / WaveWidth;
+		var waveDeacceleration = deacceleration / WaveWidth;
+		var waveSpread = spread / WaveWidth;
+
+
+		Internal_AddBlankerLine(wavePosition,waveAcceleration,waveTerminalVelocity,waveDeacceleration,startingIntensity,startingWaitTime,waveSpread,decayRate);
+	}
+
+	public void AddSplit(float position, int splitAmount, float splitTime)
+	{
+		var waveX = WorldToWaveX(position);
+
+		Internal_AddSplitPoint(waveX, splitAmount, splitTime);
 	}
 }
