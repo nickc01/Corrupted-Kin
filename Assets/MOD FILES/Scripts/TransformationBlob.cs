@@ -1,13 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using WeaverCore;
 using WeaverCore.Components;
 using WeaverCore.Enums;
 using WeaverCore.Utilities;
 
 public class TransformationBlob : MonoBehaviour 
 {
-	static WeaverCore.Utilities.ObjectPool TransBlobPool;
+	//static WeaverCore.ObjectPool TransBlobPool;
 	static Sprite defaultSprite;
 
 	WeaverAnimationPlayer animator;
@@ -30,12 +31,18 @@ public class TransformationBlob : MonoBehaviour
 
 	public static TransformationBlob Spawn(Vector3 position)
 	{
-		if (TransBlobPool == null)
+		/*if (TransBlobPool == null)
 		{
-			TransBlobPool = new WeaverCore.Utilities.ObjectPool(CorruptedKinGlobals.Instance.TransBlobPrefab);
+			TransBlobPool = new WeaverCore.ObjectPool(CorruptedKinGlobals.Instance.TransBlobPrefab);
+			defaultSprite = CorruptedKinGlobals.Instance.TransBlobPrefab.GetComponent<SpriteRenderer>().sprite;
+		}*/
+		if (defaultSprite == null)
+		{
 			defaultSprite = CorruptedKinGlobals.Instance.TransBlobPrefab.GetComponent<SpriteRenderer>().sprite;
 		}
-		var instance = TransBlobPool.Instantiate<TransformationBlob>(position, Quaternion.identity);
+
+		//var instance = TransBlobPool.Instantiate<TransformationBlob>(position, Quaternion.identity);
+		var instance = Pooling.Instantiate(CorruptedKinGlobals.Instance.TransBlobPrefab, position, Quaternion.identity);
 		instance.renderer.sprite = defaultSprite;
 		return instance;
 	}

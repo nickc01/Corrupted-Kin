@@ -53,7 +53,7 @@ public class GroundDashMove : CorruptedKinMove
 			var evadeMove = GetMove<EvadeMove>();
 			yield return evadeMove.DoMove();
 		}
-		WeaverAudio.PlayAtPoint(Kin.PrepareSound, transform.position);
+		Audio.PlayAtPoint(Kin.PrepareSound, transform.position);
 		Rigidbody.gravityScale = 0f;
 
 		//yield return Kin.FacePlayerRoutine(false);
@@ -94,7 +94,7 @@ public class GroundDashMove : CorruptedKinMove
 
 		Animator.PlayAnimation("Dash Antic 3");
 
-		WeaverAudio.PlayAtPoint(Kin.DashSoundEffect, transform.position);
+		Audio.PlayAtPoint(Kin.DashSoundEffect, transform.position);
 
 		Kin.DashBurst.SetActive(true);
 
@@ -102,7 +102,7 @@ public class GroundDashMove : CorruptedKinMove
 
 		yield return Animator.PlayAnimationTillDone("Dash Attack 1");
 
-		WeaverAudio.PlayAtPoint(Kin.DashSoundEffect, transform.position);
+		Audio.PlayAtPoint(Kin.DashSoundEffect, transform.position);
 
 		Kin.DashSlash.SetActive(true);
 		Kin.DashSlashHit.SetActive(true);

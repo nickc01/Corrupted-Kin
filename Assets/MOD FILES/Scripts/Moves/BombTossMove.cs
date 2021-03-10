@@ -57,7 +57,7 @@ public class BombTossMove : CorruptedKinMove
 
 		Animator.PlayAnimation("Bomb Prepare New");
 
-		WeaverAudio.PlayAtPoint(Kin.BombTossPrepareSound,transform.position);
+		Audio.PlayAtPoint(Kin.BombTossPrepareSound,transform.position);
 
 		//Kin.BombTossPrepareSound.length;
 		var main = Kin.TossParticles.main;
@@ -91,7 +91,7 @@ public class BombTossMove : CorruptedKinMove
 
 			yield return new WaitForSeconds(Kin.TossingDelay);
 
-			WeaverAudio.PlayAtPoint(Kin.TossSound, transform.position);
+			Audio.PlayAtPoint(Kin.TossSound, transform.position);
 
 			var bombRotation = -Kin.BombAngularVelocity;
 			var bloodSpawnOffset = Kin.TossBloodSpawnOffset;

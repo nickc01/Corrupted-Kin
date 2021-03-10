@@ -8,13 +8,13 @@ using WeaverCore.Interfaces;
 
 public abstract class CorruptedKinMove : IBossMove
 {
-	public enum AttackRangeType
+	/*public enum AttackRangeType
 	{
 		Unspecified,
 		CloseRange,
 		LongRange,
 		Overhead
-	}
+	}*/
 
 
 	public CorruptedKin Kin;
@@ -23,7 +23,7 @@ public abstract class CorruptedKinMove : IBossMove
 	public WeaverAnimationPlayer Animator { get { return Kin.Animator; } }
 	public SpriteRenderer Renderer { get { return Kin.Renderer; } }
 	public Rigidbody2D Rigidbody { get { return Kin.Rigidbody; } }
-	public WeaverAudioPlayer AudioPlayer { get { return Kin.AudioPlayer; } }
+	public AudioPlayer AudioPlayer { get { return Kin.AudioPlayer; } }
 	public CorruptedKinHealth HealthManager { get { return Kin.HealthManager; } }
 	public Collider2D Collider { get { return Kin.Collider; } }
 	public WeaverCore.Components.DamageHero Damager { get { return Kin.Damager; } }

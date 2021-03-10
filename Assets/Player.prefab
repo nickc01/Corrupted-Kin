@@ -38,9 +38,8 @@ GameObject:
   - component: {fileID: 4602875210280416}
   - component: {fileID: 61098589122360962}
   - component: {fileID: 50479533256454364}
-  - component: {fileID: 114062704521903024}
   - component: {fileID: 114672563320522918}
-  - component: {fileID: 114074215082567868}
+  - component: {fileID: 114724795597827374}
   m_Layer: 9
   m_Name: Player
   m_TagString: Untagged
@@ -58,7 +57,7 @@ GameObject:
   - component: {fileID: 4697738939686432}
   - component: {fileID: 212386584457204624}
   - component: {fileID: 61079554039662716}
-  - component: {fileID: 114859780734975656}
+  - component: {fileID: 114191322151774124}
   m_Layer: 20
   m_Name: Slash Box
   m_TagString: Untagged
@@ -86,7 +85,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1291106060419256}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 91.83, y: 8, z: -0.055319488}
+  m_LocalPosition: {x: 23.8, y: 29.61, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4456816792337798}
@@ -202,23 +201,12 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.16, y: 0.16}
   m_EdgeRadius: 0
---- !u!114 &114062704521903024
+--- !u!114 &114191322151774124
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1291106060419256}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2b563eabdd99e64d9da360ccf6dd5c5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114074215082567868
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1291106060419256}
+  m_GameObject: {fileID: 1531880542899060}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8111f97b82aa9e04290a9b28a9bf882c, type: 3}
@@ -240,20 +228,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SlashBox: {fileID: 1531880542899060}
   AttackTime: 0.3
---- !u!114 &114859780734975656
+--- !u!114 &114724795597827374
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1531880542899060}
+  m_GameObject: {fileID: 1291106060419256}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd2dde95ed5f80e46bf4079f3215f977, type: 3}
+  m_Script: {fileID: 11500000, guid: a7f302803f532884b89a6103d9861512, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 50
-  attackType: 0
-  hitDirection: 0
 --- !u!212 &212386584457204624
 SpriteRenderer:
   m_ObjectHideFlags: 1

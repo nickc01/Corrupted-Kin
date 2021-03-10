@@ -11,7 +11,7 @@ public class Scuttler : MonoBehaviour
 {
 	public event Action<Scuttler> SplatEvent;
 
-	static WeaverCore.Utilities.ObjectPool ScuttlerPool;
+	//static WeaverCore.ObjectPool ScuttlerPool;
 
 	protected WeaverAnimationPlayer animator;
 	protected new Rigidbody2D rigidbody;
@@ -301,7 +301,7 @@ public class Scuttler : MonoBehaviour
 
 	protected virtual IEnumerator OnSplat()
 	{
-		var splatSource = WeaverAudio.PlayAtPoint(splatSound, transform.position);
+		var splatSource = Audio.PlayAtPoint(splatSound, transform.position);
 		splatSource.AudioSource.pitch = UnityEngine.Random.Range(splatPitchMin,splatPitchMax);
 		splatEffect.gameObject.SetActive(true);
 		transform.rotation = Quaternion.Euler(0f, 0f, transform.GetZRotation() + UnityEngine.Random.Range(splatRotationMin,splatRotationMax));
@@ -322,12 +322,13 @@ public class Scuttler : MonoBehaviour
 
 	public static Scuttler Spawn(Vector3 position, GameObject target, Vector3 targetOffset)
 	{
-		if (ScuttlerPool == null)
+		/*if (ScuttlerPool == null)
 		{
-			ScuttlerPool = new WeaverCore.Utilities.ObjectPool(CorruptedKinGlobals.Instance.ScuttlerPrefab);
-		}
+			ScuttlerPool = new WeaverCore.ObjectPool(CorruptedKinGlobals.Instance.ScuttlerPrefab);
+		}*/
 
-		var instance = ScuttlerPool.Instantiate<Scuttler>(position + CorruptedKinGlobals.Instance.ScuttlerPrefab.spawnOffset, Quaternion.identity);
+		//var instance = ScuttlerPool.Instantiate<Scuttler>(position + CorruptedKinGlobals.Instance.ScuttlerPrefab.spawnOffset, Quaternion.identity);
+		var instance = Pooling.Instantiate(CorruptedKinGlobals.Instance.ScuttlerPrefab, position + CorruptedKinGlobals.Instance.ScuttlerPrefab.spawnOffset, Quaternion.identity);
 		instance.TargetObject = target;
 		instance.TargetOffset = targetOffset;
 		//instance.transform.position += instance.spawnOffset;

@@ -3,11 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using WeaverCore.Components;
-using WeaverCore.Utilities;
 
 public class AspidShot : EnemyProjectile 
 {
-	static WeaverCore.Utilities.ObjectPool AspidShotPool;
+	static WeaverCore.ObjectPool AspidShotPool;
 
 	new SpriteRenderer light;
 	[NonSerialized]
@@ -87,7 +86,7 @@ public class AspidShot : EnemyProjectile
 	{
 		if (AspidShotPool == null)
 		{
-			AspidShotPool = new WeaverCore.Utilities.ObjectPool(CorruptedKinGlobals.Instance.AspidShotPrefab);
+			AspidShotPool = WeaverCore.ObjectPool.Create(CorruptedKinGlobals.Instance.AspidShotPrefab);
 		}
 
 		var instance = AspidShotPool.Instantiate<AspidShot>(position, Quaternion.identity);

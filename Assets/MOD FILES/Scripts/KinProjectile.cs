@@ -6,11 +6,9 @@ using WeaverCore;
 using WeaverCore.Enums;
 using WeaverCore.Utilities;
 
-using WeaverObjectPool = WeaverCore.Utilities.ObjectPool;
-
 public class KinProjectile : MonoBehaviour 
 {
-	static WeaverObjectPool KinProjectilePool;
+	//static WeaverObjectPool KinProjectilePool;
 
 	new Collider2D collider;
 	ParticleSystem particles;
@@ -157,12 +155,13 @@ public class KinProjectile : MonoBehaviour
 
 	public static KinProjectile Spawn(Vector3 position, Vector2 velocity)
 	{
-		if (KinProjectilePool == null)
+		/*if (KinProjectilePool == null)
 		{
 			KinProjectilePool = new WeaverObjectPool(CorruptedKinGlobals.Instance.KinProjectilePrefab);
-		}
+		}*/
 
-		var projectile = KinProjectilePool.Instantiate(position, Quaternion.identity).GetComponent<KinProjectile>();
+		//var projectile = KinProjectilePool.Instantiate(position, Quaternion.identity).GetComponent<KinProjectile>();
+		var projectile = Pooling.Instantiate(CorruptedKinGlobals.Instance.KinProjectilePrefab, position, Quaternion.identity);
 		projectile.Rigidbody.velocity = velocity;
 		return projectile;
 	}

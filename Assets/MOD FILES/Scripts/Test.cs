@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using WeaverCore.Audio;
+using WeaverCore;
 using WeaverCore.Components;
 
 public class Test : MonoBehaviour 

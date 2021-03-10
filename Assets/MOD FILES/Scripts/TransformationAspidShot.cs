@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using WeaverCore;
 using WeaverCore.Components;
 using WeaverCore.Enums;
 using WeaverCore.Utilities;
@@ -9,7 +10,7 @@ using WeaverCore.Utilities;
 public class TransformationAspidShot : AspidShot
 {
 	//static WeaverCore.Utilities.ObjectPool WallBlockerPool;
-	static WeaverCore.Utilities.ObjectPool TransAspidShotPool;
+	//static WeaverCore.ObjectPool TransAspidShotPool;
 
 	[SerializeField]
 	protected Vector2 shotTimeMinMax = new Vector2(0.05f,0.1f);
@@ -40,20 +41,20 @@ public class TransformationAspidShot : AspidShot
 		}
 	}
 
-	public static void PreparePools(int prepAmounts)
-	{
-		if (TransAspidShotPool == null)
+	//public static void PreparePools(int prepAmounts)
+	//{
+		/*if (TransAspidShotPool == null)
 		{
-			TransAspidShotPool = new WeaverCore.Utilities.ObjectPool(CorruptedKinGlobals.Instance.TransAspidShotPrefab);
+			//TransAspidShotPool = new WeaverCore.ObjectPool(CorruptedKinGlobals.Instance.TransAspidShotPrefab);
 			TransAspidShotPool.FillPoolAsync(prepAmounts);
-		}
+		}*/
 
 		/*if (WallBlockerPool == null)
 		{
 			WallBlockerPool = new WeaverCore.Utilities.ObjectPool(CorruptedKinGlobals.Instance.WallBlockerPrefab);
 			WallBlockerPool.FillPoolAsync(prepAmounts);
 		}*/
-	}
+	//}
 
 	protected override void OnProjectileDestroy()
 	{
@@ -66,11 +67,12 @@ public class TransformationAspidShot : AspidShot
 
 	public static TransformationAspidShot SpawnTransformationShot(Vector3 start, Transform destination)
 	{
-		if (TransAspidShotPool == null)
+		/*if (TransAspidShotPool == null)
 		{
 			PreparePools(0);
-		}
-		var instance = TransAspidShotPool.Instantiate<TransformationAspidShot>(start, Quaternion.identity);
+		}*/
+		//var instance = TransAspidShotPool.Instantiate<TransformationAspidShot>(start, Quaternion.identity);
+		var instance = Pooling.Instantiate(CorruptedKinGlobals.Instance.TransAspidShotPrefab,start,Quaternion.identity);
 		instance.Destination = destination;
 		//instance.DestinationWall = destinationWallSide;
 

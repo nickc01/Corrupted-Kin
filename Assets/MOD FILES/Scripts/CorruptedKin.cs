@@ -27,7 +27,7 @@ public class CorruptedKin : BossReplacement
 	public WeaverAnimationPlayer Animator { get; private set; }
 	public SpriteRenderer Renderer { get; private set; }
 	public Rigidbody2D Rigidbody { get; private set; }
-	public WeaverAudioPlayer AudioPlayer { get; private set; }
+	public AudioPlayer AudioPlayer { get; private set; }
 	public CorruptedKinHealth HealthManager { get; private set; }
 	public Collider2D Collider { get; private set; }
 	public WeaverCore.Components.DamageHero Damager { get; private set; }
@@ -360,6 +360,15 @@ public class CorruptedKin : BossReplacement
 
 	protected override void Awake()
 	{
+		var prefab1 = WeaverAssets.LoadWeaverAsset<GameObject>("Blood Particles");
+		var prefab2 = WeaverAssets.LoadWeaverAsset<GameObject>("Blood Particles");
+
+		WeaverLog.Log("Prefab 1 = " + prefab1.GetInstanceID());
+		WeaverLog.Log("Prefab 2 = " + prefab1.GetInstanceID());
+
+		WeaverLog.Log("Equal = " + (prefab1 == prefab2));
+
+
 		Instance = this;
 		WeaverLog.Log("Corrupted Kin has Awoken");
 		//MoveSceneryBack();
@@ -383,7 +392,7 @@ public class CorruptedKin : BossReplacement
 		Rigidbody = GetComponent<Rigidbody2D>();
 		Animator = GetComponent<WeaverAnimationPlayer>();
 		Renderer = GetComponent<SpriteRenderer>();
-		AudioPlayer = GetComponent<WeaverAudioPlayer>();
+		AudioPlayer = GetComponent<AudioPlayer>();
 		HealthManager = GetComponent<CorruptedKinHealth>();
 		Collider = GetComponent<Collider2D>();
 		Damager = GetComponent<WeaverCore.Components.DamageHero>();
@@ -496,6 +505,7 @@ public class CorruptedKin : BossReplacement
 
 		Animator.PlayAnimation("Fall");
 
+
 		AudioPlayer.Play(FallSoundEffect);
 
 		transform.SetYPosition(fallYPosition);
@@ -521,8 +531,8 @@ public class CorruptedKin : BossReplacement
 
 		if (!Boss.InPantheon)
 		{
-			WeaverCore.Audio.Music.PlayMusicPack(BossMusicPack,0f,0f,false);
-			WeaverCore.Audio.Music.ApplyMusicSnapshot(WeaverCore.Audio.Music.SnapshotType.Normal, 0f, 0f);
+			Music.PlayMusicPack(BossMusicPack,0f,0f,false);
+			Music.ApplyMusicSnapshot(Music.SnapshotType.Normal, 0f, 0f);
 		}
 
 		Animator.PlayAnimation("Roar Loop");
@@ -692,9 +702,10 @@ public class CorruptedKin : BossReplacement
 
 		Damager.DamageDealt = 0;
 
-		WeaverCam.Instance.Shaker.Shake(WeaverCore.Enums.ShakeType.AverageShake);
 
-		WeaverAudio.PlayAtPoint(BossFinalHitSound, transform.position);
+		CameraShaker.Instance.Shake(WeaverCore.Enums.ShakeType.AverageShake);
+
+		Audio.PlayAtPoint(BossFinalHitSound, transform.position);
 
 		DeactivateBattleScene();
 
@@ -708,7 +719,7 @@ public class CorruptedKin : BossReplacement
 		if (!Boss.InGodHomeArena)
 		{
 			//STOP MUSIC
-			WeaverCore.Audio.Music.ApplyMusicSnapshot(WeaverCore.Audio.Music.SnapshotType.Silent, 0f,2f);
+			Music.ApplyMusicSnapshot(Music.SnapshotType.Silent, 0f,2f);
 		}
 
 		Animator.PlayAnimation("Death Land");
@@ -719,14 +730,14 @@ public class CorruptedKin : BossReplacement
 
 		Animator.PlayAnimation("Death");
 
-		WeaverAudio.PlayAtPoint(BossGushingSound, transform.position);
+		Audio.PlayAtPoint(BossGushingSound, transform.position);
 
 		var deathPuff = GameObject.Instantiate(BossDeathPuffPrefab, transform.position + new Vector3(0f,0f,-5f), Quaternion.identity);
 		var deathParticles = deathPuff.GetComponent<ParticleSystem>();
 
 
-		WeaverCam.Instance.Shaker.Shake(WeaverCore.Enums.ShakeType.BigShake);
-		WeaverCam.Instance.Shaker.SetRumble(WeaverCore.Enums.RumbleType.RumblingMed);
+		CameraShaker.Instance.Shake(WeaverCore.Enums.ShakeType.BigShake);
+		CameraShaker.Instance.SetRumble(WeaverCore.Enums.RumbleType.RumblingMed);
 
 		float bloodTimer = 0f;
 
@@ -775,12 +786,12 @@ public class CorruptedKin : BossReplacement
 			GameManager.instance.AwardAchievement("DREAM_BROKEN_VESSEL");
 		}
 
-		WeaverCam.Instance.Shaker.SetRumble(WeaverCore.Enums.RumbleType.None);
-		WeaverAudio.PlayAtPoint(BossExplosionSound, transform.position);
+		CameraShaker.Instance.SetRumble(WeaverCore.Enums.RumbleType.None);
+		Audio.PlayAtPoint(BossExplosionSound, transform.position);
 
 		GameObject.Instantiate(DeathExplosionPrefab, transform.position, Quaternion.identity);
 
-		WeaverCam.Instance.Shaker.Shake(WeaverCore.Enums.ShakeType.BigShake);
+		CameraShaker.Instance.Shake(WeaverCore.Enums.ShakeType.BigShake);
 
 
 		EndBattleScene();
@@ -795,12 +806,12 @@ public class CorruptedKin : BossReplacement
 
 		WeaverEvents.BroadcastEvent("IK GATE OPEN", gameObject);
 
-		if (WeaverGame.CurrentMapZone == GlobalEnums.MapZone.DREAM_WORLD)
+		if (WeaverGameManager.CurrentMapZone == GlobalEnums.MapZone.DREAM_WORLD)
 		{
 			var essence = EssenceEffects.Spawn(transform.position);
 			//Plays the essence effects and leaves the scene
 			essence.PlayVanishBurstEffects();
-			WeaverAudio.PlayAtPoint(DreamExitSound, Player.Player1.transform.position);
+			Audio.PlayAtPoint(DreamExitSound, Player.Player1.transform.position);
 		}
 		else
 		{

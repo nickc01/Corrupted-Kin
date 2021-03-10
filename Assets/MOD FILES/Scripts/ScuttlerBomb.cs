@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using WeaverCore;
 using WeaverCore.Utilities;
 
 public class ScuttlerBomb : MonoBehaviour 
 {
-	static WeaverCore.Utilities.ObjectPool ScuttlerBombPool;
+	//static WeaverCore.ObjectPool ScuttlerBombPool;
 
 	[SerializeField]
 	[Tooltip("The angular velocity in degrees per second")]
@@ -59,12 +60,13 @@ public class ScuttlerBomb : MonoBehaviour
 
 	public static ScuttlerBomb Spawn(Vector3 position, Vector2 velocity, float angularVelocity)
 	{
-		if (ScuttlerBombPool == null)
+		/*if (ScuttlerBombPool == null)
 		{
-			ScuttlerBombPool = new WeaverCore.Utilities.ObjectPool(CorruptedKinGlobals.Instance.ScuttlerBombPrefab);
-		}
+			ScuttlerBombPool = new WeaverCore.ObjectPool(CorruptedKinGlobals.Instance.ScuttlerBombPrefab);
+		}*/
 
-		var instance = ScuttlerBombPool.Instantiate<ScuttlerBomb>(position, Quaternion.identity);
+		//var instance = ScuttlerBombPool.Instantiate<ScuttlerBomb>(position, Quaternion.identity);
+		var instance = Pooling.Instantiate(CorruptedKinGlobals.Instance.ScuttlerBombPrefab,position,Quaternion.identity);
 		instance.rigidbody.velocity = velocity;
 		instance.rigidbody.angularDrag = 0f;
 		instance.rigidbody.angularVelocity = angularVelocity;

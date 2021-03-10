@@ -7,7 +7,7 @@ using WeaverCore.Utilities;
 
 public class ParasiteBalloon : MonoBehaviour 
 {
-	static WeaverCore.Utilities.ObjectPool ParasitePool;
+	static WeaverCore.ObjectPool ParasitePool;
 
 	static HashSet<ParasiteBalloon> spawnedBalloons = new HashSet<ParasiteBalloon>();
 	public static IEnumerable<ParasiteBalloon> SpawnedParasites = spawnedBalloons;
@@ -219,7 +219,7 @@ public class ParasiteBalloon : MonoBehaviour
 	{
 		if (ParasitePool == null)
 		{
-			ParasitePool = new WeaverCore.Utilities.ObjectPool(CorruptedKinGlobals.Instance.BalloonPrefab);
+			ParasitePool = WeaverCore.ObjectPool.Create(CorruptedKinGlobals.Instance.BalloonPrefab);
 		}
 		var prefabZ = CorruptedKinGlobals.Instance.BalloonPrefab.transform.GetZLocalPosition();
 		var instance = ParasitePool.Instantiate<ParasiteBalloon>(new Vector3(position.x,position.y,position.z + prefabZ), Quaternion.identity);

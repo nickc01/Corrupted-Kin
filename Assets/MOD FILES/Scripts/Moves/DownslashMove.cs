@@ -62,11 +62,11 @@ public class DownslashMove : CorruptedKinMove
 
 		if (downstabbing)
 		{
-			WeaverAudio.PlayAtPoint(Kin.DownstabPrepareSound, transform.position);
+			Audio.PlayAtPoint(Kin.DownstabPrepareSound, transform.position);
 			Rigidbody.velocity = default(Vector2);
 			Rigidbody.gravityScale = 0f;
 			yield return Animator.PlayAnimationTillDone("Downstab Antic Quick");
-			WeaverAudio.PlayAtPoint(Kin.DownstabDashSound, transform.position);
+			Audio.PlayAtPoint(Kin.DownstabDashSound, transform.position);
 			Animator.PlayAnimation("Downstab");
 
 			Rigidbody.velocity = new Vector2(0f, Kin.DownstabVelocity);
@@ -76,11 +76,11 @@ public class DownslashMove : CorruptedKinMove
 
 			yield return Kin.WaitTillTouchingGround();
 
-			WeaverAudio.PlayAtPoint(Kin.DownstabImpactSound, transform.position);
+			Audio.PlayAtPoint(Kin.DownstabImpactSound, transform.position);
 			Rigidbody.velocity = default(Vector2);
 			Kin.DownstabSlam.SetActive(true);
 
-			WeaverCam.Instance.Shaker.Shake(WeaverCore.Enums.ShakeType.EnemyKillShake);
+			CameraShaker.Instance.Shake(WeaverCore.Enums.ShakeType.EnemyKillShake);
 
 			//TODO - SPAWN PROJECTILES
 

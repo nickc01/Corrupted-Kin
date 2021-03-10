@@ -57,7 +57,7 @@ public class OverheadSlashMove : CorruptedKinMove
 
 	IEnumerator PlaySlashSounds()
 	{
-		WeaverAudio.PlayAtPoint(Kin.SwordSlashSound, transform.position);
+		Audio.PlayAtPoint(Kin.SwordSlashSound, transform.position);
 
 		var data = Animator.AnimationData;
 		var clipFps = data.GetClipFPS(Animator.PlayingClip);
@@ -65,17 +65,17 @@ public class OverheadSlashMove : CorruptedKinMove
 		//yield return new WaitUntil(() => Animator.PlayingFrame == 4);
 		yield return new WaitForSeconds(3f * (1f / clipFps));
 
-		WeaverAudio.PlayAtPoint(Kin.SwordSlashSound, transform.position);
+		Audio.PlayAtPoint(Kin.SwordSlashSound, transform.position);
 
 		//yield return new WaitUntil(() => Animator.PlayingFrame == 9);
 		yield return new WaitForSeconds(4f * (1f / clipFps));
 
-		WeaverAudio.PlayAtPoint(Kin.SwordSlashSound, transform.position);
+		Audio.PlayAtPoint(Kin.SwordSlashSound, transform.position);
 
 		//yield return new WaitUntil(() => Animator.PlayingFrame == 14);
 		yield return new WaitForSeconds(4f * (1f / clipFps));
 
-		WeaverAudio.PlayAtPoint(Kin.SwordSlashSound, transform.position);
+		Audio.PlayAtPoint(Kin.SwordSlashSound, transform.position);
 	}
 }
 

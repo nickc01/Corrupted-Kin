@@ -55,7 +55,7 @@ public class JumpMove : CorruptedKinMove
 		Rigidbody.velocity = default(Vector2);
 		yield return Animator.PlayAnimationTillDone("Jump Antic");
 
-		WeaverAudio.PlayAtPoint(Kin.JumpSound, transform.position);
+		Audio.PlayAtPoint(Kin.JumpSound, transform.position);
 		Animator.PlayAnimation("Jump");
 
 		Rigidbody.velocity = CalculateVelocities(fromX, toX, jumpHeight);
@@ -75,7 +75,7 @@ public class JumpMove : CorruptedKinMove
 
 		IsFalling = false;
 
-		WeaverAudio.PlayAtPoint(Kin.LandSound, transform.position);
+		Audio.PlayAtPoint(Kin.LandSound, transform.position);
 		Rigidbody.velocity = default(Vector2);
 		yield return Animator.PlayAnimationTillDone("Land");
 	}

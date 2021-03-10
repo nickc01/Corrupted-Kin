@@ -43,7 +43,7 @@ public class TransformationMove : CorruptedKinMove
 
 		Animator.PlayAnimation("Roar Loop");
 
-		WeaverAudio.PlayAtPoint(Kin.HollowKnightScream, transform.position);
+		Audio.PlayAtPoint(Kin.HollowKnightScream, transform.position);
 
 		//Player.Player1.RoarLock = true;
 		//Player.Player1.EnterRoarLock();
@@ -89,7 +89,7 @@ public class TransformationMove : CorruptedKinMove
 		Blobs = new List<TransformationBlob>();
 		runningScuttlers = 0;
 
-		TransformationAspidShot.PreparePools(targets.Count);
+		//TransformationAspidShot.PreparePools(targets.Count);
 
 		for (int i = 0; i < targets.Count; i++)
 		{
@@ -157,17 +157,17 @@ public class TransformationMove : CorruptedKinMove
 
 		SpawnAspidShots(Blobs);
 
-		WeaverAudio.PlayAtPoint(Kin.transBlobExplodeSound, transform.position, Kin.transBlobExplodeVolume);
+		Audio.PlayAtPoint(Kin.transBlobExplodeSound, transform.position, Kin.transBlobExplodeVolume);
 
 		roarEmitter = RoarEmitter.Spawn(transform.position);
 
-		WeaverCam.Instance.Shaker.Shake(ShakeType.BigShake);
+		CameraShaker.Instance.Shake(ShakeType.BigShake);
 
 		Kin.Flasher.FlashInfected();
 
 		//yield return new WaitForSeconds(0.05f);
 
-		WeaverAudio.PlayAtPoint(Kin.HollowKnightScream, transform.position);
+		Audio.PlayAtPoint(Kin.HollowKnightScream, transform.position);
 
 		yield return new WaitForSeconds(Kin.transEndDelay);
 

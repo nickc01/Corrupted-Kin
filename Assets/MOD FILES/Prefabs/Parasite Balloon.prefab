@@ -46,10 +46,10 @@ GameObject:
   - component: {fileID: 114149179352297984}
   - component: {fileID: 114757695686691876}
   - component: {fileID: 114880935671402824}
-  - component: {fileID: 114191766900902392}
   - component: {fileID: 114645239283026392}
   - component: {fileID: 114101126737880024}
   - component: {fileID: 114636028667085702}
+  - component: {fileID: 114222572155765070}
   m_Layer: 11
   m_Name: Parasite Balloon
   m_TagString: Extra Tag
@@ -94,7 +94,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1480072514845144}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 21.7, y: 35.9, z: 0.0055}
+  m_LocalPosition: {x: 26.69, y: 42.75, z: 0.0055}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4144861289438420}
@@ -278,20 +278,6 @@ MonoBehaviour:
   noSoul: 0
   dreamImpactPrefab: {fileID: 0}
   allowUseChildColliders: 0
---- !u!114 &114191766900902392
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1480072514845144}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2e6d87344e60e34daba3cb1aa5b0ac4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  channel: 2
-  poolComponent: {fileID: 114645239283026392}
-  audioSource: {fileID: 0}
 --- !u!114 &114217654886924570
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -307,6 +293,20 @@ MonoBehaviour:
   autoPlay: 0
   OnClipFinish: 0
   autoPlayClip: 
+--- !u!114 &114222572155765070
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1480072514845144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52f6fe75ae6d58c48a58f385553c989f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  channel: 2
+  poolComponent: {fileID: 114645239283026392}
+  audioSource: {fileID: 0}
 --- !u!114 &114304299690634318
 MonoBehaviour:
   m_ObjectHideFlags: 1

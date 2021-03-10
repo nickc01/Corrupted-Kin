@@ -347,7 +347,6 @@ GameObject:
   - component: {fileID: 114567611581463984}
   - component: {fileID: 114993617369005376}
   - component: {fileID: 212469142877645870}
-  - component: {fileID: 114718034535454556}
   - component: {fileID: 82931502527033714}
   - component: {fileID: 114086452107025958}
   - component: {fileID: 61772179412923086}
@@ -355,6 +354,7 @@ GameObject:
   - component: {fileID: 114407933943724768}
   - component: {fileID: 114132941412828944}
   - component: {fileID: 114480581962791758}
+  - component: {fileID: 114208132189924432}
   m_Layer: 11
   m_Name: Corrupted Kin
   m_TagString: Untagged
@@ -1763,6 +1763,20 @@ MonoBehaviour:
   _orangeSpatter: {fileID: 1767747479781002, guid: ba831b3e83f5b2342a29b14b4f86d7ee,
     type: 2}
   _hitPuff: {fileID: 1600034938448592, guid: 3ea10e9cc8caa72498ca3e995e2b5045, type: 2}
+--- !u!114 &114208132189924432
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1625663818430612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52f6fe75ae6d58c48a58f385553c989f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  channel: 2
+  poolComponent: {fileID: 0}
+  audioSource: {fileID: 0}
 --- !u!114 &114244463048346888
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2056,20 +2070,6 @@ MonoBehaviour:
   colliderFor10: {fileID: 60361227238181638}
   colliderFor11: {fileID: 60816171958601994}
   colliderFor12: {fileID: 60532362551773798}
---- !u!114 &114718034535454556
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1625663818430612}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2e6d87344e60e34daba3cb1aa5b0ac4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  channel: 2
-  poolComponent: {fileID: 0}
-  audioSource: {fileID: 82931502527033714}
 --- !u!114 &114746001252753334
 MonoBehaviour:
   m_ObjectHideFlags: 1

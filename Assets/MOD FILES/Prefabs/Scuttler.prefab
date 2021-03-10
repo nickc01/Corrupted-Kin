@@ -24,9 +24,9 @@ GameObject:
   - component: {fileID: 61826615281583538}
   - component: {fileID: 50397982552979260}
   - component: {fileID: 82845328661769314}
-  - component: {fileID: 114216363666669924}
   - component: {fileID: 114925028393075926}
   - component: {fileID: 114006262110142366}
+  - component: {fileID: 114181076069059582}
   m_Layer: 11
   m_Name: Scuttler
   m_TagString: Untagged
@@ -216,7 +216,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65a6abec551ce95408d93cbfa3708833, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114216363666669924
+--- !u!114 &114181076069059582
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -224,7 +224,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1258173226239208}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2e6d87344e60e34daba3cb1aa5b0ac4, type: 3}
+  m_Script: {fileID: 11500000, guid: 52f6fe75ae6d58c48a58f385553c989f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   channel: 2

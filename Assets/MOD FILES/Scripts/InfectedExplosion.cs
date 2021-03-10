@@ -24,7 +24,7 @@ public class InfectedExplosion : MonoBehaviour
 	OnDoneBehaviour whenDone = OnDoneBehaviour.DestroyOrPool;
 
 	//static WeaverCore.Utilities.ObjectPool DeathWavePool;
-	static WeaverCore.Utilities.ObjectPool ExplosionPool;
+	static WeaverCore.ObjectPool ExplosionPool;
 
 	new Collider2D collider;
 
@@ -35,10 +35,10 @@ public class InfectedExplosion : MonoBehaviour
 			collider = GetComponent<Collider2D>();
 		}
 		collider.enabled = true;
-		var audio = WeaverAudio.PlayAtPoint(ExplosionSound, transform.position);
+		var audio = Audio.PlayAtPoint(ExplosionSound, transform.position);
 		audio.AudioSource.pitch = Random.Range(explosionPitchMin,explosionPitchMax);
 
-		WeaverCam.Instance.Shaker.Shake(WeaverCore.Enums.ShakeType.AverageShake);
+		CameraShaker.Instance.Shake(WeaverCore.Enums.ShakeType.AverageShake);
 
 		/*if (DeathWavePool == null)
 		{
@@ -90,7 +90,7 @@ public class InfectedExplosion : MonoBehaviour
 	{
 		if (ExplosionPool == null)
 		{
-			ExplosionPool = new WeaverCore.Utilities.ObjectPool(CorruptedKinGlobals.Instance.InfectedExplosionPrefab);
+			ExplosionPool = WeaverCore.ObjectPool.Create(CorruptedKinGlobals.Instance.InfectedExplosionPrefab);
 		}
 		return ExplosionPool.Instantiate<InfectedExplosion>(position, Quaternion.identity);
 	}
