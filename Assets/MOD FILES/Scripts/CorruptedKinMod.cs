@@ -7,7 +7,7 @@ using System.Text;
 using WeaverCore;
 using WeaverCore.Attributes;
 
-namespace Kin
+namespace KinMod
 {
 	public class CorruptedKin : WeaverMod
 	{

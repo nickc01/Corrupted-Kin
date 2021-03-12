@@ -1,0 +1,256 @@
+fileFormatVersion: 2
+guid: 3151da443dcd7704a87f5d46aec386ee
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: vomit0001
+    21300002: vomit0006
+    21300004: vomit0004
+    21300006: vomit0011
+    21300008: vomit0008
+    21300010: vomit0005
+    21300012: vomit0002
+    21300014: vomit0007
+    21300016: vomit0000
+    21300018: vomit0003
+    21300020: vomit0009
+    21300022: vomit0010
+  externalObjects: {}
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 64.8432
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 256
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: vomit0001
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 0
+        width: 67
+        height: 68
+      alignment: 9
+      pivot: {x: 0.51515144, y: 0.104477644}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: vomit0006
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 134
+        width: 67
+        height: 58
+      alignment: 9
+      pivot: {x: 0.4848485, y: 0.052631557}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: vomit0004
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 0
+        width: 72
+        height: 64
+      alignment: 9
+      pivot: {x: 0.42253518, y: 0.12698412}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: vomit0011
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 111
+        width: 105
+        height: 31
+      alignment: 9
+      pivot: {x: 0.5192308, y: 0.23333335}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: vomit0008
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 70
+        width: 82
+        height: 40
+      alignment: 9
+      pivot: {x: 0.5061728, y: 0.15384614}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: vomit0005
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 70
+        width: 58
+        height: 67
+      alignment: 9
+      pivot: {x: 0.45614034, y: 0.121212125}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: vomit0002
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 71
+        height: 69
+      alignment: 9
+      pivot: {x: 0.4714285, y: 0.11764705}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: vomit0007
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 173
+        width: 106
+        height: 28
+      alignment: 9
+      pivot: {x: 0.51428574, y: 0.1851852}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: vomit0000
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 193
+        width: 62
+        height: 60
+      alignment: 9
+      pivot: {x: 0.47540975, y: 0.06779659}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: vomit0003
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 70
+        width: 70
+        height: 63
+      alignment: 9
+      pivot: {x: 0.49275368, y: 0.09677422}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: vomit0009
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 202
+        width: 104
+        height: 26
+      alignment: 9
+      pivot: {x: 0.5145631, y: 0.24000001}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: vomit0010
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 143
+        width: 103
+        height: 29
+      alignment: 9
+      pivot: {x: 0.51960784, y: 0.21428573}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    outline: []
+    physicsShape: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

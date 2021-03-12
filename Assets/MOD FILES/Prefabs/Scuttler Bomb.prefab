@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 114021377646866178}
   - component: {fileID: 114354520460988130}
   - component: {fileID: 114665763673064560}
-  m_Layer: 22
+  m_Layer: 12
   m_Name: Scuttler Bomb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 4963210228178630}
   - component: {fileID: 198328666999522394}
   - component: {fileID: 199489294411044718}
-  m_Layer: 22
+  m_Layer: 12
   m_Name: Puff Out Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57,7 +57,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4231314677532218}
   - component: {fileID: 212163401016336598}
-  m_Layer: 22
+  m_Layer: 12
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}

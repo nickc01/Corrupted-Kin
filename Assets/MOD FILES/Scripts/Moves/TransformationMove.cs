@@ -1,49 +1,57 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using WeaverCore;
 using WeaverCore.Enums;
-using WeaverCore.Features;
 using WeaverCore.Utilities;
 
 public class TransformationMove : CorruptedKinMove
 {
+	[SerializeField] WaveSystem InfectionWavePrefab;
+	[SerializeField] float transScutterSpawnY = 27.86f;
+	[SerializeField] float transScutterSpawnMinX = 3f;
+	[SerializeField] float transScutterSpawnMaxX = 6f;
+	[SerializeField] float transScutterSpawnDelayMin = 0.1f;
+	[SerializeField] float transScutterSpawnDelayMax = 0.2f;
+	[SerializeField] Transform TargetsChild;
+	[SerializeField] Vector2 BlobScaleMin = new Vector2(1f, 1f);
+	[SerializeField] Vector2 BlobScaleMax = new Vector2(1.4f, 1.4f);
+	[SerializeField] float transExplosionWaitTime = 0.7f;
+	[SerializeField] float transBlobSizeIncrease = 3f;
+	[SerializeField] float transBlobExpansionTime = 0.4f;
+	[SerializeField] float transSummonGrassZ = 0.5f;
+	[SerializeField] AnimationCurve transBlobSizeCurve;
+
+	[Space]
+	[Header("Post Transformation")]
+	[SerializeField] AudioClip transBlobExplodeSound;
+	[SerializeField] float transBlobExplodeVolume = 1f;
+	[SerializeField] float transEndDelay = 0.8f;
+	[SerializeField] float transAspidShotMinSize = 0.7f;
+	[SerializeField] float transAspidShotMaxSize = 1.3f;
+
+	public int transTargetCount { get { return TargetsChild.childCount; } }
+	public WallSplats TransformationSplats { get; private set; }
+
 	int runningScuttlers = 0;
 
 	List<TransformationBlob> Blobs;
 
-	public override bool MoveEnabled
-	{
-		get
-		{
-			return true;
-		}
-	}
-
-	public override bool ShowsUpInRandomizer
-	{
-		get
-		{
-			return true;
-		}
-	}
-
-	public override bool CanDoAttack()
-	{
-		return true;
-	}
-
 	public override IEnumerator DoMove()
 	{
+		if (TransformationSplats == null)
+		{
+			TransformationSplats = WallSplats.Spawn(Kin.LeftX, Kin.FloorY);
+		}
+
 		yield return Animator.PlayAnimationTillDone("Roar Start");
 
 		Kin.EntityHealth.Invincible = true;
 
 		Animator.PlayAnimation("Roar Loop");
 
-		Audio.PlayAtPoint(Kin.HollowKnightScream, transform.position);
+		Audio.PlayAtPoint(Kin.ScreamSound, transform.position);
 
 		//Player.Player1.RoarLock = true;
 		//Player.Player1.EnterRoarLock();
@@ -58,7 +66,7 @@ public class TransformationMove : CorruptedKinMove
 
 		summonGrass.transform.SetParent(null);
 
-		summonGrass.transform.position = new Vector3(Kin.leftX + (26.33213f - 16.06f), Kin.floorY + (27.10731f - 28.19727f), Kin.transSummonGrassZ);
+		summonGrass.transform.position = new Vector3(Kin.LeftX + (26.33213f - 16.06f), Kin.FloorY + (27.10731f - 28.19727f), transSummonGrassZ);
 
 		summonGrass.gameObject.SetActive(true);
 #if UNITY_EDITOR
@@ -66,7 +74,7 @@ public class TransformationMove : CorruptedKinMove
 #endif
 		if (Kin.InfectionWave == null)
 		{
-			Kin.InfectionWave = GameObject.Instantiate(Kin.InfectionWavePrefab, new Vector3(Kin.leftX + (27f - 16.06f), Kin.floorY + (22.84f - 28.19727f), Kin.InfectionWavePrefab.transform.position.z), Quaternion.identity);
+			Kin.InfectionWave = GameObject.Instantiate(InfectionWavePrefab, new Vector3(Kin.LeftX + (27f - 16.06f), Kin.FloorY + (InfectionWavePrefab.transform.position.y - 28.19727f), InfectionWavePrefab.transform.position.z), Quaternion.identity);
 		}
 
 		var summonParticles = summonGrass.GetComponent<ParticleSystem>();
@@ -77,12 +85,12 @@ public class TransformationMove : CorruptedKinMove
 
 		if (Player.Player1.transform.position.x > transform.position.x)
 		{
-			Kin.TargetsChild.SetXLocalScale(-1f);
+			TargetsChild.SetXLocalScale(-1f);
 		}
 
-		for (int i = 0; i < Kin.TargetsChild.childCount; i++)
+		for (int i = 0; i < TargetsChild.childCount; i++)
 		{
-			targets.Add(Kin.TargetsChild.GetChild(i));
+			targets.Add(TargetsChild.GetChild(i));
 		}
 
 		targets.RandomizeList();
@@ -95,7 +103,7 @@ public class TransformationMove : CorruptedKinMove
 		{
 			var target = targets[i];
 
-			yield return new WaitForSeconds(UnityEngine.Random.Range(Kin.transScutterSpawnDelayMin,Kin.transScutterSpawnDelayMax));
+			yield return new WaitForSeconds(UnityEngine.Random.Range(transScutterSpawnDelayMin, transScutterSpawnDelayMax));
 
 			var direction = UnityEngine.Random.value >= 0.5f ? CardinalDirection.Right : CardinalDirection.Left;
 
@@ -104,16 +112,16 @@ public class TransformationMove : CorruptedKinMove
 			switch (direction)
 			{
 				case CardinalDirection.Left:
-					spawnX = transform.position.x - UnityEngine.Random.Range(Kin.transScutterSpawnMinX,Kin.transScutterSpawnMaxX);
-					if (spawnX <= Kin.leftX)
+					spawnX = transform.position.x - UnityEngine.Random.Range(transScutterSpawnMinX, transScutterSpawnMaxX);
+					if (spawnX <= Kin.LeftX)
 					{
 						yield return null;
 						goto case CardinalDirection.Right;
 					}
 					break;
 				case CardinalDirection.Right:
-					spawnX = transform.position.x + UnityEngine.Random.Range(Kin.transScutterSpawnMinX, Kin.transScutterSpawnMaxX);
-					if (spawnX >= Kin.rightX)
+					spawnX = transform.position.x + UnityEngine.Random.Range(transScutterSpawnMinX, transScutterSpawnMaxX);
+					if (spawnX >= Kin.RightX)
 					{
 						yield return null;
 						goto case CardinalDirection.Left;
@@ -121,7 +129,7 @@ public class TransformationMove : CorruptedKinMove
 					break;
 			}
 			runningScuttlers++;
-			var scuttler = Scuttler.Spawn(new Vector3(spawnX, Kin.transScutterSpawnY, CorruptedKinGlobals.Instance.ScuttlerPrefab.transform.position.z), target.gameObject,Vector3.zero);
+			var scuttler = Scuttler.Spawn(new Vector3(spawnX, transScutterSpawnY, CorruptedKinGlobals.Instance.ScuttlerPrefab.transform.position.z), target.gameObject, Vector3.zero);
 			scuttler.SplatEvent += OnScuttlerSplat;
 		}
 
@@ -134,14 +142,14 @@ public class TransformationMove : CorruptedKinMove
 		summonParticles.Stop();
 
 
-		yield return new WaitForSeconds(Kin.transExplosionWaitTime);
+		yield return new WaitForSeconds(transExplosionWaitTime);
 		foreach (var blob in Blobs)
 		{
 			//blob.Expand()
-			blob.Expand(Kin.transBlobSizeIncrease, Kin.transBlobExpansionTime, Kin.transBlobSizeCurve);
+			blob.Expand(transBlobSizeIncrease, transBlobExpansionTime, transBlobSizeCurve);
 		}
 
-		yield return new WaitForSeconds(Kin.transBlobExpansionTime);
+		yield return new WaitForSeconds(transBlobExpansionTime);
 
 		//var splatTargets = Kin.TransformationSplats.AllTargets.ToList();
 
@@ -150,14 +158,14 @@ public class TransformationMove : CorruptedKinMove
 		foreach (var blob in Blobs)
 		{
 			//blob.Expand()
-			//blob.Expand(Kin.transBlobSizeIncrease, Kin.transBlobExpansionTime, Kin.transBlobSizeCurve);
+			//blob.Expand(transBlobSizeIncrease, transBlobExpansionTime, transBlobSizeCurve);
 			blob.Explode();
 			//TransformationAspidShot.Spawn(blob.transform.position,)
 		}
 
 		SpawnAspidShots(Blobs);
 
-		Audio.PlayAtPoint(Kin.transBlobExplodeSound, transform.position, Kin.transBlobExplodeVolume);
+		Audio.PlayAtPoint(transBlobExplodeSound, transform.position, transBlobExplodeVolume);
 
 		roarEmitter = RoarEmitter.Spawn(transform.position);
 
@@ -167,9 +175,9 @@ public class TransformationMove : CorruptedKinMove
 
 		//yield return new WaitForSeconds(0.05f);
 
-		Audio.PlayAtPoint(Kin.HollowKnightScream, transform.position);
+		Audio.PlayAtPoint(Kin.ScreamSound, transform.position);
 
-		yield return new WaitForSeconds(Kin.transEndDelay);
+		yield return new WaitForSeconds(transEndDelay);
 
 
 
@@ -188,7 +196,7 @@ public class TransformationMove : CorruptedKinMove
 
 	void SpawnAspidShots(List<TransformationBlob> blobs)
 	{
-		var splatTargets = Kin.TransformationSplats.AllTargets.ToList();
+		var splatTargets = TransformationSplats.AllTargets.ToList();
 
 		splatTargets.RandomizeList();
 
@@ -211,8 +219,8 @@ public class TransformationMove : CorruptedKinMove
 
 		scuttler.transform.position = scuttler.TargetObject.transform.position;
 
-		blob.transform.SetXLocalScale(UnityEngine.Random.Range(Kin.BlobScaleMin.x,Kin.BlobScaleMax.x));
-		blob.transform.SetYLocalScale(UnityEngine.Random.Range(Kin.BlobScaleMin.y,Kin.BlobScaleMax.y));
+		blob.transform.SetXLocalScale(UnityEngine.Random.Range(BlobScaleMin.x, BlobScaleMax.x));
+		blob.transform.SetYLocalScale(UnityEngine.Random.Range(BlobScaleMin.y, BlobScaleMax.y));
 
 		Blobs.Add(blob);
 	}

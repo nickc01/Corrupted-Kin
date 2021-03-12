@@ -1,41 +1,13 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections;
 using UnityEngine;
 using WeaverCore;
+using WeaverCore.Components;
 
 public class OverheadSlashMove : CorruptedKinMove
 {
-	public override bool MoveEnabled
-	{
-		get
-		{
-			return false;
-		}
-	}
-
-	public override bool ShowsUpInRandomizer
-	{
-		get
-		{
-			return false;
-		}
-	}
-
-
-	public override bool CanDoAttack()
-	{
-		if (Kin.OverheadSlashEnabled)
-		{
-			return Mathf.Abs(Player.Player1.transform.position.x - transform.position.x) <= Kin.MinXDistance;
-		}
-		else
-		{
-			return false;
-		}
-	}
+	[SerializeField] WeaverAnimationPlayer OverheadSlash;
+	[Tooltip("The minimum distance between the boss and the player in order for the move to execute")]
+	[SerializeField] float MinXDistance = 3.5f;
 
 	public override IEnumerator DoMove()
 	{
@@ -44,15 +16,15 @@ public class OverheadSlashMove : CorruptedKinMove
 
 		yield return new WaitForSeconds(0.65f);
 
-		Kin.OverheadSlash.gameObject.SetActive(true);
+		OverheadSlash.gameObject.SetActive(true);
 
-		Kin.OverheadSlash.PlayAnimation("Overhead Slash");
+		OverheadSlash.PlayAnimation("Overhead Slash");
 
 		Kin.StartBoundRoutine(PlaySlashSounds());
 
 		yield return Animator.PlayAnimationTillDone("Overhead Slashing");
 
-		Kin.OverheadSlash.gameObject.SetActive(false);
+		OverheadSlash.gameObject.SetActive(false);
 	}
 
 	IEnumerator PlaySlashSounds()
@@ -76,6 +48,12 @@ public class OverheadSlashMove : CorruptedKinMove
 		yield return new WaitForSeconds(4f * (1f / clipFps));
 
 		Audio.PlayAtPoint(Kin.SwordSlashSound, transform.position);
+	}
+
+	public override void OnStun()
+	{
+		OverheadSlash.gameObject.SetActive(false);
+		base.OnStun();
 	}
 }
 

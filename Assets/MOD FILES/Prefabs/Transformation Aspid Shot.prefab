@@ -24,8 +24,7 @@ GameObject:
   - component: {fileID: 50128233963211492}
   - component: {fileID: 114592728304283584}
   - component: {fileID: 114854342012230522}
-  - component: {fileID: 114029780902059938}
-  - component: {fileID: 58623216745387372}
+  - component: {fileID: 114672639026878462}
   m_Layer: 22
   m_Name: Transformation Aspid Shot
   m_TagString: Untagged
@@ -96,44 +95,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &58623216745387372
-CircleCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1548809547764930}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.015603721, y: -0.015607476}
-  serializedVersion: 2
-  m_Radius: 0.4
---- !u!114 &114029780902059938
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1548809547764930}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86462a88c9c12834db5df62b579eeaa2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scaleMin: 0.8
-  scaleMax: 0.8
-  stretchFactor: 1.4
-  minSquashAmount: 0.5
-  maxStretchAmount: 2
-  destroyAfterTime: 0
-  lifetime: 5
-  whenDestroyed: 3
-  animationOnStart: Idle
-  animationOnDestroy: Impact
-  impactClip: {fileID: 8300000, guid: e828bc4189e30ec41bf4e4315327a0a4, type: 3}
-  shotTimeMinMax: {x: 1, y: 5}
 --- !u!114 &114592728304283584
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -149,6 +110,30 @@ MonoBehaviour:
   autoPlay: 0
   OnClipFinish: 0
   autoPlayClip: 
+--- !u!114 &114672639026878462
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1548809547764930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9298473d77dc1f5419efab524434d70c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleMin: 0.8
+  scaleMax: 0.8
+  stretchFactor: 1.4
+  minSquashAmount: 0.5
+  maxStretchAmount: 2
+  maxLifeTime: 5
+  startAnimation: Idle
+  deathAnimation: Impact
+  ImpactClip: {fileID: 8300000, guid: e828bc4189e30ec41bf4e4315327a0a4, type: 3}
+  lifeTime: 5
+  shotTimeMinMax: {x: 5, y: 7.5}
+  targetOffset: -0.5
+  wallHeight: 9.80269
 --- !u!114 &114854342012230522
 MonoBehaviour:
   m_ObjectHideFlags: 1

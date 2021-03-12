@@ -21,8 +21,7 @@ GameObject:
   - component: {fileID: 4641934775602062}
   - component: {fileID: 212131419264754460}
   - component: {fileID: 114598888184339516}
-  - component: {fileID: 114746001252753334}
-  - component: {fileID: 114025545086570930}
+  - component: {fileID: 114393864392711424}
   m_Layer: 11
   m_Name: Dash Slash
   m_TagString: Untagged
@@ -112,21 +111,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!1 &1129403409021426
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4620033540645124}
-  m_Layer: 11
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &1184546630685064
 GameObject:
   m_ObjectHideFlags: 0
@@ -153,7 +137,6 @@ GameObject:
   - component: {fileID: 4603003397816930}
   - component: {fileID: 212078820756046564}
   - component: {fileID: 114519904921966822}
-  - component: {fileID: 114244463048346888}
   m_Layer: 9
   m_Name: Dstab Burst
   m_TagString: Untagged
@@ -172,7 +155,6 @@ GameObject:
   - component: {fileID: 212389822382833500}
   - component: {fileID: 114275600293138788}
   - component: {fileID: 114545295348745106}
-  - component: {fileID: 114753989196975022}
   - component: {fileID: 60057634228435116}
   - component: {fileID: 60239498806917280}
   - component: {fileID: 60204131936557610}
@@ -180,6 +162,7 @@ GameObject:
   - component: {fileID: 60816171958601994}
   - component: {fileID: 60532362551773798}
   - component: {fileID: 114670100828579762}
+  - component: {fileID: 114609821388440062}
   m_Layer: 22
   m_Name: Overhead Slash
   m_TagString: Untagged
@@ -277,7 +260,7 @@ GameObject:
   - component: {fileID: 4595471451546648}
   - component: {fileID: 212168102172645002}
   - component: {fileID: 114907780301404188}
-  - component: {fileID: 114032556841401624}
+  - component: {fileID: 114456216343815532}
   m_Layer: 11
   m_Name: Dstab Slam
   m_TagString: Untagged
@@ -327,7 +310,7 @@ GameObject:
   - component: {fileID: 4105087255778428}
   - component: {fileID: 212053587250744150}
   - component: {fileID: 114092101362332034}
-  - component: {fileID: 114105818684652852}
+  - component: {fileID: 114648052275762112}
   m_Layer: 9
   m_Name: Dash Burst
   m_TagString: Untagged
@@ -344,6 +327,15 @@ GameObject:
   m_Component:
   - component: {fileID: 4786481940887062}
   - component: {fileID: 114641447403652438}
+  - component: {fileID: 114953366802371770}
+  - component: {fileID: 114164121166841040}
+  - component: {fileID: 114699529901920494}
+  - component: {fileID: 114724397503572304}
+  - component: {fileID: 114015193658608650}
+  - component: {fileID: 114860994517523068}
+  - component: {fileID: 114208178398301686}
+  - component: {fileID: 114710402823687052}
+  - component: {fileID: 114292348373464346}
   - component: {fileID: 114567611581463984}
   - component: {fileID: 114993617369005376}
   - component: {fileID: 212469142877645870}
@@ -389,7 +381,7 @@ GameObject:
   - component: {fileID: 60616686912105134}
   - component: {fileID: 114055070525199604}
   - component: {fileID: 114605920857428144}
-  - component: {fileID: 114792849097285682}
+  - component: {fileID: 114782000455543258}
   m_Layer: 22
   m_Name: Dash Slash Hit
   m_TagString: Untagged
@@ -591,8 +583,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1594927965260650}
   m_LocalRotation: {x: -0, y: -0, z: 1, w: 0.0000004321336}
-  m_LocalPosition: {x: -3.87, y: 0.15, z: -0.0010000002}
-  m_LocalScale: {x: -1.508503, y: 1.508503, z: 1.508503}
+  m_LocalPosition: {x: -3.85, y: 0.15, z: -0.26}
+  m_LocalScale: {x: 1.508503, y: 1.508503, z: 1.508503}
   m_Children: []
   m_Father: {fileID: 4786481940887062}
   m_RootOrder: 12
@@ -699,7 +691,7 @@ Transform:
   - {fileID: 4620916216952736}
   - {fileID: 4169423290545440}
   m_Father: {fileID: 4786481940887062}
-  m_RootOrder: 17
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4346771195584304
 Transform:
@@ -799,25 +791,12 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1186718562452370}
   m_LocalRotation: {x: -0, y: -0, z: 0.70710665, w: 0.70710695}
-  m_LocalPosition: {x: 0, y: 3.97, z: -0.0010000002}
+  m_LocalPosition: {x: 0, y: 3.97, z: -0.26}
   m_LocalScale: {x: -1.5085022, y: 1.5085022, z: 1.508503}
   m_Children: []
   m_Father: {fileID: 4786481940887062}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -89.99998}
---- !u!4 &4620033540645124
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1129403409021426}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.46, y: 0.73, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4786481940887062}
-  m_RootOrder: 16
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4620916216952736
 Transform:
   m_ObjectHideFlags: 1
@@ -935,7 +914,6 @@ Transform:
   - {fileID: 4651414561227996}
   - {fileID: 4231830204943166}
   - {fileID: 4744684351637478}
-  - {fileID: 4620033540645124}
   - {fileID: 4327921610595166}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -1659,31 +1637,28 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!114 &114025545086570930
+--- !u!114 &114015193658608650
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1011579255959904}
+  m_GameObject: {fileID: 1625663818430612}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d533b2364eee94c4b92e7d3ef08f86b1, type: 3}
+  m_Script: {fileID: 11500000, guid: 77fbdaad610e62a49a85cfab78365d3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flipMode: 1
---- !u!114 &114032556841401624
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1537823261850182}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3fdaad19159647c4b8bab15f6364430b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ActivationDelay: 0
-  Unparent: 0
+  doMoveInRandomizer: 0
+  MinDownstabHeight: 33.31
+  DownstabActivationRange: 1.5
+  DownstabVelocity: -60
+  DownstabPrepareSound: {fileID: 8300000, guid: ce9004159ec601d4498c85da694b86a6,
+    type: 3}
+  DownstabDashSound: {fileID: 8300000, guid: 33d5f1f8451eb3241bc3ce0ec313719e, type: 3}
+  DownstabImpactSound: {fileID: 8300000, guid: a710073b705734b4ca6926664c903bc4, type: 3}
+  DownstabBurst: {fileID: 1186718562452370}
+  DownstabSlam: {fileID: 1537823261850182}
+  KinProjectileOffset: {x: 0, y: -0.5, z: 0}
 --- !u!114 &114055070525199604
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1698,7 +1673,7 @@ MonoBehaviour:
   damageDealt: 2
   hazardType: 1
   shadowDashHazard: 0
-  updateLayer: 1
+  setLayerToEnemies: 1
 --- !u!114 &114086452107025958
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1713,7 +1688,7 @@ MonoBehaviour:
   damageDealt: 1
   hazardType: 1
   shadowDashHazard: 0
-  updateLayer: 1
+  setLayerToEnemies: 1
 --- !u!114 &114092101362332034
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1725,23 +1700,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8511d0753e02cad4e89ae86ce1afef39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationData: {fileID: 11400000, guid: 29debaa5be5ac3a439a7fa604c79349e, type: 2}
+  animationData: {fileID: 11400000, guid: ddbb418a3f06bbd498e8d7f84470016e, type: 2}
   autoPlay: 1
-  OnClipFinish: 0
-  autoPlayClip: Downstab Slam
---- !u!114 &114105818684652852
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1594927965260650}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3fdaad19159647c4b8bab15f6364430b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ActivationDelay: 0
-  Unparent: 0
+  OnClipFinish: 1
+  autoPlayClip: Dash Effect
 --- !u!114 &114132941412828944
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1763,6 +1725,19 @@ MonoBehaviour:
   _orangeSpatter: {fileID: 1767747479781002, guid: ba831b3e83f5b2342a29b14b4f86d7ee,
     type: 2}
   _hitPuff: {fileID: 1600034938448592, guid: 3ea10e9cc8caa72498ca3e995e2b5045, type: 2}
+--- !u!114 &114164121166841040
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1625663818430612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d49fcc5ff00fbb84384759f574d37ec4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doMoveInRandomizer: 0
+  JumpHeight: 9.2
 --- !u!114 &114208132189924432
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1777,19 +1752,34 @@ MonoBehaviour:
   channel: 2
   poolComponent: {fileID: 0}
   audioSource: {fileID: 0}
---- !u!114 &114244463048346888
+--- !u!114 &114208178398301686
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1186718562452370}
+  m_GameObject: {fileID: 1625663818430612}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3fdaad19159647c4b8bab15f6364430b, type: 3}
+  m_Script: {fileID: 11500000, guid: fcd2fd2523a742e42bf66da2dd135b0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ActivationDelay: 0
-  Unparent: 0
+  doMoveInRandomizer: 0
+  BombTossPrepareSound: {fileID: 8300000, guid: bfcfae68679a7f64597b66191ca4b34a,
+    type: 3}
+  TossPrepareDelay: 0.55
+  TossParticles: {fileID: 198834720764166732}
+  TossParticlesSpeed: 7.5
+  TossDeathWaveSize: 0.3
+  TossTimes: 2
+  DelayBetweenTosses: 0.45
+  TossSound: {fileID: 8300000, guid: 474b478fb589aaf49974ebafa5947861, type: 3}
+  TossingDelay: 0.16666667
+  TossBloodAngleMin: 15
+  TossBloodAngleMax: 85
+  BombAngularVelocity: 180
+  TossBloodSpawnOffset: {x: 0.46, y: 0.68, z: 0}
+  ScuttlerBombSpawnOffset: {x: 0.46, y: 0.73, z: 0}
+  ScuttlerBombAirTime: 1.2
 --- !u!114 &114275600293138788
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1804,7 +1794,72 @@ MonoBehaviour:
   damageDealt: 2
   hazardType: 1
   shadowDashHazard: 0
-  updateLayer: 1
+  setLayerToEnemies: 1
+--- !u!114 &114292348373464346
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1625663818430612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 410e145a8d7f6ef4dad3cc5e4c5a0692, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doMoveInRandomizer: 1
+  InfectionWavePrefab: {fileID: 114394611532683104, guid: 85d28e5160fc19646a05e81a230358ac,
+    type: 2}
+  transScutterSpawnY: 27.86
+  transScutterSpawnMinX: 3
+  transScutterSpawnMaxX: 9
+  transScutterSpawnDelayMin: 0.1
+  transScutterSpawnDelayMax: 0.16
+  TargetsChild: {fileID: 4327921610595166}
+  BlobScaleMin: {x: 1, y: 1}
+  BlobScaleMax: {x: 1.4, y: 1.4}
+  transExplosionWaitTime: 0.7
+  transBlobSizeIncrease: 1
+  transBlobExpansionTime: 0.4
+  transSummonGrassZ: 0.8
+  transBlobSizeCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 1
+      inSlope: 3.3968267
+      outSlope: 3.3968267
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  transBlobExplodeSound: {fileID: 8300000, guid: 167b35ff9b3450947aa7228e76c0a0c0,
+    type: 3}
+  transBlobExplodeVolume: 1
+  transEndDelay: 1.6
+  transAspidShotMinSize: 0.7
+  transAspidShotMaxSize: 1.3
+--- !u!114 &114393864392711424
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1011579255959904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ee8e5e7c11bf16438049a0395d63b87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unparent: 0
+  FlipX: 1
+  FlipY: 0
+  flipMode: 0
 --- !u!114 &114407933943724768
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1816,7 +1871,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ea0b32a39dd70242a7799c6c5dfeadc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 100
+  _health: 5
   DecreaseHealth: 1
   Invincible: 0
   DeflectBlows: 0
@@ -1827,6 +1882,21 @@ MonoBehaviour:
   SmallGeo: 0
   MediumGeo: 0
   LargeGeo: 0
+--- !u!114 &114456216343815532
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1537823261850182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ee8e5e7c11bf16438049a0395d63b87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unparent: 0
+  FlipX: 1
+  FlipY: 0
+  flipMode: 0
 --- !u!114 &114480581962791758
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1856,7 +1926,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animationData: {fileID: 11400000, guid: ddbb418a3f06bbd498e8d7f84470016e, type: 2}
   autoPlay: 1
-  OnClipFinish: 0
+  OnClipFinish: 1
   autoPlayClip: Dash Effect
 --- !u!114 &114545295348745106
 MonoBehaviour:
@@ -1916,6 +1986,21 @@ MonoBehaviour:
   TinkSound: {fileID: 8300000, guid: 6ea0bc4d1290b9b41a440beb77f01158, type: 3}
   TinkEffectPrefab: {fileID: 1703609789249098, guid: 4ebacf92ab00f1a4eb078c1a9fe2a1cf,
     type: 2}
+--- !u!114 &114609821388440062
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1233140053253990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ee8e5e7c11bf16438049a0395d63b87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unparent: 0
+  FlipX: 1
+  FlipY: 0
+  flipMode: 1
 --- !u!114 &114641447403652438
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1929,114 +2014,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _bossStage: 1
   enemyToReplace: Lost Kin
-  InfectionWavePrefab: {fileID: 114394611532683104, guid: 85d28e5160fc19646a05e81a230358ac,
-    type: 2}
-  JumpSound: {fileID: 8300000, guid: 6f17ebcec5879774690f4c90395bfe8b, type: 3}
-  LandSound: {fileID: 8300000, guid: fe175303b3a154a4b81494664d5ac3f8, type: 3}
-  SwordSlashSound: {fileID: 8300000, guid: 60e9fc1b7b96e8b458f3dad2659a1ba0, type: 3}
-  PrepareSound: {fileID: 8300000, guid: bfcfae68679a7f64597b66191ca4b34a, type: 3}
-  leftX: 16.06
-  rightX: 36.53
-  floorY: 0
+  jumpSound: {fileID: 8300000, guid: 6f17ebcec5879774690f4c90395bfe8b, type: 3}
+  landSound: {fileID: 8300000, guid: fe175303b3a154a4b81494664d5ac3f8, type: 3}
+  swordSlashSound: {fileID: 8300000, guid: 60e9fc1b7b96e8b458f3dad2659a1ba0, type: 3}
+  prepareSound: {fileID: 8300000, guid: bfcfae68679a7f64597b66191ca4b34a, type: 3}
   arenaHeight: 10.72269
   Globals: {fileID: 11400000, guid: bde239292bbb1ce4fa2c5b5fbeffa8b1, type: 2}
   awakeRange: {fileID: 61381357514452128}
   BossMusicPack: {fileID: 11400000, guid: f8971090c6ea6094eabdbb9033621b4b, type: 2}
-  DebugShowZones: 1
   playerWallTestDuration: 0.5
-  DownslashEnabled: 0
-  JumpEnabled: 0
-  EvadeEnabled: 0
-  DashEnabled: 0
-  AirDashEnabled: 0
-  OverheadSlashEnabled: 0
-  BombTossEnabled: 0
   leftSpawnPoint: 20.59
   rightSpawnPoint: 33.58
   fallYPosition: 41.82
-  FallSoundEffect: {fileID: 8300000, guid: 21b39d357291ac744b417b5c260a4f1c, type: 3}
-  LandSoundEffect: {fileID: 8300000, guid: 53360feb16321344093396c2c46b2528, type: 3}
-  HollowKnightScream: {fileID: 8300000, guid: f02fae9b244aa53478fca30748acb0b0, type: 3}
+  fallSound: {fileID: 8300000, guid: 21b39d357291ac744b417b5c260a4f1c, type: 3}
+  heavyLandSound: {fileID: 8300000, guid: 53360feb16321344093396c2c46b2528, type: 3}
+  screamSound: {fileID: 8300000, guid: f02fae9b244aa53478fca30748acb0b0, type: 3}
   fallDelay: 0.3
-  idleMovementSpeedMin: 0.5
-  idleMovementSpeedMax: 1
-  idleTimeMin: 0.25
-  idleTimeMax: 0.75
-  JumpHeight: 9.2
-  evadeSpeed: 25
-  OverheadSlash: {fileID: 114670100828579762}
-  MinXDistance: 3.5
-  MinDownstabHeight: 33.31
-  DownstabActivationRange: 1.5
-  DownstabVelocity: -60
-  DownstabPrepareSound: {fileID: 8300000, guid: ce9004159ec601d4498c85da694b86a6,
-    type: 3}
-  DownstabDashSound: {fileID: 8300000, guid: 33d5f1f8451eb3241bc3ce0ec313719e, type: 3}
-  DownstabImpactSound: {fileID: 8300000, guid: a710073b705734b4ca6926664c903bc4, type: 3}
-  DownstabBurst: {fileID: 1186718562452370}
-  DownstabSlam: {fileID: 1537823261850182}
-  KinProjectilePrefab: {fileID: 114089827754991978, guid: c1425175c34607f4583f41ad82c168ac,
-    type: 2}
-  KinProjectileOffset: {x: 0, y: -0.5, z: 0}
-  AirDashHeight: 33.5
-  dashSpeed: 32
-  reverseDashSpeed: 20
-  DashSoundEffect: {fileID: 8300000, guid: f23ee6c3329b97945ad4837f825b1cff, type: 3}
-  DashBurst: {fileID: 1924731796945054}
-  DashSlash: {fileID: 1011579255959904}
-  DashSlashHit: {fileID: 1639291546580776}
-  BombTossPrepareSound: {fileID: 8300000, guid: bfcfae68679a7f64597b66191ca4b34a,
-    type: 3}
-  TossPrepareDelay: 0.55
-  TossParticles: {fileID: 198834720764166732}
-  TossParticlesSpeed: 7.5
-  TossDeathWaveSize: 0.3
-  TossTimes: 2
-  DelayBetweenTosses: 0.45
-  TossSound: {fileID: 8300000, guid: 474b478fb589aaf49974ebafa5947861, type: 3}
-  TossingDelay: 0.16666667
-  TossBloodAngleMin: 15
-  TossBloodAngleMax: 85
-  BombAngularVelocity: 180
-  TossBloodSpawnOffset: {x: 0.46, y: 0.68, z: 0}
-  ScuttlerBombSpawnOffset: {x: 0.46, y: 0.73, z: 0}
-  ScuttlerBombAirTime: 1.2
-  transScutterSpawnY: 27.86
-  transScutterSpawnMinX: 3
-  transScutterSpawnMaxX: 9
-  transScutterSpawnDelayMin: 0.1
-  transScutterSpawnDelayMax: 0.16
-  TargetsChild: {fileID: 4327921610595166}
-  BlobScaleMin: {x: 1, y: 1}
-  BlobScaleMax: {x: 1.4, y: 1.4}
-  transExplosionWaitTime: 0.7
-  transBlobSizeIncrease: 1
-  transBlobExpansionTime: 0.4
-  transSummonGrassZ: 0.8
-  transBlobSizeCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 1
-      value: 1
-      inSlope: 3.3968267
-      outSlope: 3.3968267
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  transBlobExplodeSound: {fileID: 8300000, guid: 167b35ff9b3450947aa7228e76c0a0c0,
-    type: 3}
-  transBlobExplodeVolume: 1
-  transEndDelay: 1.6
-  transAspidShotMinSize: 0.7
-  transAspidShotMaxSize: 1.3
   StunPushAmount: 10
   ShakeGas: {fileID: 198278958199289180}
   BossFinalHitSound: {fileID: 8300000, guid: 1289c8c7fba7172499433c9be2e57065, type: 3}
@@ -2049,6 +2042,21 @@ MonoBehaviour:
   DeathExplosionPrefab: {fileID: 1416157646699190, guid: 23a035e124284ee47920314581b8aa73,
     type: 2}
   CorpseSteam: {fileID: 198274037526056798}
+--- !u!114 &114648052275762112
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1594927965260650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ee8e5e7c11bf16438049a0395d63b87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unparent: 0
+  FlipX: 1
+  FlipY: 0
+  flipMode: 0
 --- !u!114 &114670100828579762
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2070,32 +2078,52 @@ MonoBehaviour:
   colliderFor10: {fileID: 60361227238181638}
   colliderFor11: {fileID: 60816171958601994}
   colliderFor12: {fileID: 60532362551773798}
---- !u!114 &114746001252753334
+--- !u!114 &114699529901920494
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1011579255959904}
+  m_GameObject: {fileID: 1625663818430612}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3fdaad19159647c4b8bab15f6364430b, type: 3}
+  m_Script: {fileID: 11500000, guid: d7268d45d4a09b343ab6ec285a165393, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ActivationDelay: 0
-  Unparent: 0
---- !u!114 &114753989196975022
+  doMoveInRandomizer: 0
+  evadeSpeed: 25
+--- !u!114 &114710402823687052
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1233140053253990}
+  m_GameObject: {fileID: 1625663818430612}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d533b2364eee94c4b92e7d3ef08f86b1, type: 3}
+  m_Script: {fileID: 11500000, guid: d7dd1f42d033f8f4c97c8adb26f76026, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flipMode: 1
---- !u!114 &114792849097285682
+  doMoveInRandomizer: 0
+  dashSpeed: 32
+  reverseDashSpeed: 20
+  DashSoundEffect: {fileID: 8300000, guid: dd39ca6750c7e324e89cda33eae02d40, type: 3}
+  DashBurst: {fileID: 1594927965260650}
+  DashSlash: {fileID: 1011579255959904}
+  DashSlashHit: {fileID: 1639291546580776}
+--- !u!114 &114724397503572304
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1625663818430612}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a897dcbd1f6f0d42b81181827cdeca4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doMoveInRandomizer: 0
+  OverheadSlash: {fileID: 114670100828579762}
+  MinXDistance: 3.5
+--- !u!114 &114782000455543258
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -2103,10 +2131,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 1639291546580776}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d533b2364eee94c4b92e7d3ef08f86b1, type: 3}
+  m_Script: {fileID: 11500000, guid: 3ee8e5e7c11bf16438049a0395d63b87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unparent: 0
+  FlipX: 1
+  FlipY: 0
   flipMode: 1
+--- !u!114 &114860994517523068
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1625663818430612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03a24f789c21def4793c024c3a00efd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doMoveInRandomizer: 1
+  AirDashHeight: 33.5
 --- !u!114 &114907780301404188
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2122,6 +2166,22 @@ MonoBehaviour:
   autoPlay: 1
   OnClipFinish: 1
   autoPlayClip: Downstab Slam
+--- !u!114 &114953366802371770
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1625663818430612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba7d26d972944bd42bdc83970f43d64f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doMoveInRandomizer: 0
+  idleMovementSpeedMin: 0.5
+  idleMovementSpeedMax: 1
+  idleTimeMin: 0.25
+  idleTimeMax: 0.75
 --- !u!114 &114993617369005376
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2172,7 +2232,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 2
-  randomSeed: -583678247
+  randomSeed: -846366519
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -4105,7 +4165,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 2
-  randomSeed: 1577042786
+  randomSeed: -375323578
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -10052,15 +10112,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21301052, guid: 53cfa9e71517df8439f2508b11a86b62, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 4.6266203, y: 3.124695}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
 --- !u!212 &212067982153660854
 SpriteRenderer:
@@ -10140,7 +10200,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21301050, guid: 53cfa9e71517df8439f2508b11a86b62, type: 3}
+  m_Sprite: {fileID: 21301052, guid: 53cfa9e71517df8439f2508b11a86b62, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -10450,7 +10510,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300348, guid: 8da2cd206fa0ef3448f2971bf1ff2054, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 3.0669115, y: 2.3555145}

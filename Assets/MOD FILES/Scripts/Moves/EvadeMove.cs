@@ -1,34 +1,11 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections;
 using UnityEngine;
 using WeaverCore;
 using WeaverCore.Utilities;
 
 public class EvadeMove : CorruptedKinMove
 {
-	public override bool MoveEnabled
-	{
-		get
-		{
-			return Kin.EvadeEnabled;
-		}
-	}
-
-	public override bool ShowsUpInRandomizer
-	{
-		get
-		{
-			return false;
-		}
-	}
-
-	public override bool CanDoAttack()
-	{
-		return false;
-	}
+	[SerializeField] float evadeSpeed = 25f;
 
 	public override IEnumerator DoMove()
 	{
@@ -39,7 +16,7 @@ public class EvadeMove : CorruptedKinMove
 
 		var xScale = transform.GetXLocalScale();
 
-		var speed = Kin.evadeSpeed * xScale;
+		var speed = evadeSpeed * xScale;
 
 		if (Kin.IsFacingRight)
 		{
@@ -69,10 +46,5 @@ public class EvadeMove : CorruptedKinMove
 		Audio.PlayAtPoint(Kin.LandSound, transform.position);
 
 		yield return Animator.PlayAnimationTillDone("Evade Recover");
-	}
-
-	public override void OnStun()
-	{
-		base.OnStun();
 	}
 }

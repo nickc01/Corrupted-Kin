@@ -1,35 +1,16 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections;
 using UnityEngine;
-using WeaverCore.Interfaces;
 
 public class IdleMove : CorruptedKinMove
 {
-	public bool NoWait = false;
-
-	public override bool MoveEnabled
-	{
-		get
-		{
-			return true;
-		}
-	}
-
-	public override bool ShowsUpInRandomizer
-	{
-		get
-		{
-			return false;
-		}
-	}
-
-	public override bool CanDoAttack()
-	{
-		return true;
-	}
+	[SerializeField]
+	float idleMovementSpeedMin = 0.5f;
+	[SerializeField]
+	float idleMovementSpeedMax = 1.25f;
+	[SerializeField]
+	float idleTimeMin = 1f;
+	[SerializeField]
+	float idleTimeMax = 1.5f;
 
 	public override IEnumerator DoMove()
 	{
@@ -50,7 +31,7 @@ public class IdleMove : CorruptedKinMove
 		}*/
 
 		//Get random walkspeed
-		var walkSpeed = UnityEngine.Random.Range(Kin.idleMovementSpeedMin, Kin.idleMovementSpeedMax);
+		var walkSpeed = UnityEngine.Random.Range(idleMovementSpeedMin, idleMovementSpeedMax);
 
 		//Flip at random
 		walkSpeed = UnityEngine.Random.value >= 0.5f ? walkSpeed : -walkSpeed;
@@ -62,22 +43,16 @@ public class IdleMove : CorruptedKinMove
 		yield return Kin.TurnTowardsPlayer();
 		Animator.PlayAnimation("Walk");
 
-		if (!NoWait)
+
+		long timesHitBefore = HealthManager.TimesHit;
+		var waitTime = UnityEngine.Random.Range(idleTimeMin, idleTimeMax);
+		for (float t = 0; t < waitTime; t += Time.deltaTime)
 		{
-			long timesHitBefore = HealthManager.TimesHit;
-			var waitTime = UnityEngine.Random.Range(Kin.idleTimeMin, Kin.idleTimeMax);
-			for (float t = 0; t < waitTime; t += Time.deltaTime)
+			if (HealthManager.TimesHit > timesHitBefore)
 			{
-				if (HealthManager.TimesHit > timesHitBefore)
-				{
-					break;
-				}
-				yield return null;
+				break;
 			}
-		}
-		else
-		{
-			NoWait = false;
+			yield return null;
 		}
 
 		Rigidbody.velocity = new Vector2(0f, 0f);
@@ -97,7 +72,6 @@ public class IdleMove : CorruptedKinMove
 	public override void OnStun()
 	{
 		Rigidbody.velocity = new Vector2(0f, 0f);
-		base.OnStun();
 	}
 }
 

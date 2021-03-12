@@ -1,48 +1,31 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using UnityEngine;
-using WeaverCore;
 using WeaverCore.Utilities;
 
 public class AirDashMove : CorruptedKinMove
 {
-	public override bool MoveEnabled
+	[SerializeField] float AirDashHeight = 31.5f;
+
+	DashSlashMove dashSlash;
+	JumpMove jump;
+	bool airDashing;
+
+	void Awake()
 	{
-		get
-		{
-			return Kin.AirDashEnabled;
-		}
+		dashSlash = GetComponent<DashSlashMove>();
+		jump = GetComponent<JumpMove>();
 	}
 
-	public override bool ShowsUpInRandomizer
-	{
-		get
-		{
-			return true;
-		}
-	}
-
-	GroundDashMove dashMove;
-	JumpMove jumpMove;
-
-	public override void OnMoveAwake()
-	{
-		dashMove = GetMove<GroundDashMove>();
-		jumpMove = GetMove<JumpMove>();
-		base.OnMoveAwake();
-	}
 
 	public override IEnumerator DoMove()
 	{
-		var jumpRoutine = Kin.StartBoundRoutine(jumpMove.Jump(UnityEngine.Random.Range(Kin.leftX, Kin.rightX)));
+		var jumpRoutine = Kin.StartBoundRoutine(jump.Jump(UnityEngine.Random.Range(Kin.LeftX, Kin.RightX)));
 
-		bool airDashing = false;
+		airDashing = false;
 
 		while (Kin.IsRoutineRunning(jumpRoutine))
 		{
-			if (transform.position.y > Kin.AirDashHeight)
+			if (transform.position.y > AirDashHeight)
 			{
 				airDashing = true;
 				Kin.StopBoundRoutine(jumpRoutine);
@@ -52,7 +35,7 @@ public class AirDashMove : CorruptedKinMove
 
 		if (airDashing)
 		{
-			transform.SetYPosition(Kin.AirDashHeight);
+			transform.SetYPosition(AirDashHeight);
 			Rigidbody.gravityScale = 0f;
 
 			//Kin.FacePlayer(false);
@@ -62,23 +45,22 @@ public class AirDashMove : CorruptedKinMove
 
 			yield return Animator.PlayAnimationTillDone("Dash Antic 1");
 
-			yield return dashMove.DoDash();
+			yield return dashSlash.DoDash();
 			//yield return DashPart2();
 			//break;
 		}
 	}
 
-	public override bool CanDoAttack()
+	public override void OnStun()
 	{
-		var percentage = Kin.GetPercentageToBoss(Player.Player1.transform);
-
-		Kin.DrawPercentageLine(0.5f, Player.Player1.transform);
-
-		return percentage >= 0.5f;
-
-		//var playerZone = Kin.PlayerZone;
-		//return (Kin.InAdjacentZone(Kin.CurrentZone, Kin.PlayerZone) || Kin.InFarCorners(Kin.CurrentZone, Kin.PlayerZone));
-		//return playerZone == CorruptedKin.DistanceZone.LeftZone && playerZone == CorruptedKin.DistanceZone.RightZone;
+		if (airDashing)
+		{
+			dashSlash.OnStun();
+		}
+		else
+		{
+			jump.OnStun();
+		}
 	}
 }
 

@@ -21,7 +21,6 @@ public class CorruptedKinGlobals : ScriptableObject
 	public Scuttler ScuttlerPrefab;
 	public TransformationBlob TransBlobPrefab;
 	public TransformationAspidShot TransAspidShotPrefab;
-	public GameObject WallBlockerPrefab;
 	public WallSplats WallSplatsPrefab;
 }
 

@@ -1,56 +1,41 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections;
 using UnityEngine;
 using WeaverCore;
 
 public class DownslashMove : CorruptedKinMove
 {
-	public override bool MoveEnabled
-	{
-		get
-		{
-			return Kin.DownslashEnabled;
-		}
-	}
+	[SerializeField] float MinDownstabHeight = 33.31f;
+	[SerializeField] float DownstabActivationRange = 1.5f;
+	[SerializeField] float DownstabVelocity = -60f;
+	[SerializeField] AudioClip DownstabPrepareSound;
+	[SerializeField] AudioClip DownstabDashSound;
+	[SerializeField] AudioClip DownstabImpactSound;
+	[SerializeField] GameObject DownstabBurst;
+	[SerializeField] GameObject DownstabSlam;
+	[SerializeField] Vector3 KinProjectileOffset = new Vector3(0f, -0.5f, 0f);
 
-	public override bool ShowsUpInRandomizer
-	{
-		get
-		{
-			return true;
-		}
-	}
 
-	JumpMove jumpMove;
+	JumpMove jump;
+	bool downstabbing;
 
-	public override void OnMoveAwake()
+	void Awake()
 	{
-		jumpMove = GetMove<JumpMove>();
-	}
-
-	public override bool CanDoAttack()
-	{
-		return true;
+		jump = GetComponent<JumpMove>();
 	}
 
 	public override IEnumerator DoMove()
 	{
 		var destX = Mathf.LerpUnclamped(transform.position.x, Player.Player1.transform.position.x, 2f);
 
-
-		var jumpRoutine = Kin.StartBoundRoutine(jumpMove.Jump(destX));
-
-		bool downstabbing = false;
+		downstabbing = false;
+		var jumpRoutine = Kin.StartBoundRoutine(jump.Jump(destX));
 
 
 		while (Kin.IsRoutineRunning(jumpRoutine))
 		{
 			var playerPos = Player.Player1.transform.position;
 
-			if (transform.position.y >= Kin.MinDownstabHeight && Mathf.Abs(transform.position.x - playerPos.x) <= Kin.DownstabActivationRange)
+			if (transform.position.y >= MinDownstabHeight && Mathf.Abs(transform.position.x - playerPos.x) <= DownstabActivationRange)
 			{
 				downstabbing = true;
 				Kin.StopBoundRoutine(jumpRoutine);
@@ -62,34 +47,34 @@ public class DownslashMove : CorruptedKinMove
 
 		if (downstabbing)
 		{
-			Audio.PlayAtPoint(Kin.DownstabPrepareSound, transform.position);
+			Audio.PlayAtPoint(DownstabPrepareSound, transform.position);
 			Rigidbody.velocity = default(Vector2);
 			Rigidbody.gravityScale = 0f;
 			yield return Animator.PlayAnimationTillDone("Downstab Antic Quick");
-			Audio.PlayAtPoint(Kin.DownstabDashSound, transform.position);
+			Audio.PlayAtPoint(DownstabDashSound, transform.position);
 			Animator.PlayAnimation("Downstab");
 
-			Rigidbody.velocity = new Vector2(0f, Kin.DownstabVelocity);
+			Rigidbody.velocity = new Vector2(0f, DownstabVelocity);
 			Rigidbody.gravityScale = Kin.GravityScale;
 
-			Kin.DownstabBurst.SetActive(true);
+			DownstabBurst.SetActive(true);
 
 			yield return Kin.WaitTillTouchingGround();
 
-			Audio.PlayAtPoint(Kin.DownstabImpactSound, transform.position);
+			Audio.PlayAtPoint(DownstabImpactSound, transform.position);
 			Rigidbody.velocity = default(Vector2);
-			Kin.DownstabSlam.SetActive(true);
+			DownstabSlam.SetActive(true);
 
 			CameraShaker.Instance.Shake(WeaverCore.Enums.ShakeType.EnemyKillShake);
 
 			//TODO - SPAWN PROJECTILES
 
-			KinProjectile.Spawn(transform.position + Kin.KinProjectileOffset, new Vector2(21, 0));
-			KinProjectile.Spawn(transform.position + Kin.KinProjectileOffset, new Vector2(15, 0));
-			KinProjectile.Spawn(transform.position + Kin.KinProjectileOffset, new Vector2(8, 0));
-			KinProjectile.Spawn(transform.position + Kin.KinProjectileOffset, new Vector2(-8, 0));
-			KinProjectile.Spawn(transform.position + Kin.KinProjectileOffset, new Vector2(-15, 0));
-			KinProjectile.Spawn(transform.position + Kin.KinProjectileOffset, new Vector2(-21, 0));
+			KinProjectile.Spawn(transform.position + KinProjectileOffset, new Vector2(21, 0));
+			KinProjectile.Spawn(transform.position + KinProjectileOffset, new Vector2(15, 0));
+			KinProjectile.Spawn(transform.position + KinProjectileOffset, new Vector2(8, 0));
+			KinProjectile.Spawn(transform.position + KinProjectileOffset, new Vector2(-8, 0));
+			KinProjectile.Spawn(transform.position + KinProjectileOffset, new Vector2(-15, 0));
+			KinProjectile.Spawn(transform.position + KinProjectileOffset, new Vector2(-21, 0));
 
 			yield return Animator.PlayAnimationTillDone("Downstab Land");
 
@@ -101,6 +86,10 @@ public class DownslashMove : CorruptedKinMove
 
 	public override void OnStun()
 	{
+		if (!downstabbing)
+		{
+			jump.OnStun();
+		}
 		Rigidbody.velocity = default(Vector2);
 		base.OnStun();
 	}

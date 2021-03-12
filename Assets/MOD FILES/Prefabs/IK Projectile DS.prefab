@@ -192,10 +192,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fd11a7a3b9c16940bc7acd10ca21a1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageDealt: 2
+  damageDealt: 1
   hazardType: 1
   shadowDashHazard: 0
-  updateLayer: 0
+  setLayerToEnemies: 0
 --- !u!198 &198150092043819332
 ParticleSystem:
   m_ObjectHideFlags: 1

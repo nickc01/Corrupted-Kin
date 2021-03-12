@@ -3,8 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using WeaverCore.Components;
+using WeaverCore.Interfaces;
+using WeaverCore.Utilities;
 
-public class AspidShot : EnemyProjectile 
+
+/*public class AspidShot : EnemyProjectile, IOnPool
 {
 	static WeaverCore.ObjectPool AspidShotPool;
 
@@ -108,42 +111,13 @@ public class AspidShot : EnemyProjectile
 
 	public static AspidShot Spawn(Vector3 position, Vector3 target, float time, float gravityScale)
 	{
-		float xVelocity = (target.x - position.x) / time;
-		float yVelocity = CalculateVerticalVelocity(position.y, target.y, time, gravityScale);
+		//float xVelocity = (target.x - position.x) / time;
+		//MathUtilties.CalculateVelocityToReachPoint
+		//float yVelocity = MathUtilties.CalculateVerticalVelocity(position.y, target.y, time, gravityScale);
 
-		return Spawn(position, new Vector2(xVelocity, yVelocity));
-	}
+		//return Spawn(position, new Vector2(xVelocity, yVelocity));
 
-	public static float CalculateVerticalVelocity(float startY, float endY, float time)
-	{
-		return CalculateVerticalVelocity(startY, endY, time);
-	}
-
-	public static float CalculateVerticalVelocity(float startY, float endY, float time, float gravityScale)
-	{
-		float a = Physics2D.gravity.y * gravityScale;
-		float newY = endY - startY;
-
-		return (newY / time) - (a * time);
-	}
-
-	//Finds the time (x) needed to reach the highest point the projectile will reach (y)
-	public static Vector2 CalculateMaximumOfCurve(float startY, float endY, float time)
-	{
-		return CalculateMaximumOfCurve(startY, endY, time, CorruptedKinGlobals.Instance.AspidShotPrefab.Rigidbody.gravityScale);
-	}
-
-	//Finds the time (x) needed to reach the highest point the projectile will reach (y)
-	public static Vector2 CalculateMaximumOfCurve(float startY, float endY, float time, float gravityScale)
-	{
-		var velocity = CalculateVerticalVelocity(startY, endY, time, gravityScale);
-
-		var a = gravityScale * Physics2D.gravity.y;
-
-		var timeToPeak = -velocity / (2f * a);
-
-		var peakValue = (a * timeToPeak * timeToPeak) + (velocity * timeToPeak);
-
-		return new Vector2(timeToPeak,peakValue);
+		return Spawn(position,MathUtilties.CalculateVelocityToReachPoint(position,target,time,gravityScale));
 	}
 }
+*/

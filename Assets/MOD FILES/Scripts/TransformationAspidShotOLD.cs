@@ -7,7 +7,7 @@ using WeaverCore.Components;
 using WeaverCore.Enums;
 using WeaverCore.Utilities;
 
-public class TransformationAspidShot : AspidShot
+/*public class TransformationAspidShot : AspidShot
 {
 	//static WeaverCore.Utilities.ObjectPool WallBlockerPool;
 	//static WeaverCore.ObjectPool TransAspidShotPool;
@@ -19,14 +19,14 @@ public class TransformationAspidShot : AspidShot
 	public Transform Destination { get; private set; }
 	//public CardinalDirection DestinationWall { get; private set; }
 
-	CircleCollider2D circleCollider;
+	//CircleCollider2D circleCollider;
 
 
 	protected override void Awake()
 	{
 		base.Awake();
-		circleCollider = GetComponent<CircleCollider2D>();
-		circleCollider.enabled = false;
+		//circleCollider = GetComponent<CircleCollider2D>();
+		//circleCollider.enabled = false;
 
 	}
 
@@ -35,26 +35,11 @@ public class TransformationAspidShot : AspidShot
 		base.Update();
 		if (Vector3.Distance(transform.position,Destination.position) <= 0.5f)
 		{
-			circleCollider.enabled = true;
+			//circleCollider.enabled = true;
 			//Debug.Log("IN RANGE");
-			//Destroy();
+			Destroy();
 		}
 	}
-
-	//public static void PreparePools(int prepAmounts)
-	//{
-		/*if (TransAspidShotPool == null)
-		{
-			//TransAspidShotPool = new WeaverCore.ObjectPool(CorruptedKinGlobals.Instance.TransAspidShotPrefab);
-			TransAspidShotPool.FillPoolAsync(prepAmounts);
-		}*/
-
-		/*if (WallBlockerPool == null)
-		{
-			WallBlockerPool = new WeaverCore.Utilities.ObjectPool(CorruptedKinGlobals.Instance.WallBlockerPrefab);
-			WallBlockerPool.FillPoolAsync(prepAmounts);
-		}*/
-	//}
 
 	protected override void OnProjectileDestroy()
 	{
@@ -67,10 +52,6 @@ public class TransformationAspidShot : AspidShot
 
 	public static TransformationAspidShot SpawnTransformationShot(Vector3 start, Transform destination)
 	{
-		/*if (TransAspidShotPool == null)
-		{
-			PreparePools(0);
-		}*/
 		//var instance = TransAspidShotPool.Instantiate<TransformationAspidShot>(start, Quaternion.identity);
 		var instance = Pooling.Instantiate(CorruptedKinGlobals.Instance.TransAspidShotPrefab,start,Quaternion.identity);
 		instance.Destination = destination;
@@ -83,4 +64,4 @@ public class TransformationAspidShot : AspidShot
 		return instance;
 	}
 
-}
+}*/

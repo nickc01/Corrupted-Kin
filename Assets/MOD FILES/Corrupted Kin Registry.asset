@@ -9,18 +9,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 413c603cd6dfc5b40967cc4a6db76d9f, type: 3}
-  m_Name: CorruptedKinRegistry
+  m_Name: Corrupted Kin Registry
   m_EditorClassIdentifier: 
   registryName: Corrupted Kin Registry
   modName: Corrupted Kin
-  modAssemblyName: Assembly-CSharp
+  modAssemblyName: CorruptedKin
   modTypeName: Kin.CorruptedKin
   modListHashCode: 1818181233
   features:
   - feature: {fileID: 114641447403652438, guid: 392b31128831d8f429d6ba38e3c1ecc2,
       type: 2}
     TypeName: CorruptedKin
-    AssemblyName: Assembly-CSharp
+    AssemblyName: CorruptedKin
   featuresRaw:
   - {fileID: 114641447403652438, guid: 392b31128831d8f429d6ba38e3c1ecc2, type: 2}
   selectedFeatureIndex: 0

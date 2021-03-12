@@ -8,6 +8,8 @@ public class Slash : MonoBehaviour
 {
 	public float ActivationDelay = 0f;
 	public bool Unparent = false;
+	[SerializeField]
+	bool autoFlipPosition = false;
 
 	SpriteRenderer spriteRenderer;
 

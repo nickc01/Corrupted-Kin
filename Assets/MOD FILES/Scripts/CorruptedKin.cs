@@ -6,6 +6,7 @@ using System.Linq;
 using System.Reflection;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.Serialization;
 using WeaverCore;
 using WeaverCore.Assets.Components;
 using WeaverCore.Components;
@@ -16,14 +17,6 @@ using Random = UnityEngine.Random;
 public class CorruptedKin : BossReplacement
 {
 	public static CorruptedKin Instance { get; private set; }
-	/*public enum DistanceZone
-	{
-		None,
-		LeftZone,
-		CenterZone,
-		RightZone
-	}*/
-	//public List<CorruptedKinMove> Moves { get; private set; }
 	public WeaverAnimationPlayer Animator { get; private set; }
 	public SpriteRenderer Renderer { get; private set; }
 	public Rigidbody2D Rigidbody { get; private set; }
@@ -35,26 +28,34 @@ public class CorruptedKin : BossReplacement
 	public WaveSystem InfectionWave { get; set; }
 
 	[Header("General Stuff")]
-	public WaveSystem InfectionWavePrefab;
-	public AudioClip JumpSound;
-	public AudioClip LandSound;
-	public AudioClip SwordSlashSound;
-	public AudioClip PrepareSound;
-	public float leftX = 16.06f;
-	public float rightX = 36.53f;
-	public float floorY = 0f;
-	public float arenaHeight = 0f;
-	public CorruptedKinGlobals Globals;
-	public BoxCollider2D awakeRange;
-	public MusicPack BossMusicPack;
-	//public float CenterZoneLeft = 20.06f;
-	//public float CenterZoneRight = 32.53f;
-	//public float CenterZoneSize = 12f;
-	public bool DebugShowZones = false;
+	[FormerlySerializedAs("JumpSound")]
+	[SerializeField] AudioClip jumpSound;
+	[FormerlySerializedAs("LandSound")]
+	[SerializeField] AudioClip landSound;
+	[FormerlySerializedAs("SwordSlashSound")]
+	[SerializeField] AudioClip swordSlashSound;
+	[FormerlySerializedAs("PrepareSound")]
+	[SerializeField] AudioClip prepareSound;
+	float leftX = 16.06f;
+	float rightX = 36.53f;
+	float floorY = 0f;
+	[SerializeField] float arenaHeight = 0f;
+	[SerializeField] CorruptedKinGlobals Globals;
+	[SerializeField] BoxCollider2D awakeRange;
+	[SerializeField] MusicPack BossMusicPack;
 	[Tooltip("The time the player must stay on the wall before the boss registers that the player is staying on the wall")]
 	public float playerWallTestDuration = 0.5f;
 
-	[Space]
+	public AudioClip JumpSound { get { return jumpSound; } }
+	public AudioClip LandSound { get { return landSound; } }
+	public AudioClip SwordSlashSound { get { return swordSlashSound; } }
+	public AudioClip PrepareSound { get { return prepareSound; } }
+	public float LeftX { get { return leftX; } }
+	public float RightX { get { return rightX; } }
+	public float FloorY { get { return floorY; } }
+	public float MiddleX { get { return Mathf.Lerp(LeftX, RightX, 0.5f); } }
+
+	/*[Space]
 	[Header("Moves")]
 	public bool DownslashEnabled = true;
 	public bool JumpEnabled = true;
@@ -62,19 +63,26 @@ public class CorruptedKin : BossReplacement
 	public bool DashEnabled = true;
 	public bool AirDashEnabled = true;
 	public bool OverheadSlashEnabled = true;
-	public bool BombTossEnabled = true;
+	public bool BombTossEnabled = true;*/
 
 	[Space]
 	[Header("Intro")]
-	public float leftSpawnPoint = 20.59f;
-	public float rightSpawnPoint = 33.58f;
-	public float fallYPosition = 41.82f;
-	public AudioClip FallSoundEffect;
-	public AudioClip LandSoundEffect;
-	public AudioClip HollowKnightScream;
-	public float fallDelay = 0.3f;
+	[SerializeField] float leftSpawnPoint = 20.59f;
+	[SerializeField] float rightSpawnPoint = 33.58f;
+	[SerializeField] float fallYPosition = 41.82f;
+	[FormerlySerializedAs("FallSoundEffect")]
+	[SerializeField] AudioClip fallSound;
+	[FormerlySerializedAs("LandSoundEffect")]
+	[SerializeField] AudioClip heavyLandSound;
+	[FormerlySerializedAs("HollowKnightScream")]
+	[SerializeField] AudioClip screamSound;
+	[SerializeField] float fallDelay = 0.3f;
 
-	[Space]
+	public AudioClip FallSound { get { return fallSound; } }
+	public AudioClip HeavyLandSound { get { return heavyLandSound; } }
+	public AudioClip ScreamSound { get { return screamSound; } }
+
+	/*[Space]
 	[Header("Idle Move")]
 	public float idleMovementSpeedMin = 0.5f;
 	public float idleMovementSpeedMax = 1.25f;
@@ -162,7 +170,7 @@ public class CorruptedKin : BossReplacement
 	public float transBlobExplodeVolume = 1f;
 	public float transEndDelay = 0.8f;
 	public float transAspidShotMinSize = 0.7f;
-	public float transAspidShotMaxSize = 1.3f;
+	public float transAspidShotMaxSize = 1.3f;*/
 
 
 	[Space]
@@ -192,7 +200,7 @@ public class CorruptedKin : BossReplacement
 			return rightX - leftX;
 		}
 	}
-	List<CorruptedKinMove> _moves = new List<CorruptedKinMove>();
+	List<CorruptedKinMove> _moves;
 	public IEnumerable<CorruptedKinMove> Moves
 	{
 		get
@@ -336,10 +344,10 @@ public class CorruptedKin : BossReplacement
 		}
 	}
 
-	public T GetMove<T>() where T : CorruptedKinMove
+	/*public T GetMove<T>() where T : CorruptedKinMoveOLD
 	{
 		return Moves.First(m => m is T) as T;
-	}
+	}*/
 
 	void MoveSceneryBack()
 	{
@@ -363,29 +371,31 @@ public class CorruptedKin : BossReplacement
 		var prefab1 = WeaverAssets.LoadWeaverAsset<GameObject>("Blood Particles");
 		var prefab2 = WeaverAssets.LoadWeaverAsset<GameObject>("Blood Particles");
 
-		WeaverLog.Log("Prefab 1 = " + prefab1.GetInstanceID());
-		WeaverLog.Log("Prefab 2 = " + prefab1.GetInstanceID());
+		//WeaverLog.Log("Prefab 1 = " + prefab1.GetInstanceID());
+		//WeaverLog.Log("Prefab 2 = " + prefab1.GetInstanceID());
 
-		WeaverLog.Log("Equal = " + (prefab1 == prefab2));
+		//WeaverLog.Log("Equal = " + (prefab1 == prefab2));
 
 
 		Instance = this;
-		WeaverLog.Log("Corrupted Kin has Awoken");
+		//WeaverLog.Log("Corrupted Kin has Awoken");
 		//MoveSceneryBack();
 
 		//Find all corrupted kin moves
-		var moveTypes = typeof(CorruptedKin).Assembly.GetTypes().Where(t => !t.IsAbstract && typeof(CorruptedKinMove).IsAssignableFrom(t));
+		//var moveTypes = typeof(CorruptedKin).Assembly.GetTypes().Where(t => !t.IsAbstract && typeof(CorruptedKinMove).IsAssignableFrom(t));
 
 		//Moves = new List<CorruptedKinMove>();
 
-		foreach (var moveType in moveTypes)
-		{
-			var move = (CorruptedKinMove)Activator.CreateInstance(moveType);
-			move.Kin = this;
-			_moves.Add(move);
-			//AddMove(move);
-			//Moves.Add(move);
-		}
+		//foreach (var moveType in moveTypes)
+		//{
+		//var move = (CorruptedKinMove)Activator.CreateInstance(moveType);
+		//move.Kin = this;
+		//_moves.Add(move);
+		//AddMove(move);
+		//Moves.Add(move);
+		//}
+
+		_moves = new List<CorruptedKinMove>(GetComponents<CorruptedKinMove>());
 
 		CorruptedKinGlobals.Instance = Globals;
 
@@ -420,10 +430,10 @@ public class CorruptedKin : BossReplacement
 		AddStunMilestone(quarterHealth * 2);
 		AddStunMilestone(quarterHealth * 3);
 
-		foreach (var move in Moves)
+		/*foreach (var move in Moves)
 		{
 			move.OnMoveAwake();
-		}
+		}*/
 
 		if (CoreInfo.LoadState == WeaverCore.Enums.RunningState.Editor)
 		{
@@ -506,7 +516,7 @@ public class CorruptedKin : BossReplacement
 		Animator.PlayAnimation("Fall");
 
 
-		AudioPlayer.Play(FallSoundEffect);
+		AudioPlayer.Play(fallSound);
 
 		transform.SetYPosition(fallYPosition);
 
@@ -520,12 +530,10 @@ public class CorruptedKin : BossReplacement
 
 		floorY = transform.position.y;
 
-		AudioPlayer.Play(LandSoundEffect);
+		AudioPlayer.Play(heavyLandSound);
 
 
 		yield return Animator.PlayAnimationTillDone("Land");
-
-		TransformationSplats = WallSplats.Spawn(leftX, floorY);
 
 		yield return Animator.PlayAnimationTillDone("Roar Start");
 
@@ -539,7 +547,7 @@ public class CorruptedKin : BossReplacement
 
 		WeaverCore.Assets.AreaTitle.Spawn("Corrupted", "Kin");
 
-		yield return Roar(2.4f, HollowKnightScream);
+		yield return Roar(2.4f, screamSound);
 
 		yield return Animator.PlayAnimationTillDone("Roar End");
 
@@ -555,21 +563,16 @@ public class CorruptedKin : BossReplacement
 
 	public IEnumerator BossController()
 	{
-		/*while (true)
-		{
-			yield return Animator.PlayAnimationTillDone("TurnToWalk",true);
 
-
-			yield return null;
-		}*/
-
-		var idleMove = GetMove<IdleMove>();
-		var overheadMove = GetMove<OverheadSlashMove>();
+		//var idleMove = GetMove<IdleMoveOLD>();
+		//var overheadMove = GetMove<OverheadSlashMoveOLD>();
+		var idleMove = GetComponent<IdleMove>();
+		var overheadMove = GetComponent<OverheadSlashMove>();
 		while (true)
 		{
-			if (idleMove.MoveEnabled && idleMove.CanDoAttack())
+			if (idleMove.MoveEnabled)
 			{
-				Debug.Log("Idling");
+				//Debug.Log("Idling");
 				yield return RunMove(idleMove);
 			}
 			if (PlayerIsOnWall)
@@ -577,25 +580,25 @@ public class CorruptedKin : BossReplacement
 				//TODO - Make Aspid Move here
 
 				//TODO - Make bomb toss move here
-				Debug.Log("Player On Wall");
+				//Debug.Log("Player On Wall");
 			}
 			else
 			{
-				if (overheadMove.MoveEnabled && overheadMove.CanDoAttack())
+				if (overheadMove.MoveEnabled)
 				{
-					Debug.Log("M_C");
+					//Debug.Log("M_C");
 					yield return RunMove(overheadMove);
 				}
 				else
 				{
-					Debug.Log("M_A");
+					//Debug.Log("M_A");
 					bool didMove = false;
 					foreach (var randomMove in GetRandomMoveList())
 					{
 						CorruptedKinMove kinMove = randomMove;
-						if (kinMove.MoveEnabled && kinMove.CanDoAttack())
+						if (kinMove.MoveEnabled)
 						{
-							Debug.Log("Doing Move = " + kinMove.GetType().Name);
+							//Debug.Log("Doing Move = " + kinMove.GetType().Name);
 							didMove = true;
 							yield return RunMove(kinMove);
 							break;
@@ -603,7 +606,7 @@ public class CorruptedKin : BossReplacement
 					}
 					if (!didMove)
 					{
-						Debug.Log("M_B");
+						//Debug.Log("M_B");
 						var move = GetRandomMove();
 						if (move.MoveEnabled)
 						{
@@ -617,7 +620,7 @@ public class CorruptedKin : BossReplacement
 
 	IEnumerable<CorruptedKinMove> GetRandomMoveList()
 	{
-		List<CorruptedKinMove> moves = new List<CorruptedKinMove>(Moves.Where(m => m.ShowsUpInRandomizer));
+		List<CorruptedKinMove> moves = new List<CorruptedKinMove>(Moves.Where(m => m.DoMoveInRandomizer));
 
 		moves.Sort(Randomizer<CorruptedKinMove>.Instance);
 
@@ -626,7 +629,7 @@ public class CorruptedKin : BossReplacement
 
 	CorruptedKinMove GetRandomMove()
 	{
-		List<CorruptedKinMove> moves = new List<CorruptedKinMove>(Moves.Where(m => m.ShowsUpInRandomizer));
+		List<CorruptedKinMove> moves = new List<CorruptedKinMove>(Moves.Where(m => m.DoMoveInRandomizer));
 
 		return moves[Random.Range(0,moves.Count)];
 	}
@@ -901,9 +904,9 @@ public class CorruptedKin : BossReplacement
 
 		Rigidbody.velocity = new Vector2(movementAmount, 20f);
 
-		DashSlashHit.SetActive(false);
-		DashSlash.SetActive(false);
-		OverheadSlash.gameObject.SetActive(false);
+		//DashSlashHit.SetActive(false);
+		//DashSlash.SetActive(false);
+		//OverheadSlash.gameObject.SetActive(false);
 
 		ShakeGas.Stop(false, ParticleSystemStopBehavior.StopEmitting);
 	}

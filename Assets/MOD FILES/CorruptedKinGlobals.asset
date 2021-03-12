@@ -25,8 +25,7 @@ MonoBehaviour:
     type: 2}
   TransBlobPrefab: {fileID: 114128432294604980, guid: 79cc4dedf9f3a3e429209bcfbbcf31d3,
     type: 2}
-  TransAspidShotPrefab: {fileID: 114029780902059938, guid: 08d629091c3a82a4f93734e2c282740d,
+  TransAspidShotPrefab: {fileID: 114672639026878462, guid: 08d629091c3a82a4f93734e2c282740d,
     type: 2}
-  WallBlockerPrefab: {fileID: 0}
   WallSplatsPrefab: {fileID: 114992473665676760, guid: 61a290338c5bbe04bb1f3fe5447ecdaf,
     type: 2}

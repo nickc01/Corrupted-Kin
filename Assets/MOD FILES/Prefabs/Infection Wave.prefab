@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 114394611532683104}
   - component: {fileID: 60863888326471480}
   - component: {fileID: 114568374667367748}
+  - component: {fileID: 114353557942666600}
   m_Layer: 0
   m_Name: Infection Wave
   m_TagString: Untagged
@@ -54,7 +55,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1807663748469362}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.01, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4996545519626782}
@@ -67,7 +68,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1763694434844446}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 27, y: 23.24, z: 0}
+  m_LocalPosition: {x: 27, y: 25.35, z: 0}
   m_LocalScale: {x: 40, y: 4, z: 1}
   m_Children:
   - {fileID: 4638283879534886}
@@ -143,6 +144,21 @@ PolygonCollider2D:
       - {x: -0.5, y: 0.5}
       - {x: 0.5, y: 0.5}
       - {x: 0.5, y: -0.5}
+--- !u!114 &114353557942666600
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1763694434844446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fd11a7a3b9c16940bc7acd10ca21a1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageDealt: 1
+  hazardType: 1
+  shadowDashHazard: 0
+  setLayerToEnemies: 0
 --- !u!114 &114394611532683104
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -155,7 +171,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wavePoints: 200
-  baseHeight: 1.2
+  baseHeight: 0.75
   squashFactor: 1
   colliderOffset: {x: 0, y: -0.08}
   colliderQuality: 2
@@ -238,6 +254,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a352889ee8ae9246951d1bd40711957, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scale: {x: 20, y: 0.17}
+  scale: {x: 20, y: 0.12}
   speed: -5
   oscillationSpeed: 0.2

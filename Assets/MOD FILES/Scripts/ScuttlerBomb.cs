@@ -39,18 +39,38 @@ public class ScuttlerBomb : MonoBehaviour
 
 	void OnCollisionEnter2D(Collision2D collision)
 	{
+		if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
+		{
+			WeaverLog.Log("Collided With Player!");
+		}
 		if (!rigidbody.isKinematic && ((1 << collision.gameObject.layer) & collisionMask.value) != 0)
 		{
-			renderer.enabled = false;
-			rigidbody.isKinematic = true;
-			collider.enabled = false;
-			particles.Stop(false, ParticleSystemStopBehavior.StopEmitting);
-			Debug.Log("Bomb Position = " + transform.position);
-			Debug.Log("Actual Air Time = " + airTimeCounter);
-			InfectedExplosion.Spawn(transform.position);
-			poolComponent.ReturnToPool(1f);
+			Explode();
 		}
 	}
+
+	private void Explode()
+	{
+		renderer.enabled = false;
+		rigidbody.isKinematic = true;
+		collider.enabled = false;
+		particles.Stop(false, ParticleSystemStopBehavior.StopEmitting);
+		Debug.Log("Bomb Position = " + transform.position);
+		Debug.Log("Actual Air Time = " + airTimeCounter);
+		InfectedExplosion.Spawn(transform.position);
+		poolComponent.ReturnToPool(1f);
+	}
+
+	void OnTriggerEnter2D(Collider2D collider)
+	{
+		if (collider.gameObject.layer == LayerMask.NameToLayer("Hero Box"))
+		{
+			WeaverLog.Log("Triggered With Player!");
+			Explode();
+		}
+	}
+
+
 
 	void Update()
 	{
@@ -82,12 +102,12 @@ public class ScuttlerBomb : MonoBehaviour
 	public static ScuttlerBomb Spawn(Vector3 position, Vector3 destination, float time, float angularVelocity)
 	{
 		var gravityScale = CorruptedKinGlobals.Instance.ScuttlerBombPrefab.GetComponent<Rigidbody2D>().gravityScale;
-		var velocity = MathUtilties.CalculateVelocityToReachPointNEW(position, destination, time, gravityScale);
+		var velocity = MathUtilties.CalculateVelocityToReachPoint(position, destination, time, gravityScale);
 
-		Debug.Log("Start = " + position);
-		Debug.Log("End = " + destination);
-		Debug.Log("Velocity = " + velocity);
-		Debug.Log("Time = " + time);
+		//Debug.Log("Start = " + position);
+		//Debug.Log("End = " + destination);
+		//Debug.Log("Velocity = " + velocity);
+		//Debug.Log("Time = " + time);
 
 		return Spawn(position, velocity, angularVelocity);
 

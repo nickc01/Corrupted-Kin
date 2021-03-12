@@ -161,7 +161,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1293378723774644}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: faf8773f2fb392049add003ec85b670f, type: 3}
+  m_Script: {fileID: 11500000, guid: 247ec6b31e093f44599369bc5f303442, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   scaleMin: 0.8
@@ -169,12 +169,11 @@ MonoBehaviour:
   stretchFactor: 1.4
   minSquashAmount: 0.5
   maxStretchAmount: 2
-  destroyAfterTime: 1
-  lifetime: 5
-  whenDestroyed: 3
-  animationOnStart: Idle
-  animationOnDestroy: Impact
-  impactClip: {fileID: 8300000, guid: e828bc4189e30ec41bf4e4315327a0a4, type: 3}
+  maxLifeTime: 5
+  startAnimation: Idle
+  deathAnimation: Impact
+  ImpactClip: {fileID: 8300000, guid: e828bc4189e30ec41bf4e4315327a0a4, type: 3}
+  lifeTime: 5
 --- !u!114 &114802107909566172
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -189,7 +188,7 @@ MonoBehaviour:
   damageDealt: 1
   hazardType: 1
   shadowDashHazard: 0
-  updateLayer: 0
+  setLayerToEnemies: 0
 --- !u!212 &212272771976265230
 SpriteRenderer:
   m_ObjectHideFlags: 1
