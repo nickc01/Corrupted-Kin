@@ -20,7 +20,7 @@ public class DashSlashMove : CorruptedKinMove
 			yield return evadeMove.DoMove();
 		}*/
 		Audio.PlayAtPoint(Kin.PrepareSound, transform.position);
-		Rigidbody.gravityScale = 0f;
+		KinRigidbody.gravityScale = 0f;
 
 		//yield return Kin.FacePlayerRoutine(false);
 		yield return Kin.TurnTowardsPlayer();
@@ -34,15 +34,16 @@ public class DashSlashMove : CorruptedKinMove
 			reverseSpeed = -reverseSpeed;
 		}
 
-		Rigidbody.velocity = new Vector2(reverseSpeed, 0f);
+		KinRigidbody.velocity = new Vector2(reverseSpeed, 0f);
 
 		yield return Animator.PlayAnimationTillDone("Dash Antic 1");
 
-		yield return DoDash();
+		yield return DoDash(false);
 	}
 
-	public IEnumerator DoDash()
+	public IEnumerator DoDash(bool doDownSlash)
 	{
+		var limiterRoutine = Kin.StartBoundRoutine(PositionLimiterRoutine());
 		var scale = transform.GetXLocalScale();
 
 		var speed = dashSpeed * scale;
@@ -54,7 +55,7 @@ public class DashSlashMove : CorruptedKinMove
 
 		Animator.PlayAnimation("Dash Antic 2");
 
-		Rigidbody.velocity = default(Vector2);
+		KinRigidbody.velocity = default(Vector2);
 
 		yield return new WaitForSeconds(0.4f);
 
@@ -64,7 +65,7 @@ public class DashSlashMove : CorruptedKinMove
 
 		DashBurst.SetActive(true);
 
-		Rigidbody.velocity = new Vector2(speed, 0f);
+		KinRigidbody.velocity = new Vector2(speed, 0f);
 
 		yield return Animator.PlayAnimationTillDone("Dash Attack 1");
 
@@ -79,18 +80,45 @@ public class DashSlashMove : CorruptedKinMove
 
 		yield return Animator.PlayAnimationTillDone("Dash Attack 3");
 
-		Rigidbody.velocity = default(Vector2);
+		KinRigidbody.velocity = default(Vector2);
 
-		Rigidbody.gravityScale = Kin.GravityScale;
+		Kin.StopBoundRoutine(limiterRoutine);
 
-		if (!Kin.IsGrounded)
+		KinRigidbody.gravityScale = Kin.GravityScale;
+
+		if (doDownSlash)
 		{
-			Animator.PlayAnimation("Fall");
-			yield return Kin.WaitTillTouchingGround();
+			var downSlashMove = GetComponent<DownslashMove>();
+			yield return downSlashMove.SlamDownwards(Kin.BossStage == 1 || Kin.BossStage == 2,Kin.BossStage >= 3);
+			yield return downSlashMove.PlayDownslashLanding();
 		}
 		else
 		{
-			yield return Animator.PlayAnimationTillDone("Dash Recover");
+			if (!Kin.IsGrounded)
+			{
+				Animator.PlayAnimation("Fall");
+				yield return Kin.WaitTillTouchingGround();
+			}
+			else
+			{
+				yield return Animator.PlayAnimationTillDone("Dash Recover");
+			}
+		}
+	}
+
+	IEnumerator PositionLimiterRoutine()
+	{
+		while (true)
+		{
+			yield return null;
+			if (transform.position.x > Kin.RightX)
+			{
+				transform.SetXPosition(Kin.RightX);
+			}
+			if (transform.position.x < Kin.LeftX)
+			{
+				transform.SetXPosition(Kin.LeftX);
+			}
 		}
 	}
 

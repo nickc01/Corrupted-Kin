@@ -36,16 +36,27 @@ public class AirDashMove : CorruptedKinMove
 		if (airDashing)
 		{
 			transform.SetYPosition(AirDashHeight);
-			Rigidbody.gravityScale = 0f;
+			KinRigidbody.gravityScale = 0f;
 
 			//Kin.FacePlayer(false);
 			Kin.TurnTowardsPlayer();
 
-			Rigidbody.velocity = default(Vector2);
+			KinRigidbody.velocity = default(Vector2);
 
 			yield return Animator.PlayAnimationTillDone("Dash Antic 1");
 
-			yield return dashSlash.DoDash();
+			bool doDash = false;
+
+			if (Kin.BossStage <= 3)
+			{
+				doDash = UnityEngine.Random.value >= 0.5f;
+			}
+			else
+			{
+				doDash = true;
+			}
+
+			yield return dashSlash.DoDash(doDash);
 			//yield return DashPart2();
 			//break;
 		}

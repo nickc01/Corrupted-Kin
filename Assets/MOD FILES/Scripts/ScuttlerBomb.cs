@@ -6,23 +6,29 @@ using WeaverCore.Utilities;
 
 public class ScuttlerBomb : MonoBehaviour 
 {
+	public CorruptedKin SourceBoss { get; set; }
 	//static WeaverCore.ObjectPool ScuttlerBombPool;
 
 	[SerializeField]
 	[Tooltip("The angular velocity in degrees per second")]
-	float angularVelocity = 45f;
+	protected float angularVelocity = 45f;
 	[SerializeField]
-	LayerMask collisionMask;
+	protected LayerMask collisionMask;
 
-	new Rigidbody2D rigidbody;
-	new Collider2D collider;
-	new SpriteRenderer renderer;
-	ParticleSystem particles;
-	PoolableObject poolComponent;
+	protected new Rigidbody2D rigidbody;
+	protected new Collider2D collider;
+	protected new SpriteRenderer renderer;
+	protected ParticleSystem particles;
+	protected PoolableObject poolComponent;
+
+	[SerializeField]
+	float waveSizeMultiplier = 0.75f;
+	[SerializeField]
+	float waveSpacing = -0.25f;
 
 	float airTimeCounter = 0f;
 
-	void Awake()
+	protected virtual void Awake()
 	{
 		if (rigidbody == null)
 		{
@@ -37,12 +43,12 @@ public class ScuttlerBomb : MonoBehaviour
 		rigidbody.isKinematic = false;
 	}
 
-	void OnCollisionEnter2D(Collision2D collision)
+	protected virtual void OnCollisionEnter2D(Collision2D collision)
 	{
-		if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
+		/*if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
 		{
 			WeaverLog.Log("Collided With Player!");
-		}
+		}*/
 		if (!rigidbody.isKinematic && ((1 << collision.gameObject.layer) & collisionMask.value) != 0)
 		{
 			Explode();
@@ -51,34 +57,47 @@ public class ScuttlerBomb : MonoBehaviour
 
 	private void Explode()
 	{
+		OnExplode();
+	}
+
+	protected virtual void OnExplode()
+	{
 		renderer.enabled = false;
 		rigidbody.isKinematic = true;
 		collider.enabled = false;
 		particles.Stop(false, ParticleSystemStopBehavior.StopEmitting);
-		Debug.Log("Bomb Position = " + transform.position);
-		Debug.Log("Actual Air Time = " + airTimeCounter);
+		//Debug.Log("Bomb Position = " + transform.position);
+		//Debug.Log("Actual Air Time = " + airTimeCounter);
 		InfectedExplosion.Spawn(transform.position);
 		poolComponent.ReturnToPool(1f);
+
+		if (SourceBoss.InfectionWave != null && transform.position.y < SourceBoss.FloorY + 1f)
+		{
+			SlamWave leftWave, rightWave;
+			SourceBoss.WaveSlams.SpawnSlam(SourceBoss.InfectionWave.System, transform.position.x,out leftWave, out rightWave, waveSpacing);
+			leftWave.SizeToSpeedRatio *= waveSizeMultiplier;
+			rightWave.SizeToSpeedRatio *= waveSizeMultiplier;
+		}
 	}
 
-	void OnTriggerEnter2D(Collider2D collider)
+	protected virtual void OnTriggerEnter2D(Collider2D collider)
 	{
 		if (collider.gameObject.layer == LayerMask.NameToLayer("Hero Box"))
 		{
-			WeaverLog.Log("Triggered With Player!");
+			//WeaverLog.Log("Triggered With Player!");
 			Explode();
 		}
 	}
 
 
 
-	void Update()
+	protected virtual void Update()
 	{
 		airTimeCounter += Time.deltaTime;
 	}
 
 
-	public static ScuttlerBomb Spawn(Vector3 position, Vector2 velocity, float angularVelocity)
+	public static ScuttlerBomb Spawn(Vector3 position, Vector2 velocity, float angularVelocity, CorruptedKin sourceBoss)
 	{
 		/*if (ScuttlerBombPool == null)
 		{
@@ -90,16 +109,17 @@ public class ScuttlerBomb : MonoBehaviour
 		instance.rigidbody.velocity = velocity;
 		instance.rigidbody.angularDrag = 0f;
 		instance.rigidbody.angularVelocity = angularVelocity;
+		instance.SourceBoss = sourceBoss;
 
 		return instance;
 	}
 
-	public static ScuttlerBomb Spawn(Vector3 position, Vector2 velocity)
+	public static ScuttlerBomb Spawn(Vector3 position, Vector2 velocity, CorruptedKin sourceBoss)
 	{
-		return Spawn(position, velocity, CorruptedKinGlobals.Instance.ScuttlerBombPrefab.angularVelocity);
+		return Spawn(position, velocity, CorruptedKinGlobals.Instance.ScuttlerBombPrefab.angularVelocity, sourceBoss);
 	}
 
-	public static ScuttlerBomb Spawn(Vector3 position, Vector3 destination, float time, float angularVelocity)
+	public static ScuttlerBomb Spawn(Vector3 position, Vector3 destination, float time, float angularVelocity, CorruptedKin sourceBoss)
 	{
 		var gravityScale = CorruptedKinGlobals.Instance.ScuttlerBombPrefab.GetComponent<Rigidbody2D>().gravityScale;
 		var velocity = MathUtilties.CalculateVelocityToReachPoint(position, destination, time, gravityScale);
@@ -109,7 +129,7 @@ public class ScuttlerBomb : MonoBehaviour
 		//Debug.Log("Velocity = " + velocity);
 		//Debug.Log("Time = " + time);
 
-		return Spawn(position, velocity, angularVelocity);
+		return Spawn(position, velocity, angularVelocity, sourceBoss);
 
 		/*do
 		{

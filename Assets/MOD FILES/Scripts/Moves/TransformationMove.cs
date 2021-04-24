@@ -8,7 +8,7 @@ using WeaverCore.Utilities;
 
 public class TransformationMove : CorruptedKinMove
 {
-	[SerializeField] WaveSystem InfectionWavePrefab;
+	[SerializeField] InfectionWave InfectionWavePrefab;
 	[SerializeField] float transScutterSpawnY = 27.86f;
 	[SerializeField] float transScutterSpawnMinX = 3f;
 	[SerializeField] float transScutterSpawnMaxX = 6f;
@@ -38,12 +38,32 @@ public class TransformationMove : CorruptedKinMove
 
 	List<TransformationBlob> Blobs;
 
+	float previousRecoil = 0f;
+
 	public override IEnumerator DoMove()
 	{
 		if (TransformationSplats == null)
 		{
 			TransformationSplats = WallSplats.Spawn(Kin.LeftX, Kin.FloorY);
 		}
+
+		var recoil = GetComponent<WeaverCore.Components.Recoil>();
+
+		previousRecoil = recoil.GetRecoilSpeed();
+		recoil.SetRecoilSpeed(0f);
+
+		var jumpMove = GetComponent<JumpMove>();
+
+		if (Player.Player1.transform.position.x >= Kin.MiddleX)
+		{
+			yield return jumpMove.Jump(Mathf.Lerp(Kin.MiddleX, Kin.LeftX, 0.7f));
+		}
+		else
+		{
+			yield return jumpMove.Jump(Mathf.Lerp(Kin.MiddleX, Kin.RightX, 0.7f));
+		}
+
+		recoil.SetRecoilSpeed(previousRecoil);
 
 		yield return Animator.PlayAnimationTillDone("Roar Start");
 
@@ -69,9 +89,9 @@ public class TransformationMove : CorruptedKinMove
 		summonGrass.transform.position = new Vector3(Kin.LeftX + (26.33213f - 16.06f), Kin.FloorY + (27.10731f - 28.19727f), transSummonGrassZ);
 
 		summonGrass.gameObject.SetActive(true);
-#if UNITY_EDITOR
-		Kin.InfectionWave = GameObject.FindObjectOfType<WaveSystem>();
-#endif
+//#if UNITY_EDITOR
+		Kin.InfectionWave = GameObject.FindObjectOfType<InfectionWave>();
+//#endif
 		if (Kin.InfectionWave == null)
 		{
 			Kin.InfectionWave = GameObject.Instantiate(InfectionWavePrefab, new Vector3(Kin.LeftX + (27f - 16.06f), Kin.FloorY + (InfectionWavePrefab.transform.position.y - 28.19727f), InfectionWavePrefab.transform.position.z), Quaternion.identity);
@@ -83,10 +103,14 @@ public class TransformationMove : CorruptedKinMove
 
 		List<Transform> targets = new List<Transform>();
 
-		if (Player.Player1.transform.position.x > transform.position.x)
+		if (!Renderer.flipX)
 		{
 			TargetsChild.SetXLocalScale(-1f);
 		}
+		/*if (Player.Player1.transform.position.x > transform.position.x)
+		{
+			TargetsChild.SetXLocalScale(-1f);
+		}*/
 
 		for (int i = 0; i < TargetsChild.childCount; i++)
 		{
@@ -189,9 +213,17 @@ public class TransformationMove : CorruptedKinMove
 		summonGrass.gameObject.SetActive(false);
 		summonGrass.SetParent(transform);
 
-
+		Kin.GuaranteedNextMove = null;
 
 		yield break;
+	}
+
+	public override void OnStun()
+	{
+		GetComponent<WeaverCore.Components.Recoil>().SetRecoilSpeed(previousRecoil);
+		GetComponent<JumpMove>().OnStun();
+		Kin.EntityHealth.Invincible = false;
+		base.OnStun();
 	}
 
 	void SpawnAspidShots(List<TransformationBlob> blobs)

@@ -60,7 +60,8 @@ public class InfectedExplosion : MonoBehaviour
 		collider.enabled = false;
 
 		yield return new WaitForSeconds(1f);
-		switch (whenDone)
+		whenDone.DoneWithObject(this);
+		/*switch (whenDone)
 		{
 			case OnDoneBehaviour.Nothing:
 				break;
@@ -83,7 +84,7 @@ public class InfectedExplosion : MonoBehaviour
 				break;
 			default:
 				break;
-		}
+		}*/
 	}
 
 	public static InfectedExplosion Spawn(Vector3 position)

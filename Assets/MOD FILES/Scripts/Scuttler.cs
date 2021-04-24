@@ -261,7 +261,8 @@ public class Scuttler : MonoBehaviour
 
 	public void Destroy()
 	{
-		switch (whenDone)
+		whenDone.DoneWithObject(this);
+		/*switch (whenDone)
 		{
 			case OnDoneBehaviour.Nothing:
 				break;
@@ -284,7 +285,7 @@ public class Scuttler : MonoBehaviour
 				break;
 			default:
 				break;
-		}
+		}*/
 	}
 
 	List<GameObject> collisions = new List<GameObject>();

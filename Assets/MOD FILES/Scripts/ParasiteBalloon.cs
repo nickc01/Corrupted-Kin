@@ -30,6 +30,7 @@ public class ParasiteBalloon : MonoBehaviour
 	EntityHealth health;
 	new SpriteRenderer renderer;
 	new CircleCollider2D collider;
+	CircleCollider2D tileDetector;
 	new Rigidbody2D rigidbody;
 	WeaverAnimationPlayer animator;
 	AudioSource audioPlayer;
@@ -37,6 +38,14 @@ public class ParasiteBalloon : MonoBehaviour
 	ParticleSystem deathParticles;
 
 	bool modifyStorage = true;
+
+	public EntityHealth Health
+	{
+		get
+		{
+			return health;
+		}
+	}
 
 	void Awake()
 	{
@@ -52,12 +61,16 @@ public class ParasiteBalloon : MonoBehaviour
 			animator = GetComponent<WeaverAnimationPlayer>();
 			rigidbody = GetComponent<Rigidbody2D>();
 			deathParticles = GetComponentInChildren<ParticleSystem>();
+
+			tileDetector = transform.Find("TileDetector").GetComponent<CircleCollider2D>();
+
 			health.OnDeathEvent += Health_OnDeathEvent;
 		}
 
 		var scale = Random.Range(scaleMin, scaleMax);
 		renderer.enabled = false;
 		collider.enabled = false;
+		tileDetector.enabled = false;
 		StartCoroutine(MainRoutine());
 	}
 
@@ -102,6 +115,7 @@ public class ParasiteBalloon : MonoBehaviour
 			yield return null;
 		}
 		collider.enabled = true;
+		tileDetector.enabled = true;
 		audioPlayer.Play();
 
 		animator.PlayAnimation("Chase");
@@ -125,6 +139,7 @@ public class ParasiteBalloon : MonoBehaviour
 		deathParticles.Play();
 		rigidbody.velocity = default(Vector2);
 		collider.enabled = false;
+		tileDetector.enabled = false;
 		audioPlayer.Stop();
 		StartCoroutine(DeathRoutine());
 	}
@@ -211,6 +226,7 @@ public class ParasiteBalloon : MonoBehaviour
 			spawnedBalloons.Remove(this);
 		}
 		collider.enabled = false;
+		tileDetector.enabled = false;
 		yield return animator.PlayAnimationTillDone("Leave");
 		pool.ReturnToPool();
 	}

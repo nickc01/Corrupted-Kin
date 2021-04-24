@@ -1,0 +1,111 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1483695223644236}
+  m_IsPrefabParent: 1
+--- !u!1 &1483695223644236
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4654861759878562}
+  - component: {fileID: 114229197075765052}
+  - component: {fileID: 114713250264968114}
+  m_Layer: 0
+  m_Name: Left Slam
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4654861759878562
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1483695223644236}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.069999985, y: 0, z: 0}
+  m_LocalScale: {x: 9, y: 0.2, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114229197075765052
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1483695223644236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9684c6706a424724e95935c1a0d0b9cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velocityCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0.00093460083
+      value: 0
+      inSlope: 5.6345425
+      outSlope: 5.6345425
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 0.3951416
+      value: 1.0019035
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1.001831
+      value: 0.40570068
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  velocityMultiplier: -15
+  velocityTime: 2.5
+  sizeToSpeedRatio: 0.016
+  frontTamperLength: -6
+  frontTamperOffset: 2
+  backTamperLength: 8
+  backTamperOffset: -2
+  decayRate: 1
+  lifeTime: 5
+  fadeOutTime: 2
+  doneBehaviour: 3
+  doSplit: 1
+  SplitAmount: 4
+  SplitTime: 3.3
+  doBlanker: 0
+  blankerAcceleration: -8
+  blankerTerminalVelocity: -8
+  blankerDeacceleration: -8
+  blankerSpread: 4
+  blankerDecayRate: 1.4
+  blankerIntensity: 3
+  blankerStartingTime: 0.3
+--- !u!114 &114713250264968114
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1483695223644236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65a6abec551ce95408d93cbfa3708833, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using WeaverCore;
 using WeaverCore.Utilities;
 
 public class WaveSystem : MonoBehaviour 
@@ -38,7 +39,23 @@ public class WaveSystem : MonoBehaviour
 		}
 	}
 
+	class BlankerGeneratorSorter : IComparer<IWaveBlankerGenerator>
+	{
+		Comparer<int> numberComparer;
 
+		public BlankerGeneratorSorter()
+		{
+			numberComparer = Comparer<int>.Default;
+		}
+
+		int IComparer<IWaveBlankerGenerator>.Compare(IWaveBlankerGenerator x, IWaveBlankerGenerator y)
+		{
+			return numberComparer.Compare(x.Priority, y.Priority);
+		}
+	}
+
+
+	[Serializable]
 	class SplitPoint
 	{
 		public float WaveX; //The x position of where the split is located
@@ -51,6 +68,7 @@ public class WaveSystem : MonoBehaviour
 		public float _timer; //The internal timer of the split
 	}
 
+	[Serializable]
 	class BlankerLine
 	{
 		public float WaveX; //The current position of the blanker
@@ -102,7 +120,7 @@ public class WaveSystem : MonoBehaviour
 	float ambientMovement = 0f;
 
 
-	[Space]
+	/*[Space]
 	[Header("TEST STUFF")]
 	public float test_waveX;
 	public float test_acceleration;
@@ -114,7 +132,7 @@ public class WaveSystem : MonoBehaviour
 	public float test_decayRate;
 
 	public float SplitTime;
-	public int SplitAmount;
+	public int SplitAmount;*/
 
 	List<Vector3> meshVerticies;
 	List<int> meshTriangles;
@@ -134,7 +152,9 @@ public class WaveSystem : MonoBehaviour
 	List<BlankerLine> blankers = new List<BlankerLine>();
 
 	GeneratorSorter generatorSorter = new GeneratorSorter();
+	BlankerGeneratorSorter blankerGeneratorSorter = new BlankerGeneratorSorter();
 	List<IWaveGenerator> generators = new List<IWaveGenerator>();
+	List<IWaveBlankerGenerator> blankerGenerators = new List<IWaveBlankerGenerator>();
 
 	public float WaveWidth
 	{
@@ -249,6 +269,24 @@ public class WaveSystem : MonoBehaviour
 			{
 				uv.z = 0f;
 			}
+			//Debug.Log("UV Index = " + i);
+			//Debug.Log("UV Count = " + meshUVs.Count);
+			//Debug.Log("Vertex Count = " + meshVerticies.Count);
+
+			if (blankerGenerators.Count > 0)
+			{
+				float previousValue = uv.z;
+
+				var x_pos = WaveXToWorld(meshVerticies[i].x) + (WaveWidth / 2f);
+
+				for (int j = 0; j < blankerGenerators.Count; j++)
+				{
+					previousValue = blankerGenerators[j].GetBlankingColorAtPos(x_pos, previousValue);
+				}
+
+				uv.z = previousValue;
+			}
+
 			meshUVs[i] = uv;
 
 #if UNITY_EDITOR
@@ -454,8 +492,13 @@ public class WaveSystem : MonoBehaviour
 			//If the split time is up
 			if (split._timer >= split.SplitTime)
 			{
+				//WeaverLog.Log("SPLIT REMOVED");
+				//WeaverLog.Log("Split Size Before = " + splits.Count);
 				//Remove the split
-				RemoveSplit(split);
+				DeleteSplit(split);
+				splits.RemoveAt(s);
+				splits.Sort(splitSorter);
+				//WeaverLog.Log("Split Size After = " + splits.Count);
 				continue;
 			}
 
@@ -716,6 +759,15 @@ public class WaveSystem : MonoBehaviour
 			//Calculate the vertex position of the split. Also get the base vertex position, which doesn't account for previous splits
 			int vertexPosition = GetVertexAtWaveX(waveX, out baseVertexPosition);
 
+			//Debug.Log("New Vertex Position = " + vertexPosition);
+			//Debug.Log("Base Vertex Position = " + baseVertexPosition);
+			//Debug.Log("Vertex Position Value = " + meshVerticies[vertexPosition].x);
+			//Debug.Log("Vertex Position [-1] Value = " + meshVerticies[vertexPosition - 1].x + ", " + meshVerticies[vertexPosition - 1].y);
+			//Debug.Log("Vertex Position [-2] Value = " + meshVerticies[vertexPosition - 2].x + ", " + meshVerticies[vertexPosition - 2].y);
+
+			//Debug.Log("Vertex Position [1] Value = " + meshVerticies[vertexPosition + 1].x + ", " + meshVerticies[vertexPosition + 1].y);
+			//Debug.Log("Vertex Position [2] Value = " + meshVerticies[vertexPosition + 2].x + ", " + meshVerticies[vertexPosition + 2].y);
+
 			//Set the vertex points
 			split.VertexPoint = vertexPosition;
 			split.BaseVertexPoint = baseVertexPosition;
@@ -766,7 +818,8 @@ public class WaveSystem : MonoBehaviour
 		splits.Sort(splitSorter);
 	}
 
-	void RemoveSplit(SplitPoint split)
+
+	void DeleteSplit(SplitPoint split)
 	{
 		//If the split is out of bounds or there is no singular split on the vertex, then verticies do not need to be rearranged, so exit out
 		if (split.OutOfBounds || GetSplitsOnVertex(split.VertexPoint) != 1)
@@ -810,8 +863,6 @@ public class WaveSystem : MonoBehaviour
 		{
 			meshTriangles[i] -= 2;
 		}
-
-		splits.Remove(split);
 	}
 
 	void Internal_AddBlankerLine(float waveX, float acceleration, float terminalVelocity, float deacceleration, float startingIntensity, float startingWaitTime, float spread, float decayRate)
@@ -882,7 +933,14 @@ public class WaveSystem : MonoBehaviour
 		{
 			if (!splits[i].OutOfBounds && vertexPosition > splits[i].VertexPoint)
 			{
-				vertexPosition += 2;
+				if (i > 0 && splits[i].VertexPoint == splits[i - 1].VertexPoint)
+				{
+					continue;
+				}
+				else
+				{
+					vertexPosition += 2;
+				}
 			}
 		}
 
@@ -971,16 +1029,22 @@ public class WaveSystem : MonoBehaviour
 
 	public void AddGenerator(IWaveGenerator generator)
 	{
-		generators.Add(generator);
-		generators.Sort(generatorSorter);
-		generator.OnWaveStart(this);
+		if (!generators.Contains(generator))
+		{
+			generators.Add(generator);
+			generators.Sort(generatorSorter);
+			generator.OnWaveStart(this);
+		}
 	}
 
 	public void RemoveGenerator(IWaveGenerator generator)
 	{
-		generator.OnWaveEnd(this);
-		generators.Remove(generator);
-		generators.Sort(generatorSorter);
+		if (generators.Contains(generator))
+		{
+			generator.OnWaveEnd(this);
+			generators.Remove(generator);
+			generators.Sort(generatorSorter);
+		}
 	}
 
 	public void AddBlanker(float position, float acceleration, float terminalVelocity, float deacceleration, float startingIntensity, float startingWaitTime, float spread, float decayRate)
@@ -993,6 +1057,24 @@ public class WaveSystem : MonoBehaviour
 
 
 		Internal_AddBlankerLine(wavePosition,waveAcceleration,waveTerminalVelocity,waveDeacceleration,startingIntensity,startingWaitTime,waveSpread,decayRate);
+	}
+
+	public void AddBlankerGenerator(IWaveBlankerGenerator generator)
+	{
+		if (!blankerGenerators.Contains(generator))
+		{
+			blankerGenerators.Add(generator);
+			blankerGenerators.Sort(blankerGeneratorSorter);
+		}
+	}
+
+	public void RemoveBlankerGenerator(IWaveBlankerGenerator generator)
+	{
+		if (blankerGenerators.Contains(generator))
+		{
+			blankerGenerators.Remove(generator);
+			blankerGenerators.Sort(blankerGeneratorSorter);
+		}
 	}
 
 	public void AddSplit(float position, int splitAmount, float splitTime)

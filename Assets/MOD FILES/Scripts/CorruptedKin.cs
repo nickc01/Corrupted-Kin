@@ -10,6 +10,7 @@ using UnityEngine.Serialization;
 using WeaverCore;
 using WeaverCore.Assets.Components;
 using WeaverCore.Components;
+using WeaverCore.Enums;
 using WeaverCore.Features;
 using WeaverCore.Utilities;
 using Random = UnityEngine.Random;
@@ -25,7 +26,8 @@ public class CorruptedKin : BossReplacement
 	public Collider2D Collider { get; private set; }
 	public WeaverCore.Components.DamageHero Damager { get; private set; }
 	public SpriteFlasher Flasher { get; private set; }
-	public WaveSystem InfectionWave { get; set; }
+	public InfectionWave InfectionWave { get; set; }
+	//public WaveSystem InfectionWave { get; set; }
 
 	[Header("General Stuff")]
 	[FormerlySerializedAs("JumpSound")]
@@ -37,9 +39,10 @@ public class CorruptedKin : BossReplacement
 	[FormerlySerializedAs("PrepareSound")]
 	[SerializeField] AudioClip prepareSound;
 	float leftX = 16.06f;
-	float rightX = 36.53f;
+	float rightX = 35.83f;
 	float floorY = 0f;
-	[SerializeField] float arenaHeight = 0f;
+	public WaveSlams WaveSlams;
+	//[SerializeField] float arenaHeight = 0f;
 	[SerializeField] CorruptedKinGlobals Globals;
 	[SerializeField] BoxCollider2D awakeRange;
 	[SerializeField] MusicPack BossMusicPack;
@@ -78,9 +81,45 @@ public class CorruptedKin : BossReplacement
 	[SerializeField] AudioClip screamSound;
 	[SerializeField] float fallDelay = 0.3f;
 
+	[Space]
+	[Header("Parasite Spawning")]
+	[SerializeField]
+	[Tooltip("How many seconds should elapse before a parasite should spawn")]
+	float parasiteSpawnRate = 2.5f;
+	[SerializeField]
+	[Tooltip("How high should the parasites spawn, relative to Kin.FloorY")]
+	Vector2 parasiteSpawnHeightMinMax = new Vector2(5f,15f);
+
 	public AudioClip FallSound { get { return fallSound; } }
 	public AudioClip HeavyLandSound { get { return heavyLandSound; } }
 	public AudioClip ScreamSound { get { return screamSound; } }
+
+	Coroutine parasiteSpawnRoutine;
+	bool _doParasiteSpawning = false;
+	public bool DoParasiteSpawning
+	{
+		get { return _doParasiteSpawning; }
+		set
+		{
+			if (value != _doParasiteSpawning)
+			{
+				_doParasiteSpawning = value;
+				if (_doParasiteSpawning)
+				{
+					parasiteSpawnRoutine = StartCoroutine(ParasiteSpawnRoutine());
+				}
+				else
+				{
+					StopCoroutine(parasiteSpawnRoutine);
+				}
+			}
+		}
+	}
+
+	/// <summary>
+	/// This move is guaranteed to be executed after the current move is done
+	/// </summary>
+	public CorruptedKinMove GuaranteedNextMove { get; set; }
 
 	/*[Space]
 	[Header("Idle Move")]
@@ -368,8 +407,8 @@ public class CorruptedKin : BossReplacement
 
 	protected override void Awake()
 	{
-		var prefab1 = WeaverAssets.LoadWeaverAsset<GameObject>("Blood Particles");
-		var prefab2 = WeaverAssets.LoadWeaverAsset<GameObject>("Blood Particles");
+		//var prefab1 = WeaverAssets.LoadWeaverAsset<GameObject>("Blood Particles");
+		//var prefab2 = WeaverAssets.LoadWeaverAsset<GameObject>("Blood Particles");
 
 		//WeaverLog.Log("Prefab 1 = " + prefab1.GetInstanceID());
 		//WeaverLog.Log("Prefab 2 = " + prefab1.GetInstanceID());
@@ -408,6 +447,10 @@ public class CorruptedKin : BossReplacement
 		Damager = GetComponent<WeaverCore.Components.DamageHero>();
 		Flasher = GetComponent<SpriteFlasher>();
 
+#if UNITY_EDITOR
+		InfectionWave = GameObject.FindObjectOfType<InfectionWave>();
+#endif
+
 
 
 		Rigidbody.isKinematic = true;
@@ -425,6 +468,16 @@ public class CorruptedKin : BossReplacement
 		base.Awake();
 
 		var quarterHealth = HealthManager.Health / 4;
+
+		EntityHealth.AddHealthMilestone(quarterHealth * 3, () => DoParasiteSpawning = true);
+		EntityHealth.AddHealthMilestone(quarterHealth * 2, () => DoParasiteSpawning = false);
+		EntityHealth.AddHealthMilestone(quarterHealth, () => DoParasiteSpawning = true);
+		EntityHealth.AddHealthMilestone(quarterHealth, () => GuaranteedNextMove = GetComponent<ShakeMove>());
+
+		EntityHealth.AddHealthMilestone(quarterHealth * 2,() => GuaranteedNextMove = GetComponent<TransformationMove>());
+
+		EntityHealth.AddHealthMilestone(Mathf.RoundToInt(quarterHealth * 0.5f),() => GuaranteedNextMove = GetComponent<SpecialMoves>());
+		EntityHealth.AddHealthMilestone(Mathf.RoundToInt(quarterHealth * 1.5f),() => GuaranteedNextMove = GetComponent<SpecialMoves>());
 
 		AddStunMilestone(quarterHealth);
 		AddStunMilestone(quarterHealth * 2);
@@ -563,42 +616,68 @@ public class CorruptedKin : BossReplacement
 
 	public IEnumerator BossController()
 	{
-
+		if (BossStage >= 3 && InfectionWave == null)
+		{
+			var transformationMove = GetComponent<TransformationMove>();
+			yield return RunMove(transformationMove);
+		}
 		//var idleMove = GetMove<IdleMoveOLD>();
 		//var overheadMove = GetMove<OverheadSlashMoveOLD>();
 		var idleMove = GetComponent<IdleMove>();
 		var overheadMove = GetComponent<OverheadSlashMove>();
+		var evadeMove = GetComponent<EvadeMove>();
+		var bombMove = GetComponent<BombTossMove>();
 		while (true)
 		{
+			if (GuaranteedNextMove != null)
+			{
+				yield return RunMove(GuaranteedNextMove);
+				continue;
+			}
 			if (idleMove.MoveEnabled)
 			{
 				//Debug.Log("Idling");
 				yield return RunMove(idleMove);
 			}
-			if (PlayerIsOnWall)
+			if (evadeMove.MoveEnabled && evadeMove.IsWithinEvadeRange(Player.Player1.transform.position) && evadeMove.HasRoomToEvade(Player.Player1.transform.position.x < transform.position.x ? CardinalDirection.Right : CardinalDirection.Left))
+			{
+				yield return RunMove(evadeMove);
+			}
+			if (PlayerIsOnWall && bombMove.MoveEnabled)
 			{
 				//TODO - Make Aspid Move here
 
 				//TODO - Make bomb toss move here
 				//Debug.Log("Player On Wall");
+				yield return RunMove(bombMove);
 			}
 			else
 			{
-				if (overheadMove.MoveEnabled)
+				if (overheadMove.MoveEnabled && overheadMove.InSlashRange(Player.Player1.transform.position))
 				{
-					//Debug.Log("M_C");
 					yield return RunMove(overheadMove);
 				}
 				else
 				{
-					//Debug.Log("M_A");
-					bool didMove = false;
+					for (int i = 0; i < _moves.Count; i++)
+					{
+						var move = GetRandomMove();
+						if (move != null && move.MoveEnabled)
+						{
+							yield return RunMove(move);
+							break;
+						}
+						/*else
+						{
+							yield return null;
+						}*/
+					}
+					/*bool didMove = false;
 					foreach (var randomMove in GetRandomMoveList())
 					{
 						CorruptedKinMove kinMove = randomMove;
 						if (kinMove.MoveEnabled)
 						{
-							//Debug.Log("Doing Move = " + kinMove.GetType().Name);
 							didMove = true;
 							yield return RunMove(kinMove);
 							break;
@@ -606,19 +685,35 @@ public class CorruptedKin : BossReplacement
 					}
 					if (!didMove)
 					{
-						//Debug.Log("M_B");
 						var move = GetRandomMove();
 						if (move.MoveEnabled)
 						{
 							yield return RunMove(move);
 						}
-					}
+					}*/
 				}
 			}
 		}
 	}
 
-	IEnumerable<CorruptedKinMove> GetRandomMoveList()
+	List<CorruptedKinMove> storedRandomMoves = new List<CorruptedKinMove>();
+	CorruptedKinMove GetRandomMove()
+	{
+		if (storedRandomMoves.Count == 0)
+		{
+			storedRandomMoves.AddRange(Moves.Where(m => m.DoMoveInRandomizer));
+			storedRandomMoves.RandomizeList();
+		}
+		if (storedRandomMoves.Count == 0)
+		{
+			return null;
+		}
+		var move = storedRandomMoves[storedRandomMoves.Count - 1];
+		storedRandomMoves.RemoveAt(storedRandomMoves.Count - 1);
+		return move;
+	}
+
+	/*IEnumerable<CorruptedKinMove> GetRandomMoveList()
 	{
 		List<CorruptedKinMove> moves = new List<CorruptedKinMove>(Moves.Where(m => m.DoMoveInRandomizer));
 
@@ -632,7 +727,7 @@ public class CorruptedKin : BossReplacement
 		List<CorruptedKinMove> moves = new List<CorruptedKinMove>(Moves.Where(m => m.DoMoveInRandomizer));
 
 		return moves[Random.Range(0,moves.Count)];
-	}
+	}*/
 
 	public IEnumerator TurnTowardsPlayer()
 	{
@@ -695,10 +790,12 @@ public class CorruptedKin : BossReplacement
 		StartBoundRoutine(DeathRoutine());
 	}
 
-	float emissionRate = 50f;
-	float emissionSpeed = 5f;
 	IEnumerator DeathRoutine()
 	{
+		ParasiteBalloon.DestroyAllParasites();
+		DoParasiteSpawning = false;
+		float emissionRate = 50f;
+		float emissionSpeed = 5f;
 		//HERE IS WHERE A SetPlayerDataBool is located. It sets corn_abyssLeft to true
 
 		ResetState();
@@ -832,6 +929,7 @@ public class CorruptedKin : BossReplacement
 
 	IEnumerator StunRoutine()
 	{
+		ParasiteBalloon.DestroyAllParasites();
 		StunEffect.Spawn(transform.position);
 
 		//FacePlayer(false);
@@ -949,5 +1047,15 @@ public class CorruptedKin : BossReplacement
 
 			yield return null;
 		}
+	}
+
+	IEnumerator ParasiteSpawnRoutine()
+	{
+		while (true)
+		{
+			yield return new WaitForSeconds(parasiteSpawnRate);
+			ParasiteBalloon.Spawn(new Vector3(UnityEngine.Random.Range(LeftX, RightX), UnityEngine.Random.Range(parasiteSpawnHeightMinMax.x, parasiteSpawnHeightMinMax.y) + FloorY), default(Vector2));
+		}
+
 	}
 }

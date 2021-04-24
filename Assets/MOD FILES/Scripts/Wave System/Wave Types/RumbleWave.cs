@@ -23,7 +23,10 @@ public class RumbleWave : MonoBehaviour, IWaveGenerator
 	{
 		//_oscillator = Mathf.Sin(_oscillatorTimer);
 		wave = GetComponentInParent<WaveSystem>();
-		wave.AddGenerator(this);
+		if (wave != null)
+		{
+			wave.AddGenerator(this);
+		}
 	}
 
 	float IWaveGenerator.Calculate(float x, float previousValue)

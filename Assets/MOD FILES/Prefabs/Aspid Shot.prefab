@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4623405617695112}
   - component: {fileID: 212774629562506724}
-  m_Layer: 0
+  m_Layer: 22
   m_Name: Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37,12 +37,12 @@ GameObject:
   - component: {fileID: 4039491198367816}
   - component: {fileID: 212272771976265230}
   - component: {fileID: 114242849254510286}
-  - component: {fileID: 58075378741691074}
   - component: {fileID: 114802107909566172}
   - component: {fileID: 114693754204830708}
   - component: {fileID: 50798043756592000}
   - component: {fileID: 114336396217132852}
   - component: {fileID: 114553303624634376}
+  - component: {fileID: 60710159498065496}
   m_Layer: 22
   m_Name: Aspid Shot
   m_TagString: Untagged
@@ -56,9 +56,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1293378723774644}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.9848114, w: 0.17362757}
   m_LocalPosition: {x: 21.06376, y: 46.82, z: 0}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 1}
+  m_LocalScale: {x: 0, y: 0, z: 1}
   m_Children:
   - {fileID: 4623405617695112}
   m_Father: {fileID: 0}
@@ -97,8 +97,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &58075378741691074
-CircleCollider2D:
+--- !u!60 &60710159498065496
+PolygonCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -109,9 +109,27 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.01, y: -0.015607476}
-  serializedVersion: 2
-  m_Radius: 0.49
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.48936176, y: 0.5108695}
+    oldSize: {x: 1.4667734, y: 1.435894}
+    newSize: {x: 0.359375, y: 0.359375}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.0120217465, y: 0.48544204}
+      - {x: -0.31485966, y: 0.36778042}
+      - {x: -0.47588623, y: 0.092800684}
+      - {x: -0.37587574, y: -0.27105606}
+      - {x: -0.20822798, y: -0.43282646}
+      - {x: 0.17620632, y: -0.43282646}
+      - {x: 0.37252972, y: -0.24682727}
+      - {x: 0.41959217, y: 0.16488212}
+      - {x: 0.29460907, y: 0.3780801}
 --- !u!114 &114242849254510286
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -169,11 +187,11 @@ MonoBehaviour:
   stretchFactor: 1.4
   minSquashAmount: 0.5
   maxStretchAmount: 2
-  maxLifeTime: 5
   startAnimation: Idle
   deathAnimation: Impact
   ImpactClip: {fileID: 8300000, guid: e828bc4189e30ec41bf4e4315327a0a4, type: 3}
   lifeTime: 5
+  hitDelay: 0.15
 --- !u!114 &114802107909566172
 MonoBehaviour:
   m_ObjectHideFlags: 1

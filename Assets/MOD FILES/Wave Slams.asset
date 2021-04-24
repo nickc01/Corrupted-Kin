@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f70ee94bcffad7b4e9b31590d624d6ca, type: 3}
+  m_Name: Wave Slams
+  m_EditorClassIdentifier: 
+  BurrowWave: {fileID: 114872131964319908, guid: 572b70675600c8b4db3362005947e140,
+    type: 2}
+  AmbientWave: {fileID: 114371378936695250, guid: 2e145bfd76496a64e8581190d258489b,
+    type: 2}
+  LeftOffscreenWave: {fileID: 114763650520749908, guid: 10371350e888a5141be6bc1690115660,
+    type: 2}
+  RightOffscreenWave: {fileID: 114150555222912328, guid: 58808064ad85cd242af8c0be10ad947c,
+    type: 2}
+  LeftWave: {fileID: 114229197075765052, guid: a47dcb7dff1187646b1698da8c8386d4, type: 2}
+  RightWave: {fileID: 114379969191128300, guid: 0e9bbbc6b00d46b42be2f3a2fcb73b1e,
+    type: 2}

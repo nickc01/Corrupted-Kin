@@ -37,11 +37,13 @@ public abstract class CorruptedKinMove : MonoBehaviour, IBossMove
 
 	public WeaverAnimationPlayer Animator { get { return Kin.Animator; } }
 	public SpriteRenderer Renderer { get { return Kin.Renderer; } }
-	public Rigidbody2D Rigidbody { get { return Kin.Rigidbody; } }
+	public Rigidbody2D KinRigidbody { get { return Kin.Rigidbody; } }
 	public AudioPlayer AudioPlayer { get { return Kin.AudioPlayer; } }
 	public CorruptedKinHealth HealthManager { get { return Kin.HealthManager; } }
 	public Collider2D Collider { get { return Kin.Collider; } }
 	public WeaverCore.Components.DamageHero Damager { get { return Kin.Damager; } }
+	public InfectionWave InfectionWave { get { return Kin.InfectionWave; } }
+	public WaveSlams WaveSlams { get { return Kin.WaveSlams; } }
 
 	public virtual bool MoveEnabled
 	{

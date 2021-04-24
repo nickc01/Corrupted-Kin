@@ -91,7 +91,8 @@ public class KinProjectile : MonoBehaviour
 		collider.enabled = false;
 		particles.Stop(false, ParticleSystemStopBehavior.StopEmitting);
 		yield return new WaitForSeconds(0.4f);
-		switch (whenDone)
+		whenDone.DoneWithObject(this);
+		/*switch (whenDone)
 		{
 			case OnDoneBehaviour.Disable:
 				gameObject.SetActive(false);
@@ -110,7 +111,7 @@ public class KinProjectile : MonoBehaviour
 			case OnDoneBehaviour.Destroy:
 				Destroy(gameObject);
 				break;
-		}
+		}*/
 	}
 
 

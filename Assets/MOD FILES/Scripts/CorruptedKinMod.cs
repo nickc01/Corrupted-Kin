@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using WeaverCore;
 using WeaverCore.Attributes;
+using WeaverCore.Configuration;
 
 namespace KinMod
 {
@@ -16,10 +17,41 @@ namespace KinMod
 		{
 			//WeaverLog.Log("Hooks getting added!");
 			ModHooks.Instance.GetPlayerBoolHook += Instance_GetPlayerBoolHook;
+			ModHooks.Instance.LanguageGetHook += Instance_LanguageGetHook;
+			//ModHooks.Instance.GetPlayerStringHook += Instance_GetPlayerStringHook;
 			//ModHooks.Instance.GetPlayerFloatHook += Instance_GetPlayerFloatHook;
 			//ModHooks.Instance.GetPlayerIntHook += Instance_GetPlayerIntHook;
 			//ModHooks.Instance.GetPlayerStringHook += Instance_GetPlayerStringHook;
 		}
+
+		private static string Instance_LanguageGetHook(string key, string sheetTitle)
+		{
+			if (key == "NAME_LOST_KIN")
+			{
+				return "Corrupted Kin";
+			}
+			else if (key == "GG_S_LOST_KIN")
+			{
+				return "Lost god corrupted by infection";
+			}
+			else
+			{
+				return WeaverCore.Language.GetStringInternal(key, sheetTitle);
+			}
+
+			//WeaverLog.Log("KEY = " + key);
+			//WeaverLog.Log("Sheet Title = " + sheetTitle);
+			//var value = WeaverCore.Language.GetStringInternal(key, sheetTitle);
+			//WeaverLog.Log("Value = " + value);
+
+			//return value;
+		}
+
+		/*private static string Instance_GetPlayerStringHook(string stringName)
+		{
+			WeaverCore.Language.GetString
+			return PlayerData.instance.
+		}*/
 
 		/*private static string Instance_GetPlayerStringHook(string stringName)
 		{
@@ -47,7 +79,8 @@ namespace KinMod
 
 		private static bool Instance_GetPlayerBoolHook(string originalSet)
 		{
-			if (originalSet == "infectedKnightDreamDefeated")
+			var settings = GlobalWeaverSettings.GetSettings<CorruptedKinSettings>();
+			if (originalSet == "infectedKnightDreamDefeated" && settings != null && settings.EnableInAbyss)
 			{
 				return false;
 			}
@@ -59,7 +92,7 @@ namespace KinMod
 
 		public override string GetVersion()
 		{
-			return "0.0.0.1 alpha";
+			return "1.0.0.0";
 		}
 	}
 }

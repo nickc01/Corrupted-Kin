@@ -12,8 +12,10 @@ public class BombTossMove : CorruptedKinMove
 	[SerializeField] ParticleSystem TossParticles;
 	[SerializeField] float TossParticlesSpeed = 7.5f;
 	[SerializeField] float TossDeathWaveSize = 0.5f;
-	[SerializeField] int TossTimes = 2;
-	[SerializeField] float DelayBetweenTosses = 0.45f;
+	[SerializeField] int TossTimesFirstStage = 2;
+	[SerializeField] float DelayBetweenTossesFirstStage = 0.45f;
+	[SerializeField] int TossTimesSecondStage = 3;
+	[SerializeField] float DelayBetweenTossesSecondStage = 0.3f;
 	[SerializeField] AudioClip TossSound;
 	[Tooltip("The delay between starting the toss and actually tossing the bomb")]
 	[SerializeField] float TossingDelay = 0.05f;
@@ -54,7 +56,7 @@ public class BombTossMove : CorruptedKinMove
 		//BombTossPrepareSound.length;
 		var main = TossParticles.main;
 		main.startSpeed = new ParticleSystem.MinMaxCurve(0f, 0f);
-		TossParticles.gameObject.SetActive(true);
+		//TossParticles.gameObject.SetActive(true);
 		TossParticles.Play();
 
 		float time = BombTossPrepareSound.length;
@@ -70,10 +72,17 @@ public class BombTossMove : CorruptedKinMove
 
 		yield return new WaitForSeconds(TossPrepareDelay);
 
+		var tossTimes = TossTimesFirstStage;
 
-		for (int i = 0; i < TossTimes; i++)
+		if (Kin.BossStage == 2)
 		{
-			TossParticles.Stop(false, ParticleSystemStopBehavior.StopEmitting);
+			tossTimes = TossTimesSecondStage;
+		}
+
+
+		for (int i = 0; i < tossTimes; i++)
+		{
+			TossParticles.Stop();
 
 			//TODO : Play THROW ANIMATION AND THROW BOMBS
 
@@ -110,7 +119,7 @@ public class BombTossMove : CorruptedKinMove
 
 			Blood.SpawnBlood(transform.position + TossBloodSpawnOffset, new Blood.BloodSpawnInfo(12, 15, 24f, 30f, angleMin, angleMax));
 
-			var bomb = ScuttlerBomb.Spawn(transform.position + scuttlerOffset, Player.Player1.transform.position, ScuttlerBombAirTime, bombRotation);
+			var bomb = ScuttlerBomb.Spawn(transform.position + scuttlerOffset, Player.Player1.transform.position, ScuttlerBombAirTime, bombRotation,Kin);
 
 			var bombFlasher = bomb.GetComponent<SpriteFlasher>();
 
@@ -124,17 +133,43 @@ public class BombTossMove : CorruptedKinMove
 
 
 			//If on last turn
-			if (i == TossTimes - 1)
+			if (i == tossTimes - 1)
 			{
 				//TODO : SWITCH BACK TO PREPARE ANIMATION
 
 				yield return Animator.PlayAnimationTillDone("Bomb Recover");
+
+
+				if (Kin.BossStage >= 3)
+				{
+					GetComponent<IdleMove>().DoingStreak = false;
+
+					Animator.PlayAnimation("Idle");
+
+					yield return new WaitForSeconds(1.35f);
+				}
+				else if (Kin.BossStage == 2 && Vector3.Distance(transform.position,Player.Player1.transform.position) <= 6f)
+				{
+					Animator.PlayAnimation("Idle");
+
+					yield return new WaitForSeconds(0.45f);
+				}
 			}
 			else
 			{
 				TossParticles.Play();
 				Animator.PlayAnimation("Bomb Prepare New");
-				yield return new WaitForSeconds(DelayBetweenTosses);
+
+				var tossDelay = DelayBetweenTossesFirstStage;
+
+				if (Kin.BossStage == 2 || Kin.BossStage >= 4)
+				{
+					tossDelay = DelayBetweenTossesSecondStage;
+				}
+					
+				yield return new WaitForSeconds(tossDelay);
+
+				Kin.TurnTowardsPlayerInstant();
 			}
 
 		}
@@ -143,7 +178,7 @@ public class BombTossMove : CorruptedKinMove
 
 	public override void OnStun()
 	{
-		TossParticles.gameObject.SetActive(false);
+		TossParticles.Stop();
 		base.OnStun();
 	}
 }

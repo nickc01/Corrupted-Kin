@@ -16,12 +16,22 @@ public abstract class AspidShotBase : EnemyProjectile
 	AudioClip ImpactClip;
 	[SerializeField]
 	float lifeTime = 5f;
+	[SerializeField]
+	[Tooltip("Delay before the Aspid Shot can be destroyed by hitting objects")]
+	float hitDelay = 0.1f;
+	[SerializeField]
+	[Tooltip("The delay before the aspid shot is sent back to the pooling system")]
+	float destructionDelay = 0f;
 
 
-	new SpriteRenderer light;
+	protected new SpriteRenderer light;
 	WeaverAnimationPlayer anim;
-	PoolableObject poolComponent;
+	protected PoolableObject poolComponent;
+	protected SpriteRenderer mainRenderer;
 
+	float _hitTimer = 0f;
+
+	[WeaverCore.Attributes.ExcludeFieldFromPool]
 	Color oldColor;
 
 	public WeaverAnimationPlayer Animator
@@ -38,13 +48,18 @@ public abstract class AspidShotBase : EnemyProjectile
 
 	protected override void Awake()
 	{
+		//Debug.Log("Hit Timer = " + _hitTimer);
+		StopAllCoroutines();
 		if (light == null)
 		{
+			mainRenderer = GetComponent<SpriteRenderer>();
 			anim = GetComponent<WeaverAnimationPlayer>();
 			poolComponent = GetComponent<PoolableObject>();
 			light = transform.Find("Light").GetComponent<SpriteRenderer>();
 			oldColor = light.color;
 		}
+		mainRenderer.enabled = true;
+		light.enabled = true;
 		light.color = oldColor;
 		poolComponent.ReturnToPool(lifeTime);
 		if (!string.IsNullOrEmpty(startAnimation))
@@ -54,10 +69,23 @@ public abstract class AspidShotBase : EnemyProjectile
 		base.Awake();
 	}
 
+	protected override void Update()
+	{
+		if (_hitTimer < hitDelay)
+		{
+			_hitTimer += Time.deltaTime;
+		}
+		base.Update();
+	}
+
 	protected override void OnHit(GameObject collision)
 	{
-		base.OnHit(collision);
-		AspidImpact();
+		if (_hitTimer >= hitDelay)
+		{
+			//Debug.Log("ASPID SHOT COLLISION");
+			base.OnHit(collision);
+			AspidImpact();
+		}
 	}
 
 	public void AspidImpact()
@@ -68,12 +96,18 @@ public abstract class AspidShotBase : EnemyProjectile
 		}
 		Audio.PlayAtPoint(ImpactClip, transform.position);
 		StartCoroutine(Fader());
+		OnImpact();
+	}
+
+	protected virtual void OnImpact()
+	{
+
 	}
 
 	IEnumerator Fader()
 	{
-		var oldColor = light.color;
-		var newColor = new Color(oldColor.r, oldColor.g, oldColor.b, 0f);
+		var oldLightColor = light.color;
+		var newColor = new Color(oldLightColor.r, oldLightColor.g, oldLightColor.b, 0f);
 
 
 		var animationTime = anim.AnimationData.GetClipDuration(anim.PlayingClip);
@@ -81,12 +115,33 @@ public abstract class AspidShotBase : EnemyProjectile
 
 		for (float i = 0; i < animationTime; i += Time.deltaTime)
 		{
-			light.color = Color.Lerp(oldColor, newColor, i / animationTime);
+			light.color = Color.Lerp(oldLightColor, newColor, i / animationTime);
 			yield return null;
 		}
 
 		yield return anim.WaitforClipToFinish();
 
-		poolComponent.ReturnToPool();
+		//Debug.Log("ASPID SHOT DESTROYED");
+
+		mainRenderer.enabled = false;
+		light.enabled = false;
+
+		poolComponent.ReturnToPool(destructionDelay);
+	}
+
+	protected override void OnTriggerEnter2D(Collider2D collision)
+	{
+		if (collision.gameObject.layer == LayerMask.NameToLayer("Hero Box"))
+		{
+			base.OnTriggerEnter2D(collision);
+		}
+	}
+
+	protected override void OnTriggerStay2D(Collider2D collision)
+	{
+		if (collision.gameObject.layer == LayerMask.NameToLayer("Hero Box"))
+		{
+			base.OnTriggerStay2D(collision);
+		}
 	}
 }

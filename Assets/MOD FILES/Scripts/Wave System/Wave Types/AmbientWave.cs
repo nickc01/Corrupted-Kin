@@ -31,7 +31,10 @@ public class AmbientWave : MonoBehaviour, IWaveGenerator
 	{
 		_oscillator = Mathf.Sin(_oscillatorTimer);
 		wave = GetComponentInParent<WaveSystem>();
-		wave.AddGenerator(this);
+		if (wave != null)
+		{
+			wave.AddGenerator(this);
+		}
 	}
 
 	void Update()

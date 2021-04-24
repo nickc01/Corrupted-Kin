@@ -155,6 +155,8 @@ MonoBehaviour:
   collisionMask:
     serializedVersion: 2
     m_Bits: 4294967295
+  waveSizeMultiplier: 0.45
+  waveSpacing: 0
 --- !u!114 &114354520460988130
 MonoBehaviour:
   m_ObjectHideFlags: 1

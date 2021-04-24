@@ -624,7 +624,7 @@ MonoBehaviour:
   damageDealt: 2
   hazardType: 1
   shadowDashHazard: 0
-  updateLayer: 1
+  setLayerToEnemies: 1
 --- !u!114 &114513446780587294
 MonoBehaviour:
   m_ObjectHideFlags: 1

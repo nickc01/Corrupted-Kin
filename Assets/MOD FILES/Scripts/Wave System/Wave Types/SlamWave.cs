@@ -1,8 +1,11 @@
 ﻿using UnityEngine;
+using WeaverCore.Enums;
 using WeaverCore.Utilities;
 
 public class SlamWave : MonoBehaviour, IWaveGenerator
 {
+	//const float E = (float)System.Math.E;
+
 	[Header("Main Wave")]
 	[SerializeField]
 [Tooltip(
@@ -28,11 +31,16 @@ The wave starts at whatever velocity is at the left end of the curve.
 	[SerializeField]
 	float backTamperOffset = 0f;
 	[SerializeField]
+	float decayRate = 0.4f;
+	[SerializeField]
 	[Tooltip("How long the wave will last")]
 	float lifeTime = 5f;
 	[SerializeField]
 	[Tooltip("How long it takes for the wave to fade out")]
 	float fadeOutTime = 2f;
+	[SerializeField]
+	[Tooltip("What the wave will do when it's done")]
+	OnDoneBehaviour doneBehaviour;
 
 	[Space]
 	[Header("Split")]
@@ -71,6 +79,18 @@ The wave starts at whatever velocity is at the left end of the curve.
 	float time = 0f;
 	float originalPosition = 0f;
 
+	public float SizeToSpeedRatio
+	{
+		get
+		{
+			return sizeToSpeedRatio;
+		}
+		set
+		{
+			sizeToSpeedRatio = value;
+		}
+	}
+
 	void Update()
 	{
 		if (wave != null)
@@ -92,7 +112,7 @@ The wave starts at whatever velocity is at the left end of the curve.
 			if (time >= lifeTime)
 			{
 				wave.RemoveGenerator(this);
-				Destroy(gameObject);
+				doneBehaviour.DoneWithObject(this);
 			}
 		}
 	}
@@ -121,7 +141,7 @@ The wave starts at whatever velocity is at the left end of the curve.
 		backTamper = (x - originalPosition + backTamperOffset) / backTamperLength;
 
 		//var rawValue = 1f - ((GetDecayedSine(x - transform.position.x) + 1f) / 2f);
-		var value = transform.localScale.y * GetDecayedSine((x - transform.position.x) / transform.localScale.x) + previousValue;
+		var value = transform.localScale.y * GetDecayedSine((x - transform.position.x) / transform.localScale.x,decayRate) + previousValue;
 
 		return Mathf.Lerp(Mathf.Lerp(Mathf.Lerp(value,previousValue, (x - transform.position.x + frontTamperOffset) / frontTamperLength),previousValue, backTamper),previousValue,Mathf.InverseLerp(lifeTime - fadeOutTime, lifeTime,time));
 		//return value;
@@ -143,17 +163,23 @@ The wave starts at whatever velocity is at the left end of the curve.
 	{
 		wave = source;
 		originalPosition = transform.position.x;
+		transform.localScale = transform.localScale.With(y: 0f);
 		if (doSplit)
 		{
 			wave.AddSplit(originalPosition, SplitAmount, SplitTime);
 		}
 		if (doBlanker)
 		{
-			wave.AddBlanker(originalPosition, blankerAcceleration, blankerTerminalVelocity, blankerDeacceleration, blankerIntensity, blankerStartingTime, blankerSpread, blankerDecayRate);
+			SpawnBlanker(originalPosition);
 		}
 	}
 
-	static float GetDecayedSine(float x)
+	public void SpawnBlanker(float x_position)
+	{
+		wave.AddBlanker(x_position, blankerAcceleration, blankerTerminalVelocity, blankerDeacceleration, blankerIntensity, blankerStartingTime, blankerSpread, blankerDecayRate);
+	}
+
+	static float GetDecayedSine(float x, float decayRate = 0.4f)
 	{
 		if (x == 0)
 		{
@@ -161,14 +187,16 @@ The wave starts at whatever velocity is at the left end of the curve.
 		}
 		else
 		{
-			return Mathf.Sin(x * Mathf.PI * 2f) / x;
+			return Mathf.Sin(x * Mathf.PI * 2f) / (x * decayRate);
 		}
+
+		//return Mathf.Pow(E, -decayRate * Mathf.Abs(x)) * Mathf.Cos(1.5f * Mathf.PI * x);
 	}
 
-	static float GenerateMainWave(float x)
+	/*static float GenerateMainWave(float x)
 	{
 		return -Mathf.Pow(2f * x, 2f) + 1f;
-	}
+	}*/
 
 	/*float Limit(float number, float limit)
 	{

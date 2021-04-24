@@ -1,15 +1,40 @@
 ﻿using System.Collections;
 using UnityEngine;
 using WeaverCore;
+using WeaverCore.Enums;
 using WeaverCore.Utilities;
 
 public class EvadeMove : CorruptedKinMove
 {
 	[SerializeField] float evadeSpeed = 25f;
+	[SerializeField] float evadeTime = 0.19f;
+
+	[SerializeField] float evadeRange = 1.5f;
+
+	public bool HasRoomToEvade(CardinalDirection evadeDirection)
+	{
+		switch (evadeDirection)
+		{
+			case CardinalDirection.Left:
+				return transform.position.x - (evadeSpeed * evadeTime) >= Kin.LeftX;
+			case CardinalDirection.Right:
+				return transform.position.x + (evadeSpeed * evadeTime) <= Kin.RightX;
+			default:
+				return false;
+		}
+	}
+
+	public bool IsWithinEvadeRange(Vector3 position)
+	{
+		Debug.DrawLine(transform.position, transform.position + new Vector3(evadeRange, 0f, 0f), Color.blue, 1f);
+		Debug.DrawLine(transform.position, transform.position - new Vector3(evadeRange, 0f, 0f), Color.blue, 1f);
+
+		return position.x >= transform.position.x - evadeRange && position.x <= transform.position.x + evadeRange;
+	}
 
 	public override IEnumerator DoMove()
 	{
-		Rigidbody.velocity = default(Vector2);
+		KinRigidbody.velocity = default(Vector2);
 
 		//yield return Kin.FacePlayerRoutine();
 		yield return Kin.TurnTowardsPlayer();
@@ -25,14 +50,14 @@ public class EvadeMove : CorruptedKinMove
 
 		yield return Animator.PlayAnimationTillDone("Evade Antic");
 
-		Rigidbody.gravityScale = 0f;
-		Rigidbody.velocity = new Vector2(speed, 0f);
+		KinRigidbody.gravityScale = 0f;
+		KinRigidbody.velocity = new Vector2(speed, 0f);
 
 		Audio.PlayAtPoint(Kin.JumpSound, transform.position);
 
 		Animator.PlayAnimation("Evade");
 
-		for (float timer = 0; timer < 0.19f; timer += Time.deltaTime)
+		for (float timer = 0; timer < evadeTime; timer += Time.deltaTime)
 		{
 			if (Animator.PlayingClip != "Evade")
 			{
@@ -41,8 +66,8 @@ public class EvadeMove : CorruptedKinMove
 			yield return null;
 		}
 
-		Rigidbody.velocity = default(Vector2);
-		Rigidbody.gravityScale = Kin.GravityScale;
+		KinRigidbody.velocity = default(Vector2);
+		KinRigidbody.gravityScale = Kin.GravityScale;
 		Audio.PlayAtPoint(Kin.LandSound, transform.position);
 
 		yield return Animator.PlayAnimationTillDone("Evade Recover");

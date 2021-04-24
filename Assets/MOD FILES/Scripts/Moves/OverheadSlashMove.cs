@@ -9,12 +9,23 @@ public class OverheadSlashMove : CorruptedKinMove
 	[Tooltip("The minimum distance between the boss and the player in order for the move to execute")]
 	[SerializeField] float MinXDistance = 3.5f;
 
+	[SerializeField] float overheadSlashDelay = 0.65f;
+
+	[SerializeField] BoxCollider2D OverheadSlashRange;
+
+	public bool InSlashRange(Vector3 position)
+	{
+		var bounds = OverheadSlashRange.bounds;
+
+		return position.x >= bounds.min.x && position.x <= bounds.max.x && position.y >= bounds.min.y && position.y <= bounds.max.y;
+	}
+
 	public override IEnumerator DoMove()
 	{
 		Animator.PlayAnimation("Overhead Antic");
-		Rigidbody.velocity = default(Vector2);
+		KinRigidbody.velocity = default(Vector2);
 
-		yield return new WaitForSeconds(0.65f);
+		yield return new WaitForSeconds(overheadSlashDelay);
 
 		OverheadSlash.gameObject.SetActive(true);
 
