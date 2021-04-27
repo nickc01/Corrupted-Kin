@@ -23,6 +23,8 @@ public class ParasiteBalloon : MonoBehaviour
 	float speedMin = 3.5f;
 	[SerializeField]
 	float speedMax = 6.5f;
+	[SerializeField]
+	float acceleration = 10f;
 
 	public Vector2 SpawnVelocity;
 
@@ -74,6 +76,34 @@ public class ParasiteBalloon : MonoBehaviour
 		StartCoroutine(MainRoutine());
 	}
 
+	/// <summary>
+	/// Returns the minimum and maximum speed of the parasite
+	/// </summary>
+	public Vector2 Speed
+	{
+		get
+		{
+			return new Vector2(speedMin,speedMax);
+		}
+		set
+		{
+			speedMin = value.x;
+			speedMax = value.y;
+		}
+	}
+
+	public float Acceleration
+	{
+		get
+		{
+			return acceleration;
+		}
+		set
+		{
+			acceleration = value;
+		}
+	}
+
 	void OnEnable()
 	{
 		if (modifyStorage)
@@ -123,7 +153,7 @@ public class ParasiteBalloon : MonoBehaviour
 
 		while (true)
 		{
-			Chase(Player.Player1.transform, speed, 10f);
+			Chase(Player.Player1.transform, speed, acceleration);
 			yield return FaceObjectRoutine(Player.Player1.transform, true);
 			yield return null;
 		}

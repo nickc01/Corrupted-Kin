@@ -1,9 +1,0 @@
-{
-    "name": "JUNK",
-    "references": [
-        "WeaverCore",
-        "HollowKnight"
-    ],
-    "includePlatforms": [],
-    "excludePlatforms": []
-}

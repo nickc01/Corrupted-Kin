@@ -216,6 +216,8 @@ public class CorruptedKin : BossReplacement
 	[Header("Stun")]
 	public float StunPushAmount = 10f;
 	public ParticleSystem ShakeGas;
+	[SerializeField]
+	float stunTime = 2f;
 
 	[Space]
 	[Header("Death")]
@@ -405,6 +407,16 @@ public class CorruptedKin : BossReplacement
 		}
 	}
 
+	int GetHealthPercent(float percent)
+	{
+		return GetHealthPercent(HealthManager.Health, percent);
+	}
+
+	int GetHealthPercent(int value, float percent)
+	{
+		return Mathf.RoundToInt(Mathf.Lerp(0f, value, percent));
+	}
+
 	protected override void Awake()
 	{
 		//var prefab1 = WeaverAssets.LoadWeaverAsset<GameObject>("Blood Particles");
@@ -467,21 +479,36 @@ public class CorruptedKin : BossReplacement
 
 		base.Awake();
 
-		var quarterHealth = HealthManager.Health / 4;
+		//var quarterHealth = HealthManager.Health / 4;
 
-		EntityHealth.AddHealthMilestone(quarterHealth * 3, () => DoParasiteSpawning = true);
-		EntityHealth.AddHealthMilestone(quarterHealth * 2, () => DoParasiteSpawning = false);
-		EntityHealth.AddHealthMilestone(quarterHealth, () => DoParasiteSpawning = true);
-		EntityHealth.AddHealthMilestone(quarterHealth, () => GuaranteedNextMove = GetComponent<ShakeMove>());
+		var shakeMove = GetComponent<ShakeMove>();
+		var transMove = GetComponent<TransformationMove>();
+		var specialMoves = GetComponent<SpecialMoves>();
 
-		EntityHealth.AddHealthMilestone(quarterHealth * 2,() => GuaranteedNextMove = GetComponent<TransformationMove>());
+		//EntityHealth.AddHealthMilestone(quarterHealth * 3, () => DoParasiteSpawning = true);
+		//EntityHealth.AddHealthMilestone(quarterHealth * 3, () => GuaranteedNextMove = GetComponent<ShakeMove>());
+		EntityHealth.AddHealthMilestone(GetHealthPercent(0.8f), () => DoParasiteSpawning = true);
+		EntityHealth.AddHealthMilestone(GetHealthPercent(0.8f), () => shakeMove.EnableMove(true));
 
-		EntityHealth.AddHealthMilestone(Mathf.RoundToInt(quarterHealth * 0.5f),() => GuaranteedNextMove = GetComponent<SpecialMoves>());
-		EntityHealth.AddHealthMilestone(Mathf.RoundToInt(quarterHealth * 1.5f),() => GuaranteedNextMove = GetComponent<SpecialMoves>());
+		//EntityHealth.AddHealthMilestone(quarterHealth * 2, () => DoParasiteSpawning = false);
+		//EntityHealth.AddHealthMilestone(quarterHealth * 2, () => GuaranteedNextMove = GetComponent<TransformationMove>());
+		//EntityHealth.AddHealthMilestone(GetHealthPercent(0.5f), () => DoParasiteSpawning = false);
+		EntityHealth.AddHealthMilestone(GetHealthPercent(0.6f), () => shakeMove.EnableMove(false));
+		EntityHealth.AddHealthMilestone(GetHealthPercent(0.6f), () => GuaranteedNextMove = transMove);
 
-		AddStunMilestone(quarterHealth);
-		AddStunMilestone(quarterHealth * 2);
-		AddStunMilestone(quarterHealth * 3);
+		//EntityHealth.AddHealthMilestone(quarterHealth, () => DoParasiteSpawning = true);
+		//EntityHealth.AddHealthMilestone(quarterHealth, () => GuaranteedNextMove = GetComponent<ShakeMove>());
+		EntityHealth.AddHealthMilestone(GetHealthPercent(0.35f), () => DoParasiteSpawning = true);
+		EntityHealth.AddHealthMilestone(GetHealthPercent(0.35f), () => shakeMove.EnableMove(true));
+
+		//EntityHealth.AddHealthMilestone(Mathf.RoundToInt(quarterHealth * 0.5f), () => GuaranteedNextMove = GetComponent<SpecialMoves>());
+		//EntityHealth.AddHealthMilestone(Mathf.RoundToInt(quarterHealth * 1.5f), () => GuaranteedNextMove = GetComponent<SpecialMoves>());
+		EntityHealth.AddHealthMilestone(GetHealthPercent(0.475f), () => GuaranteedNextMove = specialMoves);
+		EntityHealth.AddHealthMilestone(GetHealthPercent(0.175f), () => GuaranteedNextMove = specialMoves);
+
+		AddStunMilestone(GetHealthPercent(0.8f));
+		AddStunMilestone(GetHealthPercent(0.6f));
+		AddStunMilestone(GetHealthPercent(0.35f));
 
 		/*foreach (var move in Moves)
 		{
@@ -790,15 +817,31 @@ public class CorruptedKin : BossReplacement
 		StartBoundRoutine(DeathRoutine());
 	}
 
+	public IEnumerator WaitUnlessAttacked(float time,bool skipIdleIfAttacked)
+	{
+		int previousHealth = HealthManager.Health;
+		for (float t = 0; t < time; t += Time.deltaTime)
+		{
+			if (HealthManager.Health < previousHealth)
+			{
+				if (skipIdleIfAttacked)
+				{
+					GetComponent<IdleMove>().SkipNextIdle = true;
+				}
+				yield break;
+			}
+			yield return null;
+		}
+	}
+
 	IEnumerator DeathRoutine()
 	{
-		ParasiteBalloon.DestroyAllParasites();
 		DoParasiteSpawning = false;
 		float emissionRate = 50f;
 		float emissionSpeed = 5f;
 		//HERE IS WHERE A SetPlayerDataBool is located. It sets corn_abyssLeft to true
 
-		ResetState();
+		DeathState();
 
 		Damager.DamageDealt = 0;
 
@@ -929,7 +972,7 @@ public class CorruptedKin : BossReplacement
 
 	IEnumerator StunRoutine()
 	{
-		ParasiteBalloon.DestroyAllParasites();
+		//ParasiteBalloon.DestroyAllParasites();
 		StunEffect.Spawn(transform.position);
 
 		//FacePlayer(false);
@@ -949,7 +992,7 @@ public class CorruptedKin : BossReplacement
 
 		float timesHitBefore = HealthManager.TimesHit;
 
-		for (float i = 0; i < 3f; i += Time.deltaTime)
+		for (float i = 0; i < stunTime; i += Time.deltaTime)
 		{
 			if (HealthManager.TimesHit > timesHitBefore)
 			{
@@ -986,6 +1029,36 @@ public class CorruptedKin : BossReplacement
 		{
 			WeaverEvents.SendEventToObject(battleSceneObject, "END");
 		}
+	}
+
+	void DeathState()
+	{
+		var xScale = transform.GetXLocalScale();
+		var movementAmount = xScale * StunPushAmount;
+
+		if (transform.position.x >= MiddleX)
+		{
+			Renderer.flipX = true;
+		}
+		else
+		{
+			Renderer.flipX = false;
+		}
+
+		if (!IsFacingRight)
+		{
+			movementAmount = -movementAmount;
+		}
+
+		Rigidbody.gravityScale = GravityScale;
+
+		Rigidbody.velocity = new Vector2(movementAmount, 20f);
+
+		//DashSlashHit.SetActive(false);
+		//DashSlash.SetActive(false);
+		//OverheadSlash.gameObject.SetActive(false);
+
+		ShakeGas.Stop(false, ParticleSystemStopBehavior.StopEmitting);
 	}
 
 	void ResetState()

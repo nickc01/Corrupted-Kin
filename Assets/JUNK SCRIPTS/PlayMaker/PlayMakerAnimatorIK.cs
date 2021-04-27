@@ -1,3 +1,0 @@
-public class PlayMakerAnimatorIK : PlayMakerProxyBase
-{
-}

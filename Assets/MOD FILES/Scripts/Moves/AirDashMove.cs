@@ -56,7 +56,7 @@ public class AirDashMove : CorruptedKinMove
 				doDash = true;
 			}
 
-			yield return dashSlash.DoDash(doDash);
+			yield return dashSlash.DoDash(doDash,dashSlash.DefaultDashSpeed);
 			//yield return DashPart2();
 			//break;
 		}

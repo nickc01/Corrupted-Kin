@@ -35,6 +35,8 @@ public class IdleMove : CorruptedKinMove
 		}
 	}
 
+	public bool SkipNextIdle { get; set; }
+
 	public override IEnumerator DoMove()
 	{
 		//Animator.PlayAnimation("Walk");
@@ -66,34 +68,43 @@ public class IdleMove : CorruptedKinMove
 		yield return Kin.TurnTowardsPlayer();
 		Animator.PlayAnimation("Walk");
 
-		if (Kin.BossStage == 1 || Kin.BossStage == 3)
+		if (SkipNextIdle)
 		{
-			CurrentStreakCounter = 0;
-		}
-
-		if (CurrentStreakCounter > 0)
-		{
-			CurrentStreakCounter--;
+			SkipNextIdle = false;
 		}
 		else
 		{
-			long timesHitBefore = HealthManager.TimesHit;
-			var waitTime = UnityEngine.Random.Range(idleTimeMin, idleTimeMax);
-			if (Kin.BossStage >= 3)
+			if (Kin.BossStage == 1 || Kin.BossStage == 3)
 			{
-				waitTime /= 2f;
-			}
-			for (float t = 0; t < waitTime; t += Time.deltaTime)
-			{
-				if (HealthManager.TimesHit > timesHitBefore)
-				{
-					break;
-				}
-				yield return null;
+				CurrentStreakCounter = 0;
 			}
 
-			CurrentStreakCounter = streakAmount - 1;
+			if (CurrentStreakCounter > 0)
+			{
+				CurrentStreakCounter--;
+			}
+			else
+			{
+				long timesHitBefore = HealthManager.TimesHit;
+				var waitTime = UnityEngine.Random.Range(idleTimeMin, idleTimeMax);
+				if (Kin.BossStage >= 3)
+				{
+					waitTime /= 2f;
+				}
+				for (float t = 0; t < waitTime; t += Time.deltaTime)
+				{
+					if (HealthManager.TimesHit > timesHitBefore)
+					{
+						break;
+					}
+					yield return null;
+				}
+
+				CurrentStreakCounter = streakAmount - 1;
+			}
 		}
+
+		
 		KinRigidbody.velocity = new Vector2(0f, 0f);
 		/*if (IdleCounter < waitTime)
 		{

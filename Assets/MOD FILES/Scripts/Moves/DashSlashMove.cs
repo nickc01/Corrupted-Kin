@@ -12,6 +12,51 @@ public class DashSlashMove : CorruptedKinMove
 	[SerializeField] GameObject DashSlash;
 	[SerializeField] GameObject DashSlashHit;
 
+	public float DefaultDashSpeed { get { return dashSpeed; } }
+
+	public IEnumerator DashToPosition(float x_position)
+	{
+		if (x_position >= Kin.RightX || x_position <= Kin.LeftX)
+		{
+			throw new System.Exception("The position to dash to is outside the arena");
+		}
+		Audio.PlayAtPoint(Kin.PrepareSound, transform.position);
+		KinRigidbody.gravityScale = 0f;
+
+		//yield return Kin.FacePlayerRoutine(false);
+		//yield return Kin.TurnTowardsPlayer();
+		if (x_position >= transform.position.x)
+		{
+			Renderer.flipX = false;
+		}
+		else
+		{
+			Renderer.flipX = true;
+		}
+
+		var scale = transform.GetXLocalScale();
+
+		/*var reverseSpeed = reverseDashSpeed * scale;
+
+		if (Kin.IsFacingRight)
+		{
+			reverseSpeed = -reverseSpeed;
+		}
+
+		KinRigidbody.velocity = new Vector2(reverseSpeed, 0f);*/
+
+		yield return Animator.PlayAnimationTillDone("Dash Antic 1");
+
+		var dashTime = Animator.AnimationData.GetClipDuration("Dash Attack 1");
+
+		dashTime += Animator.AnimationData.GetClipDuration("Dash Attack 2");
+		dashTime += Animator.AnimationData.GetClipDuration("Dash Attack 3");
+
+		var dashVelocity = Mathf.Abs(x_position - transform.position.x) / dashTime;
+
+		yield return DoDash(false,dashVelocity / transform.GetXLocalScale());
+	}
+
 	public override IEnumerator DoMove()
 	{
 		/*if (Kin.GetPercentageToBoss(Player.Player1.transform) > 0.4f && Kin.BossPositionPercentage > 0.4f && Kin.BossPositionPercentage < 0.6f)
@@ -38,10 +83,10 @@ public class DashSlashMove : CorruptedKinMove
 
 		yield return Animator.PlayAnimationTillDone("Dash Antic 1");
 
-		yield return DoDash(false);
+		yield return DoDash(false,dashSpeed);
 	}
 
-	public IEnumerator DoDash(bool doDownSlash)
+	public IEnumerator DoDash(bool doDownSlash, float dashSpeed)
 	{
 		var limiterRoutine = Kin.StartBoundRoutine(PositionLimiterRoutine());
 		var scale = transform.GetXLocalScale();
@@ -124,7 +169,7 @@ public class DashSlashMove : CorruptedKinMove
 
 	public override void OnStun()
 	{
-		WeaverLog.Log("STUN");
+		//WeaverLog.Log("STUN");
 		DashSlashHit.SetActive(false);
 		DashSlash.SetActive(false);
 		DashBurst.SetActive(false);

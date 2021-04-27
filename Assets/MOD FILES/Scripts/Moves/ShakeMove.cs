@@ -34,6 +34,8 @@ public class ShakeMove : CorruptedKinMove
 	float shakeAnimationSpeed = 1f;
 	[SerializeField]
 	float ShakeSoundDelay;
+	[SerializeField]
+	float jumpPredictionTime = 0.75f;
 
 	[Header("Shots")]
 	[Space]
@@ -67,6 +69,9 @@ public class ShakeMove : CorruptedKinMove
 	[SerializeField]
 	[Tooltip("How much faster will higher shots be travelling compared to lower shots")]
 	float highShotSpeed = 4f;
+	[SerializeField]
+	[Tooltip("Determines how much shorter the move will last based on how much damage is dealt to the boss. For example, if the value assigned here is 90, then after 90 damage, the time is cut in half, then at 180, by a quarter and so on")]
+	int damageTimeReduction = 90;
 
 
 	int _chanceCounter = -1;
@@ -74,9 +79,10 @@ public class ShakeMove : CorruptedKinMove
 
 	float previousRecoilSpeed = 0f;
 
+	bool _moveEnabled = false;
 	public override bool MoveEnabled
 	{
-		get
+		/*get
 		{
 			if (Kin.BossStage == 2 || Kin.BossStage > 4)
 			{
@@ -87,7 +93,21 @@ public class ShakeMove : CorruptedKinMove
 			{
 				return false;
 			}
+		}*/
+		get
+		{
+			if (_moveEnabled)
+			{
+				_moveEnabled = false;
+				return true;
+			}
+			return false;
 		}
+	}
+
+	public void EnableMove(bool enabled)
+	{
+		_moveEnabled = enabled;
 	}
 
 	public override IEnumerator DoMove()
@@ -95,13 +115,31 @@ public class ShakeMove : CorruptedKinMove
 		Kin.DoParasiteSpawning = false;
 		var recoiler = GetComponent<WeaverCore.Components.Recoil>();
 		var jumpMove = GetComponent<JumpMove>();
+		//var dashMove = GetComponent<DashSlashMove>();
 
 		previousRecoilSpeed = recoiler.GetRecoilSpeed();
 		recoiler.SetRecoilSpeed(0f);
 
+		var playerPosBefore = Player.Player1.transform.position.x;
+		yield return null;
+		var playerPosAfter = Player.Player1.transform.position.x;
+
+
+		var predictionAmount = ((playerPosAfter - playerPosBefore) / Time.deltaTime) * jumpPredictionTime;
+		/*var x_position = transform.GetXPosition();
+
+		if (x_position >= Kin.MiddleX)
+		{
+
+		}
+		else
+		{
+
+		}*/
+
 		float jumpX = 0f;
 
-		if (Player.Player1.transform.position.x >= Kin.MiddleX)
+		if (Player.Player1.transform.position.x + predictionAmount >= Kin.MiddleX)
 		{
 			jumpX = Mathf.Lerp(Kin.MiddleX, Kin.LeftX, 0.5f);
 		}
@@ -116,7 +154,7 @@ public class ShakeMove : CorruptedKinMove
 
 		yield return new WaitUntil(() => !jumpMove.Jumping);
 
-		Debug.Log("DOING SHAKE MOVE");
+		//Debug.Log("DOING SHAKE MOVE");
 		KinRigidbody.velocity = default(Vector2);
 
 		yield return Animator.PlayAnimationTillDone("Shake Antic");
@@ -133,7 +171,12 @@ public class ShakeMove : CorruptedKinMove
 
 		int previousFrame = -100;
 
-		for (float t = 0; t < waitTime; t += Time.deltaTime)
+		int healthBefore = HealthManager.Health;
+		//TODO - DAMAGE TIME REDUCTION
+
+		float damageReduction = 1f;
+
+		for (float t = 0; t < waitTime / damageReduction; t += Time.deltaTime)
 		{
 			var currentFrame = Animator.PlayingFrame;
 			if (previousFrame >= 0 && currentFrame != previousFrame)
@@ -157,6 +200,7 @@ public class ShakeMove : CorruptedKinMove
 #endif
 
 			previousFrame = currentFrame;
+			damageReduction = 1f + ((healthBefore - HealthManager.Health) / (float)damageTimeReduction);
 			yield return null;
 		}
 
@@ -169,7 +213,8 @@ public class ShakeMove : CorruptedKinMove
 		ShakeGas.Stop();
 		shakeSound = null;
 
-		yield return new WaitForSeconds(endDelay);
+		//yield return new WaitForSeconds(endDelay);
+		yield return Kin.WaitUnlessAttacked(endDelay,true);
 
 		if (Kin.GuaranteedNextMove == this)
 		{

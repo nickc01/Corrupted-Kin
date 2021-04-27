@@ -9,6 +9,7 @@ public class BombTossMove : CorruptedKinMove
 {
 	[SerializeField] AudioClip BombTossPrepareSound;
 	[SerializeField] float TossPrepareDelay = 0.55f;
+	[SerializeField] float TossPrepareDelaySecondStage = 0.01f;
 	[SerializeField] ParticleSystem TossParticles;
 	[SerializeField] float TossParticlesSpeed = 7.5f;
 	[SerializeField] float TossDeathWaveSize = 0.5f;
@@ -61,16 +62,33 @@ public class BombTossMove : CorruptedKinMove
 
 		float time = BombTossPrepareSound.length;
 
+		int previousHealth = HealthManager.Health;
+
 		for (float i = 0; i < time; i += Time.deltaTime)
 		{
 			main.startSpeed = new ParticleSystem.MinMaxCurve(0f, TossParticlesSpeed * (i / time));
+			if (HealthManager.Health < previousHealth)
+			{
+				break;
+			}
 			yield return null;
 		}
 
+		main.startSpeed = new ParticleSystem.MinMaxCurve(0f, TossParticlesSpeed);
 		var deathWave = DeathWave.Spawn(TossParticles.transform.position, TossDeathWaveSize);
 		//deathWave.transform.localScale = new Vector3(TossDeathWaveSize, TossDeathWaveSize, 1f);
 
-		yield return new WaitForSeconds(TossPrepareDelay);
+		var startDelay = TossPrepareDelay;
+		if (Kin.BossStage == 2 || Kin.BossStage >= 4)
+		{
+			startDelay = TossPrepareDelaySecondStage;
+		}
+
+		if (HealthManager.Health >= previousHealth)
+		{
+			yield return Kin.WaitUnlessAttacked(startDelay, false);
+		}
+		//yield return new WaitForSeconds(TossPrepareDelay);
 
 		var tossTimes = TossTimesFirstStage;
 
@@ -146,13 +164,17 @@ public class BombTossMove : CorruptedKinMove
 
 					Animator.PlayAnimation("Idle");
 
-					yield return new WaitForSeconds(1.35f);
+					//yield return new WaitForSeconds(1.35f);
+					yield return new WaitForSeconds(0.25f);
+					yield return Kin.WaitUnlessAttacked(1.1f,true);
 				}
 				else if (Kin.BossStage == 2 && Vector3.Distance(transform.position,Player.Player1.transform.position) <= 6f)
 				{
 					Animator.PlayAnimation("Idle");
 
-					yield return new WaitForSeconds(0.45f);
+					yield return new WaitForSeconds(0.1f);
+					yield return Kin.WaitUnlessAttacked(0.35f,true);
+					//yield return new WaitForSeconds(0.45f);
 				}
 			}
 			else

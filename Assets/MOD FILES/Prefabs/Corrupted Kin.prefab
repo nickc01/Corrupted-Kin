@@ -1948,13 +1948,14 @@ MonoBehaviour:
   BombTossPrepareSound: {fileID: 8300000, guid: bfcfae68679a7f64597b66191ca4b34a,
     type: 3}
   TossPrepareDelay: 0.15
+  TossPrepareDelaySecondStage: 0.1
   TossParticles: {fileID: 198834720764166732}
   TossParticlesSpeed: 7.5
   TossDeathWaveSize: 0.3
   TossTimesFirstStage: 2
   DelayBetweenTossesFirstStage: 0.1
   TossTimesSecondStage: 3
-  DelayBetweenTossesSecondStage: 0.13
+  DelayBetweenTossesSecondStage: 0.05
   TossSound: {fileID: 8300000, guid: 474b478fb589aaf49974ebafa5947861, type: 3}
   TossingDelay: 0.16666667
   TossBloodAngleMin: 15
@@ -1984,13 +1985,13 @@ MonoBehaviour:
   rainRoarDelay: 0.3
   rainLeftOffset: 0
   rainRightOffset: 0
-  rainParticlesPerSec: 17
+  rainParticlesPerSec: 20
   rainTime: 8
   rainEndDelay: 1.4
   rainPrefab: {fileID: 114770074158958034, guid: 6afa5ad392b9c444cb4d9cb1f9d0b980,
     type: 2}
   rainRumbleType: 4
-  rainPlayerShotInterval: 6
+  rainPlayerShotInterval: 7
   rainRoofDustPrefab: {fileID: 198170997206367318, guid: 998068b36c8530e4680cc5cc5aaa3ce4,
     type: 2}
   bombPrefab: {fileID: 114257297707549616, guid: d763c89a90fcc5e4592b594e15b0359f,
@@ -2002,15 +2003,19 @@ MonoBehaviour:
   bombRightSideAmount: 4
   bombLeftSideOffset: 0.7
   bombRightSideOffset: 0.7
-  parasitesPerSecond: 2.9
-  safetyRange: 8
+  parasitesPerSecond: {x: 2.6, y: 3.3}
+  safetyRange: 17
   parasiteTime: 9
   endDelay: 2.4
   parasiteHealthMultiplier: 1
   parasiteSpawnY: -3
   parasiteZ: 0.3
-  parasiteVerticalVelocityMin: 10
-  parasiteVerticalVelocityMax: 24
+  parasiteVerticalVelocityMin: 8
+  parasiteVerticalVelocityMax: 20
+  parasiteSpeedMinMax: {x: 5, y: 9}
+  parasiteAcceleration: 20
+  parasitePlayerStillSpeedIncrease: 3
+  parasitePlayerStillRateIncrease: 2
   wavesPerSecond: 2.3
   barrageTime: 10
   barrageStartDelay: 0.5
@@ -2026,7 +2031,7 @@ MonoBehaviour:
   burrowHeight: -4
   burrowTrackPlayerTime: 0
   burrowTrackTimeRandomness: {x: 0.1, y: 0.5}
-  burrowFirstTimeTrackDelay: 2.6
+  burrowFirstTimeTrackDelay: 4
   burrowJumpDelay: 0.42
   burrowJumpApplyCameraShake: 1
   burrowJumpShakeType: 2
@@ -2034,8 +2039,8 @@ MonoBehaviour:
   burrowSlamVelocity: -55
   airTime: 0.55
   burrowMaximumHeight: 8.6527
-  burrowAcceleration: 19
-  burrowTerminalVelocity: 9
+  burrowAcceleration: 26
+  burrowTerminalVelocity: 11
   burrowSlamWaveSpacing: -1.25
   burrowSlamWaveHeightMultiplier: 1
   burrowAfterEffectWaveHeight: 0.2
@@ -2150,7 +2155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ea0b32a39dd70242a7799c6c5dfeadc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 2600
+  _health: 2750
   DecreaseHealth: 1
   Invincible: 0
   DeflectBlows: 0
@@ -2161,6 +2166,9 @@ MonoBehaviour:
   SmallGeo: 0
   MediumGeo: 0
   LargeGeo: 0
+  attunedHealth: 2750
+  ascendedHealth: 2850
+  radiantHealth: 2900
 --- !u!114 &114456216343815532
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2310,9 +2318,10 @@ MonoBehaviour:
   screamSound: {fileID: 8300000, guid: f02fae9b244aa53478fca30748acb0b0, type: 3}
   fallDelay: 0.3
   parasiteSpawnRate: 5
-  parasiteSpawnHeightMinMax: {x: 6.5, y: 10}
+  parasiteSpawnHeightMinMax: {x: 6.5, y: 11}
   StunPushAmount: 10
   ShakeGas: {fileID: 198278958199289180}
+  stunTime: 2.5
   BossFinalHitSound: {fileID: 8300000, guid: 1289c8c7fba7172499433c9be2e57065, type: 3}
   BossGushingSound: {fileID: 8300000, guid: df1f8d3d5000eb54db000c44e9ced12f, type: 3}
   BossDeathPuffPrefab: {fileID: 1539330947824328, guid: 82bce4e45832ea143b1aa59e209c3687,
@@ -2377,11 +2386,12 @@ MonoBehaviour:
   endDelay: 1.4
   ShakeAudio: {fileID: 8300000, guid: e25abc1f5f5ae3a42970ec234934589b, type: 3}
   ShakeGas: {fileID: 198278958199289180}
-  shakeAnimationSpeed: 0.76
+  shakeAnimationSpeed: 0.8
   ShakeSoundDelay: 0
+  jumpPredictionTime: 0.75
   shotBeginDelay: 0.03
-  shotAngleStart: 20
-  shotAngleEnd: 83
+  shotAngleStart: 26
+  shotAngleEnd: 87
   amountOfShots: 4
   shotTime: 0.4
   aimShotAtPlayer: 1
@@ -2391,6 +2401,7 @@ MonoBehaviour:
   shotZ: 0.02
   playerDistanceThreshold: 4
   highShotSpeed: 4
+  damageTimeReduction: 65
 --- !u!114 &114699529901920494
 MonoBehaviour:
   m_ObjectHideFlags: 1

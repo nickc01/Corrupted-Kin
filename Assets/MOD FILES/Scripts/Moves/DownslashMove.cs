@@ -134,7 +134,7 @@ public class DownslashMove : CorruptedKinMove
 					AmountOfTimes = 3,
 					DelayBetweenTimes = 0.2f,
 					HorizontalOffset = tripleStabHorizontalOffset,
-					JumpAnticSpeed = 0.70f,
+					JumpAnticSpeed = 0.75f,
 					JumpHeight = jump.JumpHeight + 3f,
 					SpawnAspidShots = true,
 					AspidShotCount = 5
@@ -148,7 +148,7 @@ public class DownslashMove : CorruptedKinMove
 						AmountOfTimes = 1,
 						DelayBetweenTimes = 0.2f,
 						HorizontalOffset = 0,
-						JumpAnticSpeed = 0.8f,
+						JumpAnticSpeed = 0.75f,
 						JumpHeight = jump.JumpHeight,
 						SpawnWaves = true
 					});
@@ -163,7 +163,7 @@ public class DownslashMove : CorruptedKinMove
 						AmountOfTimes = 2,
 						DelayBetweenTimes = 0.075f,
 						HorizontalOffset = 0,
-						JumpAnticSpeed = 0.8f,
+						JumpAnticSpeed = 0.75f,
 						JumpHeight = jump.JumpHeight,
 						SpawnWaves = true,
 						GetNextPosition = (time) =>
@@ -474,7 +474,8 @@ public class DownslashMove : CorruptedKinMove
 
 		Animator.PlayAnimation("Idle");
 
-		yield return new WaitForSeconds(0.35f);
+		yield return Kin.WaitUnlessAttacked(0.35f,true);
+		//yield return new WaitForSeconds(0.35f);
 	}
 
 	class AngleRangeSorter : IComparer<Vector2>

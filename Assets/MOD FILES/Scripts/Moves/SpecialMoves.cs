@@ -93,8 +93,10 @@ public class SpecialMoves : CorruptedKinMove
 	[Space]
 	[Header("Parasite Hoard")]
 	[SerializeField]
-	[Tooltip("How fast the parasites will spawn")]
-	float parasitesPerSecond = 3.5f;
+	//[Tooltip("How fast the parasites will spawn")]
+	//float parasitesPerSecond = 2.9f;
+	[Tooltip("The min and max spawnrate of the parasites. How many parasites spawn per second")]
+	Vector2 parasitesPerSecond = new Vector2(1.4f, 4.4f);
 	[SerializeField]
 	[Tooltip("A range around the player where parasites cannot spawn. Used to prevent parasites from spawning right below the player")]
 	float safetyRange = 2f;
@@ -119,6 +121,16 @@ public class SpecialMoves : CorruptedKinMove
 	[SerializeField]
 	[Tooltip("The maximum vertical velocity that the parasites will play at when spawned")]
 	float parasiteVerticalVelocityMax = 8f;
+	[SerializeField]
+	[Tooltip("The min and max speed of the spawned parasites")]
+	Vector2 parasiteSpeedMinMax = new Vector2(3.5f,6.5f);
+	[SerializeField]
+	[Tooltip("The acceleration of the parasites")]
+	float parasiteAcceleration = 10f;
+	[SerializeField]
+	float parasitePlayerStillSpeedIncrease = 2f;
+	[SerializeField]
+	float parasitePlayerStillRateIncrease = 1.5f;
 
 	[Space]
 	[Header("Wave Barrage")]
@@ -416,16 +428,30 @@ public class SpecialMoves : CorruptedKinMove
 		Kin.Collider.enabled = false;
 		Kin.Rigidbody.isKinematic = true;
 		Kin.Rigidbody.velocity = default(Vector2);
-		transform.position = new Vector3(Kin.MiddleX,burrowHeight + Kin.FloorY,Kin.transform.position.z);
+
+		var spawnPos = Kin.MiddleX;
+
+		if (Player.Player1.transform.position.x >= Kin.MiddleX)
+		{
+			spawnPos = Mathf.Lerp(Kin.MiddleX, Kin.LeftX, 0.75f);
+		}
+		else
+		{
+			spawnPos = Mathf.Lerp(Kin.MiddleX, Kin.RightX, 0.75f);
+		}
+
+		transform.position = new Vector3(spawnPos, burrowHeight + Kin.FloorY,Kin.transform.position.z);
 
 		burrowWave = GameObject.Instantiate(WaveSlams.BurrowWave, transform.position, Quaternion.identity);
 		InfectionWave.System.AddGenerator(burrowWave);
 
 		float x_velocity = 0f;
 		rumbleSoundInstance = Audio.PlayAtPointLooped(BurrowSound, transform.position, burrowSoundVolume);
+
 		for (int i = 0; i < burrowTimes; i++)
 		{
-			var targetPos = Kin.MiddleX;
+			//var targetPos = Player.Player1.transform.position.x;
+			/*var targetPos = Kin.MiddleX;
 			if (Player.Player1.transform.position.x >= Kin.MiddleX)
 			{
 				targetPos = Mathf.Lerp(Kin.MiddleX, Kin.LeftX, 0.7f);
@@ -433,15 +459,16 @@ public class SpecialMoves : CorruptedKinMove
 			else
 			{
 				targetPos = Mathf.Lerp(Kin.MiddleX, Kin.RightX, 0.7f);
-			}
-			if (Player.Player1.transform.position.x >= transform.position.x)
-			{
-				x_velocity = burrowTerminalVelocity;
-			}
-			else
+			}*/
+			x_velocity = 0f;
+			/*if (Player.Player1.transform.position.x >= transform.position.x)
 			{
 				x_velocity = -burrowTerminalVelocity;
 			}
+			else
+			{
+				x_velocity = burrowTerminalVelocity;
+			}*/
 			CameraShaker.Instance.SetRumble(RumbleType.RumblingMed);
 			rumbleSoundInstance.Play();
 			//TODO : Play Rumbling Sound
@@ -451,6 +478,8 @@ public class SpecialMoves : CorruptedKinMove
 
 			var trackTime = burrowTrackPlayerTime + UnityEngine.Random.Range(burrowTrackTimeRandomness.x, burrowTrackTimeRandomness.y);
 
+			yield return new WaitForSeconds(0.6f);
+
 			if (i == 0)
 			{
 				trackTime += burrowFirstTimeTrackDelay;
@@ -458,7 +487,7 @@ public class SpecialMoves : CorruptedKinMove
 
 			for (float t = 0; t < trackTime || (t >= trackTime && !canJump); t += Time.deltaTime)
 			{
-				targetPos = Kin.MiddleX;
+				/*var targetPos = Kin.MiddleX;
 				if (Player.Player1.transform.position.x >= Kin.MiddleX)
 				{
 					targetPos = Mathf.Lerp(Kin.MiddleX, Kin.LeftX, 0.7f);
@@ -466,7 +495,7 @@ public class SpecialMoves : CorruptedKinMove
 				else
 				{
 					targetPos = Mathf.Lerp(Kin.MiddleX, Kin.RightX, 0.7f);
-				}
+				}*/
 				if (Player.Player1.transform.position.x >= transform.position.x)
 				{
 					x_velocity += burrowAcceleration * Time.deltaTime;
@@ -754,31 +783,72 @@ public class SpecialMoves : CorruptedKinMove
 		yield break;
 	}
 
+	/// <summary>
+	/// How long the player has been standing still for
+	/// </summary>
+	float PlayerBeenStillFor = 0f;
+	float playerPosition = 0f;
+
+	IEnumerator PlayerStillChecker(float delay)
+	{
+		yield return new WaitForSeconds(delay);
+		while (true)
+		{
+			if (Mathf.Abs(Player.Player1.transform.position.x - playerPosition) >= 1f)
+			{
+				playerPosition = Player.Player1.transform.position.x;
+				PlayerBeenStillFor = 0f;
+			}
+			else
+			{
+				PlayerBeenStillFor += Time.deltaTime;
+			}
+			yield return null;
+		}
+	}
+
 	IEnumerator ParasiteHoard()
 	{
-		float secsPerParasite = 1f / parasitesPerSecond;
+		float secsPerParasite = 1f / UnityEngine.Random.Range(parasitesPerSecond.x,parasitesPerSecond.y);
 		float spawnTimer = 0f;
+
+		var stillRoutine = StartCoroutine(PlayerStillChecker(1f));
 
 		for (float t = 0; t < parasiteTime; t += Time.deltaTime)
 		{
 #if UNITY_EDITOR
-			Debug.DrawLine(new Vector3(Player.Player1.transform.position.x - (safetyRange / 2f),Kin.FloorY), new Vector3(Player.Player1.transform.position.x + (safetyRange / 2f), Kin.FloorY),Color.green);
+			Debug.DrawLine(new Vector3(Kin.MiddleX - (safetyRange / 2f),Kin.FloorY), new Vector3(Kin.MiddleX + (safetyRange / 2f), Kin.FloorY),Color.green);
 #endif	
 			spawnTimer += Time.deltaTime;
 			if (spawnTimer >= secsPerParasite)
 			{
 				spawnTimer -= secsPerParasite;
-				SpawnParasite(Player.Player1.transform.position.x - (safetyRange / 2f), Player.Player1.transform.position.x + (safetyRange / 2f));
+				var balloon = SpawnParasite(Kin.MiddleX - (safetyRange / 2f), Kin.MiddleX + (safetyRange / 2f));
+				if (PlayerBeenStillFor > 1.5f)
+				{
+					//Debug.Log("Player Is Still!");
+					balloon.Speed = parasiteSpeedMinMax + new Vector2(parasitePlayerStillSpeedIncrease, parasitePlayerStillSpeedIncrease);
+					balloon.Acceleration = parasiteAcceleration;
+					secsPerParasite = 1f / UnityEngine.Random.Range(parasitesPerSecond.x + parasitePlayerStillRateIncrease, parasitesPerSecond.y + parasitePlayerStillRateIncrease);
+				}
+				else
+				{
+					balloon.Speed = parasiteSpeedMinMax;
+					balloon.Acceleration = parasiteAcceleration;
+					secsPerParasite = 1f / UnityEngine.Random.Range(parasitesPerSecond.x, parasitesPerSecond.y);
+				}
 			}
 			yield return null;
 		}
+
+		StopCoroutine(stillRoutine);
 
 		yield return new WaitForSeconds(endDelay);
 
 		yield break;
 	}
 
-	void SpawnParasite(float safeZoneLeft, float safeZoneRight)
+	ParasiteBalloon SpawnParasite(float safeZoneLeft, float safeZoneRight)
 	{
 		var spawnX = UnityEngine.Random.Range(LeftWallX,RightWallX);
 		if (spawnX >= safeZoneLeft && spawnX <= safeZoneRight)
@@ -809,6 +879,7 @@ public class SpecialMoves : CorruptedKinMove
 
 		var balloon = ParasiteBalloon.Spawn(new Vector3(spawnX, parasiteSpawnY + Kin.FloorY, parasiteZ), new Vector2(0f,UnityEngine.Random.Range(parasiteVerticalVelocityMin,parasiteVerticalVelocityMax)));
 		balloon.Health.Health = Mathf.RoundToInt(balloon.Health.Health * parasiteHealthMultiplier);
+		return balloon;
 	}
 
 

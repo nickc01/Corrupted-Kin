@@ -42,6 +42,9 @@ public class TransformationMove : CorruptedKinMove
 
 	public override IEnumerator DoMove()
 	{
+		Kin.DoParasiteSpawning = false;
+		ParasiteBalloon.DestroyAllParasites();
+		HealthManager.HealthLocked = true;
 		if (TransformationSplats == null)
 		{
 			TransformationSplats = WallSplats.Spawn(Kin.LeftX, Kin.FloorY);
@@ -54,20 +57,47 @@ public class TransformationMove : CorruptedKinMove
 
 		var jumpMove = GetComponent<JumpMove>();
 
-		if (Player.Player1.transform.position.x >= Kin.MiddleX)
+		jumpMove.JumpAnticSpeed = 0.5f;
+
+		if (transform.position.x >= Mathf.Lerp(Kin.MiddleX,Kin.RightX,0.7f) || transform.position.x <= Mathf.Lerp(Kin.MiddleX, Kin.LeftX, 0.7f))
+		{
+			if (Player.Player1.transform.position.x >= Kin.MiddleX)
+			{
+				yield return jumpMove.Jump(Mathf.Lerp(Kin.MiddleX, Kin.LeftX, 0.7f));
+			}
+			else
+			{
+				yield return jumpMove.Jump(Mathf.Lerp(Kin.MiddleX, Kin.RightX, 0.7f));
+			}
+		}
+		else if (Vector3.Distance(Player.Player1.transform.position,transform.position) <= 4f && Player.Player1.transform.position.y >= transform.position.y + 2f)
+		{
+			if (Player.Player1.transform.position.x >= Kin.MiddleX)
+			{
+				yield return jumpMove.Jump(Mathf.Lerp(Kin.MiddleX, Kin.LeftX, 0.7f));
+			}
+			else
+			{
+				yield return jumpMove.Jump(Mathf.Lerp(Kin.MiddleX, Kin.RightX, 0.7f));
+			}
+		}
+
+		jumpMove.JumpAnticSpeed = 1f;
+		/*if (Player.Player1.transform.position.x >= Kin.MiddleX)
 		{
 			yield return jumpMove.Jump(Mathf.Lerp(Kin.MiddleX, Kin.LeftX, 0.7f));
 		}
 		else
 		{
 			yield return jumpMove.Jump(Mathf.Lerp(Kin.MiddleX, Kin.RightX, 0.7f));
-		}
+		}*/
 
 		recoil.SetRecoilSpeed(previousRecoil);
 
 		yield return Animator.PlayAnimationTillDone("Roar Start");
 
 		Kin.EntityHealth.Invincible = true;
+		HealthManager.HealthLocked = false;
 
 		Animator.PlayAnimation("Roar Loop");
 
@@ -220,6 +250,7 @@ public class TransformationMove : CorruptedKinMove
 
 	public override void OnStun()
 	{
+		HealthManager.HealthLocked = false;
 		GetComponent<WeaverCore.Components.Recoil>().SetRecoilSpeed(previousRecoil);
 		GetComponent<JumpMove>().OnStun();
 		Kin.EntityHealth.Invincible = false;
