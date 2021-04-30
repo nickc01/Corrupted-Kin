@@ -20,7 +20,7 @@ public class DashSlashMove : CorruptedKinMove
 		{
 			throw new System.Exception("The position to dash to is outside the arena");
 		}
-		Audio.PlayAtPoint(Kin.PrepareSound, transform.position);
+		WeaverAudio.PlayAtPoint(Kin.PrepareSound, transform.position);
 		KinRigidbody.gravityScale = 0f;
 
 		//yield return Kin.FacePlayerRoutine(false);
@@ -64,7 +64,7 @@ public class DashSlashMove : CorruptedKinMove
 			var evadeMove = GetMove<EvadeMoveOLD>();
 			yield return evadeMove.DoMove();
 		}*/
-		Audio.PlayAtPoint(Kin.PrepareSound, transform.position);
+		WeaverAudio.PlayAtPoint(Kin.PrepareSound, transform.position);
 		KinRigidbody.gravityScale = 0f;
 
 		//yield return Kin.FacePlayerRoutine(false);
@@ -106,7 +106,7 @@ public class DashSlashMove : CorruptedKinMove
 
 		Animator.PlayAnimation("Dash Antic 3");
 
-		Audio.PlayAtPoint(DashSoundEffect, transform.position);
+		WeaverAudio.PlayAtPoint(DashSoundEffect, transform.position);
 
 		DashBurst.SetActive(true);
 
@@ -114,7 +114,7 @@ public class DashSlashMove : CorruptedKinMove
 
 		yield return Animator.PlayAnimationTillDone("Dash Attack 1");
 
-		Audio.PlayAtPoint(DashSoundEffect, transform.position);
+		WeaverAudio.PlayAtPoint(DashSoundEffect, transform.position);
 
 		DashSlash.SetActive(true);
 		DashSlashHit.SetActive(true);

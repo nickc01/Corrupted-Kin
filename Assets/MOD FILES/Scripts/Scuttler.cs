@@ -302,7 +302,7 @@ public class Scuttler : MonoBehaviour
 
 	protected virtual IEnumerator OnSplat()
 	{
-		var splatSource = Audio.PlayAtPoint(splatSound, transform.position);
+		var splatSource = WeaverAudio.PlayAtPoint(splatSound, transform.position);
 		splatSource.AudioSource.pitch = UnityEngine.Random.Range(splatPitchMin,splatPitchMax);
 		splatEffect.gameObject.SetActive(true);
 		transform.rotation = Quaternion.Euler(0f, 0f, transform.GetZRotation() + UnityEngine.Random.Range(splatRotationMin,splatRotationMax));

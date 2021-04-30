@@ -53,7 +53,7 @@ public class EvadeMove : CorruptedKinMove
 		KinRigidbody.gravityScale = 0f;
 		KinRigidbody.velocity = new Vector2(speed, 0f);
 
-		Audio.PlayAtPoint(Kin.JumpSound, transform.position);
+		WeaverAudio.PlayAtPoint(Kin.JumpSound, transform.position);
 
 		Animator.PlayAnimation("Evade");
 
@@ -68,7 +68,7 @@ public class EvadeMove : CorruptedKinMove
 
 		KinRigidbody.velocity = default(Vector2);
 		KinRigidbody.gravityScale = Kin.GravityScale;
-		Audio.PlayAtPoint(Kin.LandSound, transform.position);
+		WeaverAudio.PlayAtPoint(Kin.LandSound, transform.position);
 
 		yield return Animator.PlayAnimationTillDone("Evade Recover");
 	}

@@ -2011,7 +2011,7 @@ MonoBehaviour:
   parasiteSpawnY: -3
   parasiteZ: 0.3
   parasiteVerticalVelocityMin: 8
-  parasiteVerticalVelocityMax: 20
+  parasiteVerticalVelocityMax: 15
   parasiteSpeedMinMax: {x: 5, y: 9}
   parasiteAcceleration: 20
   parasitePlayerStillSpeedIncrease: 3
@@ -2401,7 +2401,7 @@ MonoBehaviour:
   shotZ: 0.02
   playerDistanceThreshold: 4
   highShotSpeed: 4
-  damageTimeReduction: 65
+  damageTimeReduction: 80
 --- !u!114 &114699529901920494
 MonoBehaviour:
   m_ObjectHideFlags: 1

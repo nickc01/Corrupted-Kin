@@ -11,5 +11,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1daf785288480614ca08f37a512244e1, type: 3}
   m_Name: Corrupted Kin Settings
   m_EditorClassIdentifier: 
-  TabName: Corrupted Kin
   EnableInAbyss: 0
+  _customHealth: 0
+  CustomHealthValue: 2800

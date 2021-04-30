@@ -94,7 +94,7 @@ public abstract class AspidShotBase : EnemyProjectile
 		{
 			anim.PlayAnimation(deathAnimation);
 		}
-		Audio.PlayAtPoint(ImpactClip, transform.position);
+		WeaverAudio.PlayAtPoint(ImpactClip, transform.position);
 		StartCoroutine(Fader());
 		OnImpact();
 	}

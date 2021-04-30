@@ -230,7 +230,7 @@ public class ShakeMove : CorruptedKinMove
 			yield return new WaitForSeconds(ShakeSoundDelay);
 		}
 
-		shakeSound = Audio.PlayAtPointLooped(ShakeAudio, transform.position);
+		shakeSound = WeaverAudio.PlayAtPointLooped(ShakeAudio, transform.position);
 	}
 
 	class Shot

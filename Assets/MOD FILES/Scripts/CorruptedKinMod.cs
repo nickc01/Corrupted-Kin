@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using UnityEngine;
 using WeaverCore;
 using WeaverCore.Attributes;
-using WeaverCore.Configuration;
+using WeaverCore.Settings;
 
 namespace KinMod
 {
@@ -79,8 +80,8 @@ namespace KinMod
 
 		private static bool Instance_GetPlayerBoolHook(string originalSet)
 		{
-			var settings = GlobalWeaverSettings.GetSettings<CorruptedKinSettings>();
-			if (originalSet == "infectedKnightDreamDefeated" && settings != null && settings.EnableInAbyss)
+			var settings = Panel.GetSettings<CorruptedKinSettings>();
+			if (originalSet == "infectedKnightDreamDefeated" && settings != null /*&& settings.EnableInAbyss*/)
 			{
 				return false;
 			}

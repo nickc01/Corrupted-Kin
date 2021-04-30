@@ -37,7 +37,7 @@ public class JumpMove : CorruptedKinMove
 		KinRigidbody.velocity = default(Vector2);
 		yield return Animator.PlayAnimationTillDone("Jump Antic");
 
-		Audio.PlayAtPoint(Kin.JumpSound, transform.position);
+		WeaverAudio.PlayAtPoint(Kin.JumpSound, transform.position);
 		Animator.PlayAnimation("Jump");
 
 		KinRigidbody.velocity = CalculateVelocities(fromX, toX, jumpHeight);
@@ -74,7 +74,7 @@ public class JumpMove : CorruptedKinMove
 
 		IsFalling = false;
 
-		Audio.PlayAtPoint(Kin.LandSound, transform.position);
+		WeaverAudio.PlayAtPoint(Kin.LandSound, transform.position);
 		KinRigidbody.velocity = default(Vector2);
 		yield return Animator.PlayAnimationTillDone("Land");
 		//Kin.StopBoundRoutine(limiterRoutine);

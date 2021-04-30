@@ -446,7 +446,7 @@ public class SpecialMoves : CorruptedKinMove
 		InfectionWave.System.AddGenerator(burrowWave);
 
 		float x_velocity = 0f;
-		rumbleSoundInstance = Audio.PlayAtPointLooped(BurrowSound, transform.position, burrowSoundVolume);
+		rumbleSoundInstance = WeaverAudio.PlayAtPointLooped(BurrowSound, transform.position, burrowSoundVolume);
 
 		for (int i = 0; i < burrowTimes; i++)
 		{
@@ -531,7 +531,7 @@ public class SpecialMoves : CorruptedKinMove
 			}
 			CameraShaker.Instance.SetRumble(RumbleType.None);
 			Renderer.flipX = !Renderer.flipX;
-			Audio.PlayAtPoint(BurrowEmergeSound, transform.position);
+			WeaverAudio.PlayAtPoint(BurrowEmergeSound, transform.position);
 			Animator.PlayAnimation("Jump");
 			burrowWave.FadeOutWave();
 			burrowWave.StopParticles();
@@ -670,7 +670,7 @@ public class SpecialMoves : CorruptedKinMove
 	IEnumerator WaveBarrage()
 	{
 		CameraShaker.Instance.SetRumble(barrageRumbleType);
-		var rumble = Audio.PlayAtPointLooped(RumbleSound, new Vector3(Kin.MiddleX, Kin.FloorY + 10f, 0f));
+		var rumble = WeaverAudio.PlayAtPointLooped(RumbleSound, new Vector3(Kin.MiddleX, Kin.FloorY + 10f, 0f));
 
 		bool leftSide = Player.Player1.transform.position.x < Kin.MiddleX;
 		InfectionWave.BeginWaveRumble();
@@ -749,7 +749,7 @@ public class SpecialMoves : CorruptedKinMove
 
 		Kin.StopBoundRoutine(jumpRoutine);
 		KinRigidbody.isKinematic = true;
-		Audio.PlayAtPoint(Kin.HeavyLandSound, transform.position);
+		WeaverAudio.PlayAtPoint(Kin.HeavyLandSound, transform.position);
 
 		yield return new WaitForSeconds(startDelay);
 
@@ -787,16 +787,18 @@ public class SpecialMoves : CorruptedKinMove
 	/// How long the player has been standing still for
 	/// </summary>
 	float PlayerBeenStillFor = 0f;
-	float playerPosition = 0f;
+	Vector2 playerPosition;
+	//float playerPosition = 0f;
 
 	IEnumerator PlayerStillChecker(float delay)
 	{
 		yield return new WaitForSeconds(delay);
+		playerPosition = Player.Player1.transform.position;
 		while (true)
 		{
-			if (Mathf.Abs(Player.Player1.transform.position.x - playerPosition) >= 1f)
+			if (Mathf.Abs(Player.Player1.transform.position.x - playerPosition.x) >= 1f || Mathf.Abs(Player.Player1.transform.position.y - playerPosition.y) >= 5f)
 			{
-				playerPosition = Player.Player1.transform.position.x;
+				playerPosition = Player.Player1.transform.position;
 				PlayerBeenStillFor = 0f;
 			}
 			else
@@ -965,7 +967,7 @@ public class SpecialMoves : CorruptedKinMove
 		Debug.DrawLine(new Vector3(LeftWallX, ActivationHeight + Kin.FloorY, 0f), new Vector3(LeftWallX, ActivationHeight + Kin.FloorY + 1, 0f), Color.red, 2f);
 #endif
 
-		var rumble = Audio.PlayAtPointLooped(RumbleSound, new Vector3(Kin.MiddleX, Kin.FloorY + 10f, 0f));
+		var rumble = WeaverAudio.PlayAtPointLooped(RumbleSound, new Vector3(Kin.MiddleX, Kin.FloorY + 10f, 0f));
 		CameraShaker.Instance.SetRumble(rainRumbleType);
 
 		var roofParticles = GameObject.Instantiate(rainRoofDustPrefab, new Vector3(Kin.MiddleX, ceilingHeight + Kin.FloorY), rainRoofDustPrefab.transform.rotation);
@@ -1043,6 +1045,6 @@ public class SpecialMoves : CorruptedKinMove
 		{
 			yield return new WaitForSeconds(delay);
 		}
-		Audio.PlayAtPoint(RoarSound, new Vector3(Kin.MiddleX, Kin.FloorY + 10f, 0f));
+		WeaverAudio.PlayAtPoint(RoarSound, new Vector3(Kin.MiddleX, Kin.FloorY + 10f, 0f));
 	}
 }

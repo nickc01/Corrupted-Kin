@@ -5,6 +5,7 @@ using System.Text;
 using UnityEngine;
 using WeaverCore.Components;
 using WeaverCore.Features;
+using WeaverCore.Settings;
 
 public class CorruptedKinHealth : EntityHealth
 {
@@ -24,17 +25,25 @@ public class CorruptedKinHealth : EntityHealth
 	protected override void Awake()
 	{
 		base.Awake();
-		switch (Boss.Diffculty)
+		var CKSettings = Panel.GetSettings<CorruptedKinSettings>();
+		if (CKSettings.CustomHealth)
 		{
-			case WeaverCore.Enums.BossDifficulty.Attuned:
-				Health = attunedHealth;
-				break;
-			case WeaverCore.Enums.BossDifficulty.Ascended:
-				Health = ascendedHealth;
-				break;
-			case WeaverCore.Enums.BossDifficulty.Radiant:
-				Health = radiantHealth;
-				break;
+			Health = CKSettings.CustomHealthValue;
+		}
+		else
+		{
+			switch (Boss.Diffculty)
+			{
+				case WeaverCore.Enums.BossDifficulty.Attuned:
+					Health = attunedHealth;
+					break;
+				case WeaverCore.Enums.BossDifficulty.Ascended:
+					Health = ascendedHealth;
+					break;
+				case WeaverCore.Enums.BossDifficulty.Radiant:
+					Health = radiantHealth;
+					break;
+			}
 		}
 	}
 

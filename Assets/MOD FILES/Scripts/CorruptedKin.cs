@@ -515,7 +515,7 @@ public class CorruptedKin : BossReplacement
 			move.OnMoveAwake();
 		}*/
 
-		if (CoreInfo.LoadState == WeaverCore.Enums.RunningState.Editor)
+		if (Initialization.Environment == WeaverCore.Enums.RunningState.Editor)
 		{
 			StartBossBattle();
 		}
@@ -848,7 +848,7 @@ public class CorruptedKin : BossReplacement
 
 		CameraShaker.Instance.Shake(WeaverCore.Enums.ShakeType.AverageShake);
 
-		Audio.PlayAtPoint(BossFinalHitSound, transform.position);
+		WeaverAudio.PlayAtPoint(BossFinalHitSound, transform.position);
 
 		DeactivateBattleScene();
 
@@ -873,7 +873,7 @@ public class CorruptedKin : BossReplacement
 
 		Animator.PlayAnimation("Death");
 
-		Audio.PlayAtPoint(BossGushingSound, transform.position);
+		WeaverAudio.PlayAtPoint(BossGushingSound, transform.position);
 
 		var deathPuff = GameObject.Instantiate(BossDeathPuffPrefab, transform.position + new Vector3(0f,0f,-5f), Quaternion.identity);
 		var deathParticles = deathPuff.GetComponent<ParticleSystem>();
@@ -924,13 +924,13 @@ public class CorruptedKin : BossReplacement
 
 		yield return new WaitForSeconds(0.5f);
 
-		if (CoreInfo.LoadState == WeaverCore.Enums.RunningState.Game)
+		if (Initialization.Environment == WeaverCore.Enums.RunningState.Game)
 		{
 			GameManager.instance.AwardAchievement("DREAM_BROKEN_VESSEL");
 		}
 
 		CameraShaker.Instance.SetRumble(WeaverCore.Enums.RumbleType.None);
-		Audio.PlayAtPoint(BossExplosionSound, transform.position);
+		WeaverAudio.PlayAtPoint(BossExplosionSound, transform.position);
 
 		GameObject.Instantiate(DeathExplosionPrefab, transform.position, Quaternion.identity);
 
@@ -954,7 +954,7 @@ public class CorruptedKin : BossReplacement
 			var essence = EssenceEffects.Spawn(transform.position);
 			//Plays the essence effects and leaves the scene
 			essence.PlayVanishBurstEffects();
-			Audio.PlayAtPoint(DreamExitSound, Player.Player1.transform.position);
+			WeaverAudio.PlayAtPoint(DreamExitSound, Player.Player1.transform.position);
 		}
 		else
 		{

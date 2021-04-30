@@ -35,7 +35,7 @@ public class InfectedExplosion : MonoBehaviour
 			collider = GetComponent<Collider2D>();
 		}
 		collider.enabled = true;
-		var audio = Audio.PlayAtPoint(ExplosionSound, transform.position);
+		var audio = WeaverAudio.PlayAtPoint(ExplosionSound, transform.position);
 		audio.AudioSource.pitch = Random.Range(explosionPitchMin,explosionPitchMax);
 
 		CameraShaker.Instance.Shake(WeaverCore.Enums.ShakeType.AverageShake);

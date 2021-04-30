@@ -463,7 +463,7 @@ public class DownslashMove : CorruptedKinMove
 
 	public void PlayDownslashEffects()
 	{
-		Audio.PlayAtPoint(downstabDashSound, transform.position);
+		WeaverAudio.PlayAtPoint(downstabDashSound, transform.position);
 		Animator.PlayAnimation("Downstab");
 		downstabBurst.SetActive(true);
 	}
@@ -719,7 +719,7 @@ public class DownslashMove : CorruptedKinMove
 
 	public IEnumerator SlamDownwards(bool spawnAspidShots, bool spawnWaves,int aspidShots = 7)
 	{
-		Audio.PlayAtPoint(DownstabPrepareSound, transform.position);
+		WeaverAudio.PlayAtPoint(DownstabPrepareSound, transform.position);
 		KinRigidbody.velocity = default(Vector2);
 		KinRigidbody.gravityScale = 0f;
 		Animator.PlaybackSpeed = downStabAnticSpeed;
@@ -737,7 +737,7 @@ public class DownslashMove : CorruptedKinMove
 
 		yield return Kin.WaitTillTouchingGround();
 
-		Audio.PlayAtPoint(DownstabImpactSound, transform.position);
+		WeaverAudio.PlayAtPoint(DownstabImpactSound, transform.position);
 		KinRigidbody.velocity = default(Vector2);
 		DownstabSlam.SetActive(true);
 

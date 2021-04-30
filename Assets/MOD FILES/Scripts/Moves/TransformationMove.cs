@@ -101,7 +101,7 @@ public class TransformationMove : CorruptedKinMove
 
 		Animator.PlayAnimation("Roar Loop");
 
-		Audio.PlayAtPoint(Kin.ScreamSound, transform.position);
+		WeaverAudio.PlayAtPoint(Kin.ScreamSound, transform.position);
 
 		//Player.Player1.RoarLock = true;
 		//Player.Player1.EnterRoarLock();
@@ -219,7 +219,7 @@ public class TransformationMove : CorruptedKinMove
 
 		SpawnAspidShots(Blobs);
 
-		Audio.PlayAtPoint(transBlobExplodeSound, transform.position, transBlobExplodeVolume);
+		WeaverAudio.PlayAtPoint(transBlobExplodeSound, transform.position, transBlobExplodeVolume);
 
 		roarEmitter = RoarEmitter.Spawn(transform.position);
 
@@ -229,7 +229,7 @@ public class TransformationMove : CorruptedKinMove
 
 		//yield return new WaitForSeconds(0.05f);
 
-		Audio.PlayAtPoint(Kin.ScreamSound, transform.position);
+		WeaverAudio.PlayAtPoint(Kin.ScreamSound, transform.position);
 
 		yield return new WaitForSeconds(transEndDelay);
 
