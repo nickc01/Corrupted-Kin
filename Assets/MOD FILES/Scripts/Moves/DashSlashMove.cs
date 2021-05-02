@@ -88,7 +88,7 @@ public class DashSlashMove : CorruptedKinMove
 
 	public IEnumerator DoDash(bool doDownSlash, float dashSpeed)
 	{
-		var limiterRoutine = Kin.StartBoundRoutine(PositionLimiterRoutine());
+		//var limiterRoutine = Kin.StartBoundRoutine(PositionLimiterRoutine());
 		var scale = transform.GetXLocalScale();
 
 		var speed = dashSpeed * scale;
@@ -127,7 +127,7 @@ public class DashSlashMove : CorruptedKinMove
 
 		KinRigidbody.velocity = default(Vector2);
 
-		Kin.StopBoundRoutine(limiterRoutine);
+		//Kin.StopBoundRoutine(limiterRoutine);
 
 		KinRigidbody.gravityScale = Kin.GravityScale;
 
@@ -151,7 +151,7 @@ public class DashSlashMove : CorruptedKinMove
 		}
 	}
 
-	IEnumerator PositionLimiterRoutine()
+	/*IEnumerator PositionLimiterRoutine()
 	{
 		while (true)
 		{
@@ -165,7 +165,7 @@ public class DashSlashMove : CorruptedKinMove
 				transform.SetXPosition(Kin.LeftX);
 			}
 		}
-	}
+	}*/
 
 	public override void OnStun()
 	{

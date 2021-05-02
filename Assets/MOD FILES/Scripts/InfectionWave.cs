@@ -47,7 +47,7 @@ public class InfectionWave : MonoBehaviour
 	void Awake()
 	{
 		bloodParticles = GetComponentInChildren<ParticleSystem>();
-		Debug.Log("Blod Particles = " + (bloodParticles != null));
+		//Debug.Log("Blod Particles = " + (bloodParticles != null));
 		spawnPosition = transform.position;
 		transform.position += startPosition;
 		StartCoroutine(StartRoutine());

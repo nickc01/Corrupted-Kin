@@ -95,26 +95,53 @@ public class CorruptedKin : BossReplacement
 	public AudioClip ScreamSound { get { return screamSound; } }
 
 	Coroutine parasiteSpawnRoutine;
-	bool _doParasiteSpawning = false;
+	//bool _doParasiteSpawning = false;
 	public bool DoParasiteSpawning
 	{
-		get { return _doParasiteSpawning; }
+		get { return parasiteSpawnRoutine != null; }
 		set
 		{
-			if (value != _doParasiteSpawning)
+			if (value != (parasiteSpawnRoutine != null))
 			{
-				_doParasiteSpawning = value;
-				if (_doParasiteSpawning)
+				//_doParasiteSpawning = value;
+				if (value)
 				{
 					parasiteSpawnRoutine = StartCoroutine(ParasiteSpawnRoutine());
 				}
 				else
 				{
 					StopCoroutine(parasiteSpawnRoutine);
+					parasiteSpawnRoutine = null;
 				}
 			}
 		}
 	}
+
+	Coroutine xLimiterRoutine;
+	public bool LimitXPosition
+	{
+		get
+		{
+			return xLimiterRoutine != null;
+		}
+		set
+		{
+			if (value != (xLimiterRoutine != null))
+			{
+				if (value)
+				{
+					xLimiterRoutine = StartCoroutine(XLimiterRoutine());
+				}
+				else
+				{
+					StopCoroutine(xLimiterRoutine);
+					xLimiterRoutine = null;
+				}
+			}
+		}
+	}
+
+
 
 	/// <summary>
 	/// This move is guaranteed to be executed after the current move is done
@@ -569,6 +596,7 @@ public class CorruptedKin : BossReplacement
 
 	IEnumerator StartBossBattleRoutine()
 	{
+		LimitXPosition = true;
 		WeaverEvents.BroadcastEvent("DREAM GATE CLOSE", gameObject);
 		Rigidbody.isKinematic = false;
 
@@ -1129,6 +1157,22 @@ public class CorruptedKin : BossReplacement
 			yield return new WaitForSeconds(parasiteSpawnRate);
 			ParasiteBalloon.Spawn(new Vector3(UnityEngine.Random.Range(LeftX, RightX), UnityEngine.Random.Range(parasiteSpawnHeightMinMax.x, parasiteSpawnHeightMinMax.y) + FloorY), default(Vector2));
 		}
+	}
 
+	IEnumerator XLimiterRoutine()
+	{
+		while (true)
+		{
+			var xPos = transform.GetXPosition();
+			if (xPos > RightX)
+			{
+				transform.SetXPosition(RightX);
+			}
+			else if (xPos < LeftX)
+			{
+				transform.SetXPosition(LeftX);
+			}
+			yield return null;
+		}
 	}
 }

@@ -26,7 +26,7 @@ public class CorruptedKinHealth : EntityHealth
 	{
 		base.Awake();
 		var CKSettings = Panel.GetSettings<CorruptedKinSettings>();
-		if (CKSettings.CustomHealth)
+		if (CKSettings != null && CKSettings.CustomHealth)
 		{
 			Health = CKSettings.CustomHealthValue;
 		}
@@ -47,16 +47,18 @@ public class CorruptedKinHealth : EntityHealth
 		}
 	}
 
-	protected override int OnHealthUpdate(int newValue)
+	protected override void OnHealthUpdate(int oldValue, int newValue)
 	{
 		TimesHit++;
 		if (HealthLocked)
 		{
-			return Health;
+			//return Health;
+			SetHealthInternal(oldValue);
 		}
 		else
 		{
-			return base.OnHealthUpdate(newValue);
+			SetHealthInternal(newValue);
+			//return base.OnHealthUpdate(newValue);
 		}
 	}
 }

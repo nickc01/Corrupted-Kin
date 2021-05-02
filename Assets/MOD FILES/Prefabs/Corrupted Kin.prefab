@@ -381,6 +381,7 @@ GameObject:
   - component: {fileID: 114132941412828944}
   - component: {fileID: 114480581962791758}
   - component: {fileID: 114208132189924432}
+  - component: {fileID: 114975765485881594}
   m_Layer: 11
   m_Name: Corrupted Kin
   m_TagString: Untagged
@@ -2511,6 +2512,23 @@ MonoBehaviour:
   idleTimeMin: 0.1
   idleTimeMax: 0.35
   streakAmount: 3
+--- !u!114 &114975765485881594
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1625663818430612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c494c7212486a7846a3c291aae802778, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  convoAmount: 3
+  convoTitle: INFECTED_KNIGHT
+  startSuppressed: 0
+  noSoul: 0
+  dreamImpactPrefab: {fileID: 0}
+  allowUseChildColliders: 0
 --- !u!114 &114993617369005376
 MonoBehaviour:
   m_ObjectHideFlags: 1

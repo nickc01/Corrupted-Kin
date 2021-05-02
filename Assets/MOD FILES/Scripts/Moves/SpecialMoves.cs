@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using WeaverCore;
+using WeaverCore.Components;
 using WeaverCore.Enums;
 using WeaverCore.Utilities;
 
@@ -281,9 +282,16 @@ public class SpecialMoves : CorruptedKinMove
 
 	IEnumerator<SpecialMoveType> MoveGenerator;
 	int moveBatchCount = 3;
+	float oldRecoil;
+	WeaverCore.Components.Recoil recoiler;
 
 	public override IEnumerator DoMove()
 	{
+		if (recoiler == null)
+		{
+			recoiler = GetComponent<WeaverCore.Components.Recoil>();
+		}
+		oldRecoil = recoiler.GetRecoilSpeed();
 		var previousParasiteState = Kin.DoParasiteSpawning;
 		Kin.DoParasiteSpawning = false;
 		Kin.GuaranteedNextMove = null;
@@ -423,6 +431,7 @@ public class SpecialMoves : CorruptedKinMove
 
 	IEnumerator BurrowMove()
 	{
+		Kin.LimitXPosition = false;
 		yield return new WaitForSeconds(burrowStartDelay);
 
 		Kin.Collider.enabled = false;
@@ -558,6 +567,7 @@ public class SpecialMoves : CorruptedKinMove
 			}
 			Blood.SpawnBlood(transform.position, new Blood.BloodSpawnInfo(30, 30, 10f, 35f, 20f, 160f, null));
 			Kin.Flasher.FlashInfected();
+			recoiler.SetRecoilSpeed(0f);
 			Kin.Collider.enabled = true;
 			Kin.HealthManager.Invincible = false;
 			while (transform.position.y < burrowMaximumHeight + Kin.FloorY)
@@ -608,6 +618,7 @@ public class SpecialMoves : CorruptedKinMove
 			//yield return new WaitUntil(() => transform.position.y <= Kin.FloorY + (burrowSlamVelocity * Time.fixedDeltaTime));
 			Kin.Collider.enabled = false;
 			Kin.HealthManager.Invincible = true;
+			recoiler.SetRecoilSpeed(oldRecoil);
 			while (transform.position.y > burrowHeight + Kin.FloorY)
 			{
 				transform.SetYPosition(transform.GetYPosition() + (verticalVelocity * Time.deltaTime));
@@ -643,6 +654,8 @@ public class SpecialMoves : CorruptedKinMove
 
 		yield return new WaitForSeconds(burrowEndDelay);
 
+		Kin.LimitXPosition = true;
+
 		yield break;
 	}
 
@@ -659,6 +672,8 @@ public class SpecialMoves : CorruptedKinMove
 		Animator.PlaybackSpeed = 1f;
 		Kin.Collider.enabled = true;
 		Kin.Rigidbody.isKinematic = false;
+		recoiler.SetRecoilSpeed(oldRecoil);
+		Kin.LimitXPosition = true;
 		if (burrowWave != null)
 		{
 			burrowWave.DestroyWave();
@@ -796,7 +811,7 @@ public class SpecialMoves : CorruptedKinMove
 		playerPosition = Player.Player1.transform.position;
 		while (true)
 		{
-			if (Mathf.Abs(Player.Player1.transform.position.x - playerPosition.x) >= 1f || Mathf.Abs(Player.Player1.transform.position.y - playerPosition.y) >= 5f)
+			if (Mathf.Abs(Player.Player1.transform.position.x - playerPosition.x) >= 2f || Mathf.Abs(Player.Player1.transform.position.y - playerPosition.y) >= 3f)
 			{
 				playerPosition = Player.Player1.transform.position;
 				PlayerBeenStillFor = 0f;
