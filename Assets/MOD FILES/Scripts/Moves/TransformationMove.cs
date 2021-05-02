@@ -203,6 +203,8 @@ public class TransformationMove : CorruptedKinMove
 			blob.Expand(transBlobSizeIncrease, transBlobExpansionTime, transBlobSizeCurve);
 		}
 
+		Kin.InterpolateGlow(0.65f, 0.75f);
+
 		yield return new WaitForSeconds(transBlobExpansionTime);
 
 		//var splatTargets = Kin.TransformationSplats.AllTargets.ToList();

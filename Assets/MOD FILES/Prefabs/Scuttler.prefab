@@ -42,8 +42,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4792109886834772}
-  - component: {fileID: 114219645930097682}
-  - component: {fileID: 114961670347052556}
   - component: {fileID: 212618677798936106}
   - component: {fileID: 114892108573689584}
   m_Layer: 13
@@ -230,20 +228,6 @@ MonoBehaviour:
   channel: 2
   poolComponent: {fileID: 114006262110142366}
   audioSource: {fileID: 0}
---- !u!114 &114219645930097682
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1389593721059576}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f81a695033d807f4dbcd4ec7b92d164e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  library: {fileID: 114645688716684075, guid: c0a356ad528ef6042a48ab6f6ed0fbb1, type: 2}
-  defaultClipId: 15
-  playAutomatically: 1
 --- !u!114 &114892108573689584
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -291,18 +275,6 @@ MonoBehaviour:
   splatRotationMax: 30
   whenDone: 3
   spawnOffset: {x: 0, y: -1.25, z: -0.36}
---- !u!114 &114961670347052556
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1389593721059576}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a717379090bc75949aef05cc146692c1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spriteAnimator: {fileID: 114219645930097682}
 --- !u!114 &114982558063318732
 MonoBehaviour:
   m_ObjectHideFlags: 1

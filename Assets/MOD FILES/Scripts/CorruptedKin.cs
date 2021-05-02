@@ -30,6 +30,8 @@ public class CorruptedKin : BossReplacement
 	//public WaveSystem InfectionWave { get; set; }
 
 	[Header("General Stuff")]
+	[SerializeField]
+	SpriteRenderer glowEffect;
 	[FormerlySerializedAs("JumpSound")]
 	[SerializeField] AudioClip jumpSound;
 	[FormerlySerializedAs("LandSound")]
@@ -139,6 +141,42 @@ public class CorruptedKin : BossReplacement
 				}
 			}
 		}
+	}
+
+	public float GlowAmount
+	{
+		get
+		{
+			return glowEffect.color.a;
+		}
+		set
+		{
+			var color = glowEffect.color;
+			color.a = value;
+			glowEffect.color = color;
+		}
+	}
+
+	Coroutine glowInterpRoutine;
+	public void InterpolateGlow(float value, float time)
+	{
+		if (glowInterpRoutine != null)
+		{
+			StopCoroutine(glowInterpRoutine);
+		}
+		glowInterpRoutine = StartCoroutine(InterpolateGlowRoutine(value,time));
+	}
+
+	IEnumerator InterpolateGlowRoutine(float value, float time)
+	{
+		float oldGlow = GlowAmount;
+		for (float t = 0; t < time; t += Time.deltaTime)
+		{
+			GlowAmount = Mathf.Lerp(oldGlow,value, t / time);
+			yield return null;
+		}
+		GlowAmount = value;
+		glowInterpRoutine = null;
 	}
 
 
@@ -446,6 +484,7 @@ public class CorruptedKin : BossReplacement
 
 	protected override void Awake()
 	{
+		GlowAmount = 0f;
 		//var prefab1 = WeaverAssets.LoadWeaverAsset<GameObject>("Blood Particles");
 		//var prefab2 = WeaverAssets.LoadWeaverAsset<GameObject>("Blood Particles");
 
@@ -964,6 +1003,7 @@ public class CorruptedKin : BossReplacement
 
 		CameraShaker.Instance.Shake(WeaverCore.Enums.ShakeType.BigShake);
 
+		InterpolateGlow(0f, 0.5f);
 
 		EndBattleScene();
 

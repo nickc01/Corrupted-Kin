@@ -283,10 +283,12 @@ public class SpecialMoves : CorruptedKinMove
 	IEnumerator<SpecialMoveType> MoveGenerator;
 	int moveBatchCount = 3;
 	float oldRecoil;
+	float previousGlowAmount;
 	WeaverCore.Components.Recoil recoiler;
 
 	public override IEnumerator DoMove()
 	{
+		previousGlowAmount = Kin.GlowAmount;
 		if (recoiler == null)
 		{
 			recoiler = GetComponent<WeaverCore.Components.Recoil>();
@@ -296,6 +298,9 @@ public class SpecialMoves : CorruptedKinMove
 		Kin.DoParasiteSpawning = false;
 		Kin.GuaranteedNextMove = null;
 		Kin.HealthManager.Invincible = true;
+
+		Kin.InterpolateGlow(0f, 1.5f);
+
 		yield return JumpIntoCeiling();
 
 		if (MoveGenerator == null)
@@ -326,6 +331,7 @@ public class SpecialMoves : CorruptedKinMove
 
 
 		Kin.HealthManager.Invincible = false;
+		Kin.InterpolateGlow(previousGlowAmount,0.5f);
 		yield return JumpOutOfCeiling();
 		Kin.DoParasiteSpawning = previousParasiteState;
 	}
