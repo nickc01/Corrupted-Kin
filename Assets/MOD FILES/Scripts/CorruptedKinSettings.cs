@@ -43,7 +43,13 @@ public class CorruptedKinSettings : Panel
 		}
 	}
 
-	[Tooltip("What the health of the boss will be set to")]
+	[Tooltip(@"What the health of the boss will be set to
+
+For reference, the health values of the boss are:
+
+Attuned : 2900
+Ascended : 2950
+Radiant : 3000")]
 	public int CustomHealthValue = 2800;
 
 	protected override void OnPanelOpen()

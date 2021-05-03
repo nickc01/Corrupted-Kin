@@ -86,7 +86,7 @@ public class DashSlashMove : CorruptedKinMove
 		yield return DoDash(false,dashSpeed);
 	}
 
-	public IEnumerator DoDash(bool doDownSlash, float dashSpeed)
+	public IEnumerator DoDash(bool doDownSlash, float dashSpeed, float delay = 0.4f)
 	{
 		//var limiterRoutine = Kin.StartBoundRoutine(PositionLimiterRoutine());
 		var scale = transform.GetXLocalScale();
@@ -102,7 +102,7 @@ public class DashSlashMove : CorruptedKinMove
 
 		KinRigidbody.velocity = default(Vector2);
 
-		yield return new WaitForSeconds(0.4f);
+		yield return new WaitForSeconds(delay);
 
 		Animator.PlayAnimation("Dash Antic 3");
 

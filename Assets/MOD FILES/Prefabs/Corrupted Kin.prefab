@@ -1950,7 +1950,7 @@ MonoBehaviour:
   BombTossPrepareSound: {fileID: 8300000, guid: bfcfae68679a7f64597b66191ca4b34a,
     type: 3}
   TossPrepareDelay: 0.15
-  TossPrepareDelaySecondStage: 0.1
+  TossPrepareDelaySecondStage: 0
   TossParticles: {fileID: 198834720764166732}
   TossParticlesSpeed: 7.5
   TossDeathWaveSize: 0.3
@@ -2452,7 +2452,7 @@ MonoBehaviour:
   doMoveInRandomizer: 0
   OverheadSlash: {fileID: 114670100828579762}
   MinXDistance: 3.5
-  overheadSlashDelay: 0.35
+  overheadSlashDelay: 0.2
   OverheadSlashRange: {fileID: 61538143521623896}
 --- !u!114 &114782000455543258
 MonoBehaviour:

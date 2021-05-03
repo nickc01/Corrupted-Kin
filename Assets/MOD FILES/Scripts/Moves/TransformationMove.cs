@@ -42,8 +42,6 @@ public class TransformationMove : CorruptedKinMove
 
 	public override IEnumerator DoMove()
 	{
-		Kin.DoParasiteSpawning = false;
-		ParasiteBalloon.DestroyAllParasites();
 		HealthManager.HealthLocked = true;
 		if (TransformationSplats == null)
 		{
@@ -98,6 +96,8 @@ public class TransformationMove : CorruptedKinMove
 
 		Kin.EntityHealth.Invincible = true;
 		HealthManager.HealthLocked = false;
+		Kin.DoParasiteSpawning = false;
+		ParasiteBalloon.DestroyAllParasites();
 
 		Animator.PlayAnimation("Roar Loop");
 

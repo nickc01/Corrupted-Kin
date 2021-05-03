@@ -164,7 +164,13 @@ public class ShakeMove : CorruptedKinMove
 		Animator.PlayAnimation("Shake Loop");
 		ShakeGas.Play();
 
-		yield return new WaitForSeconds(startDelay);
+		//yield return new WaitForSeconds(startDelay);
+		float previousDamage = HealthManager.Health;
+		float beginDelay = startDelay;
+		for (float t = 0; t < beginDelay / (1f + ((previousDamage - HealthManager.Health) / 50f)); t += Time.deltaTime)
+		{
+			yield return null;
+		}
 
 		//TEMP
 		var waitTime = UnityEngine.Random.Range(ShakeTimeMinMax.x, ShakeTimeMinMax.y);
