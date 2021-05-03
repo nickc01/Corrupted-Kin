@@ -2168,9 +2168,9 @@ MonoBehaviour:
   SmallGeo: 0
   MediumGeo: 0
   LargeGeo: 0
-  attunedHealth: 2800
-  ascendedHealth: 2850
-  radiantHealth: 2950
+  attunedHealth: 2900
+  ascendedHealth: 2950
+  radiantHealth: 3000
 --- !u!114 &114456216343815532
 MonoBehaviour:
   m_ObjectHideFlags: 1
