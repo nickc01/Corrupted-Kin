@@ -91,6 +91,18 @@ The wave starts at whatever velocity is at the left end of the curve.
 		}
 	}
 
+	public float DecayFromCenter
+	{
+		get
+		{
+			return decayRate;
+		}
+		set
+		{
+			decayRate = value;
+		}
+	}
+
 	void Update()
 	{
 		if (wave != null)

@@ -344,8 +344,14 @@ public class DownslashMove : CorruptedKinMove
 					if (transform.position.y >= MinDownstabHeight && transform.position.x >= targetPos + targetOffset && transform.position.x <= Kin.RightX)
 					{
 						downstabbing = true;
+						transform.SetXPosition(properties.GetNextPosition(j) + targetOffset);
 						Kin.StopBoundRoutine(jumpRoutine);
 						break;
+					}
+					if (transform.position.y >= MinDownstabHeight && transform.position.x >= Kin.RightX - 5f && Kin.BossInCorner && Kin.PlayerInCorner)
+					{
+						downstabbing = true;
+						Kin.StopBoundRoutine(jumpRoutine);
 					}
 				}
 				else
@@ -353,8 +359,14 @@ public class DownslashMove : CorruptedKinMove
 					if (transform.position.y >= MinDownstabHeight && transform.position.x <= targetPos + targetOffset && transform.position.x >= Kin.LeftX)
 					{
 						downstabbing = true;
+						transform.SetXPosition(properties.GetNextPosition(j) + targetOffset);
 						Kin.StopBoundRoutine(jumpRoutine);
 						break;
+					}
+					if (transform.position.y >= MinDownstabHeight && transform.position.x <= Kin.LeftX + 5f && Kin.BossInCorner && Kin.PlayerInCorner)
+					{
+						downstabbing = true;
+						Kin.StopBoundRoutine(jumpRoutine);
 					}
 				}
 
@@ -372,8 +384,6 @@ public class DownslashMove : CorruptedKinMove
 			{
 				break;
 			}
-
-			transform.SetXPosition(properties.GetNextPosition(j) + targetOffset);
 
 			if (downstabbing)
 			{
@@ -727,6 +737,10 @@ public class DownslashMove : CorruptedKinMove
 		{
 			Animator.PlaybackSpeed = downStabAnticSpeedPhase2;
 		}
+		if ((Kin.BossInLeftCorner && Kin.PlayerInLeftCorner) || (Kin.BossInRightCorner || Kin.PlayerInRightCorner))
+		{
+			Animator.PlaybackSpeed -= 0.12f;
+		}
 		yield return Animator.PlayAnimationTillDone("Downstab Antic Quick");
 		Animator.PlaybackSpeed = 1f;
 
@@ -902,7 +916,10 @@ public class DownslashMove : CorruptedKinMove
 	{
 		Animator.PlaybackSpeed = 1f;
 
-		slamCollider.enabled = false;
+		if (slamCollider != null)
+		{
+			slamCollider.enabled = false;
+		}
 
 		if (!downstabbing)
 		{

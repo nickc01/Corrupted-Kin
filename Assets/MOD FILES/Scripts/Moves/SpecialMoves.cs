@@ -225,6 +225,8 @@ public class SpecialMoves : CorruptedKinMove
 	float burrowSoundVolume = 0.65f;
 	[SerializeField]
 	AudioClip BurrowEmergeSound;
+	[SerializeField]
+	float burrowWaveDecayRate = 1.1f;
 
 
 	/// <summary>
@@ -235,48 +237,6 @@ public class SpecialMoves : CorruptedKinMove
 		get
 		{
 			return activationHeight;
-		}
-	}
-
-	float _leftWallX = float.NaN;
-	public float LeftWallX
-	{
-		get
-		{
-			if (float.IsNaN(_leftWallX))
-			{
-				var hit = Physics2D.Raycast(new Vector2(Kin.MiddleX, ActivationHeight + Kin.FloorY), Vector2.left, 25, LayerMask.GetMask("Terrain"));
-				if (hit.collider == null)
-				{
-					_leftWallX = Kin.LeftX;
-				}
-				else
-				{
-					_leftWallX = hit.point.x;
-				}
-			}
-			return _leftWallX;
-		}
-	}
-
-	float _rightWallX = float.NaN;
-	public float RightWallX
-	{
-		get
-		{
-			if (float.IsNaN(_rightWallX))
-			{
-				var hit = Physics2D.Raycast(new Vector2(Kin.MiddleX, ActivationHeight + Kin.FloorY), Vector2.right, 25, LayerMask.GetMask("Terrain"));
-				if (hit.collider == null)
-				{
-					_rightWallX = Kin.RightX;
-				}
-				else
-				{
-					_rightWallX = hit.point.x;
-				}
-			}
-			return _rightWallX;
 		}
 	}
 
@@ -555,6 +515,9 @@ public class SpecialMoves : CorruptedKinMove
 			leftWave.SizeToSpeedRatio *= burrowSlamWaveHeightMultiplier;
 			rightWave.SizeToSpeedRatio *= burrowSlamWaveHeightMultiplier;
 
+			//leftWave.DecayFromCenter = burrowWaveDecayRate;
+			//rightWave.DecayFromCenter = burrowWaveDecayRate;
+
 			//yield return new WaitUntil(() => transform.position.y > Kin.FloorY + 0.1f);
 			//Kin.Collider.enabled = true;
 			//Kin.HealthManager.Invincible = false;
@@ -643,9 +606,12 @@ public class SpecialMoves : CorruptedKinMove
 			//OPTIONAL : PLAY LANDING SOUND
 
 			//SlamWave leftWave, rightWave;
-			WaveSlams.SpawnSlam(Kin.InfectionWave.System, transform.position.x, out leftWave, out rightWave, burrowSlamWaveSpacing);
-			leftWave.SizeToSpeedRatio *= burrowAfterEffectWaveHeight;
-			rightWave.SizeToSpeedRatio *= burrowAfterEffectWaveHeight;
+			if (burrowAfterEffectWaveHeight > 0f)
+			{
+				WaveSlams.SpawnSlam(Kin.InfectionWave.System, transform.position.x, out leftWave, out rightWave, burrowSlamWaveSpacing);
+				leftWave.SizeToSpeedRatio *= burrowAfterEffectWaveHeight;
+				rightWave.SizeToSpeedRatio *= burrowAfterEffectWaveHeight;
+			}
 			Animator.PlayAnimation("Idle");
 			yield return new WaitForSeconds(0.1f);
 		}
@@ -873,29 +839,29 @@ public class SpecialMoves : CorruptedKinMove
 
 	ParasiteBalloon SpawnParasite(float safeZoneLeft, float safeZoneRight)
 	{
-		var spawnX = UnityEngine.Random.Range(LeftWallX,RightWallX);
+		var spawnX = UnityEngine.Random.Range(Kin.LeftWallX,Kin.RightWallX);
 		if (spawnX >= safeZoneLeft && spawnX <= safeZoneRight)
 		{
 			if (spawnX >= Player.Player1.transform.position.x)
 			{
-				if (safeZoneRight < RightWallX)
+				if (safeZoneRight < Kin.RightWallX)
 				{
-					spawnX = UnityEngine.Random.Range(safeZoneRight, RightWallX);
+					spawnX = UnityEngine.Random.Range(safeZoneRight, Kin.RightWallX);
 				}
 				else
 				{
-					spawnX = UnityEngine.Random.Range(LeftWallX, safeZoneLeft);
+					spawnX = UnityEngine.Random.Range(Kin.LeftWallX, safeZoneLeft);
 				}
 			}
 			else
 			{
-				if (safeZoneLeft > LeftWallX)
+				if (safeZoneLeft > Kin.LeftWallX)
 				{
-					spawnX = UnityEngine.Random.Range(LeftWallX, safeZoneLeft);
+					spawnX = UnityEngine.Random.Range(Kin.LeftWallX, safeZoneLeft);
 				}
 				else
 				{
-					spawnX = UnityEngine.Random.Range(safeZoneRight,RightWallX);
+					spawnX = UnityEngine.Random.Range(safeZoneRight,Kin.RightWallX);
 				}
 			}
 		}
@@ -908,8 +874,8 @@ public class SpecialMoves : CorruptedKinMove
 
 	IEnumerator BombRain()
 	{
-		Debug.DrawLine(new Vector3(RightWallX - bombRightSideOffset, ceilingHeight + Kin.FloorY, 0f), new Vector3(RightWallX - bombRightSideOffset - bombRightSideAmount, ceilingHeight + Kin.FloorY, 0f), Color.red, bombTime);
-		Debug.DrawLine(new Vector3(LeftWallX + bombLeftSideOffset, ceilingHeight + Kin.FloorY, 0f), new Vector3(LeftWallX + bombLeftSideOffset + bombLeftSideAmount, ceilingHeight + Kin.FloorY, 0f), Color.green, bombTime);
+		Debug.DrawLine(new Vector3(Kin.RightWallX - bombRightSideOffset, ceilingHeight + Kin.FloorY, 0f), new Vector3(Kin.RightWallX - bombRightSideOffset - bombRightSideAmount, ceilingHeight + Kin.FloorY, 0f), Color.red, bombTime);
+		Debug.DrawLine(new Vector3(Kin.LeftWallX + bombLeftSideOffset, ceilingHeight + Kin.FloorY, 0f), new Vector3(Kin.LeftWallX + bombLeftSideOffset + bombLeftSideAmount, ceilingHeight + Kin.FloorY, 0f), Color.green, bombTime);
 
 		float secsPerBomb = 1f / UnityEngine.Random.Range(bombsPerSecondMinMax.x, bombsPerSecondMinMax.y);
 		float spawnTimer = 0f;
@@ -947,18 +913,18 @@ public class SpecialMoves : CorruptedKinMove
 			var playerX = Player.Player1.transform.position.x;
 			if (playerX >= Kin.MiddleX)
 			{
-				playerX = Mathf.Clamp(playerX, LeftWallX + bombLeftSideOffset, LeftWallX + bombLeftSideOffset + bombLeftSideAmount);
+				playerX = Mathf.Clamp(playerX, Kin.LeftWallX + bombLeftSideOffset, Kin.LeftWallX + bombLeftSideOffset + bombLeftSideAmount);
 			}
 			else
 			{
-				playerX = Mathf.Clamp(playerX, RightWallX - bombRightSideOffset - bombRightSideAmount, RightWallX - bombRightSideOffset);
+				playerX = Mathf.Clamp(playerX, Kin.RightWallX - bombRightSideOffset - bombRightSideAmount, Kin.RightWallX - bombRightSideOffset);
 			}
-			/*if (playerX >= LeftWallX + bombLeftSideOffset && playerX <= LeftWallX + bombLeftSideOffset + bombLeftSideAmount)
+			/*if (playerX >= Kin.LeftWallX + bombLeftSideOffset && playerX <= Kin.LeftWallX + bombLeftSideOffset + bombLeftSideAmount)
 			{
 				x_position = playerX;
 				foundPlayer = true;
 			}
-			else if (playerX <= RightWallX - bombRightSideOffset && playerX >= RightWallX - bombRightSideOffset - bombRightSideAmount)
+			else if (playerX <= Kin.RightWallX - bombRightSideOffset && playerX >= Kin.RightWallX - bombRightSideOffset - bombRightSideAmount)
 			{
 				x_position = playerX;
 				foundPlayer = true;
@@ -968,11 +934,11 @@ public class SpecialMoves : CorruptedKinMove
 		{
 			if (leftSide)
 			{
-				x_position = UnityEngine.Random.Range(LeftWallX + bombLeftSideOffset, LeftWallX + bombLeftSideOffset + bombLeftSideAmount);
+				x_position = UnityEngine.Random.Range(Kin.LeftWallX + bombLeftSideOffset, Kin.LeftWallX + bombLeftSideOffset + bombLeftSideAmount);
 			}
 			else
 			{
-				x_position = UnityEngine.Random.Range(RightWallX - bombRightSideOffset, RightWallX - bombRightSideOffset - bombRightSideAmount);
+				x_position = UnityEngine.Random.Range(Kin.RightWallX - bombRightSideOffset, Kin.RightWallX - bombRightSideOffset - bombRightSideAmount);
 			}
 		}
 
@@ -984,8 +950,8 @@ public class SpecialMoves : CorruptedKinMove
 	IEnumerator InfectionRain()
 	{
 #if UNITY_EDITOR
-		Debug.DrawLine(new Vector3(RightWallX, ActivationHeight + Kin.FloorY, 0f), new Vector3(RightWallX, ActivationHeight + Kin.FloorY + 1, 0f),Color.red,2f);
-		Debug.DrawLine(new Vector3(LeftWallX, ActivationHeight + Kin.FloorY, 0f), new Vector3(LeftWallX, ActivationHeight + Kin.FloorY + 1, 0f), Color.red, 2f);
+		Debug.DrawLine(new Vector3(Kin.RightWallX, ActivationHeight + Kin.FloorY, 0f), new Vector3(Kin.RightWallX, ActivationHeight + Kin.FloorY + 1, 0f),Color.red,2f);
+		Debug.DrawLine(new Vector3(Kin.LeftWallX, ActivationHeight + Kin.FloorY, 0f), new Vector3(Kin.LeftWallX, ActivationHeight + Kin.FloorY + 1, 0f), Color.red, 2f);
 #endif
 
 		var rumble = WeaverAudio.PlayAtPointLooped(RumbleSound, new Vector3(Kin.MiddleX, Kin.FloorY + 10f, 0f));
@@ -1037,7 +1003,7 @@ public class SpecialMoves : CorruptedKinMove
 		}
 		else
 		{
-			x_position = UnityEngine.Random.Range(LeftWallX + rainLeftOffset, RightWallX + rainRightOffset);
+			x_position = UnityEngine.Random.Range(Kin.LeftWallX + rainLeftOffset, Kin.RightWallX + rainRightOffset);
 		}
 
 		//var x_position = UnityEngine.Random.Range(Kin.LeftX + rainLeftOffset,Kin.RightX + rainRightOffset);
@@ -1049,14 +1015,14 @@ public class SpecialMoves : CorruptedKinMove
 
 		//Debug.Log("Collider Width = " + particle.transform.localScale.y * 0.81f);
 
-		if (particle.transform.position.x > RightWallX - (particle.transform.localScale.y * 0.81f))
+		if (particle.transform.position.x > Kin.RightWallX - (particle.transform.localScale.y * 0.81f))
 		{
-			particle.transform.position = particle.transform.position.With(x: RightWallX - (particle.transform.localScale.y * 0.81f));
+			particle.transform.position = particle.transform.position.With(x: Kin.RightWallX - (particle.transform.localScale.y * 0.81f));
 		}
 
-		if (particle.transform.position.x < LeftWallX + (particle.transform.localScale.y * 0.81f))
+		if (particle.transform.position.x < Kin.LeftWallX + (particle.transform.localScale.y * 0.81f))
 		{
-			particle.transform.position = particle.transform.position.With(x: LeftWallX + (particle.transform.localScale.y * 0.81f));
+			particle.transform.position = particle.transform.position.With(x: Kin.LeftWallX + (particle.transform.localScale.y * 0.81f));
 		}
 	}
 

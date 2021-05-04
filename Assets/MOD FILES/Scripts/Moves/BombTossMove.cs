@@ -26,6 +26,8 @@ public class BombTossMove : CorruptedKinMove
 	[SerializeField] Vector3 TossBloodSpawnOffset;
 	[SerializeField] Vector3 ScuttlerBombSpawnOffset;
 	[SerializeField] float ScuttlerBombAirTime = 0.8f;
+	[SerializeField] float minDistanceForSpeedAdjustments = 6f;
+	[SerializeField] float minimumBombAirTime = 0.35f;
 
 	public override IEnumerator DoMove()
 	{
@@ -84,7 +86,7 @@ public class BombTossMove : CorruptedKinMove
 			startDelay = TossPrepareDelaySecondStage;
 		}
 
-		if (HealthManager.Health >= previousHealth)
+		if (HealthManager.Health == previousHealth)
 		{
 			yield return Kin.WaitUnlessAttacked(startDelay, false);
 		}
@@ -137,7 +139,28 @@ public class BombTossMove : CorruptedKinMove
 
 			Blood.SpawnBlood(transform.position + TossBloodSpawnOffset, new Blood.BloodSpawnInfo(12, 15, 24f, 30f, angleMin, angleMax));
 
-			var bomb = ScuttlerBomb.Spawn(transform.position + scuttlerOffset, Player.Player1.transform.position, ScuttlerBombAirTime, bombRotation,Kin);
+			var airTime = ScuttlerBombAirTime;
+
+			var playerDistance = Vector2.Distance(transform.position, Player.Player1.transform.position);
+
+			if (playerDistance < minDistanceForSpeedAdjustments)
+			{
+				airTime = Mathf.InverseLerp(0.3f, minDistanceForSpeedAdjustments, playerDistance);
+			}
+
+			if (Kin.BossStage >= 4)
+			{
+				airTime *= 0.85f;
+			}
+
+			airTime /= 1f + ((previousHealth - HealthManager.Health) / 120f);
+
+			if (airTime < minimumBombAirTime)
+			{
+				airTime = minimumBombAirTime;
+			}
+
+			var bomb = ScuttlerBomb.Spawn(transform.position + scuttlerOffset, Player.Player1.transform.position, airTime, bombRotation,Kin);
 
 			var bombFlasher = bomb.GetComponent<SpriteFlasher>();
 

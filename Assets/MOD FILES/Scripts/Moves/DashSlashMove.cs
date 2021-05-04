@@ -174,6 +174,8 @@ public class DashSlashMove : CorruptedKinMove
 		DashSlash.SetActive(false);
 		DashBurst.SetActive(false);
 		base.OnStun();
+
+		GetComponent<DownslashMove>().OnStun();
 	}
 }
 

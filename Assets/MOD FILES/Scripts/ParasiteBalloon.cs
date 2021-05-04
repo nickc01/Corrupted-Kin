@@ -244,8 +244,11 @@ public class ParasiteBalloon : MonoBehaviour
 	{
 		foreach (var parasite in SpawnedParasites)
 		{
-			parasite.modifyStorage = false;
-			parasite.StartCoroutine(parasite.Leave());
+			if (parasite != null)
+			{
+				parasite.modifyStorage = false;
+				parasite.StartCoroutine(parasite.Leave());
+			}
 		}
 	}
 

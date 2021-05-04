@@ -50,6 +50,8 @@ public class CorruptedKin : BossReplacement
 	[SerializeField] MusicPack BossMusicPack;
 	[Tooltip("The time the player must stay on the wall before the boss registers that the player is staying on the wall")]
 	public float playerWallTestDuration = 0.5f;
+	[SerializeField]
+	float cornerRange = 4f;
 
 	public AudioClip JumpSound { get { return jumpSound; } }
 	public AudioClip LandSound { get { return landSound; } }
@@ -315,6 +317,100 @@ public class CorruptedKin : BossReplacement
 		}
 	}
 
+	float _leftWallX = float.NaN;
+	public float LeftWallX
+	{
+		get
+		{
+			if (float.IsNaN(_leftWallX))
+			{
+				var hit = Physics2D.Raycast(new Vector2(MiddleX, 7f + FloorY), Vector2.left, 25, LayerMask.GetMask("Terrain"));
+				if (hit.collider == null)
+				{
+					_leftWallX = LeftX;
+				}
+				else
+				{
+					_leftWallX = hit.point.x;
+				}
+			}
+			return _leftWallX;
+		}
+	}
+
+	float _rightWallX = float.NaN;
+	public float RightWallX
+	{
+		get
+		{
+			if (float.IsNaN(_rightWallX))
+			{
+				var hit = Physics2D.Raycast(new Vector2(MiddleX, 7f + FloorY), Vector2.right, 25, LayerMask.GetMask("Terrain"));
+				if (hit.collider == null)
+				{
+					_rightWallX = RightX;
+				}
+				else
+				{
+					_rightWallX = hit.point.x;
+				}
+			}
+			return _rightWallX;
+		}
+	}
+
+	public bool PlayerInCorner
+	{
+		get
+		{
+			return PlayerInLeftCorner || PlayerInRightCorner;
+		}
+	}
+
+	public bool BossInCorner
+	{
+		get
+		{
+			return BossInLeftCorner || BossInRightCorner;
+		}
+	}
+
+	public bool PlayerInLeftCorner
+	{
+		get
+		{
+			var playerPos = Player.Player1.transform.position.x;
+			return playerPos >= LeftWallX && playerPos <= LeftWallX + cornerRange;
+		}
+	}
+
+	public bool PlayerInRightCorner
+	{
+		get
+		{
+			var playerPos = Player.Player1.transform.position.x;
+			return playerPos >= RightWallX - cornerRange && playerPos <= RightWallX;
+		}
+	}
+
+	public bool BossInLeftCorner
+	{
+		get
+		{
+			var pos = transform.position.x;
+			return pos >= LeftWallX && pos <= LeftWallX + cornerRange;
+		}
+	}
+
+	public bool BossInRightCorner
+	{
+		get
+		{
+			var pos = transform.position.x;
+			return pos >= RightWallX - cornerRange && pos <= RightWallX;
+		}
+	}
+
 	/// <summary>
 	/// Gets the percentage distance to boss. 0% means they are at the same position, 100% means they are at polar opposite ends of the arena
 	/// </summary>
@@ -347,6 +443,17 @@ public class CorruptedKin : BossReplacement
 		}
 		Debug.DrawLine(transform.position, new Vector3(transform.position.x + distance, transform.position.y, transform.position.z),Color.red,0.5f);
 	}
+
+#if UNITY_EDITOR
+	void Update()
+	{
+		if (!HealthManager.Invincible)
+		{
+			Debug.DrawLine(new Vector3(RightWallX - cornerRange, FloorY), new Vector3(RightWallX, FloorY), Color.yellow);
+			Debug.DrawLine(new Vector3(LeftWallX + cornerRange, FloorY), new Vector3(LeftWallX, FloorY), Color.yellow);
+		}
+	}
+#endif
 
 
 	/*/// <summary>
@@ -591,20 +698,6 @@ public class CorruptedKin : BossReplacement
 		}
 	}
 
-	void Update()
-	{
-		/*if (DebugShowZones)
-		{
-			var leftEdge = transform.position.x - (CenterZoneSize / 2f);
-			var rightEdge = transform.position.x + (CenterZoneSize / 2f);
-
-			//Debug.DrawLine(new Vector3(leftX, transform.position.y, transform.position.z), new Vector3(CenterZoneLeft, transform.position.y, transform.position.z), Color.red);
-			Debug.DrawLine(new Vector3(leftX, transform.position.y, transform.position.z), new Vector3(leftEdge, transform.position.y, transform.position.z), Color.red);
-			Debug.DrawLine(new Vector3(leftEdge, transform.position.y, transform.position.z), new Vector3(rightEdge, transform.position.y, transform.position.z), Color.green);
-			Debug.DrawLine(new Vector3(rightEdge, transform.position.y, transform.position.z), new Vector3(rightX, transform.position.y, transform.position.z), Color.blue);
-		}*/
-	}
-
 	IEnumerator WaitForPlayer()
 	{
 		var playerCollider = Player.Player1.GetComponent<Collider2D>();
@@ -667,7 +760,7 @@ public class CorruptedKin : BossReplacement
 
 		transform.SetYPosition(fallYPosition);
 
-		EntityHealth.Invincible = false;
+		//EntityHealth.Invincible = false;
 
 		Renderer.enabled = true;
 

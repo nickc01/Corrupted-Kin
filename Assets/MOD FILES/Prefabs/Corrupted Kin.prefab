@@ -1017,7 +1017,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1625663818430612}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 30.14, y: 40.08, z: 0.006}
+  m_LocalPosition: {x: 30, y: 40.08, z: 0.006}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4072268501350522}
@@ -1966,6 +1966,7 @@ MonoBehaviour:
   TossBloodSpawnOffset: {x: 0.46, y: 0.68, z: 0}
   ScuttlerBombSpawnOffset: {x: 0.46, y: 0.73, z: 0}
   ScuttlerBombAirTime: 1.2
+  minDistanceForSpeedAdjustments: 7
 --- !u!114 &114237235027879920
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2045,12 +2046,13 @@ MonoBehaviour:
   burrowTerminalVelocity: 11
   burrowSlamWaveSpacing: -1.25
   burrowSlamWaveHeightMultiplier: 1
-  burrowAfterEffectWaveHeight: 0.2
+  burrowAfterEffectWaveHeight: 0
   burrowJumpGravityScale: 3.25
   burrowApplyGravity: 1
   BurrowSound: {fileID: 8300000, guid: d3cbfa191f3f66f418d1c4d345548707, type: 3}
   burrowSoundVolume: 0.65
   BurrowEmergeSound: {fileID: 8300000, guid: fe175ee6ff51e0c4ea2b35c453b90b69, type: 3}
+  burrowWaveDecayRate: 1
 --- !u!114 &114275600293138788
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2313,6 +2315,7 @@ MonoBehaviour:
   awakeRange: {fileID: 61381357514452128}
   BossMusicPack: {fileID: 11400000, guid: f8971090c6ea6094eabdbb9033621b4b, type: 2}
   playerWallTestDuration: 0.5
+  cornerRange: 4
   leftSpawnPoint: 20.59
   rightSpawnPoint: 33.58
   fallYPosition: 41.82

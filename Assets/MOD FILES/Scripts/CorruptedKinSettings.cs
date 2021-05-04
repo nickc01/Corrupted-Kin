@@ -19,10 +19,10 @@ public class CorruptedKinSettings : Panel
 
 	[Tooltip("Whether custom health should be enabled")]
 	[SerializeField]
-	[SettingField(Visibility.Never)]
+	[SettingField(EnabledType.Never)]
 	bool _customHealth = false;
 
-	[SettingField(Visibility.MenuOnly)]
+	[SettingField(EnabledType.MenuOnly)]
 	[SettingDescription("Whether custom health should be enabled")]
 	public bool CustomHealth
 	{
