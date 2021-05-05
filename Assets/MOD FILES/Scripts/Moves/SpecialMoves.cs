@@ -798,6 +798,7 @@ public class SpecialMoves : CorruptedKinMove
 
 	IEnumerator ParasiteHoard()
 	{
+		PlayerBeenStillFor = 0f;
 		float secsPerParasite = 1f / UnityEngine.Random.Range(parasitesPerSecond.x,parasitesPerSecond.y);
 		float spawnTimer = 0f;
 

@@ -207,7 +207,7 @@ public class DownslashMove : CorruptedKinMove
 					float position = 0f;
 					yield return DoDownstab(new DownstabProperties
 					{
-						firstSlamDelay = 0.1f,
+						firstSlamDelay = 0.08f,
 						AmountOfTimes = 3,
 						DelayBetweenTimes = 0f,
 						HorizontalOffset = tripleStabHorizontalOffset,
@@ -752,7 +752,7 @@ public class DownslashMove : CorruptedKinMove
 			Animator.PlaybackSpeed -= 0.12f;
 		}
 
-		Animator.PlaybackSpeed -= extraAnticDelay / anticTime;
+		Animator.PlaybackSpeed -= extraAnticDelay;
 		yield return Animator.PlayAnimationTillDone("Downstab Antic Quick");
 		Animator.PlaybackSpeed = 1f;
 
