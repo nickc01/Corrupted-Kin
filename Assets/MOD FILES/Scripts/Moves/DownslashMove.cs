@@ -17,6 +17,7 @@ public struct DownstabProperties
 	public bool SpawnAspidShots;
 	public int AspidShotCount;
 	public bool SpawnWaves;
+	public float firstSlamDelay;
 }
 
 public class DownslashMove : CorruptedKinMove
@@ -31,6 +32,8 @@ public class DownslashMove : CorruptedKinMove
 	[FormerlySerializedAs("DownstabBurst")]
 	[SerializeField] GameObject downstabBurst;
 	[SerializeField] GameObject DownstabSlam;
+	//[SerializeField]
+	//float firstDownslashDelay = 0.1f;
 	//[SerializeField] Vector3 KinProjectileOffset = new Vector3(0f, -0.5f, 0f);
 	[Space]
 	[Header("Slam Effects")]
@@ -204,6 +207,7 @@ public class DownslashMove : CorruptedKinMove
 					float position = 0f;
 					yield return DoDownstab(new DownstabProperties
 					{
+						firstSlamDelay = 0.1f,
 						AmountOfTimes = 3,
 						DelayBetweenTimes = 0f,
 						HorizontalOffset = tripleStabHorizontalOffset,
@@ -387,7 +391,12 @@ public class DownslashMove : CorruptedKinMove
 
 			if (downstabbing)
 			{
-				yield return SlamDownwards(properties.SpawnAspidShots, properties.SpawnWaves,properties.AspidShotCount);
+				float delay = 0f;
+				if (j == 0)
+				{
+					delay = properties.firstSlamDelay;
+				}
+				yield return SlamDownwards(properties.SpawnAspidShots, properties.SpawnWaves, delay, properties.AspidShotCount);
 				/*Audio.PlayAtPoint(DownstabPrepareSound, transform.position);
 				KinRigidbody.velocity = default(Vector2);
 				KinRigidbody.gravityScale = 0f;
@@ -727,11 +736,12 @@ public class DownslashMove : CorruptedKinMove
 		}*/
 	}
 
-	public IEnumerator SlamDownwards(bool spawnAspidShots, bool spawnWaves,int aspidShots = 7)
+	public IEnumerator SlamDownwards(bool spawnAspidShots, bool spawnWaves, float extraAnticDelay, int aspidShots = 7)
 	{
 		WeaverAudio.PlayAtPoint(DownstabPrepareSound, transform.position);
 		KinRigidbody.velocity = default(Vector2);
 		KinRigidbody.gravityScale = 0f;
+		var anticTime = Animator.AnimationData.GetClipDuration("Downstab Antic Quick");
 		Animator.PlaybackSpeed = downStabAnticSpeed;
 		if (Kin.BossStage >= 3)
 		{
@@ -741,6 +751,8 @@ public class DownslashMove : CorruptedKinMove
 		{
 			Animator.PlaybackSpeed -= 0.12f;
 		}
+
+		Animator.PlaybackSpeed -= extraAnticDelay / anticTime;
 		yield return Animator.PlayAnimationTillDone("Downstab Antic Quick");
 		Animator.PlaybackSpeed = 1f;
 

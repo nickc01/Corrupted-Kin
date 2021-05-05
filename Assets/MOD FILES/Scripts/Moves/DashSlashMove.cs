@@ -134,7 +134,7 @@ public class DashSlashMove : CorruptedKinMove
 		if (doDownSlash)
 		{
 			var downSlashMove = GetComponent<DownslashMove>();
-			yield return downSlashMove.SlamDownwards(Kin.BossStage == 1 || Kin.BossStage == 2,Kin.BossStage >= 3);
+			yield return downSlashMove.SlamDownwards(Kin.BossStage == 1 || Kin.BossStage == 2,Kin.BossStage >= 3,0f);
 			yield return downSlashMove.PlayDownslashLanding();
 		}
 		else
