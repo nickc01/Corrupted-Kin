@@ -747,7 +747,7 @@ public class DownslashMove : CorruptedKinMove
 		{
 			Animator.PlaybackSpeed = downStabAnticSpeedPhase2;
 		}
-		if ((Kin.BossInLeftCorner && Kin.PlayerInLeftCorner) || (Kin.BossInRightCorner || Kin.PlayerInRightCorner))
+		if ((Kin.BossInLeftCorner && Kin.PlayerInLeftCorner) || (Kin.BossInRightCorner && Kin.PlayerInRightCorner))
 		{
 			Animator.PlaybackSpeed -= 0.12f;
 		}

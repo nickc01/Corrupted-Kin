@@ -1,0 +1,396 @@
+fileFormatVersion: 2
+guid: c8a9623d248370d429be4d3b8ed7d926
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: ss_turn000
+    21300002: Super_spitter_idle000
+    21300004: ss_death000
+    21300006: ss_spit002
+    21300008: ss_fly003
+    21300010: ss_spit000
+    21300012: death000
+    21300014: ss_spit003
+    21300016: ss_fly001
+    21300018: ss_fly002
+    21300020: Super_spitter_idle002
+    21300022: ss_spit001
+    21300024: Super_spitter_idle001
+    21300026: ss_spit004
+    21300028: Super_spitter_idle003
+    21300030: ss_turn001
+    21300032: ss_spit005
+    21300034: ss_fly000
+  externalObjects: {}
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 64.48629
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: ss_turn000
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 100
+        width: 102
+        height: 93
+      alignment: 9
+      pivot: {x: 0.4962963, y: 0.42276424}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: Super_spitter_idle000
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 172
+        width: 107
+        height: 80
+      alignment: 9
+      pivot: {x: 0.5070422, y: 0.52830195}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: ss_death000
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 404
+        width: 74
+        height: 86
+      alignment: 9
+      pivot: {x: 0.4795918, y: 0.5263158}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: ss_spit002
+      rect:
+        serializedVersion: 2
+        x: 331
+        y: 0
+        width: 113
+        height: 87
+      alignment: 9
+      pivot: {x: 0.54, y: 0.39130437}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: ss_fly003
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 172
+        width: 103
+        height: 84
+      alignment: 9
+      pivot: {x: 0.4890511, y: 0.49107146}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: ss_spit000
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 0
+        width: 114
+        height: 90
+      alignment: 9
+      pivot: {x: 0.4868421, y: 0.47899163}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: death000
+      rect:
+        serializedVersion: 2
+        x: 322
+        y: 253
+        width: 74
+        height: 86
+      alignment: 9
+      pivot: {x: 0.4795918, y: 0.5263158}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: ss_spit003
+      rect:
+        serializedVersion: 2
+        x: 223
+        y: 0
+        width: 107
+        height: 93
+      alignment: 9
+      pivot: {x: 0.5985915, y: 0.40650403}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: ss_fly001
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 194
+        width: 99
+        height: 95
+      alignment: 9
+      pivot: {x: 0.53030306, y: 0.43650794}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: ss_fly002
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 386
+        width: 86
+        height: 100
+      alignment: 9
+      pivot: {x: 0.50877196, y: 0.46616542}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: Super_spitter_idle002
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 342
+        width: 86
+        height: 100
+      alignment: 9
+      pivot: {x: 0.50877196, y: 0.46616542}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: ss_spit001
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 253
+        width: 114
+        height: 75
+      alignment: 9
+      pivot: {x: 0.54304636, y: 0.52}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: Super_spitter_idle001
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 290
+        width: 99
+        height: 95
+      alignment: 9
+      pivot: {x: 0.53030306, y: 0.43650794}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: ss_spit004
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 100
+        width: 126
+        height: 71
+      alignment: 9
+      pivot: {x: 0.5449102, y: 0.38297874}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: Super_spitter_idle003
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 257
+        width: 103
+        height: 84
+      alignment: 9
+      pivot: {x: 0.4890511, y: 0.49107146}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: ss_turn001
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 329
+        width: 99
+        height: 74
+      alignment: 9
+      pivot: {x: 0.45801526, y: 0.5102041}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: ss_spit005
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 107
+        height: 99
+      alignment: 9
+      pivot: {x: 0.35915494, y: 0.4469697}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: ss_fly000
+      rect:
+        serializedVersion: 2
+        x: 315
+        y: 172
+        width: 107
+        height: 80
+      alignment: 9
+      pivot: {x: 0.5070422, y: 0.52830195}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    outline: []
+    physicsShape: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
