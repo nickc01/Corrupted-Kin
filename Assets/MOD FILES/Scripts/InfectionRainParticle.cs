@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using UnityEngine;
+using WeaverCore;
 using WeaverCore.Utilities;
 
 [RequireComponent(typeof(PoolableObject))]
@@ -37,7 +38,7 @@ public class InfectionRainParticle : MonoBehaviour
 	void Update()
 	{
 		_time += Time.deltaTime;
-		if (!activated && transform.position.y <= SourceMove.ActivationHeight + SourceMove.Kin.FloorY)
+		if (!activated && (transform.position.y <= SourceMove.ActivationHeight + SourceMove.Kin.FloorY || Vector2.Distance(transform.position,Player.Player1.transform.position) <= 1f))
 		{
 			rainCollider.enabled = true;
 			activated = true;

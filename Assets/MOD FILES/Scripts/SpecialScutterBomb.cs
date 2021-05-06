@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using WeaverCore;
 
 public class SpecialScutterBomb : ScuttlerBomb
 {
@@ -19,7 +20,7 @@ public class SpecialScutterBomb : ScuttlerBomb
 	protected override void Update()
 	{
 		base.Update();
-		if (!bombActivated && transform.position.y <= SourceMove.ActivationHeight + SourceMove.Kin.FloorY)
+		if (!bombActivated && (transform.position.y <= SourceMove.ActivationHeight + SourceMove.Kin.FloorY || Vector2.Distance(transform.position, Player.Player1.transform.position) <= 1f))
 		{
 			bombActivated = true;
 			collider.enabled = true;
