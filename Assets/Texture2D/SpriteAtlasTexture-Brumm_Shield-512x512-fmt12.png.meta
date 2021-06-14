@@ -1,16 +1,24 @@
 fileFormatVersion: 2
 guid: a26ad20646df5054cb0023a77c4b1cb2
-timeCreated: 1602781459
-licenseType: Free
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: brumm_shield_pieces_0004_Layer-1
-    21300002: brumm_shield_pieces_0003_Layer-3
-    21300004: brumm_shield_pieces_0002_Layer-4
-    21300006: brumm_shield_pieces_0000_Layer-2
-    21300008: brumm_shield_pieces_0001_Layer-5
+  internalIDToNameTable:
+  - first:
+      213: 21300000
+    second: brumm_shield_pieces_0004_Layer-1
+  - first:
+      213: 21300002
+    second: brumm_shield_pieces_0003_Layer-3
+  - first:
+      213: 21300004
+    second: brumm_shield_pieces_0002_Layer-4
+  - first:
+      213: 21300006
+    second: brumm_shield_pieces_0000_Layer-2
+  - first:
+      213: 21300008
+    second: brumm_shield_pieces_0001_Layer-5
   externalObjects: {}
-  serializedVersion: 4
+  serializedVersion: 11
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -28,6 +36,9 @@ TextureImporter:
     heightScale: 0.25
     normalMapFilter: 0
   isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -58,11 +69,17 @@ TextureImporter:
   spriteTessellationDetail: -1
   textureType: 8
   textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 1
   platformSettings:
-  - buildTarget: DefaultTexturePlatform
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -72,6 +89,7 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -259,6 +277,13 @@ TextureImporter:
         - {x: 35.47531, y: 56.02469}
         - {x: 36.47531, y: 57.02469}
       tessellationDetail: 0
+      bones: []
+      spriteID: 02305410000000000800000000000000
+      internalID: 21300000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: brumm_shield_pieces_0003_Layer-3
       rect:
@@ -340,6 +365,13 @@ TextureImporter:
         - {x: -25.5316, y: 61.0316}
         - {x: -26.5316, y: 63.0316}
       tessellationDetail: 0
+      bones: []
+      spriteID: 22305410000000000800000000000000
+      internalID: 21300002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: brumm_shield_pieces_0002_Layer-4
       rect:
@@ -423,6 +455,13 @@ TextureImporter:
         - {x: 0.02289581, y: -3.021454}
         - {x: -2.977104, y: -0.02145386}
       tessellationDetail: 0
+      bones: []
+      spriteID: 42305410000000000800000000000000
+      internalID: 21300004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: brumm_shield_pieces_0000_Layer-2
       rect:
@@ -456,6 +495,13 @@ TextureImporter:
         - {x: 48.5, y: -3.5}
         - {x: 42.5, y: -2.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: 62305410000000000800000000000000
+      internalID: 21300006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: brumm_shield_pieces_0001_Layer-5
       rect:
@@ -524,9 +570,26 @@ TextureImporter:
         - {x: 23.01241, y: 35.01239}
         - {x: 13.01241, y: 41.01239}
       tessellationDetail: 0
+      bones: []
+      spriteID: 82305410000000000800000000000000
+      internalID: 21300008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
-  spritePackingTag:
-  userData:
-  assetBundleName:
-  assetBundleVariant:
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

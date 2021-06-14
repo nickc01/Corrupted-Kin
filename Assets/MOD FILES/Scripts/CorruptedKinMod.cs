@@ -17,8 +17,8 @@ namespace KinMod
 		static void Init()
 		{
 			//WeaverLog.Log("Hooks getting added!");
-			ModHooks.Instance.GetPlayerBoolHook += Instance_GetPlayerBoolHook;
-			ModHooks.Instance.LanguageGetHook += Instance_LanguageGetHook;
+			ModHooks.GetPlayerBoolHook += Instance_GetPlayerBoolHook;
+			ModHooks.LanguageGetHook += Instance_LanguageGetHook;
 			//ModHooks.Instance.GetPlayerStringHook += Instance_GetPlayerStringHook;
 			//ModHooks.Instance.GetPlayerFloatHook += Instance_GetPlayerFloatHook;
 			//ModHooks.Instance.GetPlayerIntHook += Instance_GetPlayerIntHook;
@@ -93,7 +93,7 @@ namespace KinMod
 
 		public override string GetVersion()
 		{
-			return "1.0.0.0";
+			return "1.1.0.0";
 		}
 	}
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using WeaverCore;
+using WeaverCore.Components;
 using WeaverCore.Enums;
 using WeaverCore.Utilities;
 
@@ -38,7 +39,7 @@ public class TransformationMove : CorruptedKinMove
 
 	List<TransformationBlob> Blobs;
 
-	float previousRecoil = 0f;
+	//float previousRecoil = 0f;
 
 	public override IEnumerator DoMove()
 	{
@@ -48,9 +49,9 @@ public class TransformationMove : CorruptedKinMove
 			TransformationSplats = WallSplats.Spawn(Kin.LeftX, Kin.FloorY);
 		}
 
-		var recoil = GetComponent<WeaverCore.Components.Recoil>();
+		var recoil = GetComponent<WeaverCore.Components.Recoiler>();
 
-		previousRecoil = recoil.GetRecoilSpeed();
+		//previousRecoil = recoil.GetRecoilSpeed();
 		recoil.SetRecoilSpeed(0f);
 
 		var jumpMove = GetComponent<JumpMove>();
@@ -90,7 +91,8 @@ public class TransformationMove : CorruptedKinMove
 			yield return jumpMove.Jump(Mathf.Lerp(Kin.MiddleX, Kin.RightX, 0.7f));
 		}*/
 
-		recoil.SetRecoilSpeed(previousRecoil);
+		//recoil.SetRecoilSpeed(previousRecoil);
+		recoil.ResetRecoilSpeed();
 
 		yield return Animator.PlayAnimationTillDone("Roar Start");
 
@@ -253,7 +255,9 @@ public class TransformationMove : CorruptedKinMove
 	public override void OnStun()
 	{
 		HealthManager.HealthLocked = false;
-		GetComponent<WeaverCore.Components.Recoil>().SetRecoilSpeed(previousRecoil);
+
+		//GetComponent<WeaverCore.Components.Recoiler>().SetRecoilSpeed(previousRecoil);
+		GetComponent<Recoiler>().ResetRecoilSpeed();
 		GetComponent<JumpMove>().OnStun();
 		Kin.EntityHealth.Invincible = false;
 		base.OnStun();

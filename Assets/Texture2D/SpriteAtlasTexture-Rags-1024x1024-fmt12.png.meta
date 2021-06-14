@@ -1,17 +1,27 @@
 fileFormatVersion: 2
 guid: f0facacaff5658d4691433e7fb529cbe
-timeCreated: 1602781615
-licenseType: Free
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: hot_spring_layers_0068_01-copy-51
-    21300002: hot_spring_layers_0069_01-copy-53
-    21300004: hot_spring_layers_0071_01-copy-57
-    21300006: hot_spring_layers_0065_01-copy-45
-    21300008: hot_spring_layers_0066_01-copy-47
-    21300010: hot_spring_layers_0067_01-copy-49
+  internalIDToNameTable:
+  - first:
+      213: 21300000
+    second: hot_spring_layers_0068_01-copy-51
+  - first:
+      213: 21300002
+    second: hot_spring_layers_0069_01-copy-53
+  - first:
+      213: 21300004
+    second: hot_spring_layers_0071_01-copy-57
+  - first:
+      213: 21300006
+    second: hot_spring_layers_0065_01-copy-45
+  - first:
+      213: 21300008
+    second: hot_spring_layers_0066_01-copy-47
+  - first:
+      213: 21300010
+    second: hot_spring_layers_0067_01-copy-49
   externalObjects: {}
-  serializedVersion: 4
+  serializedVersion: 11
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -29,6 +39,9 @@ TextureImporter:
     heightScale: 0.25
     normalMapFilter: 0
   isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -59,11 +72,17 @@ TextureImporter:
   spriteTessellationDetail: -1
   textureType: 8
   textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 1
   platformSettings:
-  - buildTarget: DefaultTexturePlatform
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -73,6 +92,7 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -136,6 +156,13 @@ TextureImporter:
         - {x: -11, y: -232}
         - {x: -10, y: -169}
       tessellationDetail: 0
+      bones: []
+      spriteID: 02305410000000000800000000000000
+      internalID: 21300000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: hot_spring_layers_0069_01-copy-53
       rect:
@@ -225,6 +252,13 @@ TextureImporter:
         - {x: 19.5, y: -194}
         - {x: 27.5, y: -179}
       tessellationDetail: 0
+      bones: []
+      spriteID: 22305410000000000800000000000000
+      internalID: 21300002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: hot_spring_layers_0071_01-copy-57
       rect:
@@ -303,6 +337,13 @@ TextureImporter:
         - {x: -1.038063, y: -25}
         - {x: -0.03806305, y: -24}
       tessellationDetail: 0
+      bones: []
+      spriteID: 42305410000000000800000000000000
+      internalID: 21300004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: hot_spring_layers_0065_01-copy-45
       rect:
@@ -475,6 +516,13 @@ TextureImporter:
         - {x: -129.5, y: -23}
         - {x: -128.5, y: -21}
       tessellationDetail: 0
+      bones: []
+      spriteID: 62305410000000000800000000000000
+      internalID: 21300006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: hot_spring_layers_0066_01-copy-47
       rect:
@@ -650,6 +698,13 @@ TextureImporter:
         - {x: -11, y: -115}
         - {x: -13, y: -114}
       tessellationDetail: 0
+      bones: []
+      spriteID: 82305410000000000800000000000000
+      internalID: 21300008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: hot_spring_layers_0067_01-copy-49
       rect:
@@ -769,9 +824,26 @@ TextureImporter:
         - {x: -63.5, y: -140}
         - {x: -53.5, y: -110}
       tessellationDetail: 0
+      bones: []
+      spriteID: a2305410000000000800000000000000
+      internalID: 21300010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
-  spritePackingTag:
-  userData:
-  assetBundleName:
-  assetBundleVariant:
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

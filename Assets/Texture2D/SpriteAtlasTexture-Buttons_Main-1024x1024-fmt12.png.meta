@@ -1,48 +1,120 @@
 fileFormatVersion: 2
 guid: 60cdee7ddd93aca47b5f83723eb547a7
-timeCreated: 1602781463
-licenseType: Free
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: button_mouse_middle_click
-    21300002: controller_button_skins_0000_ps4_option
-    21300004: controller_button_skins_0001_ps4_touchpad_press
-    21300006: button_skin_0004_square_arrow
-    21300008: PS4_button_skins_circle
-    21300010: button_skin_0004_square_arrow_d
-    21300012: controller_button_skins_0005_ps4_L1
-    21300014: controller_button_skins_0026_Arrow_Back
-    21300016: controller_button_skins_0021_A
-    21300018: button_skin_0004_square_arrow_r
-    21300020: controller_button_skins_0027_Arrow_Up
-    21300022: PS4_button_skins_square
-    21300024: button_skin_0003_wide_square_key
-    21300026: controller_button_skins_0007_xbox360_back
-    21300028: controller_button_skins_0006_xbox360_start
-    21300030: PS4_button_skins_triangle
-    21300032: button_mouse_right_click
-    21300034: controller_button_skins_0004_ps4_L2
-    21300036: controller_button_skins_0017_xbone_LT
-    21300038: PS4_button_skins_x
-    21300040: controller_button_skins_0028_Arrow_Down
-    21300042: controller_button_skins_0015_xbone_view
-    21300044: controller_button_skins_0022_Y
-    21300046: controller_button_skins_0003_ps4_R2
-    21300048: button_skin_0004_square_arrow_u
-    21300050: controller_button_skins_0019_xbone_LB
-    21300052: controller_button_skins_0023_X
-    21300054: controller_button_skins_0000_ps4_share
-    21300056: controller_button_skins_0020_B
-    21300058: controller_button_skins_0018_xbone_RB
-    21300060: controller_button_skins_0016_xbone_RT
-    21300062: controller_button_skins_0025_Arrow_Forward
-    21300064: button_skin_0004_square_key
-    21300066: controller_button_skins_0014_xbone_menu
-    21300068: controller_button_skins_0002_ps4_R1
-    21300070: button_mouse_left_click
-    21300072: controller_button_skins_0024_plus_UI_symbol
+  internalIDToNameTable:
+  - first:
+      213: 21300000
+    second: button_mouse_middle_click
+  - first:
+      213: 21300002
+    second: controller_button_skins_0000_ps4_option
+  - first:
+      213: 21300004
+    second: controller_button_skins_0001_ps4_touchpad_press
+  - first:
+      213: 21300006
+    second: button_skin_0004_square_arrow
+  - first:
+      213: 21300008
+    second: PS4_button_skins_circle
+  - first:
+      213: 21300010
+    second: button_skin_0004_square_arrow_d
+  - first:
+      213: 21300012
+    second: controller_button_skins_0005_ps4_L1
+  - first:
+      213: 21300014
+    second: controller_button_skins_0026_Arrow_Back
+  - first:
+      213: 21300016
+    second: controller_button_skins_0021_A
+  - first:
+      213: 21300018
+    second: button_skin_0004_square_arrow_r
+  - first:
+      213: 21300020
+    second: controller_button_skins_0027_Arrow_Up
+  - first:
+      213: 21300022
+    second: PS4_button_skins_square
+  - first:
+      213: 21300024
+    second: button_skin_0003_wide_square_key
+  - first:
+      213: 21300026
+    second: controller_button_skins_0007_xbox360_back
+  - first:
+      213: 21300028
+    second: controller_button_skins_0006_xbox360_start
+  - first:
+      213: 21300030
+    second: PS4_button_skins_triangle
+  - first:
+      213: 21300032
+    second: button_mouse_right_click
+  - first:
+      213: 21300034
+    second: controller_button_skins_0004_ps4_L2
+  - first:
+      213: 21300036
+    second: controller_button_skins_0017_xbone_LT
+  - first:
+      213: 21300038
+    second: PS4_button_skins_x
+  - first:
+      213: 21300040
+    second: controller_button_skins_0028_Arrow_Down
+  - first:
+      213: 21300042
+    second: controller_button_skins_0015_xbone_view
+  - first:
+      213: 21300044
+    second: controller_button_skins_0022_Y
+  - first:
+      213: 21300046
+    second: controller_button_skins_0003_ps4_R2
+  - first:
+      213: 21300048
+    second: button_skin_0004_square_arrow_u
+  - first:
+      213: 21300050
+    second: controller_button_skins_0019_xbone_LB
+  - first:
+      213: 21300052
+    second: controller_button_skins_0023_X
+  - first:
+      213: 21300054
+    second: controller_button_skins_0000_ps4_share
+  - first:
+      213: 21300056
+    second: controller_button_skins_0020_B
+  - first:
+      213: 21300058
+    second: controller_button_skins_0018_xbone_RB
+  - first:
+      213: 21300060
+    second: controller_button_skins_0016_xbone_RT
+  - first:
+      213: 21300062
+    second: controller_button_skins_0025_Arrow_Forward
+  - first:
+      213: 21300064
+    second: button_skin_0004_square_key
+  - first:
+      213: 21300066
+    second: controller_button_skins_0014_xbone_menu
+  - first:
+      213: 21300068
+    second: controller_button_skins_0002_ps4_R1
+  - first:
+      213: 21300070
+    second: button_mouse_left_click
+  - first:
+      213: 21300072
+    second: controller_button_skins_0024_plus_UI_symbol
   externalObjects: {}
-  serializedVersion: 4
+  serializedVersion: 11
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -60,6 +132,9 @@ TextureImporter:
     heightScale: 0.25
     normalMapFilter: 0
   isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -90,11 +165,17 @@ TextureImporter:
   spriteTessellationDetail: -1
   textureType: 8
   textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 1
   platformSettings:
-  - buildTarget: DefaultTexturePlatform
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -104,6 +185,7 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -133,6 +215,13 @@ TextureImporter:
         - {x: 24.5, y: 43.5}
         - {x: 22.5, y: 44.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: 02305410000000000800000000000000
+      internalID: 21300000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: controller_button_skins_0000_ps4_option
       rect:
@@ -197,6 +286,13 @@ TextureImporter:
         - {x: 14.5, y: 58}
         - {x: 15.5, y: 53}
       tessellationDetail: 0
+      bones: []
+      spriteID: 22305410000000000800000000000000
+      internalID: 21300002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: controller_button_skins_0001_ps4_touchpad_press
       rect:
@@ -241,6 +337,13 @@ TextureImporter:
         - {x: 52, y: 9}
         - {x: 55, y: 11}
       tessellationDetail: 0
+      bones: []
+      spriteID: 42305410000000000800000000000000
+      internalID: 21300004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: button_skin_0004_square_arrow
       rect:
@@ -277,6 +380,13 @@ TextureImporter:
         - {x: 26.5, y: 10.5}
         - {x: 11.5, y: 21.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: 62305410000000000800000000000000
+      internalID: 21300006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: PS4_button_skins_circle
       rect:
@@ -322,6 +432,13 @@ TextureImporter:
         - {x: 19.5, y: -14}
         - {x: 19.5, y: 15}
       tessellationDetail: 0
+      bones: []
+      spriteID: 82305410000000000800000000000000
+      internalID: 21300008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: button_skin_0004_square_arrow_d
       rect:
@@ -356,6 +473,13 @@ TextureImporter:
         - {x: 21.5, y: 3.5}
         - {x: 21.5, y: 12.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: a2305410000000000800000000000000
+      internalID: 21300010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: controller_button_skins_0005_ps4_L1
       rect:
@@ -390,6 +514,13 @@ TextureImporter:
         - {x: 20, y: 19}
         - {x: 19, y: -18}
       tessellationDetail: 0
+      bones: []
+      spriteID: c2305410000000000800000000000000
+      internalID: 21300012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: controller_button_skins_0026_Arrow_Back
       rect:
@@ -418,6 +549,13 @@ TextureImporter:
         - {x: 38, y: 11.5}
         - {x: 11, y: 24.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: e2305410000000000800000000000000
+      internalID: 21300014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: controller_button_skins_0021_A
       rect:
@@ -469,6 +607,13 @@ TextureImporter:
         - {x: -13.5, y: -16}
         - {x: -13.5, y: -21}
       tessellationDetail: 0
+      bones: []
+      spriteID: 03305410000000000800000000000000
+      internalID: 21300016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: button_skin_0004_square_arrow_r
       rect:
@@ -505,6 +650,13 @@ TextureImporter:
         - {x: -8.5, y: 21.5}
         - {x: -10.5, y: 19.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: 23305410000000000800000000000000
+      internalID: 21300018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: controller_button_skins_0027_Arrow_Up
       rect:
@@ -532,6 +684,13 @@ TextureImporter:
         - {x: 24.5, y: 9.999999}
         - {x: 3.5, y: 45}
       tessellationDetail: 0
+      bones: []
+      spriteID: 43305410000000000800000000000000
+      internalID: 21300020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: PS4_button_skins_square
       rect:
@@ -576,6 +735,13 @@ TextureImporter:
         - {x: 15.5, y: 13}
         - {x: 13.5, y: 15}
       tessellationDetail: 0
+      bones: []
+      spriteID: 63305410000000000800000000000000
+      internalID: 21300022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: button_skin_0003_wide_square_key
       rect:
@@ -604,6 +770,13 @@ TextureImporter:
         - {x: 90, y: -40.5}
         - {x: -89, y: -40.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: 83305410000000000800000000000000
+      internalID: 21300024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: controller_button_skins_0007_xbox360_back
       rect:
@@ -641,6 +814,13 @@ TextureImporter:
         - {x: 0, y: 6.5}
         - {x: 11, y: -12.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: a3305410000000000800000000000000
+      internalID: 21300026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: controller_button_skins_0006_xbox360_start
       rect:
@@ -680,6 +860,13 @@ TextureImporter:
         - {x: 4, y: -5.5}
         - {x: -9.999999, y: -13.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: c3305410000000000800000000000000
+      internalID: 21300028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: PS4_button_skins_triangle
       rect:
@@ -727,6 +914,13 @@ TextureImporter:
         - {x: 14.5, y: -5}
         - {x: 3.5, y: 14}
       tessellationDetail: 0
+      bones: []
+      spriteID: e3305410000000000800000000000000
+      internalID: 21300030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: button_mouse_right_click
       rect:
@@ -754,6 +948,13 @@ TextureImporter:
         - {x: 30.5, y: 9.5}
         - {x: 29.5, y: 24.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: 04305410000000000800000000000000
+      internalID: 21300032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: controller_button_skins_0004_ps4_L2
       rect:
@@ -803,6 +1004,13 @@ TextureImporter:
         - {x: 13, y: -13}
         - {x: 15, y: -14}
       tessellationDetail: 0
+      bones: []
+      spriteID: 24305410000000000800000000000000
+      internalID: 21300034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: controller_button_skins_0017_xbone_LT
       rect:
@@ -849,6 +1057,13 @@ TextureImporter:
         - {x: 0, y: 18}
         - {x: 1, y: 18}
       tessellationDetail: 0
+      bones: []
+      spriteID: 44305410000000000800000000000000
+      internalID: 21300036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: PS4_button_skins_x
       rect:
@@ -885,6 +1100,13 @@ TextureImporter:
         - {x: 1.5, y: 2}
         - {x: -14.5, y: -16}
       tessellationDetail: 0
+      bones: []
+      spriteID: 64305410000000000800000000000000
+      internalID: 21300038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: controller_button_skins_0028_Arrow_Down
       rect:
@@ -911,6 +1133,13 @@ TextureImporter:
         - {x: 24.5, y: 21}
         - {x: 15.5, y: 39}
       tessellationDetail: 0
+      bones: []
+      spriteID: 84305410000000000800000000000000
+      internalID: 21300040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: controller_button_skins_0015_xbone_view
       rect:
@@ -963,6 +1192,13 @@ TextureImporter:
         - {x: -18.5, y: -7}
         - {x: -12.5, y: -6}
       tessellationDetail: 0
+      bones: []
+      spriteID: a4305410000000000800000000000000
+      internalID: 21300042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: controller_button_skins_0022_Y
       rect:
@@ -1008,6 +1244,13 @@ TextureImporter:
         - {x: 0.5, y: 1}
         - {x: 0.5, y: -20}
       tessellationDetail: 0
+      bones: []
+      spriteID: c4305410000000000800000000000000
+      internalID: 21300044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: controller_button_skins_0003_ps4_R2
       rect:
@@ -1076,6 +1319,13 @@ TextureImporter:
         - {x: 29, y: -18}
         - {x: 13, y: -18}
       tessellationDetail: 0
+      bones: []
+      spriteID: e4305410000000000800000000000000
+      internalID: 21300046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: button_skin_0004_square_arrow_u
       rect:
@@ -1112,6 +1362,13 @@ TextureImporter:
         - {x: 21.5, y: -5.5}
         - {x: 2.5, y: 30.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: 05305410000000000800000000000000
+      internalID: 21300048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: controller_button_skins_0019_xbone_LB
       rect:
@@ -1165,6 +1422,13 @@ TextureImporter:
         - {x: 22, y: -20}
         - {x: 23, y: -21}
       tessellationDetail: 0
+      bones: []
+      spriteID: 25305410000000000800000000000000
+      internalID: 21300050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: controller_button_skins_0023_X
       rect:
@@ -1221,6 +1485,13 @@ TextureImporter:
         - {x: -16.5, y: -22}
         - {x: -15.5, y: -22}
       tessellationDetail: 0
+      bones: []
+      spriteID: 45305410000000000800000000000000
+      internalID: 21300052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: controller_button_skins_0000_ps4_share
       rect:
@@ -1275,6 +1546,13 @@ TextureImporter:
         - {x: -16.5, y: 59}
         - {x: -16.5, y: 58}
       tessellationDetail: 0
+      bones: []
+      spriteID: 65305410000000000800000000000000
+      internalID: 21300054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: controller_button_skins_0020_B
       rect:
@@ -1334,6 +1612,13 @@ TextureImporter:
         - {x: 4.5, y: -22}
         - {x: 5.5, y: -23}
       tessellationDetail: 0
+      bones: []
+      spriteID: 85305410000000000800000000000000
+      internalID: 21300056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: controller_button_skins_0018_xbone_RB
       rect:
@@ -1402,6 +1687,13 @@ TextureImporter:
         - {x: 25, y: -20}
         - {x: 26, y: -21}
       tessellationDetail: 0
+      bones: []
+      spriteID: a5305410000000000800000000000000
+      internalID: 21300058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: controller_button_skins_0016_xbone_RT
       rect:
@@ -1463,6 +1755,13 @@ TextureImporter:
         - {x: 3, y: 18}
         - {x: 4, y: 18}
       tessellationDetail: 0
+      bones: []
+      spriteID: c5305410000000000800000000000000
+      internalID: 21300060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: controller_button_skins_0025_Arrow_Forward
       rect:
@@ -1490,6 +1789,13 @@ TextureImporter:
         - {x: 42, y: -1.5}
         - {x: 42, y: 4.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: e5305410000000000800000000000000
+      internalID: 21300062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: button_skin_0004_square_key
       rect:
@@ -1516,6 +1822,13 @@ TextureImporter:
         - {x: 40.5, y: 33.5}
         - {x: -32.5, y: -40.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: 06305410000000000800000000000000
+      internalID: 21300064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: controller_button_skins_0014_xbone_menu
       rect:
@@ -1546,6 +1859,13 @@ TextureImporter:
         - {x: 39.5, y: -12}
         - {x: 39.5, y: 11}
       tessellationDetail: 0
+      bones: []
+      spriteID: 26305410000000000800000000000000
+      internalID: 21300066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: controller_button_skins_0002_ps4_R1
       rect:
@@ -1598,6 +1918,13 @@ TextureImporter:
         - {x: 23, y: 19}
         - {x: 22, y: -18}
       tessellationDetail: 0
+      bones: []
+      spriteID: 46305410000000000800000000000000
+      internalID: 21300068
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: button_mouse_left_click
       rect:
@@ -1627,6 +1954,13 @@ TextureImporter:
         - {x: 28.5, y: -53.5}
         - {x: 30.5, y: -51.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: 66305410000000000800000000000000
+      internalID: 21300070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: controller_button_skins_0024_plus_UI_symbol
       rect:
@@ -1654,9 +1988,26 @@ TextureImporter:
         - {x: 20, y: 12}
         - {x: 13, y: 22}
       tessellationDetail: 0
+      bones: []
+      spriteID: 86305410000000000800000000000000
+      internalID: 21300072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
-  spritePackingTag:
-  userData:
-  assetBundleName:
-  assetBundleVariant:
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

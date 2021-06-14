@@ -1,12 +1,12 @@
 fileFormatVersion: 2
 guid: 809e35f3ca6b3b44db40c41279756b3d
-timeCreated: 1602781472
-licenseType: Free
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: whitesplash_04
+  internalIDToNameTable:
+  - first:
+      213: 21300000
+    second: whitesplash_04
   externalObjects: {}
-  serializedVersion: 4
+  serializedVersion: 11
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -24,6 +24,9 @@ TextureImporter:
     heightScale: 0.25
     normalMapFilter: 0
   isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -54,11 +57,17 @@ TextureImporter:
   spriteTessellationDetail: -1
   textureType: 8
   textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 1
   platformSettings:
-  - buildTarget: DefaultTexturePlatform
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -68,6 +77,7 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -94,7 +104,7 @@ TextureImporter:
         - {x: 9.481314, y: 25}
         - {x: 19.48131, y: 25}
         - {x: 20.48131, y: 19}
-        - {x: 20.48131, y: 1.907349E-06}
+        - {x: 20.48131, y: 0.000001907349}
         - {x: 17.48131, y: -8.999998}
         - {x: 4.481314, y: -25}
         - {x: -6.518686, y: -25}
@@ -130,9 +140,26 @@ TextureImporter:
         - {x: 15.48131, y: 16}
         - {x: 15.48131, y: 21}
       tessellationDetail: 0
+      bones: []
+      spriteID: 02305410000000000800000000000000
+      internalID: 21300000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
-  spritePackingTag:
-  userData:
-  assetBundleName:
-  assetBundleVariant:
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

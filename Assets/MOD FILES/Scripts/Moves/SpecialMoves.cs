@@ -242,18 +242,18 @@ public class SpecialMoves : CorruptedKinMove
 
 	IEnumerator<SpecialMoveType> MoveGenerator;
 	int moveBatchCount = 3;
-	float oldRecoil;
+	//float oldRecoil;
 	float previousGlowAmount;
-	WeaverCore.Components.Recoil recoiler;
+	WeaverCore.Components.Recoiler recoiler;
 
 	public override IEnumerator DoMove()
 	{
 		previousGlowAmount = Kin.GlowAmount;
 		if (recoiler == null)
 		{
-			recoiler = GetComponent<WeaverCore.Components.Recoil>();
+			recoiler = GetComponent<Recoiler>();
 		}
-		oldRecoil = recoiler.GetRecoilSpeed();
+		//oldRecoil = recoiler.GetRecoilSpeed();
 		var previousParasiteState = Kin.DoParasiteSpawning;
 		Kin.DoParasiteSpawning = false;
 		Kin.GuaranteedNextMove = null;
@@ -587,7 +587,8 @@ public class SpecialMoves : CorruptedKinMove
 			//yield return new WaitUntil(() => transform.position.y <= Kin.FloorY + (burrowSlamVelocity * Time.fixedDeltaTime));
 			Kin.Collider.enabled = false;
 			Kin.HealthManager.Invincible = true;
-			recoiler.SetRecoilSpeed(oldRecoil);
+			recoiler.ResetRecoilSpeed();
+			//recoiler.SetRecoilSpeed(oldRecoil);
 			while (transform.position.y > burrowHeight + Kin.FloorY)
 			{
 				transform.SetYPosition(transform.GetYPosition() + (verticalVelocity * Time.deltaTime));
@@ -644,7 +645,8 @@ public class SpecialMoves : CorruptedKinMove
 		Animator.PlaybackSpeed = 1f;
 		Kin.Collider.enabled = true;
 		Kin.Rigidbody.isKinematic = false;
-		recoiler.SetRecoilSpeed(oldRecoil);
+		//recoiler.SetRecoilSpeed(oldRecoil);
+		recoiler.ResetRecoilSpeed();
 		Kin.LimitXPosition = true;
 		if (burrowWave != null)
 		{

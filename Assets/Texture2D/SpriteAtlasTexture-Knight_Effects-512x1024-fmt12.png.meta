@@ -1,18 +1,30 @@
 fileFormatVersion: 2
 guid: 46e1db16d34a8704dbd21e817328b990
-timeCreated: 1602781460
-licenseType: Free
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: low_health_hit0000
-    21300002: low_health_hit0006
-    21300004: low_health_hit0005
-    21300006: low_health_hit0003
-    21300008: low_health_hit0001
-    21300010: low_health_hit0002
-    21300012: low_health_hit0004
+  internalIDToNameTable:
+  - first:
+      213: 21300000
+    second: low_health_hit0000
+  - first:
+      213: 21300002
+    second: low_health_hit0006
+  - first:
+      213: 21300004
+    second: low_health_hit0005
+  - first:
+      213: 21300006
+    second: low_health_hit0003
+  - first:
+      213: 21300008
+    second: low_health_hit0001
+  - first:
+      213: 21300010
+    second: low_health_hit0002
+  - first:
+      213: 21300012
+    second: low_health_hit0004
   externalObjects: {}
-  serializedVersion: 4
+  serializedVersion: 11
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -30,6 +42,9 @@ TextureImporter:
     heightScale: 0.25
     normalMapFilter: 0
   isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -60,11 +75,17 @@ TextureImporter:
   spriteTessellationDetail: -1
   textureType: 8
   textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 1
   platformSettings:
-  - buildTarget: DefaultTexturePlatform
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -74,6 +95,7 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -118,6 +140,13 @@ TextureImporter:
         - {x: 27.5, y: -21.23595}
         - {x: 27.5, y: 6.76405}
       tessellationDetail: 0
+      bones: []
+      spriteID: 02305410000000000800000000000000
+      internalID: 21300000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: low_health_hit0006
       rect:
@@ -142,6 +171,13 @@ TextureImporter:
         - {x: -35.5, y: -62.5}
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 22305410000000000800000000000000
+      internalID: 21300002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: low_health_hit0005
       rect:
@@ -238,6 +274,13 @@ TextureImporter:
         - {x: -56.49999, y: 23.73936}
         - {x: -52.49999, y: 30.73936}
       tessellationDetail: 0
+      bones: []
+      spriteID: 42305410000000000800000000000000
+      internalID: 21300004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: low_health_hit0003
       rect:
@@ -361,6 +404,13 @@ TextureImporter:
         - {x: 30.00001, y: 38.24792}
         - {x: 18.00001, y: 24.24792}
       tessellationDetail: 0
+      bones: []
+      spriteID: 62305410000000000800000000000000
+      internalID: 21300006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: low_health_hit0001
       rect:
@@ -432,6 +482,13 @@ TextureImporter:
         - {x: 4.978546, y: 4.72599}
         - {x: 2.978546, y: 0.7259903}
       tessellationDetail: 0
+      bones: []
+      spriteID: 82305410000000000800000000000000
+      internalID: 21300008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: low_health_hit0002
       rect:
@@ -496,6 +553,13 @@ TextureImporter:
         - {x: -42.46839, y: 3.803329}
         - {x: -46.46839, y: 6.803329}
       tessellationDetail: 0
+      bones: []
+      spriteID: a2305410000000000800000000000000
+      internalID: 21300010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: low_health_hit0004
       rect:
@@ -634,9 +698,26 @@ TextureImporter:
         - {x: 1.000008, y: -69.73799}
         - {x: 2.000008, y: -69.73799}
       tessellationDetail: 0
+      bones: []
+      spriteID: c2305410000000000800000000000000
+      internalID: 21300012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
-  spritePackingTag:
-  userData:
-  assetBundleName:
-  assetBundleVariant:
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

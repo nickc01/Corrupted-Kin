@@ -77,7 +77,7 @@ public class ShakeMove : CorruptedKinMove
 	int _chanceCounter = -1;
 	AudioPlayer shakeSound;
 
-	float previousRecoilSpeed = 0f;
+	//float previousRecoilSpeed = 0f;
 
 	bool _moveEnabled = false;
 	public override bool MoveEnabled
@@ -113,11 +113,11 @@ public class ShakeMove : CorruptedKinMove
 	public override IEnumerator DoMove()
 	{
 		Kin.DoParasiteSpawning = false;
-		var recoiler = GetComponent<WeaverCore.Components.Recoil>();
+		var recoiler = GetComponent<Recoiler>();
 		var jumpMove = GetComponent<JumpMove>();
 		//var dashMove = GetComponent<DashSlashMove>();
 
-		previousRecoilSpeed = recoiler.GetRecoilSpeed();
+		//previousRecoilSpeed = recoiler.GetRecoilSpeed();
 		recoiler.SetRecoilSpeed(0f);
 
 		var playerPosBefore = Player.Player1.transform.position.x;
@@ -213,7 +213,8 @@ public class ShakeMove : CorruptedKinMove
 		//yield return new WaitForSeconds();
 		Animator.PlaybackSpeed = 1f;
 		Animator.PlayAnimation("Shake End");
-		recoiler.SetRecoilSpeed(previousRecoilSpeed);
+		//recoiler.SetRecoilSpeed(previousRecoilSpeed);
+		recoiler.ResetRecoilSpeed();
 		Kin.DoParasiteSpawning = true;
 		shakeSound.Delete();
 		ShakeGas.Stop();
@@ -420,7 +421,8 @@ public class ShakeMove : CorruptedKinMove
 	public override void OnStun()
 	{
 		Animator.PlaybackSpeed = 1f;
-		GetComponent<Recoil>().SetRecoilSpeed(previousRecoilSpeed);
+		//GetComponent<Recoiler>().SetRecoilSpeed(previousRecoilSpeed);
+		GetComponent<Recoiler>().ResetRecoilSpeed();
 		GetComponent<JumpMove>().OnStun();
 		if (Kin.BossStage == 2 || Kin.BossStage >= 4)
 		{

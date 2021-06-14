@@ -1,135 +1,381 @@
 fileFormatVersion: 2
 guid: 64bab8be328570b42920826c13d93b61
-timeCreated: 1602781463
-licenseType: Free
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: charm_fluke
-    21300002: menu_backboard
-    21300004: overcharm_backboard
-    21300006: _0002_charm_glass_attack_up_broken
-    21300008: Inv_Empty
-    21300010: _0007_charm_blue_health_large
-    21300012: charm_grimm_markoth_shield
-    21300014: charm_hive
-    21300016: _0004_charm_charge_time_up
-    21300018: Grimm_charm_flame_front
-    21300020: _0002_charm_glass_attack_up_full
-    21300022: inv_item__0010_Kings_idol
-    21300024: inv_item__0004_quill
-    21300026: charm_grub_blade
-    21300028: charm_grub_mid
-    21300030: _0002_charm_glass_heal_full
-    21300032: _0003_charm_glass_geo_broken
-    21300034: charm_white_left
-    21300036: charm_slug
-    21300038: Inv_0024_spell_scream_01_level2
-    21300040: _0005_charm_fury
-    21300042: Inv_0025_spell_fireball_01_level2
-    21300044: _0011_charm_generic_03
-    21300046: nail_upgrade_0000_pure-nail
-    21300048: _0003_charm_glass_geo
-    21300050: Inv_0026_spell_quake_01_level2
-    21300052: charm_sprite_03
-    21300054: inv_item__0001_tram_pass
-    21300056: Inv_0026_spell_quake_01
-    21300058: charm_grimm_sprint_master
-    21300060: charm_grimm_silkweaver
-    21300062: inv_item__0011_arcane-egg
-    21300064: inv_item__0012_hallownest-seal
-    21300066: charm_grimmkin_05
-    21300068: _0002_charm_glass_heal_broken
-    21300070: Grimm_charm_flame_backboard
-    21300072: _0001_charm_more_soul
-    21300074: Inv_0028_spell_ring
-    21300076: charm_black
-    21300078: Inv_0029_spell_core
-    21300080: charm_UI__0000_charm_cost_02_lit
-    21300082: charm_grimmkin_03
-    21300084: inv_Waterways_Key
-    21300086: Inv_0033_inv_nail_01
-    21300088: nail_upgrade_0002_sharpened_nail
-    21300090: inv_Love_Key
-    21300092: Inv_0021_inv_dash_strike_skill
-    21300094: _0003_charm_glass_geo_full
-    21300096: new_item_orb
-    21300098: charm_grimmkin_01
-    21300100: Inv_0023_inv_whirlwind_skill
-    21300102: _0002_charm_glass_heal
-    21300104: char_mantis
-    21300106: charm_soul_up_large
-    21300108: Lumafly_Lantern0000
-    21300110: charm_UI__0001_charm_cost_02_unlit
-    21300112: scrollbar_single
-    21300114: charm_white_right
-    21300116: _0008_charm_nail_damage_up
-    21300118: _0006_charm_stalwart_shell
-    21300120: inv_item__0009_ore
-    21300122: items__0001_acid-armour
-    21300124: Inv_0022_inv_uppercut_skill
-    21300126: Inv_0032_inv_soul_backboard
-    21300128: ghost_symbol
-    21300130: dream_nail_0000_4
-    21300132: items__0003_mantis-claw
-    21300134: inv_dream_charm
-    21300136: dream_nail_0003_1
-    21300138: charm_dung_def
-    21300140: _0000_charm_thorn_counter
-    21300142: hunter_symbol
-    21300144: Inv_0017_divider
-    21300146: charm_shade_impact
-    21300148: charm_sprite_02
-    21300150: glass_charm_shattered_UI
-    21300152: InventoryCoin
-    21300154: Inv_0030_inv_health_backboard
-    21300156: _0002_charm_glass_attack_up
-    21300158: nail_upgrade_0001_channel-nail
-    21300160: inv_item__0002_storeroom_key
-    21300162: charm_blocker
-    21300164: charm_grimmkin_02
-    21300166: charm_magic_cost_down
-    21300168: nail_upgrade_03_coil_nail
-    21300170: items__0000_crystal-heart
-    21300172: _0005_charm_fast_focus
-    21300174: items__0002_emperor-wings
-    21300176: Menu_Border_Black
-    21300178: _0003_charm_nail_slash_speed_up
-    21300180: charm_blue_health_convert
-    21300182: items__0004_shade_cloak
-    21300184: _0007_charm_greed
-    21300186: charm_white_full
-    21300188: charm_cost
-    21300190: Inv_0014_selection_cursor
-    21300192: _0009_charm_Hatchling
-    21300194: map_arrow
-    21300196: inv_item_city_key
-    21300198: Inv_charge_slashes_backboard
-    21300200: trinket_backboard
-    21300202: scrollbar_fleur_new
-    21300204: _0002_charm_spell_damage_up
-    21300206: Inv_0027_spell_slot
-    21300208: charm_fungus
-    21300210: inv_item__0008_jar_col_map
-    21300212: inv_item__0013_wanderers-journal
-    21300214: _0006_charm_no_recoil
-    21300216: charm_crystal
-    21300218: _0010_charm_bluehealth
-    21300220: Inv_0025_spell_fireball_01
-    21300222: inv_white_brand
-    21300224: charm_grimmkin_04
-    21300226: Inv_0024_spell_scream_01
-    21300228: Elegant_Key
-    21300230: inv_item__00014_graveyard_key
-    21300232: grimm_symbol
-    21300234: Inv_0015_dash-cloak
-    21300236: charm_backboard
-    21300238: No_Map_symbol
-    21300240: charm_grimmkin_01_upgrade
-    21300242: inv_item__0005_mender_key
-    21300244: Charm_Notch
-    21300246: inv_item__0006_area_map
+  internalIDToNameTable:
+  - first:
+      213: 21300000
+    second: charm_fluke
+  - first:
+      213: 21300002
+    second: menu_backboard
+  - first:
+      213: 21300004
+    second: overcharm_backboard
+  - first:
+      213: 21300006
+    second: _0002_charm_glass_attack_up_broken
+  - first:
+      213: 21300008
+    second: Inv_Empty
+  - first:
+      213: 21300010
+    second: _0007_charm_blue_health_large
+  - first:
+      213: 21300012
+    second: charm_grimm_markoth_shield
+  - first:
+      213: 21300014
+    second: charm_hive
+  - first:
+      213: 21300016
+    second: _0004_charm_charge_time_up
+  - first:
+      213: 21300018
+    second: Grimm_charm_flame_front
+  - first:
+      213: 21300020
+    second: _0002_charm_glass_attack_up_full
+  - first:
+      213: 21300022
+    second: inv_item__0010_Kings_idol
+  - first:
+      213: 21300024
+    second: inv_item__0004_quill
+  - first:
+      213: 21300026
+    second: charm_grub_blade
+  - first:
+      213: 21300028
+    second: charm_grub_mid
+  - first:
+      213: 21300030
+    second: _0002_charm_glass_heal_full
+  - first:
+      213: 21300032
+    second: _0003_charm_glass_geo_broken
+  - first:
+      213: 21300034
+    second: charm_white_left
+  - first:
+      213: 21300036
+    second: charm_slug
+  - first:
+      213: 21300038
+    second: Inv_0024_spell_scream_01_level2
+  - first:
+      213: 21300040
+    second: _0005_charm_fury
+  - first:
+      213: 21300042
+    second: Inv_0025_spell_fireball_01_level2
+  - first:
+      213: 21300044
+    second: _0011_charm_generic_03
+  - first:
+      213: 21300046
+    second: nail_upgrade_0000_pure-nail
+  - first:
+      213: 21300048
+    second: _0003_charm_glass_geo
+  - first:
+      213: 21300050
+    second: Inv_0026_spell_quake_01_level2
+  - first:
+      213: 21300052
+    second: charm_sprite_03
+  - first:
+      213: 21300054
+    second: inv_item__0001_tram_pass
+  - first:
+      213: 21300056
+    second: Inv_0026_spell_quake_01
+  - first:
+      213: 21300058
+    second: charm_grimm_sprint_master
+  - first:
+      213: 21300060
+    second: charm_grimm_silkweaver
+  - first:
+      213: 21300062
+    second: inv_item__0011_arcane-egg
+  - first:
+      213: 21300064
+    second: inv_item__0012_hallownest-seal
+  - first:
+      213: 21300066
+    second: charm_grimmkin_05
+  - first:
+      213: 21300068
+    second: _0002_charm_glass_heal_broken
+  - first:
+      213: 21300070
+    second: Grimm_charm_flame_backboard
+  - first:
+      213: 21300072
+    second: _0001_charm_more_soul
+  - first:
+      213: 21300074
+    second: Inv_0028_spell_ring
+  - first:
+      213: 21300076
+    second: charm_black
+  - first:
+      213: 21300078
+    second: Inv_0029_spell_core
+  - first:
+      213: 21300080
+    second: charm_UI__0000_charm_cost_02_lit
+  - first:
+      213: 21300082
+    second: charm_grimmkin_03
+  - first:
+      213: 21300084
+    second: inv_Waterways_Key
+  - first:
+      213: 21300086
+    second: Inv_0033_inv_nail_01
+  - first:
+      213: 21300088
+    second: nail_upgrade_0002_sharpened_nail
+  - first:
+      213: 21300090
+    second: inv_Love_Key
+  - first:
+      213: 21300092
+    second: Inv_0021_inv_dash_strike_skill
+  - first:
+      213: 21300094
+    second: _0003_charm_glass_geo_full
+  - first:
+      213: 21300096
+    second: new_item_orb
+  - first:
+      213: 21300098
+    second: charm_grimmkin_01
+  - first:
+      213: 21300100
+    second: Inv_0023_inv_whirlwind_skill
+  - first:
+      213: 21300102
+    second: _0002_charm_glass_heal
+  - first:
+      213: 21300104
+    second: char_mantis
+  - first:
+      213: 21300106
+    second: charm_soul_up_large
+  - first:
+      213: 21300108
+    second: Lumafly_Lantern0000
+  - first:
+      213: 21300110
+    second: charm_UI__0001_charm_cost_02_unlit
+  - first:
+      213: 21300112
+    second: scrollbar_single
+  - first:
+      213: 21300114
+    second: charm_white_right
+  - first:
+      213: 21300116
+    second: _0008_charm_nail_damage_up
+  - first:
+      213: 21300118
+    second: _0006_charm_stalwart_shell
+  - first:
+      213: 21300120
+    second: inv_item__0009_ore
+  - first:
+      213: 21300122
+    second: items__0001_acid-armour
+  - first:
+      213: 21300124
+    second: Inv_0022_inv_uppercut_skill
+  - first:
+      213: 21300126
+    second: Inv_0032_inv_soul_backboard
+  - first:
+      213: 21300128
+    second: ghost_symbol
+  - first:
+      213: 21300130
+    second: dream_nail_0000_4
+  - first:
+      213: 21300132
+    second: items__0003_mantis-claw
+  - first:
+      213: 21300134
+    second: inv_dream_charm
+  - first:
+      213: 21300136
+    second: dream_nail_0003_1
+  - first:
+      213: 21300138
+    second: charm_dung_def
+  - first:
+      213: 21300140
+    second: _0000_charm_thorn_counter
+  - first:
+      213: 21300142
+    second: hunter_symbol
+  - first:
+      213: 21300144
+    second: Inv_0017_divider
+  - first:
+      213: 21300146
+    second: charm_shade_impact
+  - first:
+      213: 21300148
+    second: charm_sprite_02
+  - first:
+      213: 21300150
+    second: glass_charm_shattered_UI
+  - first:
+      213: 21300152
+    second: InventoryCoin
+  - first:
+      213: 21300154
+    second: Inv_0030_inv_health_backboard
+  - first:
+      213: 21300156
+    second: _0002_charm_glass_attack_up
+  - first:
+      213: 21300158
+    second: nail_upgrade_0001_channel-nail
+  - first:
+      213: 21300160
+    second: inv_item__0002_storeroom_key
+  - first:
+      213: 21300162
+    second: charm_blocker
+  - first:
+      213: 21300164
+    second: charm_grimmkin_02
+  - first:
+      213: 21300166
+    second: charm_magic_cost_down
+  - first:
+      213: 21300168
+    second: nail_upgrade_03_coil_nail
+  - first:
+      213: 21300170
+    second: items__0000_crystal-heart
+  - first:
+      213: 21300172
+    second: _0005_charm_fast_focus
+  - first:
+      213: 21300174
+    second: items__0002_emperor-wings
+  - first:
+      213: 21300176
+    second: Menu_Border_Black
+  - first:
+      213: 21300178
+    second: _0003_charm_nail_slash_speed_up
+  - first:
+      213: 21300180
+    second: charm_blue_health_convert
+  - first:
+      213: 21300182
+    second: items__0004_shade_cloak
+  - first:
+      213: 21300184
+    second: _0007_charm_greed
+  - first:
+      213: 21300186
+    second: charm_white_full
+  - first:
+      213: 21300188
+    second: charm_cost
+  - first:
+      213: 21300190
+    second: Inv_0014_selection_cursor
+  - first:
+      213: 21300192
+    second: _0009_charm_Hatchling
+  - first:
+      213: 21300194
+    second: map_arrow
+  - first:
+      213: 21300196
+    second: inv_item_city_key
+  - first:
+      213: 21300198
+    second: Inv_charge_slashes_backboard
+  - first:
+      213: 21300200
+    second: trinket_backboard
+  - first:
+      213: 21300202
+    second: scrollbar_fleur_new
+  - first:
+      213: 21300204
+    second: _0002_charm_spell_damage_up
+  - first:
+      213: 21300206
+    second: Inv_0027_spell_slot
+  - first:
+      213: 21300208
+    second: charm_fungus
+  - first:
+      213: 21300210
+    second: inv_item__0008_jar_col_map
+  - first:
+      213: 21300212
+    second: inv_item__0013_wanderers-journal
+  - first:
+      213: 21300214
+    second: _0006_charm_no_recoil
+  - first:
+      213: 21300216
+    second: charm_crystal
+  - first:
+      213: 21300218
+    second: _0010_charm_bluehealth
+  - first:
+      213: 21300220
+    second: Inv_0025_spell_fireball_01
+  - first:
+      213: 21300222
+    second: inv_white_brand
+  - first:
+      213: 21300224
+    second: charm_grimmkin_04
+  - first:
+      213: 21300226
+    second: Inv_0024_spell_scream_01
+  - first:
+      213: 21300228
+    second: Elegant_Key
+  - first:
+      213: 21300230
+    second: inv_item__00014_graveyard_key
+  - first:
+      213: 21300232
+    second: grimm_symbol
+  - first:
+      213: 21300234
+    second: Inv_0015_dash-cloak
+  - first:
+      213: 21300236
+    second: charm_backboard
+  - first:
+      213: 21300238
+    second: No_Map_symbol
+  - first:
+      213: 21300240
+    second: charm_grimmkin_01_upgrade
+  - first:
+      213: 21300242
+    second: inv_item__0005_mender_key
+  - first:
+      213: 21300244
+    second: Charm_Notch
+  - first:
+      213: 21300246
+    second: inv_item__0006_area_map
   externalObjects: {}
-  serializedVersion: 4
+  serializedVersion: 11
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -147,6 +393,9 @@ TextureImporter:
     heightScale: 0.25
     normalMapFilter: 0
   isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -177,11 +426,17 @@ TextureImporter:
   spriteTessellationDetail: -1
   textureType: 8
   textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 1
   platformSettings:
-  - buildTarget: DefaultTexturePlatform
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -191,6 +446,7 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -246,6 +502,13 @@ TextureImporter:
         - {x: 0.9866254, y: 6.521454}
         - {x: 1.986626, y: -4.478546}
       tessellationDetail: 0
+      bones: []
+      spriteID: 02305410000000000800000000000000
+      internalID: 21300000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: menu_backboard
       rect:
@@ -268,6 +531,13 @@ TextureImporter:
         - {x: 5, y: -5}
         - {x: 5, y: 5}
       tessellationDetail: 0
+      bones: []
+      spriteID: 22305410000000000800000000000000
+      internalID: 21300002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: overcharm_backboard
       rect:
@@ -592,6 +862,13 @@ TextureImporter:
         - {x: 66.99905, y: 40.50001}
         - {x: 64.99905, y: 38.50001}
       tessellationDetail: 0
+      bones: []
+      spriteID: 42305410000000000800000000000000
+      internalID: 21300004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: _0002_charm_glass_attack_up_broken
       rect:
@@ -669,6 +946,13 @@ TextureImporter:
         - {x: 34, y: 52}
         - {x: 34, y: 58}
       tessellationDetail: 0
+      bones: []
+      spriteID: 62305410000000000800000000000000
+      internalID: 21300006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Inv_Empty
       rect:
@@ -687,6 +971,13 @@ TextureImporter:
         - {x: 0.5, y: -0.5}
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 82305410000000000800000000000000
+      internalID: 21300008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: _0007_charm_blue_health_large
       rect:
@@ -732,6 +1023,13 @@ TextureImporter:
         - {x: 47, y: -54}
         - {x: 54, y: -45}
       tessellationDetail: 0
+      bones: []
+      spriteID: a2305410000000000800000000000000
+      internalID: 21300010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: charm_grimm_markoth_shield
       rect:
@@ -796,6 +1094,13 @@ TextureImporter:
         - {x: 30.02469, y: -64.5}
         - {x: 40.02469, y: -54.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: c2305410000000000800000000000000
+      internalID: 21300012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: charm_hive
       rect:
@@ -843,6 +1148,13 @@ TextureImporter:
         - {x: 40.5, y: -49.5}
         - {x: 53.5, y: -40.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: e2305410000000000800000000000000
+      internalID: 21300014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: _0004_charm_charge_time_up
       rect:
@@ -903,6 +1215,13 @@ TextureImporter:
         - {x: 55.5, y: -38.5}
         - {x: 63.5, y: -25.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: 03305410000000000800000000000000
+      internalID: 21300016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Grimm_charm_flame_front
       rect:
@@ -941,6 +1260,13 @@ TextureImporter:
         - {x: 22.46194, y: 1.5}
         - {x: 17.46194, y: 15.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: 23305410000000000800000000000000
+      internalID: 21300018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: _0002_charm_glass_attack_up_full
       rect:
@@ -988,6 +1314,13 @@ TextureImporter:
         - {x: 57.5, y: -32.97434}
         - {x: 62.5, y: -20.97434}
       tessellationDetail: 0
+      bones: []
+      spriteID: 43305410000000000800000000000000
+      internalID: 21300020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: inv_item__0010_Kings_idol
       rect:
@@ -1056,6 +1389,13 @@ TextureImporter:
         - {x: -12, y: 40}
         - {x: -12, y: 41}
       tessellationDetail: 0
+      bones: []
+      spriteID: 63305410000000000800000000000000
+      internalID: 21300022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: inv_item__0004_quill
       rect:
@@ -1098,6 +1438,13 @@ TextureImporter:
         - {x: 55, y: 2.5}
         - {x: 54, y: 4.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: 83305410000000000800000000000000
+      internalID: 21300024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: charm_grub_blade
       rect:
@@ -1141,6 +1488,13 @@ TextureImporter:
         - {x: 50, y: -42}
         - {x: 63, y: -26}
       tessellationDetail: 0
+      bones: []
+      spriteID: a3305410000000000800000000000000
+      internalID: 21300026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: charm_grub_mid
       rect:
@@ -1187,6 +1541,13 @@ TextureImporter:
         - {x: 49, y: -45.5}
         - {x: 58, y: -27.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: c3305410000000000800000000000000
+      internalID: 21300028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: _0002_charm_glass_heal_full
       rect:
@@ -1232,6 +1593,13 @@ TextureImporter:
         - {x: 31.5, y: -59}
         - {x: 43.5, y: -48}
       tessellationDetail: 0
+      bones: []
+      spriteID: e3305410000000000800000000000000
+      internalID: 21300030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: _0003_charm_glass_geo_broken
       rect:
@@ -1319,6 +1687,13 @@ TextureImporter:
         - {x: 37.5, y: 51.5}
         - {x: 37.5, y: 57.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: 04305410000000000800000000000000
+      internalID: 21300032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: charm_white_left
       rect:
@@ -1366,6 +1741,13 @@ TextureImporter:
         - {x: 27.98074, y: -13.03806}
         - {x: 32.98074, y: -8.038055}
       tessellationDetail: 0
+      bones: []
+      spriteID: 24305410000000000800000000000000
+      internalID: 21300034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: charm_slug
       rect:
@@ -1410,6 +1792,13 @@ TextureImporter:
         - {x: 39.00001, y: -52.99999}
         - {x: 57.00001, y: -34.99999}
       tessellationDetail: 0
+      bones: []
+      spriteID: 44305410000000000800000000000000
+      internalID: 21300036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Inv_0024_spell_scream_01_level2
       rect:
@@ -1466,6 +1855,13 @@ TextureImporter:
         - {x: -19.5, y: -21.5}
         - {x: -17.5, y: -25.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: 64305410000000000800000000000000
+      internalID: 21300038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: _0005_charm_fury
       rect:
@@ -1531,6 +1927,13 @@ TextureImporter:
         - {x: 35.48341, y: -61.53805}
         - {x: 58.48341, y: -36.53806}
       tessellationDetail: 0
+      bones: []
+      spriteID: 84305410000000000800000000000000
+      internalID: 21300040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Inv_0025_spell_fireball_01_level2
       rect:
@@ -1573,6 +1976,13 @@ TextureImporter:
         - {x: 39.5, y: -27}
         - {x: 46.5, y: -20}
       tessellationDetail: 0
+      bones: []
+      spriteID: a4305410000000000800000000000000
+      internalID: 21300042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: _0011_charm_generic_03
       rect:
@@ -1622,6 +2032,13 @@ TextureImporter:
         - {x: 37.00001, y: -56.49999}
         - {x: 56.00001, y: -37.49999}
       tessellationDetail: 0
+      bones: []
+      spriteID: c4305410000000000800000000000000
+      internalID: 21300044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: nail_upgrade_0000_pure-nail
       rect:
@@ -1705,6 +2122,13 @@ TextureImporter:
         - {x: 3.499996, y: -195.5381}
         - {x: 5.499996, y: -182.5381}
       tessellationDetail: 0
+      bones: []
+      spriteID: e4305410000000000800000000000000
+      internalID: 21300046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: _0003_charm_glass_geo
       rect:
@@ -1781,6 +2205,13 @@ TextureImporter:
         - {x: 19.46194, y: 21.47532}
         - {x: 23.46194, y: 20.47532}
       tessellationDetail: 0
+      bones: []
+      spriteID: 05305410000000000800000000000000
+      internalID: 21300048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Inv_0026_spell_quake_01_level2
       rect:
@@ -1828,6 +2259,13 @@ TextureImporter:
         - {x: 43.5, y: -17.5}
         - {x: 46.5, y: -9.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: 25305410000000000800000000000000
+      internalID: 21300050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: charm_sprite_03
       rect:
@@ -1872,6 +2310,13 @@ TextureImporter:
         - {x: 60.5, y: -25}
         - {x: 60.5, y: 22}
       tessellationDetail: 0
+      bones: []
+      spriteID: 45305410000000000800000000000000
+      internalID: 21300052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: inv_item__0001_tram_pass
       rect:
@@ -1923,6 +2368,13 @@ TextureImporter:
         - {x: 13, y: -15}
         - {x: 13, y: -14}
       tessellationDetail: 0
+      bones: []
+      spriteID: 65305410000000000800000000000000
+      internalID: 21300054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Inv_0026_spell_quake_01
       rect:
@@ -1970,6 +2422,13 @@ TextureImporter:
         - {x: 43.5, y: -17.5}
         - {x: 46.5, y: -9.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: 85305410000000000800000000000000
+      internalID: 21300056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: charm_grimm_sprint_master
       rect:
@@ -2020,6 +2479,13 @@ TextureImporter:
         - {x: 45.98772, y: -48.97531}
         - {x: 54.98772, y: -39.97531}
       tessellationDetail: 0
+      bones: []
+      spriteID: a5305410000000000800000000000000
+      internalID: 21300058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: charm_grimm_silkweaver
       rect:
@@ -2070,6 +2536,13 @@ TextureImporter:
         - {x: 35.99192, y: -57.47531}
         - {x: 51.99192, y: -39.47531}
       tessellationDetail: 0
+      bones: []
+      spriteID: c5305410000000000800000000000000
+      internalID: 21300060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: inv_item__0011_arcane-egg
       rect:
@@ -2109,6 +2582,13 @@ TextureImporter:
         - {x: 48, y: -31}
         - {x: 51, y: -16}
       tessellationDetail: 0
+      bones: []
+      spriteID: e5305410000000000800000000000000
+      internalID: 21300062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: inv_item__0012_hallownest-seal
       rect:
@@ -2170,6 +2650,13 @@ TextureImporter:
         - {x: 39.5, y: -60.5}
         - {x: 54.5, y: -47.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: 06305410000000000800000000000000
+      internalID: 21300064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: charm_grimmkin_05
       rect:
@@ -2229,6 +2716,13 @@ TextureImporter:
         - {x: 29, y: -68}
         - {x: 42, y: -57}
       tessellationDetail: 0
+      bones: []
+      spriteID: 26305410000000000800000000000000
+      internalID: 21300066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: _0002_charm_glass_heal_broken
       rect:
@@ -2304,6 +2798,13 @@ TextureImporter:
         - {x: 33, y: 56}
         - {x: 29, y: 58}
       tessellationDetail: 0
+      bones: []
+      spriteID: 46305410000000000800000000000000
+      internalID: 21300068
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Grimm_charm_flame_backboard
       rect:
@@ -2343,6 +2844,13 @@ TextureImporter:
         - {x: 26.5, y: -21.5}
         - {x: 26.5, y: 10.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: 66305410000000000800000000000000
+      internalID: 21300070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: _0001_charm_more_soul
       rect:
@@ -2388,6 +2896,13 @@ TextureImporter:
         - {x: 41, y: -61}
         - {x: 54, y: -48}
       tessellationDetail: 0
+      bones: []
+      spriteID: 86305410000000000800000000000000
+      internalID: 21300072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Inv_0028_spell_ring
       rect:
@@ -2484,6 +2999,13 @@ TextureImporter:
         - {x: 9, y: -96}
         - {x: -13, y: -96}
       tessellationDetail: 0
+      bones: []
+      spriteID: a6305410000000000800000000000000
+      internalID: 21300074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: charm_black
       rect:
@@ -2541,6 +3063,13 @@ TextureImporter:
         - {x: -41.48339, y: 35.9876}
         - {x: -40.48339, y: 35.9876}
       tessellationDetail: 0
+      bones: []
+      spriteID: c6305410000000000800000000000000
+      internalID: 21300076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Inv_0029_spell_core
       rect:
@@ -2597,6 +3126,13 @@ TextureImporter:
         - {x: 34.03806, y: -77.53806}
         - {x: 48.03806, y: -68.53806}
       tessellationDetail: 0
+      bones: []
+      spriteID: e6305410000000000800000000000000
+      internalID: 21300078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: charm_UI__0000_charm_cost_02_lit
       rect:
@@ -2627,6 +3163,13 @@ TextureImporter:
         - {x: 16, y: 12}
         - {x: 9.999999, y: 16}
       tessellationDetail: 0
+      bones: []
+      spriteID: 07305410000000000800000000000000
+      internalID: 21300080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: charm_grimmkin_03
       rect:
@@ -2674,12 +3217,19 @@ TextureImporter:
         - {x: -42.99999, y: -53.02468}
         - {x: -24.99999, y: -65.02468}
         - {x: -6.999992, y: -73.02468}
-        - {x: 7.629395E-06, y: -73.02468}
+        - {x: 0.000007629395, y: -73.02468}
         - {x: 19.00001, y: -68.02468}
         - {x: 29.00001, y: -64.02468}
         - {x: 54.00001, y: -42.02468}
         - {x: 64.00001, y: -23.02468}
       tessellationDetail: 0
+      bones: []
+      spriteID: 27305410000000000800000000000000
+      internalID: 21300082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: inv_Waterways_Key
       rect:
@@ -2737,6 +3287,13 @@ TextureImporter:
         - {x: -30, y: 14.5}
         - {x: -29, y: 13.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: 47305410000000000800000000000000
+      internalID: 21300084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Inv_0033_inv_nail_01
       rect:
@@ -2816,6 +3373,13 @@ TextureImporter:
         - {x: 5.961937, y: -179.4619}
         - {x: 14.96194, y: -114.4619}
       tessellationDetail: 0
+      bones: []
+      spriteID: 67305410000000000800000000000000
+      internalID: 21300086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: nail_upgrade_0002_sharpened_nail
       rect:
@@ -2871,7 +3435,7 @@ TextureImporter:
         - {x: -43.5, y: 84.99998}
         - {x: -36.5, y: 30.99998}
         - {x: -35.5, y: 23.99998}
-        - {x: -32.5, y: -1.525879E-05}
+        - {x: -32.5, y: -0.00001525879}
         - {x: -31.5, y: -7.000015}
         - {x: -29.5, y: -23.00002}
         - {x: -27.5, y: -38.00002}
@@ -2884,6 +3448,13 @@ TextureImporter:
         - {x: 4.5, y: -193}
         - {x: 7.5, y: -171}
       tessellationDetail: 0
+      bones: []
+      spriteID: 87305410000000000800000000000000
+      internalID: 21300088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: inv_Love_Key
       rect:
@@ -2935,6 +3506,13 @@ TextureImporter:
         - {x: -23.98631, y: 28.5}
         - {x: -16.98631, y: 25.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: a7305410000000000800000000000000
+      internalID: 21300090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Inv_0021_inv_dash_strike_skill
       rect:
@@ -2977,6 +3555,13 @@ TextureImporter:
         - {x: 34.5, y: -38.5}
         - {x: 45.5, y: -25.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: c7305410000000000800000000000000
+      internalID: 21300092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: _0003_charm_glass_geo_full
       rect:
@@ -3021,6 +3606,13 @@ TextureImporter:
         - {x: 62.5, y: -24.49999}
         - {x: 64.5, y: -21.49999}
       tessellationDetail: 0
+      bones: []
+      spriteID: e7305410000000000800000000000000
+      internalID: 21300094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: new_item_orb
       rect:
@@ -3051,6 +3643,13 @@ TextureImporter:
         - {x: 9.5, y: 3.5}
         - {x: 7.5, y: 9.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: 08305410000000000800000000000000
+      internalID: 21300096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: charm_grimmkin_01
       rect:
@@ -3092,6 +3691,13 @@ TextureImporter:
         - {x: 57.50001, y: -38.02692}
         - {x: 64.50001, y: -21.02692}
       tessellationDetail: 0
+      bones: []
+      spriteID: 28305410000000000800000000000000
+      internalID: 21300098
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Inv_0023_inv_whirlwind_skill
       rect:
@@ -3134,6 +3740,13 @@ TextureImporter:
         - {x: 34.5, y: -38.5}
         - {x: 45.5, y: -25.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: 48305410000000000800000000000000
+      internalID: 21300100
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: _0002_charm_glass_heal
       rect:
@@ -3205,6 +3818,13 @@ TextureImporter:
         - {x: -48, y: -11}
         - {x: -47, y: -9.999999}
       tessellationDetail: 0
+      bones: []
+      spriteID: 68305410000000000800000000000000
+      internalID: 21300102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: char_mantis
       rect:
@@ -3250,6 +3870,13 @@ TextureImporter:
         - {x: 31.5, y: -49.5}
         - {x: 55.5, y: -27.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: 88305410000000000800000000000000
+      internalID: 21300104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: charm_soul_up_large
       rect:
@@ -3295,6 +3922,13 @@ TextureImporter:
         - {x: 40, y: -57.5}
         - {x: 61, y: -35.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: a8305410000000000800000000000000
+      internalID: 21300106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Lumafly_Lantern0000
       rect:
@@ -3364,6 +3998,13 @@ TextureImporter:
         - {x: -15, y: 0.538063}
         - {x: -15, y: -2.461937}
       tessellationDetail: 0
+      bones: []
+      spriteID: c8305410000000000800000000000000
+      internalID: 21300108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: charm_UI__0001_charm_cost_02_unlit
       rect:
@@ -3390,6 +4031,13 @@ TextureImporter:
         - {x: 14, y: 8}
         - {x: 9, y: 14}
       tessellationDetail: 0
+      bones: []
+      spriteID: e8305410000000000800000000000000
+      internalID: 21300110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: scrollbar_single
       rect:
@@ -3413,6 +4061,13 @@ TextureImporter:
         - {x: 3, y: 157}
         - {x: 2, y: 160}
       tessellationDetail: 0
+      bones: []
+      spriteID: 09305410000000000800000000000000
+      internalID: 21300112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: charm_white_right
       rect:
@@ -3457,6 +4112,13 @@ TextureImporter:
         - {x: 15.98339, y: -54.02939}
         - {x: 35.98339, y: -37.02939}
       tessellationDetail: 0
+      bones: []
+      spriteID: 29305410000000000800000000000000
+      internalID: 21300114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: _0008_charm_nail_damage_up
       rect:
@@ -3512,6 +4174,13 @@ TextureImporter:
         - {x: 49.5, y: -38.5}
         - {x: 58.5, y: -29.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: 49305410000000000800000000000000
+      internalID: 21300116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: _0006_charm_stalwart_shell
       rect:
@@ -3556,6 +4225,13 @@ TextureImporter:
         - {x: 43.5, y: -46.5}
         - {x: 57.5, y: -24.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: 69305410000000000800000000000000
+      internalID: 21300118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: inv_item__0009_ore
       rect:
@@ -3598,6 +4274,13 @@ TextureImporter:
         - {x: 34, y: -51.5}
         - {x: 56, y: -27.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: 89305410000000000800000000000000
+      internalID: 21300120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: items__0001_acid-armour
       rect:
@@ -3636,6 +4319,13 @@ TextureImporter:
         - {x: 37.5, y: 12.5}
         - {x: 30.5, y: 40.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: a9305410000000000800000000000000
+      internalID: 21300122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Inv_0022_inv_uppercut_skill
       rect:
@@ -3678,6 +4368,13 @@ TextureImporter:
         - {x: 34.5, y: -38.5}
         - {x: 45.5, y: -25.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: c9305410000000000800000000000000
+      internalID: 21300124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Inv_0032_inv_soul_backboard
       rect:
@@ -3721,6 +4418,13 @@ TextureImporter:
         - {x: 46.5, y: -28.5}
         - {x: 54.5, y: -12.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: e9305410000000000800000000000000
+      internalID: 21300126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: ghost_symbol
       rect:
@@ -3799,6 +4503,13 @@ TextureImporter:
         - {x: 88.04903, y: 0.5}
         - {x: 87.04903, y: 1.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: 0a305410000000000800000000000000
+      internalID: 21300128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: dream_nail_0000_4
       rect:
@@ -3868,6 +4579,13 @@ TextureImporter:
         - {x: 15, y: -88.97434}
         - {x: 11, y: -62.97434}
       tessellationDetail: 0
+      bones: []
+      spriteID: 2a305410000000000800000000000000
+      internalID: 21300130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: items__0003_mantis-claw
       rect:
@@ -3926,6 +4644,13 @@ TextureImporter:
         - {x: 3.038063, y: -24}
         - {x: 4.038063, y: -16}
       tessellationDetail: 0
+      bones: []
+      spriteID: 4a305410000000000800000000000000
+      internalID: 21300132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: inv_dream_charm
       rect:
@@ -3975,6 +4700,13 @@ TextureImporter:
         - {x: 45.5, y: -54}
         - {x: 58.5, y: -41}
       tessellationDetail: 0
+      bones: []
+      spriteID: 6a305410000000000800000000000000
+      internalID: 21300134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: dream_nail_0003_1
       rect:
@@ -4074,6 +4806,13 @@ TextureImporter:
         - {x: -0.4866257, y: 45.00645}
         - {x: 0.5133743, y: 45.00645}
       tessellationDetail: 0
+      bones: []
+      spriteID: 8a305410000000000800000000000000
+      internalID: 21300136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: charm_dung_def
       rect:
@@ -4118,6 +4857,13 @@ TextureImporter:
         - {x: 48.5, y: -51.46894}
         - {x: 67.50001, y: -14.46894}
       tessellationDetail: 0
+      bones: []
+      spriteID: aa305410000000000800000000000000
+      internalID: 21300138
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: _0000_charm_thorn_counter
       rect:
@@ -4168,6 +4914,13 @@ TextureImporter:
         - {x: 28, y: -66.99999}
         - {x: 30, y: -65}
       tessellationDetail: 0
+      bones: []
+      spriteID: ca305410000000000800000000000000
+      internalID: 21300140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: hunter_symbol
       rect:
@@ -4260,6 +5013,13 @@ TextureImporter:
         - {x: 20.5, y: 13.5}
         - {x: 20.5, y: 26.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: ea305410000000000800000000000000
+      internalID: 21300142
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Inv_0017_divider
       rect:
@@ -4282,6 +5042,13 @@ TextureImporter:
         - {x: -24.5, y: 4}
         - {x: -23.5, y: -4}
       tessellationDetail: 0
+      bones: []
+      spriteID: 0b305410000000000800000000000000
+      internalID: 21300144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: charm_shade_impact
       rect:
@@ -4325,6 +5092,13 @@ TextureImporter:
         - {x: 59, y: -29}
         - {x: 66, y: -12}
       tessellationDetail: 0
+      bones: []
+      spriteID: 2b305410000000000800000000000000
+      internalID: 21300146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: charm_sprite_02
       rect:
@@ -4374,6 +5148,13 @@ TextureImporter:
         - {x: 58, y: -28.5}
         - {x: 63, y: -18.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: 4b305410000000000800000000000000
+      internalID: 21300148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: glass_charm_shattered_UI
       rect:
@@ -4468,6 +5249,13 @@ TextureImporter:
         - {x: 33, y: 56}
         - {x: 29, y: 58}
       tessellationDetail: 0
+      bones: []
+      spriteID: 6b305410000000000800000000000000
+      internalID: 21300150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: InventoryCoin
       rect:
@@ -4498,6 +5286,13 @@ TextureImporter:
         - {x: 26.02469, y: -16.51337}
         - {x: 26.02469, y: 26.48662}
       tessellationDetail: 0
+      bones: []
+      spriteID: 8b305410000000000800000000000000
+      internalID: 21300152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Inv_0030_inv_health_backboard
       rect:
@@ -4567,6 +5362,13 @@ TextureImporter:
         - {x: 33, y: -99.5}
         - {x: 51, y: -81.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: ab305410000000000800000000000000
+      internalID: 21300154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: _0002_charm_glass_attack_up
       rect:
@@ -4617,6 +5419,13 @@ TextureImporter:
         - {x: 37.96194, y: -53}
         - {x: 52.96193, y: -35}
       tessellationDetail: 0
+      bones: []
+      spriteID: cb305410000000000800000000000000
+      internalID: 21300156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: nail_upgrade_0001_channel-nail
       rect:
@@ -4694,6 +5503,13 @@ TextureImporter:
         - {x: 6, y: -190.4753}
         - {x: 21, y: -77.47531}
       tessellationDetail: 0
+      bones: []
+      spriteID: eb305410000000000800000000000000
+      internalID: 21300158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: inv_item__0002_storeroom_key
       rect:
@@ -4764,6 +5580,13 @@ TextureImporter:
         - {x: -0.4753151, y: 38.03161}
         - {x: -1.475315, y: 33.03161}
       tessellationDetail: 0
+      bones: []
+      spriteID: 0c305410000000000800000000000000
+      internalID: 21300160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: charm_blocker
       rect:
@@ -4806,6 +5629,13 @@ TextureImporter:
         - {x: 36, y: -59}
         - {x: 62, y: -33}
       tessellationDetail: 0
+      bones: []
+      spriteID: 2c305410000000000800000000000000
+      internalID: 21300162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: charm_grimmkin_02
       rect:
@@ -4851,6 +5681,13 @@ TextureImporter:
         - {x: 54.48184, y: -43.02468}
         - {x: 65.48184, y: -17.02468}
       tessellationDetail: 0
+      bones: []
+      spriteID: 4c305410000000000800000000000000
+      internalID: 21300164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: charm_magic_cost_down
       rect:
@@ -4898,6 +5735,13 @@ TextureImporter:
         - {x: 39.5, y: -50.5}
         - {x: 46.5, y: -44.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: 6c305410000000000800000000000000
+      internalID: 21300166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: nail_upgrade_03_coil_nail
       rect:
@@ -4972,11 +5816,18 @@ TextureImporter:
         - {x: -9.000004, y: -186.9795}
         - {x: -7.000004, y: -208.9795}
         - {x: -3.000004, y: -210.9795}
-        - {x: -3.814697E-06, y: -210.9795}
+        - {x: -0.000003814697, y: -210.9795}
         - {x: 0.9999962, y: -207.9795}
         - {x: 3.999996, y: -190.9795}
         - {x: 6.999996, y: -172.9795}
       tessellationDetail: 0
+      bones: []
+      spriteID: 8c305410000000000800000000000000
+      internalID: 21300168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: items__0000_crystal-heart
       rect:
@@ -5025,6 +5876,13 @@ TextureImporter:
         - {x: 56, y: -35}
         - {x: 58, y: -34}
       tessellationDetail: 0
+      bones: []
+      spriteID: ac305410000000000800000000000000
+      internalID: 21300170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: _0005_charm_fast_focus
       rect:
@@ -5071,6 +5929,13 @@ TextureImporter:
         - {x: 19.5, y: -64}
         - {x: 37.5, y: -54}
       tessellationDetail: 0
+      bones: []
+      spriteID: cc305410000000000800000000000000
+      internalID: 21300172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: items__0002_emperor-wings
       rect:
@@ -5119,6 +5984,13 @@ TextureImporter:
         - {x: 57, y: -35}
         - {x: 61, y: -23}
       tessellationDetail: 0
+      bones: []
+      spriteID: ec305410000000000800000000000000
+      internalID: 21300174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Menu_Border_Black
       rect:
@@ -5470,6 +6342,13 @@ TextureImporter:
         - {x: 107, y: -117.5429}
         - {x: 93, y: -117.5429}
       tessellationDetail: 0
+      bones: []
+      spriteID: 0d305410000000000800000000000000
+      internalID: 21300176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: _0003_charm_nail_slash_speed_up
       rect:
@@ -5520,6 +6399,13 @@ TextureImporter:
         - {x: 23.5, y: -62}
         - {x: 38.5, y: -53}
       tessellationDetail: 0
+      bones: []
+      spriteID: 2d305410000000000800000000000000
+      internalID: 21300178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: charm_blue_health_convert
       rect:
@@ -5564,6 +6450,13 @@ TextureImporter:
         - {x: 42.97532, y: -57.5}
         - {x: 52.97532, y: -46.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: 4d305410000000000800000000000000
+      internalID: 21300180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: items__0004_shade_cloak
       rect:
@@ -5669,6 +6562,13 @@ TextureImporter:
         - {x: 15.5, y: 55.5}
         - {x: 13.5, y: 55.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: 6d305410000000000800000000000000
+      internalID: 21300182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: _0007_charm_greed
       rect:
@@ -5723,6 +6623,13 @@ TextureImporter:
         - {x: 31, y: -52}
         - {x: 42, y: -42}
       tessellationDetail: 0
+      bones: []
+      spriteID: 8d305410000000000800000000000000
+      internalID: 21300184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: charm_white_full
       rect:
@@ -5774,6 +6681,13 @@ TextureImporter:
         - {x: 38.98074, y: -61.03806}
         - {x: 58.98073, y: -43.03806}
       tessellationDetail: 0
+      bones: []
+      spriteID: ad305410000000000800000000000000
+      internalID: 21300186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: charm_cost
       rect:
@@ -5804,6 +6718,13 @@ TextureImporter:
         - {x: 19, y: 11}
         - {x: 15, y: 19}
       tessellationDetail: 0
+      bones: []
+      spriteID: cd305410000000000800000000000000
+      internalID: 21300188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Inv_0014_selection_cursor
       rect:
@@ -5838,6 +6759,13 @@ TextureImporter:
         - {x: 21.5, y: 8.5}
         - {x: 21.5, y: 20.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: ed305410000000000800000000000000
+      internalID: 21300190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: _0009_charm_Hatchling
       rect:
@@ -5887,6 +6815,13 @@ TextureImporter:
         - {x: 33, y: -53}
         - {x: 54, y: -34}
       tessellationDetail: 0
+      bones: []
+      spriteID: 0e305410000000000800000000000000
+      internalID: 21300192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: map_arrow
       rect:
@@ -5939,6 +6874,13 @@ TextureImporter:
         - {x: 25.5, y: -1}
         - {x: 21.5, y: 1}
       tessellationDetail: 0
+      bones: []
+      spriteID: 2e305410000000000800000000000000
+      internalID: 21300194
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: inv_item_city_key
       rect:
@@ -5977,6 +6919,13 @@ TextureImporter:
         - {x: 30.51661, y: -39.5}
         - {x: 37.51661, y: -25.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: 4e305410000000000800000000000000
+      internalID: 21300196
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Inv_charge_slashes_backboard
       rect:
@@ -6111,6 +7060,13 @@ TextureImporter:
         - {x: 119.5, y: 2.975319}
         - {x: 116.5, y: -6.024681}
       tessellationDetail: 0
+      bones: []
+      spriteID: 6e305410000000000800000000000000
+      internalID: 21300198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: trinket_backboard
       rect:
@@ -6214,6 +7170,13 @@ TextureImporter:
         - {x: 167.5, y: 2}
         - {x: 163.5, y: 5}
       tessellationDetail: 0
+      bones: []
+      spriteID: 8e305410000000000800000000000000
+      internalID: 21300200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: scrollbar_fleur_new
       rect:
@@ -6273,6 +7236,13 @@ TextureImporter:
         - {x: -0.5, y: 8.5}
         - {x: 0.5, y: 8.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: ae305410000000000800000000000000
+      internalID: 21300202
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: _0002_charm_spell_damage_up
       rect:
@@ -6316,6 +7286,13 @@ TextureImporter:
         - {x: 38.5, y: -58}
         - {x: 56.5, y: -40}
       tessellationDetail: 0
+      bones: []
+      spriteID: ce305410000000000800000000000000
+      internalID: 21300204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Inv_0027_spell_slot
       rect:
@@ -6354,6 +7331,13 @@ TextureImporter:
         - {x: 38, y: 22}
         - {x: 31, y: 32}
       tessellationDetail: 0
+      bones: []
+      spriteID: ee305410000000000800000000000000
+      internalID: 21300206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: charm_fungus
       rect:
@@ -6396,6 +7380,13 @@ TextureImporter:
         - {x: 64.5, y: -24.5}
         - {x: 64.5, y: 1.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: 0f305410000000000800000000000000
+      internalID: 21300208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: inv_item__0008_jar_col_map
       rect:
@@ -6423,7 +7414,7 @@ TextureImporter:
         - {x: 20, y: 25.01369}
         - {x: 17, y: 27.01369}
         - {x: 12, y: 31.01369}
-        - {x: 3.814697E-06, y: 31.01369}
+        - {x: 0.000003814697, y: 31.01369}
         - {x: -16, y: 28.01369}
         - {x: -39, y: 28.01369}
         - {x: -54.99999, y: 26.01369}
@@ -6438,6 +7429,13 @@ TextureImporter:
         - {x: 42, y: -26.98631}
         - {x: 55, y: -23.98631}
       tessellationDetail: 0
+      bones: []
+      spriteID: 2f305410000000000800000000000000
+      internalID: 21300210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: inv_item__0013_wanderers-journal
       rect:
@@ -6475,6 +7473,13 @@ TextureImporter:
         - {x: 43.47531, y: -23}
         - {x: 43.47531, y: 13}
       tessellationDetail: 0
+      bones: []
+      spriteID: 4f305410000000000800000000000000
+      internalID: 21300212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: _0006_charm_no_recoil
       rect:
@@ -6532,6 +7537,13 @@ TextureImporter:
         - {x: 38.5, y: -51}
         - {x: 51.5, y: -38}
       tessellationDetail: 0
+      bones: []
+      spriteID: 6f305410000000000800000000000000
+      internalID: 21300214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: charm_crystal
       rect:
@@ -6577,6 +7589,13 @@ TextureImporter:
         - {x: 64.5, y: -17}
         - {x: 70.5, y: -6}
       tessellationDetail: 0
+      bones: []
+      spriteID: 8f305410000000000800000000000000
+      internalID: 21300216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: _0010_charm_bluehealth
       rect:
@@ -6637,6 +7656,13 @@ TextureImporter:
         - {x: 32.5, y: -59.5}
         - {x: 40.5, y: -58.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: af305410000000000800000000000000
+      internalID: 21300218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Inv_0025_spell_fireball_01
       rect:
@@ -6679,6 +7705,13 @@ TextureImporter:
         - {x: 39.5, y: -27}
         - {x: 46.5, y: -20}
       tessellationDetail: 0
+      bones: []
+      spriteID: cf305410000000000800000000000000
+      internalID: 21300220
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: inv_white_brand
       rect:
@@ -6751,6 +7784,13 @@ TextureImporter:
         - {x: 17.5, y: 3.461937}
         - {x: 18.5, y: 2.461937}
       tessellationDetail: 0
+      bones: []
+      spriteID: ef305410000000000800000000000000
+      internalID: 21300222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: charm_grimmkin_04
       rect:
@@ -6795,12 +7835,19 @@ TextureImporter:
         - {x: -40.99999, y: -51.02468}
         - {x: -24.99999, y: -65.02468}
         - {x: -5.999992, y: -73.02468}
-        - {x: 7.629395E-06, y: -73.02468}
+        - {x: 0.000007629395, y: -73.02468}
         - {x: 12.00001, y: -71.02468}
         - {x: 35.00001, y: -59.02468}
         - {x: 52, y: -43.02468}
         - {x: 66.00001, y: -19.02468}
       tessellationDetail: 0
+      bones: []
+      spriteID: 00405410000000000800000000000000
+      internalID: 21300224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Inv_0024_spell_scream_01
       rect:
@@ -6857,6 +7904,13 @@ TextureImporter:
         - {x: -19.5, y: -21.5}
         - {x: -17.5, y: -25.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: 20405410000000000800000000000000
+      internalID: 21300226
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Elegant_Key
       rect:
@@ -6904,6 +7958,13 @@ TextureImporter:
         - {x: 50.52468, y: -43.00808}
         - {x: 46.52468, y: -36.00808}
       tessellationDetail: 0
+      bones: []
+      spriteID: 40405410000000000800000000000000
+      internalID: 21300228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: inv_item__00014_graveyard_key
       rect:
@@ -6957,6 +8018,13 @@ TextureImporter:
         - {x: -24.98952, y: 27.5}
         - {x: -23.98952, y: 27.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: 60405410000000000800000000000000
+      internalID: 21300230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: grimm_symbol
       rect:
@@ -7032,6 +8100,13 @@ TextureImporter:
         - {x: 177, y: -6}
         - {x: 176, y: -3}
       tessellationDetail: 0
+      bones: []
+      spriteID: 80405410000000000800000000000000
+      internalID: 21300232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Inv_0015_dash-cloak
       rect:
@@ -7101,6 +8176,13 @@ TextureImporter:
         - {x: -21.5, y: -53.5}
         - {x: -11.5, y: -53.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: a0405410000000000800000000000000
+      internalID: 21300234
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: charm_backboard
       rect:
@@ -7132,9 +8214,16 @@ TextureImporter:
         - {x: 12, y: -5.000004}
         - {x: 14, y: 1.999996}
         - {x: 5.999996, y: 13}
-        - {x: -3.814697E-06, y: 11}
+        - {x: -0.000003814697, y: 11}
         - {x: -2.000004, y: -16}
       tessellationDetail: 0
+      bones: []
+      spriteID: c0405410000000000800000000000000
+      internalID: 21300236
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: No_Map_symbol
       rect:
@@ -7373,6 +8462,13 @@ TextureImporter:
         - {x: -34, y: 29}
         - {x: -44, y: 36}
       tessellationDetail: 0
+      bones: []
+      spriteID: e0405410000000000800000000000000
+      internalID: 21300238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: charm_grimmkin_01_upgrade
       rect:
@@ -7427,6 +8523,13 @@ TextureImporter:
         - {x: 29.97532, y: -63.03806}
         - {x: 39.97532, y: -54.03806}
       tessellationDetail: 0
+      bones: []
+      spriteID: 01405410000000000800000000000000
+      internalID: 21300240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: inv_item__0005_mender_key
       rect:
@@ -7468,6 +8571,13 @@ TextureImporter:
         - {x: 7.5, y: -13}
         - {x: 36.5, y: -21}
       tessellationDetail: 0
+      bones: []
+      spriteID: 21405410000000000800000000000000
+      internalID: 21300242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Charm_Notch
       rect:
@@ -7512,6 +8622,13 @@ TextureImporter:
         - {x: 36.5, y: -27.5}
         - {x: 49.5, y: -2.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: 41405410000000000800000000000000
+      internalID: 21300244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: inv_item__0006_area_map
       rect:
@@ -7554,9 +8671,26 @@ TextureImporter:
         - {x: -5.5, y: -20.5}
         - {x: 16.5, y: -14.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: 61405410000000000800000000000000
+      internalID: 21300246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
-  spritePackingTag:
-  userData:
-  assetBundleName:
-  assetBundleVariant:
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

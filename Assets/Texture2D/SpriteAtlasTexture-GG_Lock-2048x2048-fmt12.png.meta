@@ -1,48 +1,120 @@
 fileFormatVersion: 2
 guid: 023c576606a14e5429adf1ecab681fb1
-timeCreated: 1602781459
-licenseType: Free
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: gg_lock_symb__0012_mighty_zote
-    21300002: gg_lock_symb__0013_traitor_lord
-    21300004: gg_lock_symb__0019_soul_master
-    21300006: gg_lock_symb__0002_g_xero
-    21300008: gg_lock_symb__0019_mage_knight
-    21300010: gg_lock_symb__0028_mawlek
-    21300012: gg_lock_symb__0024_gruz-mother
-    21300014: gg_lock_symb__0026_flukemarm
-    21300016: gg_lock_symb__0022_broken-vessel
-    21300018: gg_lock_symb__0023_hive-knight
-    21300020: gg_lock_symb__0017_mega_moss
-    21300022: gg_lock_symb__0003_g_markoth
-    21300024: gg_lock_symb__0006_g_elder_hu
-    21300026: gg_lock_symb__0008_grimm
-    21300028: gg_lock_symb__0004_g_gorb
-    21300030: gg_lock_symb__0014_uummuu
-    21300032: gg_lock_symb__0015_big_bee
-    21300034: gg_lock_symb__0016_crystal_mine
-    21300036: gg_lock_symb__0000_g_no_eyes
-    21300038: gg_lock_symb__0025_vengefly-king
-    21300040: gg_lock_symb__0009_white_defender
-    21300042: gg_lock_symb__0021_jar-col
-    21300044: gg_lock_symb__0010_watcher_knight
-    21300046: GG_UI_pieces_0004_large_icon
-    21300048: gg_lock_symb__0018_mantis_lord
-    21300050: gg_lock_symb__0011_nosk
-    21300052: gg_lock_symb__0001_g_marmu
-    21300054: gg_lock_symb__0020_lob_lancer
-    21300056: gg_lock_symb__0005_g_galien
-    21300058: gg_lock_symb__0027_false_knight
-    21300060: gg_lock_symb__0029_dd
-    21300062: GG_UI_large_base_turn_on0003
-    21300064: GG_UI_large_base_turn_on0004
-    21300066: GG_UI_large_base_turn_on0001
-    21300068: GG_UI_large_base_turn_on0000
-    21300070: GG_UI_large_base_turn_on0002
-    21300072: GG_lock_big
+  internalIDToNameTable:
+  - first:
+      213: 21300000
+    second: gg_lock_symb__0012_mighty_zote
+  - first:
+      213: 21300002
+    second: gg_lock_symb__0013_traitor_lord
+  - first:
+      213: 21300004
+    second: gg_lock_symb__0019_soul_master
+  - first:
+      213: 21300006
+    second: gg_lock_symb__0002_g_xero
+  - first:
+      213: 21300008
+    second: gg_lock_symb__0019_mage_knight
+  - first:
+      213: 21300010
+    second: gg_lock_symb__0028_mawlek
+  - first:
+      213: 21300012
+    second: gg_lock_symb__0024_gruz-mother
+  - first:
+      213: 21300014
+    second: gg_lock_symb__0026_flukemarm
+  - first:
+      213: 21300016
+    second: gg_lock_symb__0022_broken-vessel
+  - first:
+      213: 21300018
+    second: gg_lock_symb__0023_hive-knight
+  - first:
+      213: 21300020
+    second: gg_lock_symb__0017_mega_moss
+  - first:
+      213: 21300022
+    second: gg_lock_symb__0003_g_markoth
+  - first:
+      213: 21300024
+    second: gg_lock_symb__0006_g_elder_hu
+  - first:
+      213: 21300026
+    second: gg_lock_symb__0008_grimm
+  - first:
+      213: 21300028
+    second: gg_lock_symb__0004_g_gorb
+  - first:
+      213: 21300030
+    second: gg_lock_symb__0014_uummuu
+  - first:
+      213: 21300032
+    second: gg_lock_symb__0015_big_bee
+  - first:
+      213: 21300034
+    second: gg_lock_symb__0016_crystal_mine
+  - first:
+      213: 21300036
+    second: gg_lock_symb__0000_g_no_eyes
+  - first:
+      213: 21300038
+    second: gg_lock_symb__0025_vengefly-king
+  - first:
+      213: 21300040
+    second: gg_lock_symb__0009_white_defender
+  - first:
+      213: 21300042
+    second: gg_lock_symb__0021_jar-col
+  - first:
+      213: 21300044
+    second: gg_lock_symb__0010_watcher_knight
+  - first:
+      213: 21300046
+    second: GG_UI_pieces_0004_large_icon
+  - first:
+      213: 21300048
+    second: gg_lock_symb__0018_mantis_lord
+  - first:
+      213: 21300050
+    second: gg_lock_symb__0011_nosk
+  - first:
+      213: 21300052
+    second: gg_lock_symb__0001_g_marmu
+  - first:
+      213: 21300054
+    second: gg_lock_symb__0020_lob_lancer
+  - first:
+      213: 21300056
+    second: gg_lock_symb__0005_g_galien
+  - first:
+      213: 21300058
+    second: gg_lock_symb__0027_false_knight
+  - first:
+      213: 21300060
+    second: gg_lock_symb__0029_dd
+  - first:
+      213: 21300062
+    second: GG_UI_large_base_turn_on0003
+  - first:
+      213: 21300064
+    second: GG_UI_large_base_turn_on0004
+  - first:
+      213: 21300066
+    second: GG_UI_large_base_turn_on0001
+  - first:
+      213: 21300068
+    second: GG_UI_large_base_turn_on0000
+  - first:
+      213: 21300070
+    second: GG_UI_large_base_turn_on0002
+  - first:
+      213: 21300072
+    second: GG_lock_big
   externalObjects: {}
-  serializedVersion: 4
+  serializedVersion: 11
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -60,6 +132,9 @@ TextureImporter:
     heightScale: 0.25
     normalMapFilter: 0
   isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -90,11 +165,17 @@ TextureImporter:
   spriteTessellationDetail: -1
   textureType: 8
   textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 1
   platformSettings:
-  - buildTarget: DefaultTexturePlatform
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -104,6 +185,7 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -158,6 +240,13 @@ TextureImporter:
         - {x: 38, y: -59}
         - {x: 54, y: -52}
       tessellationDetail: 0
+      bones: []
+      spriteID: 02305410000000000800000000000000
+      internalID: 21300000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: gg_lock_symb__0013_traitor_lord
       rect:
@@ -214,6 +303,13 @@ TextureImporter:
         - {x: 40, y: -53}
         - {x: 53, y: -26}
       tessellationDetail: 0
+      bones: []
+      spriteID: 22305410000000000800000000000000
+      internalID: 21300002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: gg_lock_symb__0019_soul_master
       rect:
@@ -258,6 +354,13 @@ TextureImporter:
         - {x: 43, y: -52}
         - {x: 62, y: -42}
       tessellationDetail: 0
+      bones: []
+      spriteID: 42305410000000000800000000000000
+      internalID: 21300004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: gg_lock_symb__0002_g_xero
       rect:
@@ -304,6 +407,13 @@ TextureImporter:
         - {x: 44, y: -29}
         - {x: 50, y: -20}
       tessellationDetail: 0
+      bones: []
+      spriteID: 62305410000000000800000000000000
+      internalID: 21300006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: gg_lock_symb__0019_mage_knight
       rect:
@@ -350,6 +460,13 @@ TextureImporter:
         - {x: 65, y: -43}
         - {x: 71, y: -37}
       tessellationDetail: 0
+      bones: []
+      spriteID: 82305410000000000800000000000000
+      internalID: 21300008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: gg_lock_symb__0028_mawlek
       rect:
@@ -403,6 +520,13 @@ TextureImporter:
         - {x: 38, y: -47}
         - {x: 68, y: -32}
       tessellationDetail: 0
+      bones: []
+      spriteID: a2305410000000000800000000000000
+      internalID: 21300010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: gg_lock_symb__0024_gruz-mother
       rect:
@@ -445,6 +569,13 @@ TextureImporter:
         - {x: 19, y: -55}
         - {x: 18, y: -44}
       tessellationDetail: 0
+      bones: []
+      spriteID: c2305410000000000800000000000000
+      internalID: 21300012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: gg_lock_symb__0026_flukemarm
       rect:
@@ -490,6 +621,13 @@ TextureImporter:
         - {x: 40, y: -45}
         - {x: 39, y: -12}
       tessellationDetail: 0
+      bones: []
+      spriteID: e2305410000000000800000000000000
+      internalID: 21300014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: gg_lock_symb__0022_broken-vessel
       rect:
@@ -535,6 +673,13 @@ TextureImporter:
         - {x: 14, y: -38}
         - {x: 27, y: -40}
       tessellationDetail: 0
+      bones: []
+      spriteID: 03305410000000000800000000000000
+      internalID: 21300016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: gg_lock_symb__0023_hive-knight
       rect:
@@ -586,6 +731,13 @@ TextureImporter:
         - {x: 37, y: -55}
         - {x: 47, y: -48}
       tessellationDetail: 0
+      bones: []
+      spriteID: 23305410000000000800000000000000
+      internalID: 21300018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: gg_lock_symb__0017_mega_moss
       rect:
@@ -631,6 +783,13 @@ TextureImporter:
         - {x: 45, y: -48}
         - {x: 55, y: -38}
       tessellationDetail: 0
+      bones: []
+      spriteID: 43305410000000000800000000000000
+      internalID: 21300020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: gg_lock_symb__0003_g_markoth
       rect:
@@ -687,6 +846,13 @@ TextureImporter:
         - {x: 54, y: -46}
         - {x: 54, y: -22}
       tessellationDetail: 0
+      bones: []
+      spriteID: 63305410000000000800000000000000
+      internalID: 21300022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: gg_lock_symb__0006_g_elder_hu
       rect:
@@ -731,6 +897,13 @@ TextureImporter:
         - {x: 40, y: -43}
         - {x: 65, y: -26}
       tessellationDetail: 0
+      bones: []
+      spriteID: 83305410000000000800000000000000
+      internalID: 21300024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: gg_lock_symb__0008_grimm
       rect:
@@ -774,6 +947,13 @@ TextureImporter:
         - {x: 47, y: -50}
         - {x: 57, y: -23}
       tessellationDetail: 0
+      bones: []
+      spriteID: a3305410000000000800000000000000
+      internalID: 21300026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: gg_lock_symb__0004_g_gorb
       rect:
@@ -815,6 +995,13 @@ TextureImporter:
         - {x: 61, y: -12}
         - {x: 63, y: -5}
       tessellationDetail: 0
+      bones: []
+      spriteID: c3305410000000000800000000000000
+      internalID: 21300028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: gg_lock_symb__0014_uummuu
       rect:
@@ -879,6 +1066,13 @@ TextureImporter:
         - {x: 27, y: -35}
         - {x: 26, y: -33}
       tessellationDetail: 0
+      bones: []
+      spriteID: e3305410000000000800000000000000
+      internalID: 21300030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: gg_lock_symb__0015_big_bee
       rect:
@@ -926,6 +1120,13 @@ TextureImporter:
         - {x: 39, y: -56}
         - {x: 43, y: -52}
       tessellationDetail: 0
+      bones: []
+      spriteID: 04305410000000000800000000000000
+      internalID: 21300032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: gg_lock_symb__0016_crystal_mine
       rect:
@@ -966,6 +1167,13 @@ TextureImporter:
         - {x: 56, y: -47}
         - {x: 58, y: -42}
       tessellationDetail: 0
+      bones: []
+      spriteID: 24305410000000000800000000000000
+      internalID: 21300034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: gg_lock_symb__0000_g_no_eyes
       rect:
@@ -1022,6 +1230,13 @@ TextureImporter:
         - {x: 52, y: -44}
         - {x: 55, y: -38}
       tessellationDetail: 0
+      bones: []
+      spriteID: 44305410000000000800000000000000
+      internalID: 21300036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: gg_lock_symb__0025_vengefly-king
       rect:
@@ -1074,6 +1289,13 @@ TextureImporter:
         - {x: 47, y: -38}
         - {x: 33, y: -18}
       tessellationDetail: 0
+      bones: []
+      spriteID: 64305410000000000800000000000000
+      internalID: 21300038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: gg_lock_symb__0009_white_defender
       rect:
@@ -1126,6 +1348,13 @@ TextureImporter:
         - {x: 32, y: -38}
         - {x: 35, y: -26}
       tessellationDetail: 0
+      bones: []
+      spriteID: 84305410000000000800000000000000
+      internalID: 21300040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: gg_lock_symb__0021_jar-col
       rect:
@@ -1163,6 +1392,13 @@ TextureImporter:
         - {x: 11, y: -50}
         - {x: 16, y: -39}
       tessellationDetail: 0
+      bones: []
+      spriteID: a4305410000000000800000000000000
+      internalID: 21300042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: gg_lock_symb__0010_watcher_knight
       rect:
@@ -1214,6 +1450,13 @@ TextureImporter:
         - {x: -42, y: 12}
         - {x: -36, y: 6}
       tessellationDetail: 0
+      bones: []
+      spriteID: c4305410000000000800000000000000
+      internalID: 21300044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: GG_UI_pieces_0004_large_icon
       rect:
@@ -1259,6 +1502,13 @@ TextureImporter:
         - {x: 16.5, y: -49.5}
         - {x: 25.5, y: -37.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: e4305410000000000800000000000000
+      internalID: 21300046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: gg_lock_symb__0018_mantis_lord
       rect:
@@ -1311,6 +1561,13 @@ TextureImporter:
         - {x: 24, y: -59}
         - {x: 36, y: -43}
       tessellationDetail: 0
+      bones: []
+      spriteID: 05305410000000000800000000000000
+      internalID: 21300048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: gg_lock_symb__0011_nosk
       rect:
@@ -1355,6 +1612,13 @@ TextureImporter:
         - {x: -8, y: -17}
         - {x: 20, y: -21}
       tessellationDetail: 0
+      bones: []
+      spriteID: 25305410000000000800000000000000
+      internalID: 21300050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: gg_lock_symb__0001_g_marmu
       rect:
@@ -1395,6 +1659,13 @@ TextureImporter:
         - {x: 46, y: -38}
         - {x: 55, y: -17}
       tessellationDetail: 0
+      bones: []
+      spriteID: 45305410000000000800000000000000
+      internalID: 21300052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: gg_lock_symb__0020_lob_lancer
       rect:
@@ -1446,6 +1717,13 @@ TextureImporter:
         - {x: 37, y: -31}
         - {x: 37, y: -9}
       tessellationDetail: 0
+      bones: []
+      spriteID: 65305410000000000800000000000000
+      internalID: 21300054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: gg_lock_symb__0005_g_galien
       rect:
@@ -1495,6 +1773,13 @@ TextureImporter:
         - {x: -4, y: -34}
         - {x: 1, y: -36}
       tessellationDetail: 0
+      bones: []
+      spriteID: 85305410000000000800000000000000
+      internalID: 21300056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: gg_lock_symb__0027_false_knight
       rect:
@@ -1547,6 +1832,13 @@ TextureImporter:
         - {x: 49, y: -39}
         - {x: 59, y: -31}
       tessellationDetail: 0
+      bones: []
+      spriteID: a5305410000000000800000000000000
+      internalID: 21300058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: gg_lock_symb__0029_dd
       rect:
@@ -1605,6 +1897,13 @@ TextureImporter:
         - {x: 42, y: -62}
         - {x: 45, y: -48}
       tessellationDetail: 0
+      bones: []
+      spriteID: c5305410000000000800000000000000
+      internalID: 21300060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: GG_UI_large_base_turn_on0003
       rect:
@@ -1657,6 +1956,13 @@ TextureImporter:
         - {x: 52.5, y: -90}
         - {x: 61.5, y: -84}
       tessellationDetail: 0
+      bones: []
+      spriteID: e5305410000000000800000000000000
+      internalID: 21300062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: GG_UI_large_base_turn_on0004
       rect:
@@ -1709,6 +2015,13 @@ TextureImporter:
         - {x: 52.5, y: -90}
         - {x: 61.5, y: -84}
       tessellationDetail: 0
+      bones: []
+      spriteID: 06305410000000000800000000000000
+      internalID: 21300064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: GG_UI_large_base_turn_on0001
       rect:
@@ -1776,6 +2089,13 @@ TextureImporter:
         - {x: 40.5, y: -105}
         - {x: 64.5, y: -93}
       tessellationDetail: 0
+      bones: []
+      spriteID: 26305410000000000800000000000000
+      internalID: 21300066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: GG_UI_large_base_turn_on0000
       rect:
@@ -1850,6 +2170,13 @@ TextureImporter:
         - {x: 20.5, y: -105}
         - {x: 42.5, y: -98}
       tessellationDetail: 0
+      bones: []
+      spriteID: 46305410000000000800000000000000
+      internalID: 21300068
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: GG_UI_large_base_turn_on0002
       rect:
@@ -1903,6 +2230,13 @@ TextureImporter:
         - {x: 54.5, y: -89}
         - {x: 64.5, y: -81}
       tessellationDetail: 0
+      bones: []
+      spriteID: 66305410000000000800000000000000
+      internalID: 21300070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: GG_lock_big
       rect:
@@ -2092,9 +2426,26 @@ TextureImporter:
         - {x: 35.5, y: -506}
         - {x: 39.5, y: -494}
       tessellationDetail: 0
+      bones: []
+      spriteID: 86305410000000000800000000000000
+      internalID: 21300072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
-  spritePackingTag:
-  userData:
-  assetBundleName:
-  assetBundleVariant:
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

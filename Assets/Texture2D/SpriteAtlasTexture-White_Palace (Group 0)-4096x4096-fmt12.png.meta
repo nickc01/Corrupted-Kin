@@ -1,146 +1,414 @@
 fileFormatVersion: 2
 guid: 503c14d696b69f7428287a718d35d847
-timeCreated: 1602781608
-licenseType: Free
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: wp_cap_short_top
-    21300002: _0036_Layer-436
-    21300004: _0073_white
-    21300006: _0100_white
-    21300008: _0057_white
-    21300010: _0101_white
-    21300012: _0045_white
-    21300014: wp_clouds_0002_1
-    21300016: wp_plat_float_02
-    21300018: white_spikes0002
-    21300020: wp_sil_bush
-    21300022: _0070_white
-    21300024: _0075_white
-    21300026: wp_additions_01_0004_a
-    21300028: wp_plat_bottom
-    21300030: core_extras_0010_wp
-    21300032: _0065_white
-    21300034: core_extras_0025_wp
-    21300036: _0067_white
-    21300038: wp_additions_01_0008_a
-    21300040: core_extras_0026_wp
-    21300042: wp_additions_01_0001_a
-    21300044: wp_plat_float_06
-    21300046: white_spikes0001
-    21300048: _0080_white
-    21300050: wp_cap_short
-    21300052: core_extras_0024_wp
-    21300054: _0076_white
-    21300056: _0034_white
-    21300058: wp_floor_long
-    21300060: wp_plat_top
-    21300062: core_extras_0018_wp
-    21300064: wp_additions_01_0002_a
-    21300066: wp_additions_01_0009_a
-    21300068: spike_back
-    21300070: white_spikes0000
-    21300072: _0035_white
-    21300074: _0079_white
-    21300076: _0068_white
-    21300078: _0069_white
-    21300080: core_extras_0016_wp
-    21300082: wp_plat_float_05
-    21300084: white_spikes0003
-    21300086: _0066_white
-    21300088: _0058_white
-    21300090: wp_plat_float_01
-    21300092: _0074_white
-    21300094: _0078_white
-    21300096: wp_bannister_01
-    21300098: core_extras_0019_wp
-    21300100: _0103_white
-    21300102: wp_plat_float_04
-    21300104: _0072_white
-    21300106: _0104_white
-    21300108: white_thorn_0000_2
-    21300110: core_extras_0015_wp
-    21300112: _0089_white
-    21300114: core_extras_0017_wp
-    21300116: white_thorn_0001_1
-    21300118: _0027_white
-    21300120: _0087_white
-    21300122: _0088_white
-    21300124: core_extras_0009_wp
-    21300126: core_extras_0008_wp
-    21300128: wp_additions_01_0007_a
-    21300130: _0105_white
-    21300132: core_extras_0023_wp_02
-    21300134: wp_additions_01_0035_a
-    21300136: wp_additions_01_0033_a
-    21300138: wp_windoe_0002_wp_1
-    21300140: wp_additions_01_0032_a
-    21300142: wp_windoe_0003_wp_1
-    21300144: wp_additions_01_0031_a
-    21300146: wp_additions_01_0034_a
-    21300148: core_extras_0021_wp
-    21300150: wp_windoe_0000_wp_4
-    21300152: white_palace_rag
-    21300154: wp_windoe_0001_wp_3
-    21300156: _0028_white
-    21300158: wp_plat_float_03
-    21300160: wp_plat_float_07
-    21300162: WP_exterior_0019_a
-    21300164: core_extras_0013_wp
-    21300166: core_extras_0014_wp
-    21300168: saw0000
-    21300170: saw0001
-    21300172: saw0002
-    21300174: wp_additions_01_0000_a
-    21300176: white_spike_BG_02
-    21300178: white_saw_frame_cap
-    21300180: white_spike_BG
-    21300182: wp_floor_short
-    21300184: _0071_white
-    21300186: core_extras_0023_wp
-    21300188: core_extras_0022_wp
-    21300190: wp_rock_small
-    21300192: wp_plat_top_wide
-    21300194: anim_spikes_base
-    21300196: wp_anim_spikes_0001_Layer-2-copy-2
-    21300198: wp_anim_spikes_0000_Layer-2-copy
-    21300200: wp_additions_01_0029_a
-    21300202: wp_additions_01_0024_a
-    21300204: wp_additions_01_0021_a
-    21300206: workshop_beam
-    21300208: wp_additions_01_0012_a
-    21300210: wp_floor_ancient
-    21300212: wp_additions_01_0030_a
-    21300214: wp_secret_wall
-    21300216: wp_additions_01_0018_a
-    21300218: wp_additions_01_0027_a
-    21300220: wp_fog
-    21300222: wp_additions_01_0015_a
-    21300224: wp_additions_01_0023_a
-    21300226: wp_additions_01_0016_a
-    21300228: wp_additions_01_0025_a
-    21300230: wp_additions_01_0010_a
-    21300232: wp_additions_01_0006_a
-    21300234: wp_additions_01_0003_a
-    21300236: wp_additions_01_0019_a
-    21300238: wp_additions_01_0014_a
-    21300240: wp_additions_01_0011_a
-    21300242: wp_additions_01_0020_a
-    21300244: wp_additions_01_0022_a
-    21300246: wp_additions_01_0013_a
-    21300248: workshop_wall
-    21300250: wp_additions_01_0028_a
-    21300252: wp_additions_01_0026_a
-    21300254: wp_additions_01_0017_a
-    21300256: wp_rib_back
-    21300258: wp_additions_01_0005_a
-    21300260: white_arch_long_0000_1
-    21300262: white_arch_long_0001_2
-    21300264: wp_symbol_frame
-    21300266: wp_plaque_new
-    21300268: core_extras_0020_wp
+  internalIDToNameTable:
+  - first:
+      213: 21300000
+    second: wp_cap_short_top
+  - first:
+      213: 21300002
+    second: _0036_Layer-436
+  - first:
+      213: 21300004
+    second: _0073_white
+  - first:
+      213: 21300006
+    second: _0100_white
+  - first:
+      213: 21300008
+    second: _0057_white
+  - first:
+      213: 21300010
+    second: _0101_white
+  - first:
+      213: 21300012
+    second: _0045_white
+  - first:
+      213: 21300014
+    second: wp_clouds_0002_1
+  - first:
+      213: 21300016
+    second: wp_plat_float_02
+  - first:
+      213: 21300018
+    second: white_spikes0002
+  - first:
+      213: 21300020
+    second: wp_sil_bush
+  - first:
+      213: 21300022
+    second: _0070_white
+  - first:
+      213: 21300024
+    second: _0075_white
+  - first:
+      213: 21300026
+    second: wp_additions_01_0004_a
+  - first:
+      213: 21300028
+    second: wp_plat_bottom
+  - first:
+      213: 21300030
+    second: core_extras_0010_wp
+  - first:
+      213: 21300032
+    second: _0065_white
+  - first:
+      213: 21300034
+    second: core_extras_0025_wp
+  - first:
+      213: 21300036
+    second: _0067_white
+  - first:
+      213: 21300038
+    second: wp_additions_01_0008_a
+  - first:
+      213: 21300040
+    second: core_extras_0026_wp
+  - first:
+      213: 21300042
+    second: wp_additions_01_0001_a
+  - first:
+      213: 21300044
+    second: wp_plat_float_06
+  - first:
+      213: 21300046
+    second: white_spikes0001
+  - first:
+      213: 21300048
+    second: _0080_white
+  - first:
+      213: 21300050
+    second: wp_cap_short
+  - first:
+      213: 21300052
+    second: core_extras_0024_wp
+  - first:
+      213: 21300054
+    second: _0076_white
+  - first:
+      213: 21300056
+    second: _0034_white
+  - first:
+      213: 21300058
+    second: wp_floor_long
+  - first:
+      213: 21300060
+    second: wp_plat_top
+  - first:
+      213: 21300062
+    second: core_extras_0018_wp
+  - first:
+      213: 21300064
+    second: wp_additions_01_0002_a
+  - first:
+      213: 21300066
+    second: wp_additions_01_0009_a
+  - first:
+      213: 21300068
+    second: spike_back
+  - first:
+      213: 21300070
+    second: white_spikes0000
+  - first:
+      213: 21300072
+    second: _0035_white
+  - first:
+      213: 21300074
+    second: _0079_white
+  - first:
+      213: 21300076
+    second: _0068_white
+  - first:
+      213: 21300078
+    second: _0069_white
+  - first:
+      213: 21300080
+    second: core_extras_0016_wp
+  - first:
+      213: 21300082
+    second: wp_plat_float_05
+  - first:
+      213: 21300084
+    second: white_spikes0003
+  - first:
+      213: 21300086
+    second: _0066_white
+  - first:
+      213: 21300088
+    second: _0058_white
+  - first:
+      213: 21300090
+    second: wp_plat_float_01
+  - first:
+      213: 21300092
+    second: _0074_white
+  - first:
+      213: 21300094
+    second: _0078_white
+  - first:
+      213: 21300096
+    second: wp_bannister_01
+  - first:
+      213: 21300098
+    second: core_extras_0019_wp
+  - first:
+      213: 21300100
+    second: _0103_white
+  - first:
+      213: 21300102
+    second: wp_plat_float_04
+  - first:
+      213: 21300104
+    second: _0072_white
+  - first:
+      213: 21300106
+    second: _0104_white
+  - first:
+      213: 21300108
+    second: white_thorn_0000_2
+  - first:
+      213: 21300110
+    second: core_extras_0015_wp
+  - first:
+      213: 21300112
+    second: _0089_white
+  - first:
+      213: 21300114
+    second: core_extras_0017_wp
+  - first:
+      213: 21300116
+    second: white_thorn_0001_1
+  - first:
+      213: 21300118
+    second: _0027_white
+  - first:
+      213: 21300120
+    second: _0087_white
+  - first:
+      213: 21300122
+    second: _0088_white
+  - first:
+      213: 21300124
+    second: core_extras_0009_wp
+  - first:
+      213: 21300126
+    second: core_extras_0008_wp
+  - first:
+      213: 21300128
+    second: wp_additions_01_0007_a
+  - first:
+      213: 21300130
+    second: _0105_white
+  - first:
+      213: 21300132
+    second: core_extras_0023_wp_02
+  - first:
+      213: 21300134
+    second: wp_additions_01_0035_a
+  - first:
+      213: 21300136
+    second: wp_additions_01_0033_a
+  - first:
+      213: 21300138
+    second: wp_windoe_0002_wp_1
+  - first:
+      213: 21300140
+    second: wp_additions_01_0032_a
+  - first:
+      213: 21300142
+    second: wp_windoe_0003_wp_1
+  - first:
+      213: 21300144
+    second: wp_additions_01_0031_a
+  - first:
+      213: 21300146
+    second: wp_additions_01_0034_a
+  - first:
+      213: 21300148
+    second: core_extras_0021_wp
+  - first:
+      213: 21300150
+    second: wp_windoe_0000_wp_4
+  - first:
+      213: 21300152
+    second: white_palace_rag
+  - first:
+      213: 21300154
+    second: wp_windoe_0001_wp_3
+  - first:
+      213: 21300156
+    second: _0028_white
+  - first:
+      213: 21300158
+    second: wp_plat_float_03
+  - first:
+      213: 21300160
+    second: wp_plat_float_07
+  - first:
+      213: 21300162
+    second: WP_exterior_0019_a
+  - first:
+      213: 21300164
+    second: core_extras_0013_wp
+  - first:
+      213: 21300166
+    second: core_extras_0014_wp
+  - first:
+      213: 21300168
+    second: saw0000
+  - first:
+      213: 21300170
+    second: saw0001
+  - first:
+      213: 21300172
+    second: saw0002
+  - first:
+      213: 21300174
+    second: wp_additions_01_0000_a
+  - first:
+      213: 21300176
+    second: white_spike_BG_02
+  - first:
+      213: 21300178
+    second: white_saw_frame_cap
+  - first:
+      213: 21300180
+    second: white_spike_BG
+  - first:
+      213: 21300182
+    second: wp_floor_short
+  - first:
+      213: 21300184
+    second: _0071_white
+  - first:
+      213: 21300186
+    second: core_extras_0023_wp
+  - first:
+      213: 21300188
+    second: core_extras_0022_wp
+  - first:
+      213: 21300190
+    second: wp_rock_small
+  - first:
+      213: 21300192
+    second: wp_plat_top_wide
+  - first:
+      213: 21300194
+    second: anim_spikes_base
+  - first:
+      213: 21300196
+    second: wp_anim_spikes_0001_Layer-2-copy-2
+  - first:
+      213: 21300198
+    second: wp_anim_spikes_0000_Layer-2-copy
+  - first:
+      213: 21300200
+    second: wp_additions_01_0029_a
+  - first:
+      213: 21300202
+    second: wp_additions_01_0024_a
+  - first:
+      213: 21300204
+    second: wp_additions_01_0021_a
+  - first:
+      213: 21300206
+    second: workshop_beam
+  - first:
+      213: 21300208
+    second: wp_additions_01_0012_a
+  - first:
+      213: 21300210
+    second: wp_floor_ancient
+  - first:
+      213: 21300212
+    second: wp_additions_01_0030_a
+  - first:
+      213: 21300214
+    second: wp_secret_wall
+  - first:
+      213: 21300216
+    second: wp_additions_01_0018_a
+  - first:
+      213: 21300218
+    second: wp_additions_01_0027_a
+  - first:
+      213: 21300220
+    second: wp_fog
+  - first:
+      213: 21300222
+    second: wp_additions_01_0015_a
+  - first:
+      213: 21300224
+    second: wp_additions_01_0023_a
+  - first:
+      213: 21300226
+    second: wp_additions_01_0016_a
+  - first:
+      213: 21300228
+    second: wp_additions_01_0025_a
+  - first:
+      213: 21300230
+    second: wp_additions_01_0010_a
+  - first:
+      213: 21300232
+    second: wp_additions_01_0006_a
+  - first:
+      213: 21300234
+    second: wp_additions_01_0003_a
+  - first:
+      213: 21300236
+    second: wp_additions_01_0019_a
+  - first:
+      213: 21300238
+    second: wp_additions_01_0014_a
+  - first:
+      213: 21300240
+    second: wp_additions_01_0011_a
+  - first:
+      213: 21300242
+    second: wp_additions_01_0020_a
+  - first:
+      213: 21300244
+    second: wp_additions_01_0022_a
+  - first:
+      213: 21300246
+    second: wp_additions_01_0013_a
+  - first:
+      213: 21300248
+    second: workshop_wall
+  - first:
+      213: 21300250
+    second: wp_additions_01_0028_a
+  - first:
+      213: 21300252
+    second: wp_additions_01_0026_a
+  - first:
+      213: 21300254
+    second: wp_additions_01_0017_a
+  - first:
+      213: 21300256
+    second: wp_rib_back
+  - first:
+      213: 21300258
+    second: wp_additions_01_0005_a
+  - first:
+      213: 21300260
+    second: white_arch_long_0000_1
+  - first:
+      213: 21300262
+    second: white_arch_long_0001_2
+  - first:
+      213: 21300264
+    second: wp_symbol_frame
+  - first:
+      213: 21300266
+    second: wp_plaque_new
+  - first:
+      213: 21300268
+    second: core_extras_0020_wp
   externalObjects: {}
-  serializedVersion: 4
+  serializedVersion: 11
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -158,6 +426,9 @@ TextureImporter:
     heightScale: 0.25
     normalMapFilter: 0
   isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -188,11 +459,17 @@ TextureImporter:
   spriteTessellationDetail: -1
   textureType: 8
   textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 1
   platformSettings:
-  - buildTarget: DefaultTexturePlatform
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -202,6 +479,7 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -258,6 +536,13 @@ TextureImporter:
         - {x: 44.99354, y: -26.53806}
         - {x: 50.99354, y: -7.538055}
       tessellationDetail: 0
+      bones: []
+      spriteID: 02305410000000000800000000000000
+      internalID: 21300000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: _0036_Layer-436
       rect:
@@ -411,6 +696,13 @@ TextureImporter:
         - {x: 88.5, y: -239}
         - {x: 103.5, y: -238}
       tessellationDetail: 0
+      bones: []
+      spriteID: 22305410000000000800000000000000
+      internalID: 21300002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: _0073_white
       rect:
@@ -440,6 +732,13 @@ TextureImporter:
         - {x: 8.5, y: -81}
         - {x: 8.5, y: 173}
       tessellationDetail: 0
+      bones: []
+      spriteID: 42305410000000000800000000000000
+      internalID: 21300004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: _0100_white
       rect:
@@ -586,6 +885,13 @@ TextureImporter:
         - {x: -244.5, y: -131}
         - {x: -233.5, y: -120}
       tessellationDetail: 0
+      bones: []
+      spriteID: 62305410000000000800000000000000
+      internalID: 21300006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: _0057_white
       rect:
@@ -759,6 +1065,13 @@ TextureImporter:
         - {x: 31.5, y: -273}
         - {x: 33.5, y: -251}
       tessellationDetail: 0
+      bones: []
+      spriteID: 82305410000000000800000000000000
+      internalID: 21300008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: _0101_white
       rect:
@@ -852,6 +1165,13 @@ TextureImporter:
         - {x: 62.5, y: -31}
         - {x: 89.5, y: -33}
       tessellationDetail: 0
+      bones: []
+      spriteID: a2305410000000000800000000000000
+      internalID: 21300010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: _0045_white
       rect:
@@ -896,6 +1216,13 @@ TextureImporter:
         - {x: 82.5, y: -41}
         - {x: 79.5, y: -18}
       tessellationDetail: 0
+      bones: []
+      spriteID: c2305410000000000800000000000000
+      internalID: 21300012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: wp_clouds_0002_1
       rect:
@@ -970,6 +1297,13 @@ TextureImporter:
         - {x: 90.00951, y: -36.06882}
         - {x: 104.0095, y: -28.06882}
       tessellationDetail: 0
+      bones: []
+      spriteID: e2305410000000000800000000000000
+      internalID: 21300014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: wp_plat_float_02
       rect:
@@ -1005,6 +1339,13 @@ TextureImporter:
         - {x: 43, y: -2}
         - {x: 43, y: 26}
       tessellationDetail: 0
+      bones: []
+      spriteID: 03305410000000000800000000000000
+      internalID: 21300016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: white_spikes0002
       rect:
@@ -1079,6 +1420,13 @@ TextureImporter:
         - {x: -13.53806, y: -43}
         - {x: -27.53806, y: -48}
       tessellationDetail: 0
+      bones: []
+      spriteID: 23305410000000000800000000000000
+      internalID: 21300018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: wp_sil_bush
       rect:
@@ -1209,6 +1557,13 @@ TextureImporter:
         - {x: 59, y: 36}
         - {x: 60, y: 36}
       tessellationDetail: 0
+      bones: []
+      spriteID: 43305410000000000800000000000000
+      internalID: 21300020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: _0070_white
       rect:
@@ -1453,6 +1808,13 @@ TextureImporter:
         - {x: -27, y: 55}
         - {x: -26, y: 57}
       tessellationDetail: 0
+      bones: []
+      spriteID: 63305410000000000800000000000000
+      internalID: 21300022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: _0075_white
       rect:
@@ -1546,6 +1908,13 @@ TextureImporter:
         - {x: 1, y: 105.5}
         - {x: -4, y: 107.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: 83305410000000000800000000000000
+      internalID: 21300024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: wp_additions_01_0004_a
       rect:
@@ -1607,6 +1976,13 @@ TextureImporter:
         - {x: 2, y: -46.5}
         - {x: 68, y: -46.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: a3305410000000000800000000000000
+      internalID: 21300026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: wp_plat_bottom
       rect:
@@ -1634,6 +2010,13 @@ TextureImporter:
         - {x: 57.5, y: 5.5}
         - {x: 59.5, y: 14.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: c3305410000000000800000000000000
+      internalID: 21300028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: core_extras_0010_wp
       rect:
@@ -1847,6 +2230,13 @@ TextureImporter:
         - {x: 3, y: -17.5}
         - {x: 4, y: -17.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: e3305410000000000800000000000000
+      internalID: 21300030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: _0065_white
       rect:
@@ -1984,6 +2374,13 @@ TextureImporter:
         - {x: -22, y: 39}
         - {x: -29, y: 36}
       tessellationDetail: 0
+      bones: []
+      spriteID: 04305410000000000800000000000000
+      internalID: 21300032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: core_extras_0025_wp
       rect:
@@ -2046,6 +2443,13 @@ TextureImporter:
         - {x: -59.5, y: -124.1338}
         - {x: -51.5, y: -122.1338}
       tessellationDetail: 0
+      bones: []
+      spriteID: 24305410000000000800000000000000
+      internalID: 21300034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: _0067_white
       rect:
@@ -2190,6 +2594,13 @@ TextureImporter:
         - {x: 64.5, y: 44}
         - {x: 67.5, y: 40}
       tessellationDetail: 0
+      bones: []
+      spriteID: 44305410000000000800000000000000
+      internalID: 21300036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: wp_additions_01_0008_a
       rect:
@@ -2248,6 +2659,13 @@ TextureImporter:
         - {x: 110.5, y: -33}
         - {x: 118.5, y: -34}
       tessellationDetail: 0
+      bones: []
+      spriteID: 64305410000000000800000000000000
+      internalID: 21300038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: core_extras_0026_wp
       rect:
@@ -2315,6 +2733,13 @@ TextureImporter:
         - {x: 27, y: -60}
         - {x: 32, y: -55}
       tessellationDetail: 0
+      bones: []
+      spriteID: 84305410000000000800000000000000
+      internalID: 21300040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: wp_additions_01_0001_a
       rect:
@@ -2395,6 +2820,13 @@ TextureImporter:
         - {x: 8, y: -138.5}
         - {x: 9, y: -139.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: a4305410000000000800000000000000
+      internalID: 21300042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: wp_plat_float_06
       rect:
@@ -2436,6 +2868,13 @@ TextureImporter:
         - {x: 49.5, y: -45}
         - {x: 67.5, y: -30}
       tessellationDetail: 0
+      bones: []
+      spriteID: c4305410000000000800000000000000
+      internalID: 21300044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: white_spikes0001
       rect:
@@ -2507,6 +2946,13 @@ TextureImporter:
         - {x: -13.53806, y: -43}
         - {x: -27.53806, y: -48}
       tessellationDetail: 0
+      bones: []
+      spriteID: e4305410000000000800000000000000
+      internalID: 21300046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: _0080_white
       rect:
@@ -2621,6 +3067,13 @@ TextureImporter:
         - {x: -9, y: 11.85324}
         - {x: -8, y: 11.85324}
       tessellationDetail: 0
+      bones: []
+      spriteID: 05305410000000000800000000000000
+      internalID: 21300048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: wp_cap_short
       rect:
@@ -2666,6 +3119,13 @@ TextureImporter:
         - {x: 50.5, y: -67}
         - {x: 48.5, y: -41}
       tessellationDetail: 0
+      bones: []
+      spriteID: 25305410000000000800000000000000
+      internalID: 21300050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: core_extras_0024_wp
       rect:
@@ -2739,6 +3199,13 @@ TextureImporter:
         - {x: 107, y: -276}
         - {x: 108, y: -273}
       tessellationDetail: 0
+      bones: []
+      spriteID: 45305410000000000800000000000000
+      internalID: 21300052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: _0076_white
       rect:
@@ -2826,6 +3293,13 @@ TextureImporter:
         - {x: 17, y: 83}
         - {x: 9, y: 87}
       tessellationDetail: 0
+      bones: []
+      spriteID: 65305410000000000800000000000000
+      internalID: 21300054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: _0034_white
       rect:
@@ -3112,6 +3586,13 @@ TextureImporter:
         - {x: -246.5, y: -394.5}
         - {x: -238.5, y: -396.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: 85305410000000000800000000000000
+      internalID: 21300056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: wp_floor_long
       rect:
@@ -3144,6 +3625,13 @@ TextureImporter:
         - {x: 129, y: 16.5}
         - {x: 125, y: 18.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: a5305410000000000800000000000000
+      internalID: 21300058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: wp_plat_top
       rect:
@@ -3170,6 +3658,13 @@ TextureImporter:
         - {x: 69, y: 16}
         - {x: 65, y: 18}
       tessellationDetail: 0
+      bones: []
+      spriteID: c5305410000000000800000000000000
+      internalID: 21300060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: core_extras_0018_wp
       rect:
@@ -3235,6 +3730,13 @@ TextureImporter:
         - {x: 43.5, y: -69.5}
         - {x: 21.5, y: -56.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: e5305410000000000800000000000000
+      internalID: 21300062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: wp_additions_01_0002_a
       rect:
@@ -3335,6 +3837,13 @@ TextureImporter:
         - {x: 115, y: -206.5}
         - {x: 133, y: -205.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: 06305410000000000800000000000000
+      internalID: 21300064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: wp_additions_01_0009_a
       rect:
@@ -3431,6 +3940,13 @@ TextureImporter:
         - {x: -117.5, y: -67}
         - {x: -115.5, y: -73}
       tessellationDetail: 0
+      bones: []
+      spriteID: 26305410000000000800000000000000
+      internalID: 21300066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: spike_back
       rect:
@@ -3488,6 +4004,13 @@ TextureImporter:
         - {x: -6, y: -38.5}
         - {x: -11, y: -32.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: 46305410000000000800000000000000
+      internalID: 21300068
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: white_spikes0000
       rect:
@@ -3562,6 +4085,13 @@ TextureImporter:
         - {x: -13.53806, y: -43}
         - {x: -27.53806, y: -48}
       tessellationDetail: 0
+      bones: []
+      spriteID: 66305410000000000800000000000000
+      internalID: 21300070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: _0035_white
       rect:
@@ -3886,6 +4416,13 @@ TextureImporter:
         - {x: 508.5, y: -337.5}
         - {x: 530.5, y: -330.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: 86305410000000000800000000000000
+      internalID: 21300072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: _0079_white
       rect:
@@ -3967,6 +4504,13 @@ TextureImporter:
         - {x: -77.02166, y: -98}
         - {x: -54.02166, y: -75}
       tessellationDetail: 0
+      bones: []
+      spriteID: a6305410000000000800000000000000
+      internalID: 21300074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: _0068_white
       rect:
@@ -4176,6 +4720,13 @@ TextureImporter:
         - {x: 14, y: 40.5}
         - {x: 15, y: 37.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: c6305410000000000800000000000000
+      internalID: 21300076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: _0069_white
       rect:
@@ -4338,6 +4889,13 @@ TextureImporter:
         - {x: 55.5, y: 30}
         - {x: 54.5, y: 30}
       tessellationDetail: 0
+      bones: []
+      spriteID: e6305410000000000800000000000000
+      internalID: 21300078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: core_extras_0016_wp
       rect:
@@ -4380,6 +4938,13 @@ TextureImporter:
         - {x: 55.5, y: -46}
         - {x: 55.5, y: -31}
       tessellationDetail: 0
+      bones: []
+      spriteID: 07305410000000000800000000000000
+      internalID: 21300080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: wp_plat_float_05
       rect:
@@ -4419,6 +4984,13 @@ TextureImporter:
         - {x: 38, y: -55}
         - {x: 55, y: -41}
       tessellationDetail: 0
+      bones: []
+      spriteID: 27305410000000000800000000000000
+      internalID: 21300082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: white_spikes0003
       rect:
@@ -4493,6 +5065,13 @@ TextureImporter:
         - {x: -13.53806, y: -43}
         - {x: -27.53806, y: -48}
       tessellationDetail: 0
+      bones: []
+      spriteID: 47305410000000000800000000000000
+      internalID: 21300084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: _0066_white
       rect:
@@ -4658,6 +5237,13 @@ TextureImporter:
         - {x: 95.5, y: 47}
         - {x: 95.5, y: 80}
       tessellationDetail: 0
+      bones: []
+      spriteID: 67305410000000000800000000000000
+      internalID: 21300086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: _0058_white
       rect:
@@ -5236,6 +5822,13 @@ TextureImporter:
         - {x: 32.5, y: 313}
         - {x: 33.5, y: 313}
       tessellationDetail: 0
+      bones: []
+      spriteID: 87305410000000000800000000000000
+      internalID: 21300088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: wp_plat_float_01
       rect:
@@ -5273,6 +5866,13 @@ TextureImporter:
         - {x: 36, y: -25}
         - {x: 127, y: -24}
       tessellationDetail: 0
+      bones: []
+      spriteID: a7305410000000000800000000000000
+      internalID: 21300090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: _0074_white
       rect:
@@ -5380,6 +5980,13 @@ TextureImporter:
         - {x: 9, y: 94}
         - {x: -5, y: 109}
       tessellationDetail: 0
+      bones: []
+      spriteID: c7305410000000000800000000000000
+      internalID: 21300092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: _0078_white
       rect:
@@ -5465,6 +6072,13 @@ TextureImporter:
         - {x: 43.00001, y: -251.9367}
         - {x: 52.00001, y: -245.9367}
       tessellationDetail: 0
+      bones: []
+      spriteID: e7305410000000000800000000000000
+      internalID: 21300094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: wp_bannister_01
       rect:
@@ -5558,6 +6172,13 @@ TextureImporter:
         - {x: 57.5, y: -4}
         - {x: 61.5, y: -9}
       tessellationDetail: 0
+      bones: []
+      spriteID: 08305410000000000800000000000000
+      internalID: 21300096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: core_extras_0019_wp
       rect:
@@ -5602,6 +6223,13 @@ TextureImporter:
         - {x: 124, y: -23}
         - {x: 148, y: -21}
       tessellationDetail: 0
+      bones: []
+      spriteID: 28305410000000000800000000000000
+      internalID: 21300098
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: _0103_white
       rect:
@@ -5648,6 +6276,13 @@ TextureImporter:
         - {x: 55.5, y: 29}
         - {x: 55.5, y: 34}
       tessellationDetail: 0
+      bones: []
+      spriteID: 48305410000000000800000000000000
+      internalID: 21300100
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: wp_plat_float_04
       rect:
@@ -5682,6 +6317,13 @@ TextureImporter:
         - {x: 19, y: -28.5}
         - {x: 29, y: -22.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: 68305410000000000800000000000000
+      internalID: 21300102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: _0072_white
       rect:
@@ -5718,6 +6360,13 @@ TextureImporter:
         - {x: 13.5, y: -36}
         - {x: 7.5, y: 142}
       tessellationDetail: 0
+      bones: []
+      spriteID: 88305410000000000800000000000000
+      internalID: 21300104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: _0104_white
       rect:
@@ -5767,6 +6416,13 @@ TextureImporter:
         - {x: 62, y: 59.5}
         - {x: 62, y: 80.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: a8305410000000000800000000000000
+      internalID: 21300106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: white_thorn_0000_2
       rect:
@@ -5861,6 +6517,13 @@ TextureImporter:
         - {x: -47.96194, y: -1.013374}
         - {x: -46.96194, y: -0.01337433}
       tessellationDetail: 0
+      bones: []
+      spriteID: c8305410000000000800000000000000
+      internalID: 21300108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: core_extras_0015_wp
       rect:
@@ -5970,6 +6633,13 @@ TextureImporter:
         - {x: -6, y: -112.5}
         - {x: 0, y: -104.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: e8305410000000000800000000000000
+      internalID: 21300110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: _0089_white
       rect:
@@ -6146,6 +6816,13 @@ TextureImporter:
         - {x: 7.5, y: -176.5}
         - {x: 16.5, y: -167.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: 09305410000000000800000000000000
+      internalID: 21300112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: core_extras_0017_wp
       rect:
@@ -6244,6 +6921,13 @@ TextureImporter:
         - {x: 32.5, y: -79}
         - {x: 39.5, y: -73}
       tessellationDetail: 0
+      bones: []
+      spriteID: 29305410000000000800000000000000
+      internalID: 21300114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: white_thorn_0001_1
       rect:
@@ -6475,6 +7159,13 @@ TextureImporter:
         - {x: 86.51714, y: 72.46194}
         - {x: 85.51714, y: 70.46194}
       tessellationDetail: 0
+      bones: []
+      spriteID: 49305410000000000800000000000000
+      internalID: 21300116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: _0027_white
       rect:
@@ -6550,6 +7241,13 @@ TextureImporter:
         - {x: 66, y: -131}
         - {x: 66, y: -126}
       tessellationDetail: 0
+      bones: []
+      spriteID: 69305410000000000800000000000000
+      internalID: 21300118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: _0087_white
       rect:
@@ -6623,6 +7321,13 @@ TextureImporter:
         - {x: 58.5, y: -71}
         - {x: 86.5, y: -67}
       tessellationDetail: 0
+      bones: []
+      spriteID: 89305410000000000800000000000000
+      internalID: 21300120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: _0088_white
       rect:
@@ -6731,6 +7436,13 @@ TextureImporter:
         - {x: -80, y: -62.5}
         - {x: -79, y: -63.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: a9305410000000000800000000000000
+      internalID: 21300122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: core_extras_0009_wp
       rect:
@@ -6878,6 +7590,13 @@ TextureImporter:
         - {x: 54, y: -251}
         - {x: 65, y: -239}
       tessellationDetail: 0
+      bones: []
+      spriteID: c9305410000000000800000000000000
+      internalID: 21300124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: core_extras_0008_wp
       rect:
@@ -7029,6 +7748,13 @@ TextureImporter:
         - {x: -62, y: -247}
         - {x: -52, y: -253}
       tessellationDetail: 0
+      bones: []
+      spriteID: e9305410000000000800000000000000
+      internalID: 21300126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: wp_additions_01_0007_a
       rect:
@@ -7129,6 +7855,13 @@ TextureImporter:
         - {x: 136.5, y: -195.5}
         - {x: 137.5, y: -196.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: 0a305410000000000800000000000000
+      internalID: 21300128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: _0105_white
       rect:
@@ -7355,6 +8088,13 @@ TextureImporter:
         - {x: 10, y: -220.5}
         - {x: 16, y: -201.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: 2a305410000000000800000000000000
+      internalID: 21300130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: core_extras_0023_wp_02
       rect:
@@ -7533,6 +8273,13 @@ TextureImporter:
         - {x: 81.5, y: 65.53806}
         - {x: 57.5, y: 52.53806}
       tessellationDetail: 0
+      bones: []
+      spriteID: 4a305410000000000800000000000000
+      internalID: 21300132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: wp_additions_01_0035_a
       rect:
@@ -7643,6 +8390,13 @@ TextureImporter:
         - {x: 95, y: -102.5}
         - {x: 97, y: -101.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: 6a305410000000000800000000000000
+      internalID: 21300134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: wp_additions_01_0033_a
       rect:
@@ -7686,6 +8440,13 @@ TextureImporter:
         - {x: -79, y: -10}
         - {x: -44, y: -7}
       tessellationDetail: 0
+      bones: []
+      spriteID: 8a305410000000000800000000000000
+      internalID: 21300136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: wp_windoe_0002_wp_1
       rect:
@@ -7761,6 +8522,13 @@ TextureImporter:
         - {x: 106, y: -132}
         - {x: 102, y: -112}
       tessellationDetail: 0
+      bones: []
+      spriteID: aa305410000000000800000000000000
+      internalID: 21300138
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: wp_additions_01_0032_a
       rect:
@@ -7885,6 +8653,13 @@ TextureImporter:
         - {x: -9.5, y: -55}
         - {x: -10.5, y: -56}
       tessellationDetail: 0
+      bones: []
+      spriteID: ca305410000000000800000000000000
+      internalID: 21300140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: wp_windoe_0003_wp_1
       rect:
@@ -7953,6 +8728,13 @@ TextureImporter:
         - {x: -69.5, y: 119}
         - {x: -68.5, y: 119}
       tessellationDetail: 0
+      bones: []
+      spriteID: ea305410000000000800000000000000
+      internalID: 21300142
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: wp_additions_01_0031_a
       rect:
@@ -8001,6 +8783,13 @@ TextureImporter:
         - {x: -104.5, y: -6.5}
         - {x: -88.5, y: -8.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: 0b305410000000000800000000000000
+      internalID: 21300144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: wp_additions_01_0034_a
       rect:
@@ -8096,6 +8885,13 @@ TextureImporter:
         - {x: 27, y: -98.5}
         - {x: 45, y: -98.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: 2b305410000000000800000000000000
+      internalID: 21300146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: core_extras_0021_wp
       rect:
@@ -8190,6 +8986,13 @@ TextureImporter:
         - {x: 56.5, y: -254.5}
         - {x: 52.5, y: -243.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: 4b305410000000000800000000000000
+      internalID: 21300148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: wp_windoe_0000_wp_4
       rect:
@@ -8212,6 +9015,13 @@ TextureImporter:
         - {x: -17.5, y: -64.12837}
         - {x: -17.5, y: 63.87162}
       tessellationDetail: 0
+      bones: []
+      spriteID: 6b305410000000000800000000000000
+      internalID: 21300150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: white_palace_rag
       rect:
@@ -8331,6 +9141,13 @@ TextureImporter:
         - {x: -63.5, y: -140}
         - {x: -53.5, y: -110}
       tessellationDetail: 0
+      bones: []
+      spriteID: 8b305410000000000800000000000000
+      internalID: 21300152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: wp_windoe_0001_wp_3
       rect:
@@ -8353,6 +9170,13 @@ TextureImporter:
         - {x: 15, y: -166}
         - {x: 15, y: 166}
       tessellationDetail: 0
+      bones: []
+      spriteID: ab305410000000000800000000000000
+      internalID: 21300154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: _0028_white
       rect:
@@ -8413,6 +9237,13 @@ TextureImporter:
         - {x: 89, y: -80}
         - {x: 94, y: -73}
       tessellationDetail: 0
+      bones: []
+      spriteID: cb305410000000000800000000000000
+      internalID: 21300156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: wp_plat_float_03
       rect:
@@ -8445,6 +9276,13 @@ TextureImporter:
         - {x: 43, y: -12}
         - {x: 43, y: 31}
       tessellationDetail: 0
+      bones: []
+      spriteID: eb305410000000000800000000000000
+      internalID: 21300158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: wp_plat_float_07
       rect:
@@ -8483,6 +9321,13 @@ TextureImporter:
         - {x: 40, y: -52.5}
         - {x: 61, y: -35.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: 0c305410000000000800000000000000
+      internalID: 21300160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: WP_exterior_0019_a
       rect:
@@ -8658,6 +9503,13 @@ TextureImporter:
         - {x: -19.66736, y: 38}
         - {x: -22.66736, y: 41}
       tessellationDetail: 0
+      bones: []
+      spriteID: 2c305410000000000800000000000000
+      internalID: 21300162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: core_extras_0013_wp
       rect:
@@ -8681,6 +9533,13 @@ TextureImporter:
         - {x: 12, y: -76.5}
         - {x: 12, y: 76.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: 4c305410000000000800000000000000
+      internalID: 21300164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: core_extras_0014_wp
       rect:
@@ -8727,6 +9586,13 @@ TextureImporter:
         - {x: 20, y: -34.5}
         - {x: 20, y: -23.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: 6c305410000000000800000000000000
+      internalID: 21300166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: saw0000
       rect:
@@ -8812,6 +9678,13 @@ TextureImporter:
         - {x: 43.02467, y: -121.5}
         - {x: 70.02467, y: -107.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: 8c305410000000000800000000000000
+      internalID: 21300168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: saw0001
       rect:
@@ -8897,6 +9770,13 @@ TextureImporter:
         - {x: 65.5, y: -109}
         - {x: 74.5, y: -103}
       tessellationDetail: 0
+      bones: []
+      spriteID: ac305410000000000800000000000000
+      internalID: 21300170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: saw0002
       rect:
@@ -8979,6 +9859,13 @@ TextureImporter:
         - {x: 48.50693, y: -117.5}
         - {x: 72.50693, y: -105.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: cc305410000000000800000000000000
+      internalID: 21300172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: wp_additions_01_0000_a
       rect:
@@ -9050,6 +9937,13 @@ TextureImporter:
         - {x: 185, y: -117.5}
         - {x: 184, y: -104.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: ec305410000000000800000000000000
+      internalID: 21300174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: white_spike_BG_02
       rect:
@@ -9118,6 +10012,13 @@ TextureImporter:
         - {x: -29.5, y: -55}
         - {x: -1.5, y: -55}
       tessellationDetail: 0
+      bones: []
+      spriteID: 0d305410000000000800000000000000
+      internalID: 21300176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: white_saw_frame_cap
       rect:
@@ -9164,6 +10065,13 @@ TextureImporter:
         - {x: 16, y: -33}
         - {x: 46, y: -19}
       tessellationDetail: 0
+      bones: []
+      spriteID: 2d305410000000000800000000000000
+      internalID: 21300178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: white_spike_BG
       rect:
@@ -9212,6 +10120,13 @@ TextureImporter:
         - {x: -25.5, y: -19.5}
         - {x: -16.5, y: -28.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: 4d305410000000000800000000000000
+      internalID: 21300180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: wp_floor_short
       rect:
@@ -9238,6 +10153,13 @@ TextureImporter:
         - {x: 44.5, y: 15.5}
         - {x: 40.5, y: 18.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: 6d305410000000000800000000000000
+      internalID: 21300182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: _0071_white
       rect:
@@ -9266,6 +10188,13 @@ TextureImporter:
         - {x: 6.5, y: -52.5}
         - {x: 8.5, y: 31.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: 8d305410000000000800000000000000
+      internalID: 21300184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: core_extras_0023_wp
       rect:
@@ -9466,6 +10395,13 @@ TextureImporter:
         - {x: 90.5, y: 51.5}
         - {x: 60.5, y: 36.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: ad305410000000000800000000000000
+      internalID: 21300186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: core_extras_0022_wp
       rect:
@@ -9622,6 +10558,13 @@ TextureImporter:
         - {x: 116.5, y: 92}
         - {x: 85.5, y: 92}
       tessellationDetail: 0
+      bones: []
+      spriteID: cd305410000000000800000000000000
+      internalID: 21300188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: wp_rock_small
       rect:
@@ -9656,6 +10599,13 @@ TextureImporter:
         - {x: 60.5, y: -15}
         - {x: 60.5, y: 26}
       tessellationDetail: 0
+      bones: []
+      spriteID: ed305410000000000800000000000000
+      internalID: 21300190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: wp_plat_top_wide
       rect:
@@ -9685,6 +10635,13 @@ TextureImporter:
         - {x: 108.0381, y: 16}
         - {x: 104.0381, y: 18}
       tessellationDetail: 0
+      bones: []
+      spriteID: 0e305410000000000800000000000000
+      internalID: 21300192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: anim_spikes_base
       rect:
@@ -9709,6 +10666,13 @@ TextureImporter:
         - {x: 62.5, y: 4}
         - {x: 60.5, y: 6}
       tessellationDetail: 0
+      bones: []
+      spriteID: 2e305410000000000800000000000000
+      internalID: 21300194
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: wp_anim_spikes_0001_Layer-2-copy-2
       rect:
@@ -9885,6 +10849,13 @@ TextureImporter:
         - {x: 4.5, y: -162}
         - {x: 5.5, y: -126}
       tessellationDetail: 0
+      bones: []
+      spriteID: 4e305410000000000800000000000000
+      internalID: 21300196
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: wp_anim_spikes_0000_Layer-2-copy
       rect:
@@ -10012,6 +10983,13 @@ TextureImporter:
         - {x: 49.5, y: -161.5}
         - {x: 54.5, y: -123.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: 6e305410000000000800000000000000
+      internalID: 21300198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: wp_additions_01_0029_a
       rect:
@@ -10048,6 +11026,13 @@ TextureImporter:
         - {x: 50.5, y: -17}
         - {x: 50.5, y: 19}
       tessellationDetail: 0
+      bones: []
+      spriteID: 8e305410000000000800000000000000
+      internalID: 21300200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: wp_additions_01_0024_a
       rect:
@@ -10111,6 +11096,13 @@ TextureImporter:
         - {x: -0.5, y: 56.5}
         - {x: -1.5, y: 48.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: ae305410000000000800000000000000
+      internalID: 21300202
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: wp_additions_01_0021_a
       rect:
@@ -10433,6 +11425,13 @@ TextureImporter:
         - {x: -2, y: 70.5}
         - {x: -1, y: 70.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: ce305410000000000800000000000000
+      internalID: 21300204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: workshop_beam
       rect:
@@ -10455,6 +11454,13 @@ TextureImporter:
         - {x: 19.5, y: -48.5}
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: ee305410000000000800000000000000
+      internalID: 21300206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: wp_additions_01_0012_a
       rect:
@@ -10495,6 +11501,13 @@ TextureImporter:
         - {x: 53, y: -37.5}
         - {x: 54, y: -35.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: 0f305410000000000800000000000000
+      internalID: 21300208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: wp_floor_ancient
       rect:
@@ -10554,6 +11567,13 @@ TextureImporter:
         - {x: 89, y: -12.5}
         - {x: 94, y: -4.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: 2f305410000000000800000000000000
+      internalID: 21300210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: wp_additions_01_0030_a
       rect:
@@ -10595,6 +11615,13 @@ TextureImporter:
         - {x: 47, y: -24}
         - {x: 52, y: -14}
       tessellationDetail: 0
+      bones: []
+      spriteID: 4f305410000000000800000000000000
+      internalID: 21300212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: wp_secret_wall
       rect:
@@ -10863,6 +11890,13 @@ TextureImporter:
         - {x: 224, y: -249.5}
         - {x: 243, y: -246.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: 6f305410000000000800000000000000
+      internalID: 21300214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: wp_additions_01_0018_a
       rect:
@@ -11001,6 +12035,13 @@ TextureImporter:
         - {x: -67, y: -202}
         - {x: -82, y: -203}
       tessellationDetail: 0
+      bones: []
+      spriteID: 8f305410000000000800000000000000
+      internalID: 21300216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: wp_additions_01_0027_a
       rect:
@@ -11050,6 +12091,13 @@ TextureImporter:
         - {x: 36, y: -80.5}
         - {x: 42, y: -68.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: af305410000000000800000000000000
+      internalID: 21300218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: wp_fog
       rect:
@@ -11077,6 +12125,13 @@ TextureImporter:
         - {x: 37.5, y: 6}
         - {x: 32.5, y: 7}
       tessellationDetail: 0
+      bones: []
+      spriteID: cf305410000000000800000000000000
+      internalID: 21300220
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: wp_additions_01_0015_a
       rect:
@@ -11114,6 +12169,13 @@ TextureImporter:
         - {x: 58.5, y: -31.5}
         - {x: 52.5, y: -15.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: ef305410000000000800000000000000
+      internalID: 21300222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: wp_additions_01_0023_a
       rect:
@@ -11200,6 +12262,13 @@ TextureImporter:
         - {x: 109, y: -127}
         - {x: 121, y: -119}
       tessellationDetail: 0
+      bones: []
+      spriteID: 00405410000000000800000000000000
+      internalID: 21300224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: wp_additions_01_0016_a
       rect:
@@ -11308,6 +12377,13 @@ TextureImporter:
         - {x: 12, y: 167.5}
         - {x: 10, y: 158.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: 20405410000000000800000000000000
+      internalID: 21300226
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: wp_additions_01_0025_a
       rect:
@@ -11353,6 +12429,13 @@ TextureImporter:
         - {x: 49.5, y: -57.5}
         - {x: 54.5, y: -28.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: 40405410000000000800000000000000
+      internalID: 21300228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: wp_additions_01_0010_a
       rect:
@@ -11388,6 +12471,13 @@ TextureImporter:
         - {x: 22, y: -21}
         - {x: 22, y: 33}
       tessellationDetail: 0
+      bones: []
+      spriteID: 60405410000000000800000000000000
+      internalID: 21300230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: wp_additions_01_0006_a
       rect:
@@ -11419,6 +12509,13 @@ TextureImporter:
         - {x: 25.5, y: 10.5}
         - {x: 19.5, y: 24.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: 80405410000000000800000000000000
+      internalID: 21300232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: wp_additions_01_0003_a
       rect:
@@ -11499,6 +12596,13 @@ TextureImporter:
         - {x: -11, y: -123}
         - {x: 6, y: -118}
       tessellationDetail: 0
+      bones: []
+      spriteID: a0405410000000000800000000000000
+      internalID: 21300234
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: wp_additions_01_0019_a
       rect:
@@ -11626,6 +12730,13 @@ TextureImporter:
         - {x: 22, y: 84}
         - {x: 23, y: 84}
       tessellationDetail: 0
+      bones: []
+      spriteID: c0405410000000000800000000000000
+      internalID: 21300236
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: wp_additions_01_0014_a
       rect:
@@ -11675,6 +12786,13 @@ TextureImporter:
         - {x: 59, y: -47}
         - {x: 61, y: -43}
       tessellationDetail: 0
+      bones: []
+      spriteID: e0405410000000000800000000000000
+      internalID: 21300238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: wp_additions_01_0011_a
       rect:
@@ -11720,6 +12838,13 @@ TextureImporter:
         - {x: 45.5, y: -29.5}
         - {x: 48.5, y: -23.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: 01405410000000000800000000000000
+      internalID: 21300240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: wp_additions_01_0020_a
       rect:
@@ -11869,6 +12994,13 @@ TextureImporter:
         - {x: 4.5, y: 32}
         - {x: 3.5, y: 31}
       tessellationDetail: 0
+      bones: []
+      spriteID: 21405410000000000800000000000000
+      internalID: 21300242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: wp_additions_01_0022_a
       rect:
@@ -12039,6 +13171,13 @@ TextureImporter:
         - {x: -31, y: -208.5}
         - {x: -31, y: -210.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: 41405410000000000800000000000000
+      internalID: 21300244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: wp_additions_01_0013_a
       rect:
@@ -12109,6 +13248,13 @@ TextureImporter:
         - {x: 32, y: -95}
         - {x: 42, y: -86}
       tessellationDetail: 0
+      bones: []
+      spriteID: 61405410000000000800000000000000
+      internalID: 21300246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: workshop_wall
       rect:
@@ -12149,6 +13295,13 @@ TextureImporter:
         - {x: 36, y: -85.5}
         - {x: 36, y: 85.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: 81405410000000000800000000000000
+      internalID: 21300248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: wp_additions_01_0028_a
       rect:
@@ -12173,6 +13326,13 @@ TextureImporter:
         - {x: 4.5, y: -60}
         - {x: 4.5, y: 57}
       tessellationDetail: 0
+      bones: []
+      spriteID: a1405410000000000800000000000000
+      internalID: 21300250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: wp_additions_01_0026_a
       rect:
@@ -12238,6 +13398,13 @@ TextureImporter:
         - {x: 3.5, y: -86.5}
         - {x: -26.5, y: -86.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: c1405410000000000800000000000000
+      internalID: 21300252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: wp_additions_01_0017_a
       rect:
@@ -12364,6 +13531,13 @@ TextureImporter:
         - {x: -152, y: -101.5}
         - {x: 168, y: -101.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: e1405410000000000800000000000000
+      internalID: 21300254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: wp_rib_back
       rect:
@@ -12386,6 +13560,13 @@ TextureImporter:
         - {x: 41, y: -64.04891}
         - {x: 41, y: 63.95109}
       tessellationDetail: 0
+      bones: []
+      spriteID: 02405410000000000800000000000000
+      internalID: 21300256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: wp_additions_01_0005_a
       rect:
@@ -12467,6 +13648,13 @@ TextureImporter:
         - {x: -2.5, y: -70}
         - {x: 6.5, y: -73}
       tessellationDetail: 0
+      bones: []
+      spriteID: 22405410000000000800000000000000
+      internalID: 21300258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: white_arch_long_0000_1
       rect:
@@ -12536,6 +13724,13 @@ TextureImporter:
         - {x: -20, y: -44.5}
         - {x: -6, y: -49.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: 42405410000000000800000000000000
+      internalID: 21300260
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: white_arch_long_0001_2
       rect:
@@ -12609,6 +13804,13 @@ TextureImporter:
         - {x: -131, y: -108}
         - {x: -130, y: -100}
       tessellationDetail: 0
+      bones: []
+      spriteID: 62405410000000000800000000000000
+      internalID: 21300262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: wp_symbol_frame
       rect:
@@ -12684,6 +13886,13 @@ TextureImporter:
         - {x: 129.5, y: -52.5}
         - {x: 125.5, y: -49.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: 82405410000000000800000000000000
+      internalID: 21300264
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: wp_plaque_new
       rect:
@@ -12743,6 +13952,13 @@ TextureImporter:
         - {x: 100.0247, y: -93.46194}
         - {x: 102.0247, y: -88.46194}
       tessellationDetail: 0
+      bones: []
+      spriteID: a2405410000000000800000000000000
+      internalID: 21300266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: core_extras_0020_wp
       rect:
@@ -12823,9 +14039,26 @@ TextureImporter:
         - {x: 36, y: -192.5}
         - {x: 50, y: -167.5}
       tessellationDetail: 0
+      bones: []
+      spriteID: c2405410000000000800000000000000
+      internalID: 21300268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
-  spritePackingTag:
-  userData:
-  assetBundleName:
-  assetBundleVariant:
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

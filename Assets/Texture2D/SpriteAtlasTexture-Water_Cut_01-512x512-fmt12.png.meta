@@ -1,19 +1,33 @@
 fileFormatVersion: 2
 guid: ad4c4607a25d0dc4dac1345d8c540de1
-timeCreated: 1602781463
-licenseType: Free
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: water_cut_010005
-    21300002: water_cut_010002
-    21300004: water_cut_010004
-    21300006: water_cut_010006
-    21300008: water_cut_010007
-    21300010: water_cut_010000
-    21300012: water_cut_010003
-    21300014: water_cut_010001
+  internalIDToNameTable:
+  - first:
+      213: 21300000
+    second: water_cut_010005
+  - first:
+      213: 21300002
+    second: water_cut_010002
+  - first:
+      213: 21300004
+    second: water_cut_010004
+  - first:
+      213: 21300006
+    second: water_cut_010006
+  - first:
+      213: 21300008
+    second: water_cut_010007
+  - first:
+      213: 21300010
+    second: water_cut_010000
+  - first:
+      213: 21300012
+    second: water_cut_010003
+  - first:
+      213: 21300014
+    second: water_cut_010001
   externalObjects: {}
-  serializedVersion: 4
+  serializedVersion: 11
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -31,6 +45,9 @@ TextureImporter:
     heightScale: 0.25
     normalMapFilter: 0
   isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -61,11 +78,17 @@ TextureImporter:
   spriteTessellationDetail: -1
   textureType: 8
   textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 1
   platformSettings:
-  - buildTarget: DefaultTexturePlatform
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -75,6 +98,7 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -413,6 +437,13 @@ TextureImporter:
         - {x: 29.97532, y: 79.4876}
         - {x: 28.97532, y: 83.4876}
       tessellationDetail: 0
+      bones: []
+      spriteID: 02305410000000000800000000000000
+      internalID: 21300000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: water_cut_010002
       rect:
@@ -480,7 +511,7 @@ TextureImporter:
         - {x: 76.515, y: -12}
         - {x: 96.515, y: -14}
         - {x: 99.515, y: -6.000004}
-        - {x: 90.515, y: -3.814697E-06}
+        - {x: 90.515, y: -0.000003814697}
         - {x: 68.515, y: 1.999996}
         - {x: 55.515, y: 0.9999962}
         - {x: 90.515, y: 11}
@@ -494,8 +525,8 @@ TextureImporter:
         - {x: 46.515, y: 16}
         - {x: 9.514999, y: 5.999996}
         - {x: 4.514999, y: 2.999996}
-        - {x: 5.514999, y: -3.814697E-06}
-        - {x: 23.515, y: -3.814697E-06}
+        - {x: 5.514999, y: -0.000003814697}
+        - {x: 23.515, y: -0.000003814697}
         - {x: 29.515, y: -2.000004}
         - {x: 39.515, y: -2.000004}
         - {x: 36.515, y: -2.000004}
@@ -550,7 +581,7 @@ TextureImporter:
         - {x: -99.485, y: -16}
         - {x: -95.485, y: -15}
         - {x: -86.485, y: -11}
-        - {x: -63.485, y: -3.814697E-06}
+        - {x: -63.485, y: -0.000003814697}
         - {x: -61.485, y: -4.000004}
       - - {x: -19.485, y: 8.999996}
         - {x: -27.485, y: 6.999996}
@@ -559,7 +590,7 @@ TextureImporter:
         - {x: -74.485, y: -16}
         - {x: -62.485, y: -15}
         - {x: -19.485, y: -11}
-        - {x: -12.485, y: -3.814697E-06}
+        - {x: -12.485, y: -0.000003814697}
         - {x: -12.485, y: 8.999996}
       - - {x: 82.515, y: 8.999996}
         - {x: 82.515, y: 0.9999962}
@@ -595,6 +626,13 @@ TextureImporter:
         - {x: 109.515, y: 56}
         - {x: 106.515, y: 57}
       tessellationDetail: 0
+      bones: []
+      spriteID: 22305410000000000800000000000000
+      internalID: 21300002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: water_cut_010004
       rect:
@@ -1034,6 +1072,13 @@ TextureImporter:
         - {x: 45.99299, y: 71.48009}
         - {x: 45.99299, y: 78.48009}
       tessellationDetail: 0
+      bones: []
+      spriteID: 42305410000000000800000000000000
+      internalID: 21300004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: water_cut_010006
       rect:
@@ -1196,6 +1241,13 @@ TextureImporter:
         - {x: 24.99999, y: 54.53508}
         - {x: 24.99999, y: 49.53508}
       tessellationDetail: 0
+      bones: []
+      spriteID: 62305410000000000800000000000000
+      internalID: 21300006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: water_cut_010007
       rect:
@@ -1258,6 +1310,13 @@ TextureImporter:
         - {x: 52.47532, y: 16}
         - {x: 49.47532, y: 19}
       tessellationDetail: 0
+      bones: []
+      spriteID: 82305410000000000800000000000000
+      internalID: 21300008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: water_cut_010000
       rect:
@@ -1335,6 +1394,13 @@ TextureImporter:
         - {x: 29.52145, y: -9.987598}
         - {x: 28.52145, y: -7.987598}
       tessellationDetail: 0
+      bones: []
+      spriteID: a2305410000000000800000000000000
+      internalID: 21300010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: water_cut_010003
       rect:
@@ -1797,6 +1863,13 @@ TextureImporter:
         - {x: 56.46928, y: 68.48297}
         - {x: 54.46928, y: 73.48297}
       tessellationDetail: 0
+      bones: []
+      spriteID: c2305410000000000800000000000000
+      internalID: 21300012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: water_cut_010001
       rect:
@@ -1958,9 +2031,26 @@ TextureImporter:
         - {x: 85.51241, y: 29}
         - {x: 85.51241, y: 34}
       tessellationDetail: 0
+      bones: []
+      spriteID: e2305410000000000800000000000000
+      internalID: 21300014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
-  spritePackingTag:
-  userData:
-  assetBundleName:
-  assetBundleVariant:
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
