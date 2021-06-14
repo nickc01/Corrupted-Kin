@@ -14,17 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   registryName: Corrupted Kin Registry
   modName: Corrupted Kin
-  modAssemblyName: CorruptedKin
+  modAssemblyName: Assembly-CSharp
   modTypeName: KinMod.CorruptedKin
   modListHashCode: -31660705
   features:
   - feature: {fileID: 114641447403652438, guid: 392b31128831d8f429d6ba38e3c1ecc2,
       type: 3}
     TypeName: CorruptedKin
-    AssemblyName: CorruptedKin
+    AssemblyName: Assembly-CSharp
   - feature: {fileID: 11400000, guid: a9a4922e386bb3547b3ecd74fc9e1240, type: 2}
     TypeName: CorruptedKinSettings
-    AssemblyName: CorruptedKin
+    AssemblyName: Assembly-CSharp
   featuresRaw:
   - {fileID: 114641447403652438, guid: 392b31128831d8f429d6ba38e3c1ecc2, type: 3}
   - {fileID: 11400000, guid: a9a4922e386bb3547b3ecd74fc9e1240, type: 2}
