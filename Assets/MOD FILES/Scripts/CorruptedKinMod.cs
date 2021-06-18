@@ -17,28 +17,51 @@ namespace KinMod
 		static void Init()
 		{
 			//WeaverLog.Log("Hooks getting added!");
-			ModHooks.GetPlayerBoolHook += Instance_GetPlayerBoolHook;
-			ModHooks.LanguageGetHook += Instance_LanguageGetHook;
+			//ModHooks.GetPlayerBoolHook += Instance_GetPlayerBoolHook;
+			//ModHooks.LanguageGetHook += Instance_LanguageGetHook;
 			//ModHooks.Instance.GetPlayerStringHook += Instance_GetPlayerStringHook;
 			//ModHooks.Instance.GetPlayerFloatHook += Instance_GetPlayerFloatHook;
 			//ModHooks.Instance.GetPlayerIntHook += Instance_GetPlayerIntHook;
 			//ModHooks.Instance.GetPlayerStringHook += Instance_GetPlayerStringHook;
+			ModHooks.GetPlayerBoolHook += ModHooks_GetPlayerBoolHook;
+			ModHooks.LanguageGetHook += ModHooks_LanguageGetHook;
 		}
 
-		private static string Instance_LanguageGetHook(string key, string sheetTitle)
+		private static bool ModHooks_LanguageGetHook(string key, string sheetTitle, string orig, string current, out string res)
 		{
 			if (key == "NAME_LOST_KIN")
 			{
-				return "Corrupted Kin";
+				res = "Corrupted Kin";
+				return true;
 			}
 			else if (key == "GG_S_LOST_KIN")
 			{
-				return "Lost god corrupted by infection";
+				res = "Lost god corrupted by infection";
+				return true;
 			}
 			else
 			{
-				return WeaverCore.Language.GetStringInternal(key, sheetTitle);
+				res = "";
+				return false;
 			}
+		}
+
+		private static bool? ModHooks_GetPlayerBoolHook(string name, bool orig)
+		{
+			var settings = Panel.GetSettings<CorruptedKinSettings>();
+			if (name == "infectedKnightDreamDefeated" && settings != null /*&& settings.EnableInAbyss*/)
+			{
+				return false;
+			}
+			else
+			{
+				return null;
+			}
+		}
+
+		/*private static string Instance_LanguageGetHook(string key, string sheetTitle)
+		{
+			
 
 			//WeaverLog.Log("KEY = " + key);
 			//WeaverLog.Log("Sheet Title = " + sheetTitle);
@@ -46,7 +69,7 @@ namespace KinMod
 			//WeaverLog.Log("Value = " + value);
 
 			//return value;
-		}
+		}*/
 
 		/*private static string Instance_GetPlayerStringHook(string stringName)
 		{
@@ -78,18 +101,10 @@ namespace KinMod
 			return value;
 		}*/
 
-		private static bool Instance_GetPlayerBoolHook(string originalSet)
+		/*private static bool Instance_GetPlayerBoolHook(string originalSet)
 		{
-			var settings = Panel.GetSettings<CorruptedKinSettings>();
-			if (originalSet == "infectedKnightDreamDefeated" && settings != null /*&& settings.EnableInAbyss*/)
-			{
-				return false;
-			}
-			else
-			{
-				return PlayerData.instance.GetBoolInternal(originalSet);
-			}
-		}
+			
+		}*/
 
 		public override string GetVersion()
 		{
