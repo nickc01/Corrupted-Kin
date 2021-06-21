@@ -535,7 +535,7 @@ public class SpecialMoves : CorruptedKinMove
 				yield return null;
 			}
 			Blood.SpawnBlood(transform.position, new Blood.BloodSpawnInfo(30, 30, 10f, 35f, 20f, 160f, null));
-			Kin.Flasher.FlashInfected();
+			Kin.Flasher.flashInfected();
 			recoiler.SetRecoilSpeed(0f);
 			Kin.Collider.enabled = true;
 			Kin.HealthManager.Invincible = false;

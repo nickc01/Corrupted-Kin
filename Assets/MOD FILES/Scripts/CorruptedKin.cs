@@ -729,7 +729,8 @@ public class CorruptedKin : BossReplacement
 	IEnumerator StartBossBattleRoutine()
 	{
 		LimitXPosition = true;
-		WeaverEvents.BroadcastEvent("DREAM GATE CLOSE", gameObject);
+		//WeaverEvents.BroadcastEvent("DREAM GATE CLOSE", gameObject);
+		EventManager.BroadcastEvent("DREAM GATE CLOSE", gameObject);
 		Rigidbody.isKinematic = false;
 
 		if (Boss.InGodHomeArena)
@@ -1108,7 +1109,8 @@ public class CorruptedKin : BossReplacement
 
 		yield return new WaitForSeconds(0.5f);
 
-		WeaverEvents.BroadcastEvent("IK GATE OPEN", gameObject);
+		//WeaverEvents.BroadcastEvent("IK GATE OPEN", gameObject);
+		EventManager.BroadcastEvent("IK GATE OPEN", gameObject);
 
 		if (WeaverGameManager.CurrentMapZone == GlobalEnums.MapZone.DREAM_WORLD)
 		{
@@ -1188,7 +1190,8 @@ public class CorruptedKin : BossReplacement
 		var battleSceneObject = GetBattleSceneObject();
 		if (battleSceneObject != null)
 		{
-			WeaverEvents.SendEventToObject(battleSceneObject, "END");
+			//WeaverEvents.SendEventToObject(battleSceneObject, "END");
+			EventManager.SendEventToGameObject("END", battleSceneObject);
 		}
 	}
 

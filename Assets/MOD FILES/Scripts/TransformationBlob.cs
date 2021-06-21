@@ -26,7 +26,7 @@ public class TransformationBlob : MonoBehaviour
 			renderer = GetComponent<SpriteRenderer>();
 		}
 
-		flasher.FlashInfected();
+		flasher.flashInfected();
 	}
 
 	public static TransformationBlob Spawn(Vector3 position)

@@ -229,7 +229,7 @@ public class TransformationMove : CorruptedKinMove
 
 		CameraShaker.Instance.Shake(ShakeType.BigShake);
 
-		Kin.Flasher.FlashInfected();
+		Kin.Flasher.flashInfected();
 
 		//yield return new WaitForSeconds(0.05f);
 
