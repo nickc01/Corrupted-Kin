@@ -32,7 +32,7 @@ public class CorruptedKinHealth : EntityHealth
 		}
 		else
 		{
-			switch (Boss.Diffculty)
+			switch (Boss.Difficulty)
 			{
 				case WeaverCore.Enums.BossDifficulty.Attuned:
 					Health = attunedHealth;
