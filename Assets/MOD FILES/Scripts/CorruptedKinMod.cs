@@ -27,26 +27,23 @@ namespace KinMod
 			ModHooks.LanguageGetHook += ModHooks_LanguageGetHook;
 		}
 
-		private static bool ModHooks_LanguageGetHook(string key, string sheetTitle, string orig, string current, out string res)
+		private static string ModHooks_LanguageGetHook(string key, string sheetTitle, string res)
 		{
 			if (key == "NAME_LOST_KIN")
 			{
-				res = "Corrupted Kin";
-				return true;
+				return "Corrupted Kin";
 			}
 			else if (key == "GG_S_LOST_KIN")
 			{
-				res = "Lost god corrupted by infection";
-				return true;
+				return "Lost god corrupted by infection";
 			}
 			else
 			{
-				res = "";
-				return false;
+				return res;
 			}
 		}
 
-		private static bool? ModHooks_GetPlayerBoolHook(string name, bool orig)
+		private static bool ModHooks_GetPlayerBoolHook(string name, bool orig)
 		{
 			var settings = Panel.GetSettings<CorruptedKinSettings>();
 			if (name == "infectedKnightDreamDefeated" && settings != null /*&& settings.EnableInAbyss*/)
@@ -55,7 +52,7 @@ namespace KinMod
 			}
 			else
 			{
-				return null;
+				return orig;
 			}
 		}
 
