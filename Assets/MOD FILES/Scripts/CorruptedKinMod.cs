@@ -13,6 +13,8 @@ namespace KinMod
 {
 	public class CorruptedKin : WeaverMod
 	{
+		public CorruptedKin() : base("Corrupted Kin") { }
+
 		[OnInit]
 		static void Init()
 		{
