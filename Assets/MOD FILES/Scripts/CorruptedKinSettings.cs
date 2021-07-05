@@ -14,7 +14,7 @@ public class CorruptedKinSettings : Panel
 		}
 	}
 
-	[Tooltip("If set to true, this will permanently enable access to the dream arena in the abyss")]
+	[Tooltip("This will enable you to fight Corrupted Kin in the arena where you initially fight Lost Kin. The broken vessel corpse in the abyss can be dream nailed as many times as you want")]
 	public bool EnableInAbyss = false;
 
 	[Tooltip("Whether custom health should be enabled")]
