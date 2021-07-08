@@ -1,5 +1,8 @@
 ﻿using UnityEngine;
 
+/// <summary>
+/// THIS IS UNUSED
+/// </summary>
 public class RumbleWave : MonoBehaviour, IWaveGenerator
 {
 	[SerializeField]
@@ -21,7 +24,6 @@ public class RumbleWave : MonoBehaviour, IWaveGenerator
 
 	void Awake()
 	{
-		//_oscillator = Mathf.Sin(_oscillatorTimer);
 		wave = GetComponentInParent<WaveSystem>();
 		if (wave != null)
 		{

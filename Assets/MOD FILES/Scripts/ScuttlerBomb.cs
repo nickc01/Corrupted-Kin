@@ -71,7 +71,7 @@ public class ScuttlerBomb : MonoBehaviour
 		InfectedExplosion.Spawn(transform.position);
 		poolComponent.ReturnToPool(1f);
 
-		if (SourceBoss.InfectionWave != null && transform.position.y < SourceBoss.FloorY + 1f)
+		if (SourceBoss != null && SourceBoss.InfectionWave != null && transform.position.y < SourceBoss.FloorY + 1f)
 		{
 			SlamWave leftWave, rightWave;
 			SourceBoss.WaveSlams.SpawnSlam(SourceBoss.InfectionWave.System, transform.position.x,out leftWave, out rightWave, waveSpacing);

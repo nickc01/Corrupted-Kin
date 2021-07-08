@@ -19,6 +19,7 @@ public class AmbientWave : MonoBehaviour, IWaveGenerator
 
 	WaveSystem wave;
 
+	/// <inheritdoc/>
 	int IWaveGenerator.Priority
 	{
 		get
@@ -30,6 +31,7 @@ public class AmbientWave : MonoBehaviour, IWaveGenerator
 	void Awake()
 	{
 		_oscillator = Mathf.Sin(_oscillatorTimer);
+		//Automatically add the ambient wave to the wave system if possible
 		wave = GetComponentInParent<WaveSystem>();
 		if (wave != null)
 		{
@@ -54,19 +56,19 @@ public class AmbientWave : MonoBehaviour, IWaveGenerator
 		_oscillator = Mathf.Sin(_oscillatorTimer * Mathf.PI * 2f);
 	}
 
+	/// <inheritdoc/>
 	void IWaveGenerator.OnWaveStart(WaveSystem source)
 	{
 		
 	}
 
+	/// <inheritdoc/>
 	float IWaveGenerator.Calculate(float x, float previousValue)
 	{
-		//var value = _oscillator * Mathf.Sin((x + _timer) * Mathf.PI * 2f / scale.x) * scale.y;
-		//return Mathf.Lerp(value, previousValue, previousValue - 1f);
 		return _oscillator * Mathf.Sin((x + _timer) * Mathf.PI * 2f / scale.x) * scale.y;
-		//return value > previousValue ? value : previousValue;
 	}
 
+	/// <inheritdoc/>
 	void IWaveGenerator.OnWaveEnd(WaveSystem source)
 	{
 

@@ -4,7 +4,6 @@ using UnityEngine;
 public class BurrowWave : MonoBehaviour, IWaveGenerator, IWaveBlankerGenerator
 {
 	WaveSystem waveSystem;
-	//const float E = (float)System.Math.E;
 
 	[SerializeField]
 	float dampingFactor = 2.2f;
@@ -18,9 +17,6 @@ public class BurrowWave : MonoBehaviour, IWaveGenerator, IWaveBlankerGenerator
 	float fadeInTime = 0.5f;
 	[SerializeField]
 	AnimationCurve fadeCurve;
-
-	//[SerializeField]
-	//float fadeFactor = 2.2f;
 
 	[Space]
 	[Header("Particle Systems")]
@@ -47,8 +43,11 @@ public class BurrowWave : MonoBehaviour, IWaveGenerator, IWaveBlankerGenerator
 		}
 	}
 
+
+
 #endif
 
+	/// <inheritdoc/>
 	public int Priority
 	{
 		get
@@ -57,6 +56,7 @@ public class BurrowWave : MonoBehaviour, IWaveGenerator, IWaveBlankerGenerator
 		}
 	}
 
+	/// <inheritdoc/>
 	public float Calculate(float x, float previousValue)
 	{
 		return previousValue + (CalcDampedSine(x - transform.position.x) * visiblity);
@@ -66,11 +66,7 @@ public class BurrowWave : MonoBehaviour, IWaveGenerator, IWaveBlankerGenerator
 	{
 		var scale = transform.localScale;
 
-		var value = GetDampFactor(Mathf.Abs(x) * scale.x);
-
 		return ((Mathf.Cos(Mathf.Abs(x) * Mathf.PI / 3f) - waveHeight) * scale.y) * GetDampFactor(Mathf.Abs(x) * scale.x * dampingFactor);
-		//return ((value - waveHeight) * scale.y) * GetDampFactor(Mathf.Abs(x) * scale.x * dampingFactor);
-		//return ((scale.y * Mathf.Pow(E, -dampingFactor * Mathf.Abs(x)) * Mathf.Cos(2f * Mathf.PI * x * scale.x)) - waveHeight) * GetDampFactor(x * fadeFactor);//(1f / ((Mathf.Abs(x) * fadeFactor) + 1));
 	}
 
 	float GetDampFactor(float x)
@@ -86,14 +82,15 @@ public class BurrowWave : MonoBehaviour, IWaveGenerator, IWaveBlankerGenerator
 		}
 	}
 
+	/// <inheritdoc/>
 	public void OnWaveEnd(WaveSystem source)
 	{
 		source.RemoveBlankerGenerator(this);
 	}
 
+	/// <inheritdoc/>
 	public void OnWaveStart(WaveSystem source)
 	{
-		//Debug.Log("ADDING BURROW WAVE");
 		source.AddBlankerGenerator(this);
 		waveSystem = source;
 	}

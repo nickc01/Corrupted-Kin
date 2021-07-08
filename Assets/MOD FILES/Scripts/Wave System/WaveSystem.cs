@@ -24,6 +24,7 @@ public class WaveSystem : MonoBehaviour
 		}
 	}
 
+	//Used for sorting wave generators by their priority
 	class GeneratorSorter : IComparer<IWaveGenerator>
 	{
 		Comparer<int> numberComparer;
@@ -39,6 +40,7 @@ public class WaveSystem : MonoBehaviour
 		}
 	}
 
+	//Used for sorting blanker generators by their priority
 	class BlankerGeneratorSorter : IComparer<IWaveBlankerGenerator>
 	{
 		Comparer<int> numberComparer;
@@ -55,6 +57,7 @@ public class WaveSystem : MonoBehaviour
 	}
 
 
+	//Represents a position on the wave where it gets split into two parts temporarily, and then recombines after a set amount of time
 	[Serializable]
 	class SplitPoint
 	{
@@ -68,6 +71,7 @@ public class WaveSystem : MonoBehaviour
 		public float _timer; //The internal timer of the split
 	}
 
+	//Represents a line that scrolls across the wave, covering the texture below it. This is used to hide obvious seams when the wave is split
 	[Serializable]
 	class BlankerLine
 	{
@@ -119,43 +123,48 @@ public class WaveSystem : MonoBehaviour
 	[Tooltip("The base movement of the wave when nothing is happening")]
 	float ambientMovement = 0f;
 
-
-	/*[Space]
-	[Header("TEST STUFF")]
-	public float test_waveX;
-	public float test_acceleration;
-	public float test_terminalVelocity;
-	public float test_deacceleration;
-	public float test_startingIntensity;
-	public float test_startingWaitTime;
-	public float test_spread;
-	public float test_decayRate;
-
-	public float SplitTime;
-	public int SplitAmount;*/
-
+	//A list of verticies that are a part of the wave mesh
 	List<Vector3> meshVerticies;
+	//A list of triangles that are a part of the wave mesh
 	List<int> meshTriangles;
+	//A list of UVs that are a part of the wave mesh. The Z component is how much of the blanking color should apply
 	List<Vector3> meshUVs;
+	//The collider points that are a part of the polygon collider
 	List<Vector2> colliderPoints;
+	//The mesh that combines the verticies, triangles, and uvs together
 	Mesh mesh;
 
+	//The material used for rendering the wave
 	Material waveMaterial;
+	//The renderer that will render the wave material
 	new MeshRenderer renderer;
+	//The filter used for assigning the mesh to the material
 	MeshFilter filter;
+	//The polygon collider for the wave collision
 	PolygonCollider2D polyCollider;
 
+	//Used for sorting splits
 	SplitSorter splitSorter = new SplitSorter();
+	//A list of currently active splits on the wave
 	List<SplitPoint> splits = new List<SplitPoint>();
 
+	//A list of verticies that have splits occuring on them
 	HashSet<int> verticiesThatAreSplit = new HashSet<int>();
+	//A list of currently active blanking lines on the wave
 	List<BlankerLine> blankers = new List<BlankerLine>();
 
+	//Used for sorting wave generators
 	GeneratorSorter generatorSorter = new GeneratorSorter();
+	//Used for sorting blanking generators
 	BlankerGeneratorSorter blankerGeneratorSorter = new BlankerGeneratorSorter();
+	//A list of currently active wave generators
 	List<IWaveGenerator> generators = new List<IWaveGenerator>();
+	//A list of currently active blanker generators
 	List<IWaveBlankerGenerator> blankerGenerators = new List<IWaveBlankerGenerator>();
 
+	/// <summary>
+	/// How wide the wave is in in-game units
+	/// </summary>
 	public float WaveWidth
 	{
 		get
@@ -176,90 +185,27 @@ public class WaveSystem : MonoBehaviour
 
 		waveMaterial = renderer.sharedMaterial;
 		RunWaveCalculation();
-
-
-		//AddSplitPoint(0.25f,1,1f);
-		//AddSplitPoint(0.5f,1,1f);
-		//AddSplitPoint(0.6f,1,1f);
-		//AddSplitPoint(0.7f,1,1f);
-		//AddSplitPoint(0.8f,1,1f);
-		//AddSplitPoint(0.9f,1,1f);
-		//AddSplitPoint(1f,1,1f);
-		/*AddSplitPoint(0.5f,1, 1f);
-		AddSplitPoint(0.5f,1, 1f);
-		AddSplitPoint(0.5f,1, 1f);
-		AddSplitPoint(0.5f,1, 1f);
-		AddSplitPoint(0.5f,1, 1f);
-		AddSplitPoint(0.5f,1, 1f);
-		AddSplitPoint(0.5f,1, 1f);
-		AddSplitPoint(0.5f,1, 1f);
-		AddSplitPoint(0.5f,1, 1f);
-		AddSplitPoint(0.5f,1, 1f);*/
-		//AddSplitPoint(0.5f, 0.01f);
-		//AddSplitPoint(0.5f, 1, 2f);
-		StartCoroutine(AddSplitAfterSecond());
-	}
-
-	IEnumerator AddSplitAfterSecond()
-	{
-		yield return new WaitForSeconds(1f);
-		//AddSplitPoint(0.5f, 1, 2f);
-
-		//AddSplitPoint(-1f, SplitAmount * 10, SplitTime);
-
-		/*AddSplitPoint(0f, SplitAmount, SplitTime);
-		AddSplitPoint(0.2f, SplitAmount, SplitTime);
-		AddSplitPoint(0.4f, SplitAmount, SplitTime);
-		AddSplitPoint(0.6f, SplitAmount, SplitTime);
-		AddSplitPoint(0.8f, SplitAmount, SplitTime);
-		AddSplitPoint(1f, SplitAmount, SplitTime);
-
-		AddSplitPoint(0f, SplitAmount, SplitTime);
-		AddSplitPoint(0.2f, SplitAmount, SplitTime);
-		AddSplitPoint(0.4f, SplitAmount, SplitTime);
-		AddSplitPoint(0.6f, SplitAmount, SplitTime);
-		AddSplitPoint(0.8f, SplitAmount, SplitTime);
-		AddSplitPoint(1f, SplitAmount, SplitTime);*/
-
-		/*for (int i = 0; i < splits.Count; i++)
-		{
-			Debug.Log("FINAL SPLIT = " + splits[i].VertexPoint);
-		}
-
-		for (int i = 0; i < verticies.Count; i += 2)
-		{
-			if (i - 2 >= 0 && Mathf.Abs(verticies[i].x - verticies[i - 2].x) < 0.00110102f)
-			{
-				Debug.Log("SPLIT FOUND: Left = " + (i - 2) + " Right = " + i);
-			}
-		}*/
-
-		//AddSplitPoint(test_waveX, SplitAmount, SplitTime);
-		//AddSplitPoint(test_waveX, SplitAmount, SplitTime);
-		//AddBlankerLine(test_waveX, test_acceleration, test_terminalVelocity, test_deacceleration, 1 + (blankingColorDecay * SplitTime), test_startingWaitTime, test_spread, test_decayRate);
-		//AddBlankerLine(test_waveX, -test_acceleration, -test_terminalVelocity, -test_deacceleration, 1 + (blankingColorDecay * SplitTime), test_startingWaitTime, test_spread, test_decayRate);
-
-		foreach (var generator in GetComponentsInChildren<SlamWave>())
-		{
-			AddGenerator(generator);
-		}
-		//AddGenerator(GetComponentInChildren<SlamWave>());
 	}
 
 	protected virtual void Update()
 	{
+		//Update the wave splits
 		CalculateSplits();
+		//Update the blanker lines
 		CalculateBlankerLines();
+		//This causes the blanking colors to gradually fade away
 		DecayBlankers();
 
+		//Updates the shape of the wave and it's collider
 		RunWaveCalculation();
 	}
 
+	//Causes the blanking color for all the mesh UVs to decay over time
 	private void DecayBlankers()
 	{
 		var decay = blankingColorDecay * Time.deltaTime;
 		var ambientOffset = ambientMovement * Time.deltaTime;
-		//THIS CAN BE MADE TO RUN IN PARALLEL FOR FASTER EXECUTION
+		//For each UV in the wave mesh, cause their blanking color amount (z value) to decrease
 		for (int i = 0; i < meshUVs.Count; i++)
 		{
 			var uv = meshUVs[i];
@@ -269,10 +215,8 @@ public class WaveSystem : MonoBehaviour
 			{
 				uv.z = 0f;
 			}
-			//Debug.Log("UV Index = " + i);
-			//Debug.Log("UV Count = " + meshUVs.Count);
-			//Debug.Log("Vertex Count = " + meshVerticies.Count);
 
+			//If there are any blanking color generators attached, then run those over all the mesh UVs
 			if (blankerGenerators.Count > 0)
 			{
 				float previousValue = uv.z;
@@ -290,6 +234,7 @@ public class WaveSystem : MonoBehaviour
 			meshUVs[i] = uv;
 
 #if UNITY_EDITOR
+			//Error checking to see if the UVs are lining up correctly along the wave
 			if (i - 1 >= 0)
 			{
 				var diff = (meshUVs[i].x - meshUVs[i - 1].x);
@@ -303,6 +248,7 @@ public class WaveSystem : MonoBehaviour
 #endif
 		}
 
+		//If the mesh UVs have gone too far to the right, then wrap around to the opposite side
 		if (meshUVs[meshUVs.Count - 2].x > 2f)
 		{
 			for (int i = 0; i < meshUVs.Count; i++)
@@ -311,6 +257,7 @@ public class WaveSystem : MonoBehaviour
 				uv.z -= 1f;
 			}
 		}
+		//If the mesh UVs have gone too far to the left, then wrap around to the opposite side
 		else if (meshUVs[0].x < -1f)
 		{
 			for (int i = 0; i < meshUVs.Count; i++)
@@ -321,6 +268,7 @@ public class WaveSystem : MonoBehaviour
 		}
 	}
 
+	//Updates the positions of the blanker lines
 	private void CalculateBlankerLines()
 	{
 		//Loop over all the currently running blankers
@@ -348,7 +296,7 @@ public class WaveSystem : MonoBehaviour
 				intensity = blanker._intensity;
 			}
 
-			//If the blanker is moving
+			//If the blanker is no longer waiting to move
 			if (blanker._waitTime == 0f)
 			{
 				//If the blanker has already reached its terminal velocity
@@ -390,7 +338,7 @@ public class WaveSystem : MonoBehaviour
 				//Update it's wave x position
 				blanker.Vertex = GetVertexAtWaveX(blanker.WaveX);
 
-				//Set the blanking color of any verticies the blanker has passed along the way
+				//If the blanker line has traveled to the right, set the blanking color of any verticies the blanker has passed along the way
 				if (blanker.Vertex >= oldVertex)
 				{
 					for (int b = oldVertex; b < blanker.Vertex; b += 2)
@@ -401,6 +349,7 @@ public class WaveSystem : MonoBehaviour
 						}
 					}
 				}
+				//If the blanker line has traveled to the left, set the blanking color of any verticies the blanker has passed along the way
 				else
 				{
 					for (int b = blanker.Vertex - 1; b >= oldVertex; b -= 2)
@@ -413,6 +362,7 @@ public class WaveSystem : MonoBehaviour
 				}
 
 #if UNITY_EDITOR
+				//Draw the location of the blanker line
 				var worldPos = ConvertToWorldCoordinates(blanker.WaveX, 1f);
 				Debug.DrawLine(worldPos, (Vector3)worldPos + new Vector3(0f, 10f, 0f), Color.magenta);
 #endif
@@ -422,7 +372,7 @@ public class WaveSystem : MonoBehaviour
 			//If the blanker is waiting to start
 			else
 			{
-				//Decrease the timer. When the timer's zero, the blanker can move
+				//Decrease the waiting timer. When the timer's zero, the blanker can move
 				blanker._waitTime -= Time.deltaTime;
 				if (blanker._waitTime < 0f)
 				{
@@ -430,13 +380,16 @@ public class WaveSystem : MonoBehaviour
 				}
 			}
 
+			//Set the blanking color of the vertex the blanker line is currently sitting on top of
 			if (blanker.Vertex >= 0 && blanker.Vertex < meshVerticies.Count)
 			{
 				SetBlankIntensity(blanker.Vertex, intensity);
 			}
 
-			//SPREAD CODE
+			//SPREAD CODE - This is used for settings the blanking color of any UVs nearby the blanking line
+			//This is used to create an anti-aliasing effect around the blanking line
 			int spreadVertexCounter = blanker.Vertex;
+			//Loop over all nearby points that are to the left of the blanking line to apply a spread effect
 			for (int z = 0; z < blanker.Spread; z++)
 			{
 				if (spreadVertexCounter >= 0 && spreadVertexCounter < meshVerticies.Count)
@@ -457,6 +410,7 @@ public class WaveSystem : MonoBehaviour
 
 			spreadVertexCounter = blanker.Vertex;
 
+			//Loop over all nearby points that are to the right of the blanking line to apply a spread effect
 			for (int z = 0; z < blanker.Spread; z++)
 			{
 				if (spreadVertexCounter >= 0 && spreadVertexCounter < meshVerticies.Count)
@@ -477,6 +431,7 @@ public class WaveSystem : MonoBehaviour
 		}
 	}
 
+	//Used for updating the wave splits
 	private void CalculateSplits()
 	{
 		var textureScale = waveMaterial.mainTextureScale;
@@ -485,6 +440,7 @@ public class WaveSystem : MonoBehaviour
 			var split = splits[s];
 
 #if UNITY_EDITOR
+			//Draw where the split is occuring
 			var worldPos = ConvertToWorldCoordinates(split.WaveX, 0f);
 			Debug.DrawLine(worldPos, worldPos + new Vector2(0f, 10f), Color.green);
 #endif
@@ -492,16 +448,14 @@ public class WaveSystem : MonoBehaviour
 			//If the split time is up
 			if (split._timer >= split.SplitTime)
 			{
-				//WeaverLog.Log("SPLIT REMOVED");
-				//WeaverLog.Log("Split Size Before = " + splits.Count);
 				//Remove the split
 				DeleteSplit(split);
 				splits.RemoveAt(s);
 				splits.Sort(splitSorter);
-				//WeaverLog.Log("Split Size After = " + splits.Count);
 				continue;
 			}
 
+			//Get the current position value
 			var previousValue = splitCurve.Evaluate(split._timer / split.SplitTime);
 			split._timer += Time.deltaTime;
 			if (split._timer >= split.SplitTime)
@@ -509,40 +463,49 @@ public class WaveSystem : MonoBehaviour
 				split._timer = split.SplitTime;
 			}
 
+			//Get the next position value
 			var nextValue = splitCurve.Evaluate(split._timer / split.SplitTime);
 
+			//Get the difference between the previous and next value
 			var difference = ((nextValue - previousValue) * split.SplitAmount) / textureScale.x;
 
+			//If the split is out of bounds
 			if (split.OutOfBounds)
 			{
+				//If the split is offscreen to the right of the wave
 				if (split.WaveX >= 1f)
 				{
-					//CAN BE MADE PARRALEL
+					//Loop over all the meshUVs and shift the x uvs to the right, creating a leftwards motion
 					for (int i = 0; i < meshUVs.Count; i++)
 					{
 						meshUVs[i] = meshUVs[i] + new Vector3(difference / 2f, 0f, 0f);
 					}
 				}
+				//If the split is offscreen to the left of the wave
 				else if (split.WaveX <= 0f)
 				{
-					//CAN BE MADE PARRALEL
+					//Loop over all the meshUVs and shift the x uvs to the left, creating a rightwards motion
 					for (int i = 0; i < meshUVs.Count; i++)
 					{
 						meshUVs[i] = meshUVs[i] - new Vector3(difference / 2f, 0f, 0f);
 					}
 				}
 			}
+			//If the split is not out of bounds
 			else
 			{
-				//CAN BE MADE PARRALEL
+				//Loop over all the UVs in the wave mesh
 				for (int i = 0; i < meshUVs.Count; i++)
 				{
+					//If the UV is to the left of the split, or is on top of the split
 					if (i <= (split.VertexPoint + 1))
 					{
+						//Shift the x uv to the right, creating a leftwards motion
 						meshUVs[i] = meshUVs[i] + new Vector3(difference / 2f, 0f, 0f);
 					}
 					else
 					{
+						//Shift the x uv to the left, creating a rightwards motion
 						meshUVs[i] = meshUVs[i] - new Vector3(difference / 2f, 0f, 0f);
 					}
 				}
@@ -550,57 +513,74 @@ public class WaveSystem : MonoBehaviour
 		}
 	}
 
+	//Converts a WaveX value to world space coordinates
+	//In WaveX coordinates, 0 represents the leftmost part of the wave, and 1 represents the rightmost part of the wave
 	float WaveXToWorld(float waveX)
 	{
 		var scale = transform.localScale;
-
 		return (scale.x * waveX) + (transform.position.x - (scale.x / 2f));
 	}
 
+	//Converts a world space coordinate to WaveX coordinates
+	//In WaveX coordinates, 0 represents the leftmost part of the wave, and 1 represents the rightmost part of the wave
 	float WorldToWaveX(float position)
 	{
 		var scale = transform.localScale;
-
-		//return (scale.x * waveX) + (transform.position.x - (scale.x / 2f));
-
 		return (position - (transform.position.x - (scale.x / 2f))) / scale.x;
 	}
 
+	//Updates the shape of the wave and it's collider
 	void RunWaveCalculation()
 	{
-		//THIS CAN BE RUN IN PARALLEL
+		//Loop over all the verticies of the wave mesh
 		for (int i = 0; i < meshVerticies.Count; i += 2)
 		{
+			//Get its wave-x coordinate
 			var waveX = meshVerticies[i].x;
 
+			//Convert it to world coordinates, and use to calculate the wave height at that particular point
 			var heightValue = baseHeight - 0.5f + CalculateWave(WaveXToWorld(waveX));
 
+			//Set the new height value of the vertex
 			meshVerticies[1 + i] = new Vector3(waveX, heightValue, 0f);
+			//Update the UVs y component to reflect the new vertex height
 			meshUVs[1 + i] = new Vector3(meshUVs[1 + i].x, Mathf.LerpUnclamped(heightValue + 0.5f,1f,squashFactor), meshUVs[1 + i].z);
 		}
+		//Clear the mesh data
 		mesh.Clear();
+		//Set the mesh's vertex data
 		mesh.SetVertices(meshVerticies);
+		//Set the mesh's triangle data
 		mesh.SetTriangles(meshTriangles, 0);
+		//Set the mesh's UV data
 		mesh.SetUVs(0, meshUVs);
 
+		//Recalculate the mesh normals and bounds
 		mesh.RecalculateNormals();
 		mesh.RecalculateBounds();
 
+		//Using the vertex data, update the wave's collider points
 		UpdateColliderPoints(colliderPoints, meshVerticies);
+		//Apply the new collider points to the wave's polygon collider
 		UpdatePolygonCollider(colliderPoints);
 	}
 
+	//Generates the initial mesh for the wave
 	Mesh GenerateWaveMesh(out List<Vector3> verticies, out List<int> triangles, out List<Vector3> uv)
 	{
 		var mesh = new Mesh();
 
+		//Marked dynamic since the mesh is getting updated every frame
 		mesh.MarkDynamic();
 
+		//Create the list of vertexes
 		verticies = new List<Vector3>(wavePoints * 2);
+		//Create the list of triangles
 		triangles = new List<int>((wavePoints - 1) * 6);
-		//uv = new Vector3[wavePoints * 2];
+		//Create the list of UVs
 		uv = new List<Vector3>(wavePoints * 2);
 
+		//Initialize the vertex and uv lists with default values
 		for (int i = 0; i < wavePoints; i++)
 		{
 			verticies.Add(new Vector3(-0.5f + (i / (wavePoints - 1f)), -0.5f, 0f));
@@ -610,6 +590,7 @@ public class WaveSystem : MonoBehaviour
 			uv.Add(new Vector3(i / (wavePoints - 1f), 1f, 0f));
 		}
 
+		//Initialize the triangle list
 		for (int i = 0; i < (wavePoints - 1); i++)
 		{
 			triangles.Add(0 + (i * 2));
@@ -621,28 +602,36 @@ public class WaveSystem : MonoBehaviour
 			triangles.Add(2 + (i * 2));
 		}
 
+		//Set the mesh's vertex data
 		mesh.SetVertices(verticies);
+		//Set the mesh's triangle data
 		mesh.SetTriangles(triangles, 0);
+		//Set the mesh's UV data
 		mesh.SetUVs(0, uv);
+		//Recalculate the mesh normals and bounds
 		mesh.RecalculateNormals();
+		mesh.RecalculateBounds();
 
 		return mesh;
 	}
 
+	//Generates a list of collision points for the wave
 	List<Vector2> GenerateColliderPoints(List<Vector3> verticies)
 	{
+		//Initialize the list with default values
 		var length = verticies.Count;
 		List<Vector2> colliderPoints = new List<Vector2>((length / 2) + 2);
-
 		for (int i = 0; i < (length / 2) + 2; i++)
 		{
 			colliderPoints.Add(default(Vector2));
 		}
 
+		//Update the list based on the vertex data
 		UpdateColliderPoints(colliderPoints,verticies);
 		return colliderPoints;
 	}
 
+	//Given a list of verticies, calculate the wave's collision points
 	void UpdateColliderPoints(List<Vector2> colliderPoints, List<Vector3> verticies)
 	{
 		var length = verticies.Count;
@@ -656,17 +645,22 @@ public class WaveSystem : MonoBehaviour
 
 	Vector2[] tempArray;
 
+	//Update the polygon collider of the wave
+	//Some points will be rejected to save performance, since the collider does not have to have the same level of quality as the mesh
 	void UpdatePolygonCollider(List<Vector2> colliderPoints)
 	{
+		//Calculates how many collider points will be assigned to the polygon collider
 		var retainedPoints = (((colliderPoints.Count - 2) / 2) / colliderQuality) + 3;
 
-		var rejectedPoints = ((colliderPoints.Count - 2) / 2) - retainedPoints;
-
+		//A temp array is used to minimize memory allocations every frame
 		if (tempArray == null || tempArray.GetLength(0) != (retainedPoints))
 		{
 			tempArray = new Vector2[retainedPoints];
 		}
 
+		//Copy over points from the collider points array to the temp array.
+		//The colliderQuality variable determines how many of the points are copied over.
+		//If colliderQuality is 2 for example, then only half of the points get copied over
 		for (int i = 0; i < (colliderPoints.Count - 2) / 2; i++)
 		{
 			if (i % colliderQuality == 0)
@@ -675,54 +669,60 @@ public class WaveSystem : MonoBehaviour
 			}
 		}
 
+		//Copy over the bottom-left, bottom-right, and top-right points so the collider is a full shape
 		tempArray[retainedPoints - 3] = colliderPoints[colliderPoints.Count - 3];
 		tempArray[retainedPoints - 2] = colliderPoints[colliderPoints.Count - 2];
 		tempArray[retainedPoints - 1] = colliderPoints[colliderPoints.Count - 1];
 
+		//Set the points of the polygon collider
 		polyCollider.points = tempArray;
 	}
 
+	//Converts wave-x and wave-y coordinates to world-space coordinates
+	//In Wave coordinates, 0 represents the leftmost part of the wave, and 1 represents the rightmost part of the wave
 	Vector2 ConvertToWorldCoordinates(float waveX, float waveY)
 	{
 		return ConvertToWorldCoordinates(new Vector2(waveX,waveY));
 	}
 
+	//Converts wave-x and wave-y coordinates to world-space coordinates
+	//In Wave coordinates, 0 represents the leftmost part of the wave, and 1 represents the rightmost part of the wave
 	Vector2 ConvertToWorldCoordinates(Vector2 waveCoords)
 	{
 		var scale = transform.localScale;
 		var position = transform.position - (scale / 2f);
 
 		return new Vector2((waveCoords.x * scale.x) + position.x,(waveCoords.y * scale.y) + position.y);
-
-		//return new Vector2(Mathf.LerpUnclamped(position.x - (scale.x / 2f), position.x + (scale.x / 2f),waveCoords.x), Mathf.LerpUnclamped(position.y - (scale.y / 2f), position.y + (scale.y / 2f), waveCoords.y + baseHeight + 0.5f));
 	}
 
+	//Converts world-space coordinates to wave-x and wave-y coordinates
+	//In Wave coordinates, 0 represents the leftmost part of the wave, and 1 represents the rightmost part of the wave
 	Vector2 ConvertToWaveCoordinates(float worldX, float worldY)
 	{
 		return ConvertToWaveCoordinates(new Vector2(worldX,worldY));
 	}
 
+	//Converts world-space coordinates to wave-x and wave-y coordinates
+	//In Wave coordinates, 0 represents the leftmost part of the wave, and 1 represents the rightmost part of the wave
 	Vector2 ConvertToWaveCoordinates(Vector2 worldCoords)
 	{
 		var scale = transform.localScale;
 		var position = transform.position - (scale / 2f);
 
 		return new Vector2((worldCoords.x - position.x) / scale.x, (worldCoords.y - position.y) / scale.y);
-
-		//return new Vector2(UnclampedInverseLerp(position.x - (scale.x / 2f), position.x + (scale.x / 2f), worldCoords.x), UnclampedInverseLerp(position.y - (scale.y / 2f), position.y + (scale.y / 2f), worldCoords.y) - baseHeight - 0.5f);
 	}
 
-	//Rounds a wave x position to the nearest vertex
+	//Rounds a wave x position to the nearest vertex position
 	float RoundWaveXToNearestVertex(float waveX)
 	{
 		return Mathf.RoundToInt(waveX * (wavePoints - 1f)) / (wavePoints - 1f);
 	}
 
+	//Adds a split line to the wave generator
 	void Internal_AddSplitPoint(float waveX, int splitAmount, float splitTime)
 	{
 		//Round the wave x position to the nearest vertex
 		waveX = RoundWaveXToNearestVertex(waveX);
-
 
 		//Gets the split that is already at that wave x position, if there is one
 		SplitPoint sharedSplit = GetSplitAtWaveX(waveX);
@@ -741,16 +741,13 @@ public class WaveSystem : MonoBehaviour
 			_timer = 0
 		};
 
-		//If the new split is being shared with another split
+		//If the new split is being shared with another split on the same vertex
 		if (sharedSplit != null)
 		{
 			//Set it to use the same vertex points as the shared one
 			split.VertexPoint = sharedSplit.VertexPoint;
 			split.BaseVertexPoint = sharedSplit.BaseVertexPoint;
 		}
-
-		//Debug.Log("WAVE X = " + waveX);
-		//Debug.Log("OUT OF BOUNDS WAVE = " + outOfBounds);
 
 		//If the split is not out of bounds and is not shared with any other split, then it will split the mesh apart
 		if (!outOfBounds && sharedSplit == null)
@@ -759,15 +756,6 @@ public class WaveSystem : MonoBehaviour
 			//Calculate the vertex position of the split. Also get the base vertex position, which doesn't account for previous splits
 			int vertexPosition = GetVertexAtWaveX(waveX, out baseVertexPosition);
 
-			//Debug.Log("New Vertex Position = " + vertexPosition);
-			//Debug.Log("Base Vertex Position = " + baseVertexPosition);
-			//Debug.Log("Vertex Position Value = " + meshVerticies[vertexPosition].x);
-			//Debug.Log("Vertex Position [-1] Value = " + meshVerticies[vertexPosition - 1].x + ", " + meshVerticies[vertexPosition - 1].y);
-			//Debug.Log("Vertex Position [-2] Value = " + meshVerticies[vertexPosition - 2].x + ", " + meshVerticies[vertexPosition - 2].y);
-
-			//Debug.Log("Vertex Position [1] Value = " + meshVerticies[vertexPosition + 1].x + ", " + meshVerticies[vertexPosition + 1].y);
-			//Debug.Log("Vertex Position [2] Value = " + meshVerticies[vertexPosition + 2].x + ", " + meshVerticies[vertexPosition + 2].y);
-
 			//Set the vertex points
 			split.VertexPoint = vertexPosition;
 			split.BaseVertexPoint = baseVertexPosition;
@@ -775,7 +763,7 @@ public class WaveSystem : MonoBehaviour
 			//Add the vertex to the list of verticies that are being split apart
 			verticiesThatAreSplit.Add(split.VertexPoint);
 
-
+			//Any splits that are to the right of this newly created one are shifted right to realign them
 			for (int i = 0; i < splits.Count; i++)
 			{
 				if (!splits[i].OutOfBounds && splits[i].WaveX > waveX)
@@ -784,6 +772,7 @@ public class WaveSystem : MonoBehaviour
 				}
 			}
 
+			//Any blankers that are to the right of this newly created split are shifted right to realign them
 			for (int i = 0; i < blankers.Count; i++)
 			{
 				if (blankers[i].WaveX <= 1f && blankers[i].WaveX >= 0f && blankers[i].Vertex > vertexPosition)
@@ -792,33 +781,42 @@ public class WaveSystem : MonoBehaviour
 				}
 			}
 
+			//The code below inserts two new vertexes into the mesh to split the mesh into two parts, and this allows the UVs on both sides of the mesh to be scrolled independently
+			//This is why the blankers and splits in the code above needed to be shifted
+
 			var bottomVertex = meshVerticies[vertexPosition];
 			var topVertex = meshVerticies[vertexPosition + 1];
 
+			//Insert two new vertexes
 			meshVerticies.Insert(vertexPosition + 2, topVertex);
 			meshVerticies.Insert(vertexPosition + 2, bottomVertex);
 
 			var uvBottom = meshUVs[vertexPosition];
 			var uvTop = meshUVs[vertexPosition + 1];
 
+			//Insert two new UVs
 			meshUVs.Insert(vertexPosition + 2, uvTop);
 			meshUVs.Insert(vertexPosition + 2,uvBottom);
 
+			//Insert a new collider point
 			colliderPoints.Insert((vertexPosition / 2) + 1,colliderPoints[vertexPosition / 2]);
 
 			var trianglePosition = baseVertexPosition * 3;
 
+			//All triangles to the right of this newly inserted vertex gets shifted right
 			for (int i = trianglePosition; i < meshTriangles.Count; i++)
 			{
 				meshTriangles[i] += 2;
 			}
 		}
 
+		//Add the new split
 		splits.Add(split);
+		//Sort the splits list
 		splits.Sort(splitSorter);
 	}
 
-
+	//Deletes a split from the wave
 	void DeleteSplit(SplitPoint split)
 	{
 		//If the split is out of bounds or there is no singular split on the vertex, then verticies do not need to be rearranged, so exit out
@@ -865,9 +863,10 @@ public class WaveSystem : MonoBehaviour
 		}
 	}
 
+	//Adds a new blanker line to the wave. Blankers are used to cover a section of the wave with a solid color, and is primarily used to cover up seams caused by splits
 	void Internal_AddBlankerLine(float waveX, float acceleration, float terminalVelocity, float deacceleration, float startingIntensity, float startingWaitTime, float spread, float decayRate)
 	{
-		//Debug.Log("___ADDING BLANKER");
+		//Add the new blanker line
 		blankers.Add(new BlankerLine
 		{
 			Acceleration = acceleration,
@@ -917,13 +916,15 @@ public class WaveSystem : MonoBehaviour
 		return null;
 	}
 
-
+	//Gets the vertex index at the specified wave-x
 	int GetVertexAtWaveX(float waveX)
 	{
 		int b;
 		return GetVertexAtWaveX(waveX, out b);
 	}
 
+	//Gets the vertex index at the specified wave-x
+	//The baseVertexPosition is similar to the return value, but does not account for any of the splits
 	int GetVertexAtWaveX(float waveX, out int baseVertexPosition)
 	{
 		var vertexPosition = Mathf.RoundToInt(waveX * (wavePoints - 1)) * 2;
@@ -947,11 +948,7 @@ public class WaveSystem : MonoBehaviour
 		return vertexPosition;
 	}
 
-	/*float GetWaveXAtVertex(int vertexPosition)
-	{
-		return meshVerticies[vertexPosition].x;
-	}*/
-
+	//Sets the intensity of the blanking color at a specified UV index
 	void SetBlankIntensity(int uvPoint, float intensity)
 	{
 		var point = meshUVs[uvPoint];
@@ -1003,6 +1000,7 @@ public class WaveSystem : MonoBehaviour
 		}
 	}
 
+	//Gets how many splits are on a specific vertex
 	int GetSplitsOnVertex(int vertex)
 	{
 		int sharedCount = 0;
@@ -1016,10 +1014,13 @@ public class WaveSystem : MonoBehaviour
 		return sharedCount;
 	}
 
+	//Used for calculating the height of a wave at a certain point
 	float CalculateWave(float x)
 	{
+		//Converts the x value from a range of (-WaveWidth/2 : +WaveWidth/2) to a range of (0 : WaveWidth)
 		x += WaveWidth / 2f;
 		float value = 0f;
+		//Loop over all the wave generators and calculate the height of a wave at the particular x position
 		for (int i = 0; i < generators.Count; i++)
 		{
 			value = generators[i].Calculate(x, value);
@@ -1027,6 +1028,7 @@ public class WaveSystem : MonoBehaviour
 		return value;
 	}
 
+	//Adds a wave generator to the wave
 	public void AddGenerator(IWaveGenerator generator)
 	{
 		if (!generators.Contains(generator))
@@ -1037,6 +1039,7 @@ public class WaveSystem : MonoBehaviour
 		}
 	}
 
+	//Removes a wave generator from the wave
 	public void RemoveGenerator(IWaveGenerator generator)
 	{
 		if (generators.Contains(generator))
@@ -1047,8 +1050,23 @@ public class WaveSystem : MonoBehaviour
 		}
 	}
 
-	public void AddBlanker(float position, float acceleration, float terminalVelocity, float deacceleration, float startingIntensity, float startingWaitTime, float spread, float decayRate)
+	public bool HasGenerator(IWaveGenerator generator) => generators.Contains(generator);
+	public bool HasGenerator<T>() where T : IWaveGenerator => generators.Any(g => g is T);
+
+	/// <summary>
+	/// Adds a blanking line to the wave
+	/// </summary>
+	/// <param name="position">The x-position of the blanking line</param>
+	/// <param name="acceleration">How fast the blanking line will accelerate. A negative value will cause the wave to accelerate left</param>
+	/// <param name="terminalVelocity">The maximum speed of the blanking line. The blanking line will continue to accelerate until this limit is reached. Make sure this value is negative if the acceleration is also negative</param>
+	/// <param name="deacceleration">How fast the blanking line will deccelerate. Make sure this value's negative if the wave is traveling left</param>
+	/// <param name="blankerIntensity">How intense the blanking color of the line will be. This value will decay overtime, based on what is set for the <paramref name="decayRate"/></param>
+	/// <param name="startingWaitTime">How long the blanking line will wait before it starts to move</param>
+	/// <param name="spread">How much of a spread does the blanking line have. This is similar to having an anti-aliasing effect around the line</param>
+	/// <param name="decayRate">How fast the <paramref name="blankerIntensity"/> will decay over time</param>
+	public void AddBlanker(float position, float acceleration, float terminalVelocity, float deacceleration, float blankerIntensity, float startingWaitTime, float spread, float decayRate)
 	{
+		//Convert all the vlaues from world-space coords to wave-x coords
 		var wavePosition = WorldToWaveX(position);
 		var waveAcceleration = acceleration / WaveWidth;
 		var waveTerminalVelocity = terminalVelocity / WaveWidth;
@@ -1056,9 +1074,10 @@ public class WaveSystem : MonoBehaviour
 		var waveSpread = spread / WaveWidth;
 
 
-		Internal_AddBlankerLine(wavePosition,waveAcceleration,waveTerminalVelocity,waveDeacceleration,startingIntensity,startingWaitTime,waveSpread,decayRate);
+		Internal_AddBlankerLine(wavePosition,waveAcceleration,waveTerminalVelocity,waveDeacceleration,blankerIntensity,startingWaitTime,waveSpread,decayRate);
 	}
 
+	//Adds a blanker generator for customizing what parts of the wave should be blanked out with the blanking color
 	public void AddBlankerGenerator(IWaveBlankerGenerator generator)
 	{
 		if (!blankerGenerators.Contains(generator))
@@ -1068,6 +1087,7 @@ public class WaveSystem : MonoBehaviour
 		}
 	}
 
+	//Removes a blanker generator from the wave
 	public void RemoveBlankerGenerator(IWaveBlankerGenerator generator)
 	{
 		if (blankerGenerators.Contains(generator))
@@ -1077,6 +1097,12 @@ public class WaveSystem : MonoBehaviour
 		}
 	}
 
+	/// <summary>
+	/// Adds a split in the wave
+	/// </summary>
+	/// <param name="position">Where the split should occur</param>
+	/// <param name="splitAmount">How big the split will be</param>
+	/// <param name="splitTime">How long the split will last</param>
 	public void AddSplit(float position, int splitAmount, float splitTime)
 	{
 		var waveX = WorldToWaveX(position);

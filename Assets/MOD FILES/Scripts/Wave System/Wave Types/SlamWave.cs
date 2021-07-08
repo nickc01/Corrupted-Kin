@@ -1,11 +1,10 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using WeaverCore.Enums;
 using WeaverCore.Utilities;
 
 public class SlamWave : MonoBehaviour, IWaveGenerator
 {
-	//const float E = (float)System.Math.E;
-
 	[Header("Main Wave")]
 	[SerializeField]
 [Tooltip(
@@ -109,17 +108,11 @@ The wave starts at whatever velocity is at the left end of the curve.
 		{
 			velocityTimer += Time.deltaTime;
 			velocity = velocityCurve.Evaluate(velocityTimer / velocityTime) * velocityMultiplier;
-			/*velocity += acceleration * Time.deltaTime;
-			if (velocity > terminalVelocity)
-			{
-				velocity = terminalVelocity;
-			}*/
 			transform.position = transform.position.With(transform.position.x + (velocity * Time.deltaTime));
 
 			transform.localScale = transform.localScale.With(y: Mathf.Abs(velocity) * sizeToSpeedRatio);
 
 			time += Time.deltaTime;
-			//fadeTime += Time.deltaTime / fadeInTime;
 
 			if (time >= lifeTime)
 			{
@@ -128,6 +121,24 @@ The wave starts at whatever velocity is at the left end of the curve.
 			}
 		}
 	}
+
+#if UNITY_EDITOR
+	void Start()
+	{
+		var parent = GetComponentInParent<WaveSystem>();
+		if (parent != null && !parent.HasGenerator(this))
+		{
+			StartCoroutine(DebugAddGenerator(parent));
+		}
+	}
+
+	IEnumerator DebugAddGenerator(WaveSystem system)
+	{
+		yield return new WaitForSeconds(10f);
+		system.AddGenerator(this);
+	}
+
+#endif
 
 	int IWaveGenerator.Priority
 	{
@@ -139,31 +150,11 @@ The wave starts at whatever velocity is at the left end of the curve.
 
 	float IWaveGenerator.Calculate(float x, float previousValue)
 	{
-		var backTamper = 0f;
-		/*if (velocityMultiplier >= 0f)
-		{
-			backTamper = (x - originalPosition + backTamperOffset) / backTamperLength;
-		}
-		else
-		{
-			backTamper = -(x - originalPosition + backTamperOffset) / backTamperLength;
-			//Debug.DrawLine(new Vector3(x - originalPosition + backTamperOffset, 0f, 0f), new Vector3(x - originalPosition + backTamperOffset, 100f, 0f), Color.red);
-		}*/
+		float backTamper = (x - originalPosition + backTamperOffset) / backTamperLength;
 
-		backTamper = (x - originalPosition + backTamperOffset) / backTamperLength;
-
-		//var rawValue = 1f - ((GetDecayedSine(x - transform.position.x) + 1f) / 2f);
 		var value = transform.localScale.y * GetDecayedSine((x - transform.position.x) / transform.localScale.x,decayRate) + previousValue;
 
 		return Mathf.Lerp(Mathf.Lerp(Mathf.Lerp(value,previousValue, (x - transform.position.x + frontTamperOffset) / frontTamperLength),previousValue, backTamper),previousValue,Mathf.InverseLerp(lifeTime - fadeOutTime, lifeTime,time));
-		//return value;
-		/*var mainWave = GenerateMainWave((x - transform.position.x) / transform.localScale.x);
-
-		Debug.Log("Main Wave at = " + ((x - transform.position.x) / transform.localScale.x) + " = " + mainWave);
-
-		return Mathf.Lerp(value,mainWave * transform.localScale.y,mainWave);*/
-
-		//return Mathf.Lerp(Mathf.Lerp(Mathf.Lerp(transform.localScale.y * GetDecayedSine((x - transform.position.x) / transform.localScale.x), previousValue, (x - transform.position.x + frontTamperOffset) / frontTamperLength), previousValue, (x - transform.position.x + backTamperOffset) / backTamperLength), previousValue, 1f - fadeTime) - (wave.transform.position.y - transform.position.y);
 	}
 
 	void IWaveGenerator.OnWaveEnd(WaveSystem source)
@@ -201,24 +192,5 @@ The wave starts at whatever velocity is at the left end of the curve.
 		{
 			return Mathf.Sin(x * Mathf.PI * 2f) / (x * decayRate);
 		}
-
-		//return Mathf.Pow(E, -decayRate * Mathf.Abs(x)) * Mathf.Cos(1.5f * Mathf.PI * x);
 	}
-
-	/*static float GenerateMainWave(float x)
-	{
-		return -Mathf.Pow(2f * x, 2f) + 1f;
-	}*/
-
-	/*float Limit(float number, float limit)
-	{
-		if (number < 0f)
-		{
-			return number;
-		}
-		else
-		{
-			return 10f * (Mathf.Log10(number + 1) / 2.2f);
-		}
-	}*/
 }
