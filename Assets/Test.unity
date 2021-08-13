@@ -1341,31 +1341,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114164121166841040, guid: 392b31128831d8f429d6ba38e3c1ecc2,
-        type: 3}
-      propertyPath: doMoveInRandomizer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114208178398301686, guid: 392b31128831d8f429d6ba38e3c1ecc2,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114699529901920494, guid: 392b31128831d8f429d6ba38e3c1ecc2,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114710402823687052, guid: 392b31128831d8f429d6ba38e3c1ecc2,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114724397503572304, guid: 392b31128831d8f429d6ba38e3c1ecc2,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 392b31128831d8f429d6ba38e3c1ecc2, type: 3}
 --- !u!1 &407407548

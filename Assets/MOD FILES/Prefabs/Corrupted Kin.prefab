@@ -5893,7 +5893,6 @@ MonoBehaviour:
   damageDealt: 1
   hazardType: 1
   shadowDashHazard: 0
-  setLayerToEnemies: 0
 --- !u!114 &114545295348745106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10005,7 +10004,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1625663818430612}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d7268d45d4a09b343ab6ec285a165393, type: 3}
   m_Name: 
@@ -10021,7 +10020,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1625663818430612}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7a897dcbd1f6f0d42b81181827cdeca4, type: 3}
   m_Name: 
@@ -10099,7 +10098,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1625663818430612}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fcd2fd2523a742e42bf66da2dd135b0d, type: 3}
   m_Name: 
@@ -10133,7 +10132,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1625663818430612}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d7dd1f42d033f8f4c97c8adb26f76026, type: 3}
   m_Name: 
@@ -10284,7 +10283,7 @@ MonoBehaviour:
   burrowSlamWaveHeightMultiplier: 1
   burrowAfterEffectWaveHeight: 0
   burrowJumpGravityScale: 3.25
-  burrowApplyGravity: 1
+  burrowApplyGravity: 0
   BurrowSound: {fileID: 8300000, guid: d3cbfa191f3f66f418d1c4d345548707, type: 3}
   burrowSoundVolume: 0.65
   BurrowEmergeSound: {fileID: 8300000, guid: fe175ee6ff51e0c4ea2b35c453b90b69, type: 3}
@@ -10517,7 +10516,6 @@ MonoBehaviour:
   damageDealt: 1
   hazardType: 1
   shadowDashHazard: 0
-  setLayerToEnemies: 0
 --- !u!61 &61772179412923086
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -10583,6 +10581,7 @@ MonoBehaviour:
   DeflectBlows: 0
   EvasionTime: 0.15
   GainSoul: 1
+  DoEffectsOnHit: 1
   EffectsOffset: {x: 0, y: 0, z: 0}
   receiveExtraDamage: 1
   SmallGeo: 0
@@ -10825,7 +10824,6 @@ MonoBehaviour:
   damageDealt: 1
   hazardType: 1
   shadowDashHazard: 0
-  setLayerToEnemies: 0
 --- !u!114 &114605920857428144
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19314,7 +19312,6 @@ MonoBehaviour:
   damageDealt: 1
   hazardType: 1
   shadowDashHazard: 0
-  setLayerToEnemies: 0
 --- !u!1 &1924731796945054
 GameObject:
   m_ObjectHideFlags: 0
