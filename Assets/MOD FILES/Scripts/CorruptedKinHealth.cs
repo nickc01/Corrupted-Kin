@@ -5,11 +5,38 @@ using System.Text;
 using UnityEngine;
 using WeaverCore.Components;
 using WeaverCore.Features;
+using WeaverCore.Interfaces;
 using WeaverCore.Settings;
 
 public class CorruptedKinHealth : EntityHealth
 {
-	[SerializeField]
+    class Modifier : IHealthModifier
+    {
+		CorruptedKinHealth instance;
+
+		public Modifier(CorruptedKinHealth instance)
+        {
+			this.instance = instance;
+        }
+
+		int IHealthModifier.Priority => 0;
+
+		int IHealthModifier.OnHealthChange(int oldHealth, int newHealth)
+		{
+			instance.TimesHit++;
+			if (instance.HealthLocked)
+			{
+				return oldHealth;
+			}
+			else
+            {
+				return newHealth;
+            }
+		}
+    }
+
+
+    [SerializeField]
 	int attunedHealth = 2600;
 	[SerializeField]
 	int ascendedHealth = 2700;
@@ -25,7 +52,8 @@ public class CorruptedKinHealth : EntityHealth
 	protected override void Awake()
 	{
 		base.Awake();
-		var CKSettings = Panel.GetSettings<CorruptedKinSettings>();
+		AddModifier(new Modifier(this));
+		var CKSettings = GlobalSettings.GetSettings<CorruptedKinSettings>();
 		if (CKSettings != null && CKSettings.CustomHealth)
 		{
 			Health = CKSettings.CustomHealthValue;
@@ -44,21 +72,6 @@ public class CorruptedKinHealth : EntityHealth
 					Health = radiantHealth;
 					break;
 			}
-		}
-	}
-
-	protected override void OnHealthUpdate(int oldValue, int newValue)
-	{
-		TimesHit++;
-		if (HealthLocked)
-		{
-			//return Health;
-			SetHealthInternal(oldValue);
-		}
-		else
-		{
-			SetHealthInternal(newValue);
-			//return base.OnHealthUpdate(newValue);
 		}
 	}
 }

@@ -4,7 +4,7 @@ using UnityEngine.Events;
 using WeaverCore.Settings;
 
 [CreateAssetMenu(fileName = "Corrupted Kin Settings", menuName = "Corrupted Kin Settings")]
-public class CorruptedKinSettings : Panel
+public class CorruptedKinSettings : GlobalSettings
 {
 	public override string TabName
 	{

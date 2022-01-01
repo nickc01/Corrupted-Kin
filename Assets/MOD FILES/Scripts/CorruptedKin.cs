@@ -24,7 +24,7 @@ public class CorruptedKin : BossReplacement
 	public AudioPlayer AudioPlayer { get; private set; }
 	public CorruptedKinHealth HealthManager { get; private set; }
 	public Collider2D Collider { get; private set; }
-	public WeaverCore.Components.DamageHero Damager { get; private set; }
+	public WeaverCore.Components.PlayerDamager Damager { get; private set; }
 	public SpriteFlasher Flasher { get; private set; }
 	public InfectionWave InfectionWave { get; set; }
 	//public WaveSystem InfectionWave { get; set; }
@@ -629,7 +629,7 @@ public class CorruptedKin : BossReplacement
 		AudioPlayer = GetComponent<AudioPlayer>();
 		HealthManager = GetComponent<CorruptedKinHealth>();
 		Collider = GetComponent<Collider2D>();
-		Damager = GetComponent<WeaverCore.Components.DamageHero>();
+		Damager = GetComponent<WeaverCore.Components.PlayerDamager>();
 		Flasher = GetComponent<SpriteFlasher>();
 
 #if UNITY_EDITOR
@@ -644,7 +644,7 @@ public class CorruptedKin : BossReplacement
 		//Shadow = GetChild("Shadow");
 		Animator.PlayAnimation("Idle");
 		//Shadow.SetActive(false);
-		EntityHealth.Invincible = true;
+		Health.Invincible = true;
 		Renderer.enabled = false;
 
 		GravityScale = Rigidbody.gravityScale;
@@ -660,24 +660,24 @@ public class CorruptedKin : BossReplacement
 
 		//EntityHealth.AddHealthMilestone(quarterHealth * 3, () => DoParasiteSpawning = true);
 		//EntityHealth.AddHealthMilestone(quarterHealth * 3, () => GuaranteedNextMove = GetComponent<ShakeMove>());
-		EntityHealth.AddHealthMilestone(GetHealthPercent(0.8f), () => DoParasiteSpawning = true);
-		EntityHealth.AddHealthMilestone(GetHealthPercent(0.8f), () => shakeMove.EnableMove(true));
+		Health.AddHealthMilestone(GetHealthPercent(0.8f), () => DoParasiteSpawning = true);
+		Health.AddHealthMilestone(GetHealthPercent(0.8f), () => shakeMove.EnableMove(true));
 
 		//EntityHealth.AddHealthMilestone(quarterHealth * 2, () => DoParasiteSpawning = false);
 		//EntityHealth.AddHealthMilestone(quarterHealth * 2, () => GuaranteedNextMove = GetComponent<TransformationMove>());
 		//EntityHealth.AddHealthMilestone(GetHealthPercent(0.5f), () => DoParasiteSpawning = false);
-		EntityHealth.AddHealthMilestone(GetHealthPercent(0.6f), () => shakeMove.EnableMove(false));
-		EntityHealth.AddHealthMilestone(GetHealthPercent(0.6f), () => GuaranteedNextMove = transMove);
+		Health.AddHealthMilestone(GetHealthPercent(0.6f), () => shakeMove.EnableMove(false));
+		Health.AddHealthMilestone(GetHealthPercent(0.6f), () => GuaranteedNextMove = transMove);
 
 		//EntityHealth.AddHealthMilestone(quarterHealth, () => DoParasiteSpawning = true);
 		//EntityHealth.AddHealthMilestone(quarterHealth, () => GuaranteedNextMove = GetComponent<ShakeMove>());
-		EntityHealth.AddHealthMilestone(GetHealthPercent(0.35f), () => DoParasiteSpawning = true);
-		EntityHealth.AddHealthMilestone(GetHealthPercent(0.35f), () => shakeMove.EnableMove(true));
+		Health.AddHealthMilestone(GetHealthPercent(0.35f), () => DoParasiteSpawning = true);
+		Health.AddHealthMilestone(GetHealthPercent(0.35f), () => shakeMove.EnableMove(true));
 
 		//EntityHealth.AddHealthMilestone(Mathf.RoundToInt(quarterHealth * 0.5f), () => GuaranteedNextMove = GetComponent<SpecialMoves>());
 		//EntityHealth.AddHealthMilestone(Mathf.RoundToInt(quarterHealth * 1.5f), () => GuaranteedNextMove = GetComponent<SpecialMoves>());
-		EntityHealth.AddHealthMilestone(GetHealthPercent(0.475f), () => GuaranteedNextMove = specialMoves);
-		EntityHealth.AddHealthMilestone(GetHealthPercent(0.175f), () => GuaranteedNextMove = specialMoves);
+		Health.AddHealthMilestone(GetHealthPercent(0.475f), () => GuaranteedNextMove = specialMoves);
+		Health.AddHealthMilestone(GetHealthPercent(0.175f), () => GuaranteedNextMove = specialMoves);
 
 		AddStunMilestone(GetHealthPercent(0.8f));
 		AddStunMilestone(GetHealthPercent(0.6f));
@@ -786,14 +786,14 @@ public class CorruptedKin : BossReplacement
 
 		Animator.PlayAnimation("Roar Loop");
 
-		WeaverCore.Assets.AreaTitle.Spawn("Corrupted", "Kin");
+		AreaTitle.Spawn("Corrupted", "Kin");
 
 		yield return Roar(2.4f, screamSound);
 
 		yield return Animator.PlayAnimationTillDone("Roar End");
 
 
-		EntityHealth.Invincible = false;
+		Health.Invincible = false;
 
 		//IdleCounter = 0.75f;
 
@@ -1004,7 +1004,7 @@ public class CorruptedKin : BossReplacement
 
 		DeathState();
 
-		Damager.DamageDealt = 0;
+		Damager.damageDealt = 0;
 
 
 		CameraShaker.Instance.Shake(WeaverCore.Enums.ShakeType.AverageShake);

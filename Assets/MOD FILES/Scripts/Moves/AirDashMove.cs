@@ -23,7 +23,7 @@ public class AirDashMove : CorruptedKinMove
 
 		airDashing = false;
 
-		while (Kin.IsRoutineRunning(jumpRoutine))
+		while (Kin.IsBoundRoutineRunning(jumpRoutine))
 		{
 			if (transform.position.y > AirDashHeight)
 			{

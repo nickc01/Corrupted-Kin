@@ -47,7 +47,7 @@ namespace KinMod
 
 		private static bool ModHooks_GetPlayerBoolHook(string name, bool orig)
 		{
-			var settings = Panel.GetSettings<CorruptedKinSettings>();
+			var settings = GlobalSettings.GetSettings<CorruptedKinSettings>();
 			if (name == "infectedKnightDreamDefeated" && settings != null /*&& settings.EnableInAbyss*/)
 			{
 				return false;

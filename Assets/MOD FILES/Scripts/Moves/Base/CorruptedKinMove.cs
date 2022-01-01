@@ -41,7 +41,7 @@ public abstract class CorruptedKinMove : MonoBehaviour, IBossMove
 	public AudioPlayer AudioPlayer { get { return Kin.AudioPlayer; } }
 	public CorruptedKinHealth HealthManager { get { return Kin.HealthManager; } }
 	public Collider2D Collider { get { return Kin.Collider; } }
-	public WeaverCore.Components.DamageHero Damager { get { return Kin.Damager; } }
+	public WeaverCore.Components.PlayerDamager Damager { get { return Kin.Damager; } }
 	public InfectionWave InfectionWave { get { return Kin.InfectionWave; } }
 	public WaveSlams WaveSlams { get { return Kin.WaveSlams; } }
 

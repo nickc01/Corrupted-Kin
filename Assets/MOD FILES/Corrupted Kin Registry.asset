@@ -9,25 +9,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 413c603cd6dfc5b40967cc4a6db76d9f, type: 3}
+  m_Script: {fileID: 11500000, guid: e940547fdce306f4294a2b2dc6c8e311, type: 3}
   m_Name: Corrupted Kin Registry
   m_EditorClassIdentifier: 
-  registryName: Corrupted Kin Registry
-  modName: Corrupted Kin
-  modAssemblyName: Assembly-CSharp
   modTypeName: KinMod.CorruptedKin
-  modListHashCode: -31660705
+  modAssemblyName: Assembly-CSharp
   features:
-  - feature: {fileID: 114641447403652438, guid: 392b31128831d8f429d6ba38e3c1ecc2,
-      type: 3}
-    TypeName: CorruptedKin
-    AssemblyName: Assembly-CSharp
-  - feature: {fileID: 11400000, guid: a9a4922e386bb3547b3ecd74fc9e1240, type: 2}
-    TypeName: CorruptedKinSettings
-    AssemblyName: Assembly-CSharp
-  featuresRaw:
-  - {fileID: 114641447403652438, guid: 392b31128831d8f429d6ba38e3c1ecc2, type: 3}
   - {fileID: 11400000, guid: a9a4922e386bb3547b3ecd74fc9e1240, type: 2}
-  - {fileID: 0}
-  selectedFeatureIndex: 0
-  registryEnabled: 1
+  - {fileID: 114641447403652438, guid: 392b31128831d8f429d6ba38e3c1ecc2, type: 3}
+  featureTypeNames:
+  - WeaverCore.Settings.GlobalSettings
+  - WeaverCore.Features.BossReplacement
+  featureAssemblyNames:
+  - WeaverCore
+  - WeaverCore

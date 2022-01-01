@@ -339,7 +339,7 @@ public class DownslashMove : CorruptedKinMove
 
 			var groundPosition = transform.position.y;
 
-			while (Kin.IsRoutineRunning(jumpRoutine))
+			while (Kin.IsBoundRoutineRunning(jumpRoutine))
 			{
 				var targetPos = properties.GetNextPosition(j);
 
