@@ -19,7 +19,7 @@ public class CorruptedKinSettings : GlobalSettings
 
 	[Tooltip("Whether custom health should be enabled")]
 	[SerializeField]
-	[SettingField(EnabledType.Never)]
+	[SettingField(EnabledType.Hidden)]
 	bool _customHealth = false;
 
 	[SettingField(EnabledType.MenuOnly)]

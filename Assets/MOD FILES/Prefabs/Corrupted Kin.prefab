@@ -5759,7 +5759,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21301052, guid: 53cfa9e71517df8439f2508b11a86b62, type: 3}
+  m_Sprite: {fileID: 1642078651903826738, guid: c36128c91eaa8bb429609c640b49a7dd,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -5782,7 +5783,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8511d0753e02cad4e89ae86ce1afef39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationData: {fileID: 11400000, guid: ddbb418a3f06bbd498e8d7f84470016e, type: 2}
+  animationData: {fileID: 11400000, guid: 7d2a133b1b31a4048b440cca8fb2fefb, type: 2}
   autoPlay: 1
   OnClipFinish: 1
   autoPlayClip: Dash Effect
@@ -9801,7 +9802,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21301052, guid: 53cfa9e71517df8439f2508b11a86b62, type: 3}
+  m_Sprite: {fileID: 1642078651903826738, guid: c36128c91eaa8bb429609c640b49a7dd,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
@@ -9824,7 +9826,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8511d0753e02cad4e89ae86ce1afef39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationData: {fileID: 11400000, guid: ddbb418a3f06bbd498e8d7f84470016e, type: 2}
+  animationData: {fileID: 11400000, guid: 7d2a133b1b31a4048b440cca8fb2fefb, type: 2}
   autoPlay: 1
   OnClipFinish: 1
   autoPlayClip: Dash Effect
@@ -9931,6 +9933,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15a7514ee0d24364982fa46c518edd5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  disableDamagersOnDeath: 1
   _bossStage: 1
   enemyToReplace: Lost Kin
   glowEffect: {fileID: 212467611002018690}

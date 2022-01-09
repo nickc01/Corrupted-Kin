@@ -159,7 +159,7 @@ public class ParasiteBalloon : MonoBehaviour
 		}
 	}
 
-	private void Health_OnDeathEvent()
+	private void Health_OnDeathEvent(HitInfo finalHit)
 	{
 		StopAllCoroutines();
 		if (modifyStorage)
