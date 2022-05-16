@@ -25,6 +25,6 @@ public sealed class AspidShot : AspidShotBase
 
 	public static AspidShot Spawn(Vector3 position, Vector3 target, float time, float gravityScale)
 	{
-		return Spawn(position, MathUtilties.CalculateVelocityToReachPoint(position, target, time, gravityScale));
+		return Spawn(position, MathUtilities.CalculateVelocityToReachPoint(position, target, time, gravityScale));
 	}
 }

@@ -91,7 +91,7 @@ public sealed class TransformationAspidShot : AspidShotBase
 
 		var distanceToTarget = Vector3.Distance(destination.position, start);
 
-		instance.Rigidbody.velocity = MathUtilties.CalculateVelocityToReachPoint(start, destination.position, UnityEngine.Random.Range(instance.shotTimeMinMax.x * distanceToTarget / 100f, instance.shotTimeMinMax.y * distanceToTarget / 100f), instance.Rigidbody.gravityScale);
+		instance.Rigidbody.velocity = MathUtilities.CalculateVelocityToReachPoint(start, destination.position, UnityEngine.Random.Range(instance.shotTimeMinMax.x * distanceToTarget / 100f, instance.shotTimeMinMax.y * distanceToTarget / 100f), instance.Rigidbody.gravityScale);
 
 		return instance;
 	}

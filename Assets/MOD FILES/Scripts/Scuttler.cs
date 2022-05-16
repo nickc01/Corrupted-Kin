@@ -241,12 +241,12 @@ public class Scuttler : MonoBehaviour
 
 		if (targetSpecificPoint)
 		{
-			rigidbody.velocity = MathUtilties.CalculateVelocityToReachPoint(transform.position - new Vector3(0f, 0.311f), ((Vector2)TargetObject.transform.position + (Vector2)TargetOffset) + specificJumpPoint, jumpTime - (heightDifference * 0.05f),rigidbody.gravityScale);
+			rigidbody.velocity = MathUtilities.CalculateVelocityToReachPoint(transform.position - new Vector3(0f, 0.311f), ((Vector2)TargetObject.transform.position + (Vector2)TargetOffset) + specificJumpPoint, jumpTime - (heightDifference * 0.05f),rigidbody.gravityScale);
 		}
 		else
 		{
 			var jumpPoint = new Vector2(UnityEngine.Random.Range(targetRangeMin.x,targetRangeMax.x), UnityEngine.Random.Range(targetRangeMin.y,targetRangeMax.y));
-			rigidbody.velocity = MathUtilties.CalculateVelocityToReachPoint(transform.position - new Vector3(0f, 0.311f), ((Vector2)TargetObject.transform.position + (Vector2)TargetOffset) + jumpPoint, jumpTime - (heightDifference * 0.05f), rigidbody.gravityScale);
+			rigidbody.velocity = MathUtilities.CalculateVelocityToReachPoint(transform.position - new Vector3(0f, 0.311f), ((Vector2)TargetObject.transform.position + (Vector2)TargetOffset) + jumpPoint, jumpTime - (heightDifference * 0.05f), rigidbody.gravityScale);
 		}
 
 		yield return new WaitForSeconds(jumpTime);

@@ -122,7 +122,7 @@ public class ScuttlerBomb : MonoBehaviour
 	public static ScuttlerBomb Spawn(Vector3 position, Vector3 destination, float time, float angularVelocity, CorruptedKin sourceBoss)
 	{
 		var gravityScale = CorruptedKinGlobals.Instance.ScuttlerBombPrefab.GetComponent<Rigidbody2D>().gravityScale;
-		var velocity = MathUtilties.CalculateVelocityToReachPoint(position, destination, time, gravityScale);
+		var velocity = MathUtilities.CalculateVelocityToReachPoint(position, destination, time, gravityScale);
 
 		//Debug.Log("Start = " + position);
 		//Debug.Log("End = " + destination);

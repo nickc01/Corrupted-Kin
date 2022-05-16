@@ -285,7 +285,7 @@ public class ShakeMove : CorruptedKinMove
 
 		if ((Player.Player1.transform.position.x > Kin.transform.position.x && direction == ShakeDirection.Right) || (Player.Player1.transform.position.x <= Kin.transform.position.x && direction == ShakeDirection.Left))
 		{
-			var toPlayerVelocity = MathUtilties.CalculateVelocityToReachPoint(transform.position, Player.Player1.transform.position, (1f / shotVelocity) * distanceToPlayer, shotGravityScale);
+			var toPlayerVelocity = MathUtilities.CalculateVelocityToReachPoint(transform.position, Player.Player1.transform.position, (1f / shotVelocity) * distanceToPlayer, shotGravityScale);
 
 			int closest = -1;
 			float closestVelocity = float.PositiveInfinity;
@@ -294,11 +294,11 @@ public class ShakeMove : CorruptedKinMove
 				if (closest < 0)
 				{
 					closest = i;
-					closestVelocity = Vector2.Distance(toPlayerVelocity, MathUtilties.PolarToCartesian(Shots[i].Angle, Shots[i].Velocity));
+					closestVelocity = Vector2.Distance(toPlayerVelocity, MathUtilities.PolarToCartesian(Shots[i].Angle, Shots[i].Velocity));
 				}
 				else
 				{
-					var velocityDifference = Vector2.Distance(toPlayerVelocity, MathUtilties.PolarToCartesian(Shots[i].Angle, Shots[i].Velocity));
+					var velocityDifference = Vector2.Distance(toPlayerVelocity, MathUtilities.PolarToCartesian(Shots[i].Angle, Shots[i].Velocity));
 					if (velocityDifference < closestVelocity)
 					{
 						closest = i;
@@ -309,7 +309,7 @@ public class ShakeMove : CorruptedKinMove
 
 			if (closest != -1 && aimShotAtPlayer)
 			{
-				var playerShotAngle = MathUtilties.CartesianToPolar(toPlayerVelocity);
+				var playerShotAngle = MathUtilities.CartesianToPolar(toPlayerVelocity);
 				Shots[closest].Angle = playerShotAngle.x;
 				Shots[closest].Velocity = playerShotAngle.y;
 			}
