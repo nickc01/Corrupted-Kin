@@ -5759,7 +5759,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1642078651903826738, guid: c36128c91eaa8bb429609c640b49a7dd,
+  m_Sprite: {fileID: 1642078651903826738, guid: e308444b6a9b2b4419b6600c01fc6a77,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -5783,7 +5783,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8511d0753e02cad4e89ae86ce1afef39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationData: {fileID: 11400000, guid: 7d2a133b1b31a4048b440cca8fb2fefb, type: 2}
+  animationData: {fileID: 11400000, guid: de636504330917543b0f98b3be4ca5c5, type: 2}
   autoPlay: 1
   OnClipFinish: 1
   autoPlayClip: Dash Effect
@@ -9802,7 +9802,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1642078651903826738, guid: c36128c91eaa8bb429609c640b49a7dd,
+  m_Sprite: {fileID: 1642078651903826738, guid: e308444b6a9b2b4419b6600c01fc6a77,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
@@ -9826,7 +9826,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8511d0753e02cad4e89ae86ce1afef39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationData: {fileID: 11400000, guid: 7d2a133b1b31a4048b440cca8fb2fefb, type: 2}
+  animationData: {fileID: 11400000, guid: de636504330917543b0f98b3be4ca5c5, type: 2}
   autoPlay: 1
   OnClipFinish: 1
   autoPlayClip: Dash Effect

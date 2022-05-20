@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using WeaverCore;
+using WeaverCore.Components;
 using WeaverCore.Utilities;
 
 public class ScuttlerBomb : MonoBehaviour 

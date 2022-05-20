@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using UnityEngine;
+using WeaverCore.Components;
 
 [CreateAssetMenu(fileName = "CorruptedKinGlobals", menuName = "Corrupted Kin Globals")]
 public class CorruptedKinGlobals : ScriptableObject
