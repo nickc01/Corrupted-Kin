@@ -10,11 +10,11 @@ using WeaverCore.Settings;
 
 public class CorruptedKinHealth : EntityHealth
 {
-    class Modifier : IHealthModifier
+    class LockedHealthModifier : IHealthModifier
     {
 		CorruptedKinHealth instance;
 
-		public Modifier(CorruptedKinHealth instance)
+		public LockedHealthModifier(CorruptedKinHealth instance)
         {
 			this.instance = instance;
         }
@@ -52,7 +52,7 @@ public class CorruptedKinHealth : EntityHealth
 	protected override void Awake()
 	{
 		base.Awake();
-		AddModifier(new Modifier(this));
+		AddModifier(new LockedHealthModifier(this));
 		var CKSettings = GlobalSettings.GetSettings<CorruptedKinSettings>();
 		if (CKSettings != null && CKSettings.CustomHealth)
 		{
