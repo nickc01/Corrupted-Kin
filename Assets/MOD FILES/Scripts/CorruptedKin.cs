@@ -12,10 +12,12 @@ using WeaverCore.Assets.Components;
 using WeaverCore.Components;
 using WeaverCore.Enums;
 using WeaverCore.Features;
+using WeaverCore.Interfaces;
+using WeaverCore.Settings;
 using WeaverCore.Utilities;
 using Random = UnityEngine.Random;
 
-public class CorruptedKin : BossReplacement
+public class CorruptedKin : BossReplacement, IObjectReplacementConditional
 {
 	public static CorruptedKin Instance { get; private set; }
 	public WeaverAnimationPlayer Animator { get; private set; }
@@ -569,7 +571,7 @@ public class CorruptedKin : BossReplacement
 		{
 			if (GameManager.instance.sm.mapZone == GlobalEnums.MapZone.GODS_GLORY)
 			{
-				WeaverLog.Log("CHANGING SCENERY!!!");
+				//WeaverLog.Log("CHANGING SCENERY!!!");
 				if (obj.transform.position.z < 0f && (obj.name.Contains("GG_scenery") || obj.name.Contains("fg_stones") || obj.name.Contains("black_grass")))
 				{
 					var oldPosition = obj.transform.position;
@@ -1310,5 +1312,18 @@ public class CorruptedKin : BossReplacement
 			}
 			yield return null;
 		}
+	}
+
+    bool IObjectReplacementConditional.CanReplaceObject(GameObject objectToReplace)
+    {
+        if (GameManager.instance.sm.mapZone == GlobalEnums.MapZone.DREAM_WORLD)
+        {
+			return GlobalSettings.GetSettings<CorruptedKinSettings>().EnableInAbyss;
+		}
+		else
+        {
+			return true;
+        }
+
 	}
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.Events;
+using WeaverCore;
 using WeaverCore.Settings;
 
 [CreateAssetMenu(fileName = "Corrupted Kin Settings", menuName = "Corrupted Kin Settings")]
@@ -65,5 +66,18 @@ Radiant : 3000")]
 			healthElement.Visible = false;
 		}
 	}
+
+	/*static Registry corruptedKinRegistry;
+
+	[WeaverCore.Attributes.OnRegistryLoad]
+	static void OnRegistryLoad(Registry registry)
+    {
+        if (corruptedKinRegistry == null && registry.ModType == typeof(KinMod.CorruptedKin))
+        {
+			corruptedKinRegistry = registry;
+        }
+
+
+    }*/
 }
 
