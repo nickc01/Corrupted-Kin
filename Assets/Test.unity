@@ -1229,9 +1229,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1011579255959904, guid: 392b31128831d8f429d6ba38e3c1ecc2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1080029489105946, guid: 392b31128831d8f429d6ba38e3c1ecc2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1594927965260650, guid: 392b31128831d8f429d6ba38e3c1ecc2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1625663818430612, guid: 392b31128831d8f429d6ba38e3c1ecc2, type: 3}
       propertyPath: m_Name
       value: Corrupted Kin
+      objectReference: {fileID: 0}
+    - target: {fileID: 1639291546580776, guid: 392b31128831d8f429d6ba38e3c1ecc2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4786481940887062, guid: 392b31128831d8f429d6ba38e3c1ecc2, type: 3}
       propertyPath: m_RootOrder
@@ -1276,6 +1292,11 @@ PrefabInstance:
     - target: {fileID: 4786481940887062, guid: 392b31128831d8f429d6ba38e3c1ecc2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 199344238131246190, guid: 392b31128831d8f429d6ba38e3c1ecc2,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212053587250744150, guid: 392b31128831d8f429d6ba38e3c1ecc2,
         type: 3}
@@ -4530,6 +4551,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 79cc4dedf9f3a3e429209bcfbbcf31d3, type: 3}
+--- !u!1 &1261533696 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1025340055091104, guid: 79cc4dedf9f3a3e429209bcfbbcf31d3,
+    type: 3}
+  m_PrefabInstance: {fileID: 1261533695}
+  m_PrefabAsset: {fileID: 0}
+--- !u!50 &1261533697
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1261533696}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1283184598
 GameObject:
   m_ObjectHideFlags: 0
