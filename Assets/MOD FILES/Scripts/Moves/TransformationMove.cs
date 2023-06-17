@@ -96,7 +96,7 @@ public class TransformationMove : CorruptedKinMove
 
 		yield return Animator.PlayAnimationTillDone("Roar Start");
 
-		Kin.Health.Invincible = true;
+		Kin.HealthComponent.Invincible = true;
 		HealthManager.HealthLocked = false;
 		Kin.DoParasiteSpawning = false;
 		ParasiteBalloon.DestroyAllParasites();
@@ -241,7 +241,7 @@ public class TransformationMove : CorruptedKinMove
 
 		roarEmitter.RoarUnlockPlayer();
 		roarEmitter.StopRoaring();
-		Kin.Health.Invincible = false;
+		Kin.HealthComponent.Invincible = false;
 		yield return Animator.PlayAnimationTillDone("Roar End");
 
 		summonGrass.gameObject.SetActive(false);
@@ -259,7 +259,7 @@ public class TransformationMove : CorruptedKinMove
 		//GetComponent<WeaverCore.Components.Recoiler>().SetRecoilSpeed(previousRecoil);
 		GetComponent<Recoiler>().ResetRecoilSpeed();
 		GetComponent<JumpMove>().OnStun();
-		Kin.Health.Invincible = false;
+		Kin.HealthComponent.Invincible = false;
 		base.OnStun();
 	}
 

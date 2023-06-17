@@ -645,8 +645,8 @@ public class CorruptedKin : BossReplacement, IObjectReplacementConditional
 		Rigidbody.gravityScale = 3.25f;
 		//Shadow = GetChild("Shadow");
 		Animator.PlayAnimation("Idle");
-		//Shadow.SetActive(false);
-		Health.Invincible = true;
+        //Shadow.SetActive(false);
+        HealthComponent.Invincible = true;
 		Renderer.enabled = false;
 
 		GravityScale = Rigidbody.gravityScale;
@@ -660,26 +660,26 @@ public class CorruptedKin : BossReplacement, IObjectReplacementConditional
 		var transMove = GetComponent<TransformationMove>();
 		var specialMoves = GetComponent<SpecialMoves>();
 
-		//EntityHealth.AddHealthMilestone(quarterHealth * 3, () => DoParasiteSpawning = true);
-		//EntityHealth.AddHealthMilestone(quarterHealth * 3, () => GuaranteedNextMove = GetComponent<ShakeMove>());
-		Health.AddHealthMilestone(GetHealthPercent(0.8f), () => DoParasiteSpawning = true);
-		Health.AddHealthMilestone(GetHealthPercent(0.8f), () => shakeMove.EnableMove(true));
+        //EntityHealth.AddHealthMilestone(quarterHealth * 3, () => DoParasiteSpawning = true);
+        //EntityHealth.AddHealthMilestone(quarterHealth * 3, () => GuaranteedNextMove = GetComponent<ShakeMove>());
+        HealthComponent.AddHealthMilestone(GetHealthPercent(0.8f), () => DoParasiteSpawning = true);
+        HealthComponent.AddHealthMilestone(GetHealthPercent(0.8f), () => shakeMove.EnableMove(true));
 
-		//EntityHealth.AddHealthMilestone(quarterHealth * 2, () => DoParasiteSpawning = false);
-		//EntityHealth.AddHealthMilestone(quarterHealth * 2, () => GuaranteedNextMove = GetComponent<TransformationMove>());
-		//EntityHealth.AddHealthMilestone(GetHealthPercent(0.5f), () => DoParasiteSpawning = false);
-		Health.AddHealthMilestone(GetHealthPercent(0.6f), () => shakeMove.EnableMove(false));
-		Health.AddHealthMilestone(GetHealthPercent(0.6f), () => GuaranteedNextMove = transMove);
+        //EntityHealth.AddHealthMilestone(quarterHealth * 2, () => DoParasiteSpawning = false);
+        //EntityHealth.AddHealthMilestone(quarterHealth * 2, () => GuaranteedNextMove = GetComponent<TransformationMove>());
+        //EntityHealth.AddHealthMilestone(GetHealthPercent(0.5f), () => DoParasiteSpawning = false);
+        HealthComponent.AddHealthMilestone(GetHealthPercent(0.6f), () => shakeMove.EnableMove(false));
+        HealthComponent.AddHealthMilestone(GetHealthPercent(0.6f), () => GuaranteedNextMove = transMove);
 
-		//EntityHealth.AddHealthMilestone(quarterHealth, () => DoParasiteSpawning = true);
-		//EntityHealth.AddHealthMilestone(quarterHealth, () => GuaranteedNextMove = GetComponent<ShakeMove>());
-		Health.AddHealthMilestone(GetHealthPercent(0.35f), () => DoParasiteSpawning = true);
-		Health.AddHealthMilestone(GetHealthPercent(0.35f), () => shakeMove.EnableMove(true));
+        //EntityHealth.AddHealthMilestone(quarterHealth, () => DoParasiteSpawning = true);
+        //EntityHealth.AddHealthMilestone(quarterHealth, () => GuaranteedNextMove = GetComponent<ShakeMove>());
+        HealthComponent.AddHealthMilestone(GetHealthPercent(0.35f), () => DoParasiteSpawning = true);
+        HealthComponent.AddHealthMilestone(GetHealthPercent(0.35f), () => shakeMove.EnableMove(true));
 
-		//EntityHealth.AddHealthMilestone(Mathf.RoundToInt(quarterHealth * 0.5f), () => GuaranteedNextMove = GetComponent<SpecialMoves>());
-		//EntityHealth.AddHealthMilestone(Mathf.RoundToInt(quarterHealth * 1.5f), () => GuaranteedNextMove = GetComponent<SpecialMoves>());
-		Health.AddHealthMilestone(GetHealthPercent(0.475f), () => GuaranteedNextMove = specialMoves);
-		Health.AddHealthMilestone(GetHealthPercent(0.175f), () => GuaranteedNextMove = specialMoves);
+        //EntityHealth.AddHealthMilestone(Mathf.RoundToInt(quarterHealth * 0.5f), () => GuaranteedNextMove = GetComponent<SpecialMoves>());
+        //EntityHealth.AddHealthMilestone(Mathf.RoundToInt(quarterHealth * 1.5f), () => GuaranteedNextMove = GetComponent<SpecialMoves>());
+        HealthComponent.AddHealthMilestone(GetHealthPercent(0.475f), () => GuaranteedNextMove = specialMoves);
+        HealthComponent.AddHealthMilestone(GetHealthPercent(0.175f), () => GuaranteedNextMove = specialMoves);
 
 		AddStunMilestone(GetHealthPercent(0.8f));
 		AddStunMilestone(GetHealthPercent(0.6f));
@@ -795,7 +795,7 @@ public class CorruptedKin : BossReplacement, IObjectReplacementConditional
 		yield return Animator.PlayAnimationTillDone("Roar End");
 
 
-		Health.Invincible = false;
+        HealthComponent.Invincible = false;
 
 		//IdleCounter = 0.75f;
 
