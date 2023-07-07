@@ -788,7 +788,7 @@ public class CorruptedKin : BossReplacement, IObjectReplacementConditional
 
 		Animator.PlayAnimation("Roar Loop");
 
-		AreaTitle.Spawn("Corrupted", "Kin");
+		WeaverBossTitle.Spawn("Corrupted", "Kin");
 
 		yield return Roar(2.4f, screamSound);
 
