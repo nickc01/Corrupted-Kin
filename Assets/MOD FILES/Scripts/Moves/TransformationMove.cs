@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using WeaverCore;
+using WeaverCore.Assets.Components;
 using WeaverCore.Components;
 using WeaverCore.Enums;
 using WeaverCore.Utilities;
