@@ -7,7 +7,7 @@ using WeaverCore.Utilities;
 
 public class ParasiteBalloon : MonoBehaviour 
 {
-	static WeaverCore.ObjectPool ParasitePool;
+	//static WeaverCore.ObjectPool ParasitePool;
 
 	static HashSet<ParasiteBalloon> spawnedBalloons = new HashSet<ParasiteBalloon>();
 	public static IEnumerable<ParasiteBalloon> SpawnedParasites = spawnedBalloons;
@@ -65,11 +65,11 @@ public class ParasiteBalloon : MonoBehaviour
 			deathParticles = GetComponentInChildren<ParticleSystem>();
 
 			tileDetector = transform.Find("TileDetector").GetComponent<CircleCollider2D>();
-
-			health.OnDeathEvent += Health_OnDeathEvent;
 		}
 
-		var scale = Random.Range(scaleMin, scaleMax);
+        health.OnDeathEvent += Health_OnDeathEvent;
+
+        var scale = Random.Range(scaleMin, scaleMax);
 		renderer.enabled = false;
 		collider.enabled = false;
 		tileDetector.enabled = false;
@@ -266,12 +266,12 @@ public class ParasiteBalloon : MonoBehaviour
 
 	public static ParasiteBalloon Spawn(Vector3 position, Vector2 spawnVelocity)
 	{
-		if (ParasitePool == null)
+		/*if (ParasitePool == null)
 		{
 			ParasitePool = WeaverCore.ObjectPool.Create(CorruptedKinGlobals.Instance.BalloonPrefab);
-		}
+		}*/
 		var prefabZ = CorruptedKinGlobals.Instance.BalloonPrefab.transform.GetZLocalPosition();
-		var instance = ParasitePool.Instantiate<ParasiteBalloon>(new Vector3(position.x,position.y,position.z + prefabZ), Quaternion.identity);
+		var instance = Pooling.Instantiate(CorruptedKinGlobals.Instance.BalloonPrefab, new Vector3(position.x,position.y,position.z + prefabZ), Quaternion.identity);
 		instance.SpawnVelocity = spawnVelocity;
 		return instance;
 	}

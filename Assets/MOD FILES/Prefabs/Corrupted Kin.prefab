@@ -5768,7 +5768,7 @@ SpriteRenderer:
   m_Size: {x: 3.5562828, y: 0.7768579}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &114519904921966822
@@ -5910,6 +5910,10 @@ MonoBehaviour:
   TinkSound: {fileID: 8300000, guid: 6ea0bc4d1290b9b41a440beb77f01158, type: 3}
   TinkEffectPrefab: {fileID: 1703609789249098, guid: 4ebacf92ab00f1a4eb078c1a9fe2a1cf,
     type: 3}
+  TinkSoundVolume: 1
+  TinkSoundPitch: 1
+  forceValidHit: 0
+  evasionTime: 0.2
 --- !u!60 &60057634228435116
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -9811,7 +9815,7 @@ SpriteRenderer:
   m_Size: {x: 4.6266203, y: 3.124695}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &114092101362332034
@@ -10377,7 +10381,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: bf3ad14f53b2a0b4ab6de33141a01490, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -10844,6 +10848,10 @@ MonoBehaviour:
   TinkSound: {fileID: 8300000, guid: 6ea0bc4d1290b9b41a440beb77f01158, type: 3}
   TinkEffectPrefab: {fileID: 1703609789249098, guid: 4ebacf92ab00f1a4eb078c1a9fe2a1cf,
     type: 3}
+  TinkSoundVolume: 1
+  TinkSoundPitch: 1
+  forceValidHit: 0
+  evasionTime: 0.2
 --- !u!114 &114782000455543258
 MonoBehaviour:
   m_ObjectHideFlags: 0

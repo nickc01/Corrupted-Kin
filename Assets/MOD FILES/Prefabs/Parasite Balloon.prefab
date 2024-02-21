@@ -246,7 +246,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: bf3ad14f53b2a0b4ab6de33141a01490, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -309,7 +309,7 @@ MonoBehaviour:
   damageDealt: 1
   hazardType: 1
   shadowDashHazard: 0
-  setLayerToEnemies: 0
+  resetOnEnable: 0
 --- !u!114 &114313984505958812
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -323,11 +323,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: 10
-  DecreaseHealth: 1
   Invincible: 0
   DeflectBlows: 0
   EvasionTime: 0.15
   GainSoul: 1
+  DoEffectsOnHit: 1
   EffectsOffset: {x: 0, y: 0, z: 0}
   receiveExtraDamage: 1
   SmallGeo: 0
@@ -437,6 +437,14 @@ MonoBehaviour:
   EssenceCollectPrefab: {fileID: 1789806019252700, guid: 9bc98ffeb4427aa46ab203eda017b4a4,
     type: 3}
   doEssenceChance: 1
+  DamageSound: {fileID: 0}
+  damageSoundVolume: 1
+  damageSoundMinPitch: 0.75
+  damageSoundMaxPitch: 1.25
+  SwordDeathSound: {fileID: 0}
+  swordDeathSoundVolume: 1
+  swordDeathSoundMinPitch: 0.75
+  swordDeathSoundMaxPitch: 1.25
 --- !u!114 &114222572155765070
 MonoBehaviour:
   m_ObjectHideFlags: 0
