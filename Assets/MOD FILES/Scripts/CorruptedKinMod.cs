@@ -107,7 +107,7 @@ namespace KinMod
 
 		public override string GetVersion()
 		{
-			return "1.3.1.0";
+			return "1.3.2.0";
 		}
 	}
 }
