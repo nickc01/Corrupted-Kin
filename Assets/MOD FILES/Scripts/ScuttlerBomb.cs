@@ -19,6 +19,7 @@ public class ScuttlerBomb : MonoBehaviour
 	protected new Rigidbody2D rigidbody;
 	protected new Collider2D collider;
 	protected new SpriteRenderer renderer;
+	protected SpriteRenderer subRenderer;
 	protected ParticleSystem particles;
 	protected PoolableObject poolComponent;
 
@@ -38,11 +39,17 @@ public class ScuttlerBomb : MonoBehaviour
 			particles = GetComponentInChildren<ParticleSystem>();
 			renderer = GetComponentInChildren<SpriteRenderer>();
 			poolComponent = GetComponent<PoolableObject>();
-		}
+			subRenderer = transform.Find("Sprite")?.GetComponent<SpriteRenderer>();
+        }
 		renderer.enabled = true;
 		collider.enabled = true;
 		rigidbody.isKinematic = false;
-	}
+        rigidbody.simulated = true;
+        if (subRenderer != null)
+		{
+            subRenderer.enabled = true;
+        }
+    }
 
 	protected virtual void OnCollisionEnter2D(Collision2D collision)
 	{
@@ -66,7 +73,12 @@ public class ScuttlerBomb : MonoBehaviour
 		renderer.enabled = false;
 		rigidbody.isKinematic = true;
 		collider.enabled = false;
-		particles.Stop(false, ParticleSystemStopBehavior.StopEmitting);
+		rigidbody.simulated = false;
+        if (subRenderer != null)
+        {
+			subRenderer.enabled = false;
+        }
+        particles.Stop(false, ParticleSystemStopBehavior.StopEmitting);
 		//Debug.Log("Bomb Position = " + transform.position);
 		//Debug.Log("Actual Air Time = " + airTimeCounter);
 		InfectedExplosion.Spawn(transform.position);
