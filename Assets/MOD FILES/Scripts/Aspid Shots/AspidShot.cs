@@ -8,7 +8,7 @@ public sealed class AspidShot : AspidShotBase
 	{
 		var instance = Pooling.Instantiate(CorruptedKinGlobals.Instance.AspidShotPrefab, position, Quaternion.identity);
 
-		instance.Rigidbody.velocity = velocity;
+		instance.Rigidbody.linearVelocity = velocity;
 
 		return instance;
 	}

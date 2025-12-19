@@ -155,7 +155,7 @@ public class ShakeMove : CorruptedKinMove
 		yield return new WaitUntil(() => !jumpMove.Jumping);
 
 		//Debug.Log("DOING SHAKE MOVE");
-		KinRigidbody.velocity = default(Vector2);
+		KinRigidbody.linearVelocity = default(Vector2);
 
 		yield return Animator.PlayAnimationTillDone("Shake Antic");
 

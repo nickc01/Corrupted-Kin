@@ -34,7 +34,7 @@ public class EvadeMove : CorruptedKinMove
 
 	public override IEnumerator DoMove()
 	{
-		KinRigidbody.velocity = default(Vector2);
+		KinRigidbody.linearVelocity = default(Vector2);
 
 		//yield return Kin.FacePlayerRoutine();
 		yield return Kin.TurnTowardsPlayer();
@@ -51,7 +51,7 @@ public class EvadeMove : CorruptedKinMove
 		yield return Animator.PlayAnimationTillDone("Evade Antic");
 
 		KinRigidbody.gravityScale = 0f;
-		KinRigidbody.velocity = new Vector2(speed, 0f);
+		KinRigidbody.linearVelocity = new Vector2(speed, 0f);
 
 		WeaverAudio.PlayAtPoint(Kin.JumpSound, transform.position);
 
@@ -66,7 +66,7 @@ public class EvadeMove : CorruptedKinMove
 			yield return null;
 		}
 
-		KinRigidbody.velocity = default(Vector2);
+		KinRigidbody.linearVelocity = default(Vector2);
 		KinRigidbody.gravityScale = Kin.GravityScale;
 		WeaverAudio.PlayAtPoint(Kin.LandSound, transform.position);
 

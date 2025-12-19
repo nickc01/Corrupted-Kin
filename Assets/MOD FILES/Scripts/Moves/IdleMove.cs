@@ -62,7 +62,7 @@ public class IdleMove : CorruptedKinMove
 		walkSpeed = UnityEngine.Random.value >= 0.5f ? walkSpeed : -walkSpeed;
 
 		//Rigidbody.velocity = new Vector2(walkSpeed, 0f);
-		KinRigidbody.velocity = new Vector2(walkSpeed, 0f);
+		KinRigidbody.linearVelocity = new Vector2(walkSpeed, 0f);
 
 		//yield return Kin.FacePlayerRoutine(true);
 		yield return Kin.TurnTowardsPlayer();
@@ -105,7 +105,7 @@ public class IdleMove : CorruptedKinMove
 		}
 
 		
-		KinRigidbody.velocity = new Vector2(0f, 0f);
+		KinRigidbody.linearVelocity = new Vector2(0f, 0f);
 		/*if (IdleCounter < waitTime)
 		{
 			waitTime = IdleCounter;
@@ -120,7 +120,7 @@ public class IdleMove : CorruptedKinMove
 
 	public override void OnStun()
 	{
-		KinRigidbody.velocity = new Vector2(0f, 0f);
+		KinRigidbody.linearVelocity = new Vector2(0f, 0f);
 	}
 }
 

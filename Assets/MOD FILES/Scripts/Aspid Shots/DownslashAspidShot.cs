@@ -34,9 +34,9 @@ public class DownslashAspidShot : AspidShotBase
 	{
 		if (alive)
 		{
-			var velocity = Rigidbody.velocity;
+			var velocity = Rigidbody.linearVelocity;
 			velocity = velocity.normalized * (velocity.magnitude - (deaccelerationRate * Time.deltaTime));
-			Rigidbody.velocity = velocity;
+			Rigidbody.linearVelocity = velocity;
 			if (velocity.magnitude <= velocityDestructionThreshold)
 			{
 				alive = false;

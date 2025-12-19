@@ -650,7 +650,7 @@ public class CorruptedKin : BossReplacement, IObjectReplacementConditional
 		Renderer.enabled = false;
 
 		GravityScale = Rigidbody.gravityScale;
-		Rigidbody.velocity = default(Vector2);
+		Rigidbody.linearVelocity = default(Vector2);
 
 		base.Awake();
 
@@ -1030,7 +1030,7 @@ public class CorruptedKin : BossReplacement, IObjectReplacementConditional
 
 		Animator.PlayAnimation("Death Land");
 
-		Rigidbody.velocity = default(Vector2);
+		Rigidbody.linearVelocity = default(Vector2);
 
 		yield return new WaitForSeconds(1f);
 
@@ -1151,7 +1151,7 @@ public class CorruptedKin : BossReplacement, IObjectReplacementConditional
 
 		yield return WaitTillTouchingGround();
 
-		Rigidbody.velocity = default(Vector2);
+		Rigidbody.linearVelocity = default(Vector2);
 
 		Animator.PlayAnimation("Stun");
 
@@ -1218,7 +1218,7 @@ public class CorruptedKin : BossReplacement, IObjectReplacementConditional
 
 		Rigidbody.gravityScale = GravityScale;
 
-		Rigidbody.velocity = new Vector2(movementAmount, 20f);
+		Rigidbody.linearVelocity = new Vector2(movementAmount, 20f);
 
 		//DashSlashHit.SetActive(false);
 		//DashSlash.SetActive(false);
@@ -1239,7 +1239,7 @@ public class CorruptedKin : BossReplacement, IObjectReplacementConditional
 
 		Rigidbody.gravityScale = GravityScale;
 
-		Rigidbody.velocity = new Vector2(movementAmount, 20f);
+		Rigidbody.linearVelocity = new Vector2(movementAmount, 20f);
 
 		//DashSlashHit.SetActive(false);
 		//DashSlash.SetActive(false);

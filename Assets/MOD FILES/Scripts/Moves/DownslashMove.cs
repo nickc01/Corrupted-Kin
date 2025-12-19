@@ -739,7 +739,7 @@ public class DownslashMove : CorruptedKinMove
 	public IEnumerator SlamDownwards(bool spawnAspidShots, bool spawnWaves, float extraAnticDelay, int aspidShots = 7)
 	{
 		WeaverAudio.PlayAtPoint(DownstabPrepareSound, transform.position);
-		KinRigidbody.velocity = default(Vector2);
+		KinRigidbody.linearVelocity = default(Vector2);
 		KinRigidbody.gravityScale = 0f;
 		var anticTime = Animator.AnimationData.GetClipDuration("Downstab Antic Quick");
 		Animator.PlaybackSpeed = downStabAnticSpeed;
@@ -758,13 +758,13 @@ public class DownslashMove : CorruptedKinMove
 
 		PlayDownslashEffects();
 
-		KinRigidbody.velocity = new Vector2(0f, DownstabVelocity);
+		KinRigidbody.linearVelocity = new Vector2(0f, DownstabVelocity);
 		KinRigidbody.gravityScale = Kin.GravityScale;
 
 		yield return Kin.WaitTillTouchingGround();
 
 		WeaverAudio.PlayAtPoint(DownstabImpactSound, transform.position);
-		KinRigidbody.velocity = default(Vector2);
+		KinRigidbody.linearVelocity = default(Vector2);
 		DownstabSlam.SetActive(true);
 
 		Pooling.Instantiate(SlamEffectsPrefab, transform.position + SlamEffectsOffset, Quaternion.identity);
@@ -894,7 +894,7 @@ public class DownslashMove : CorruptedKinMove
 	{
 		var instance = Pooling.Instantiate(aspidShotPrefab, position, Quaternion.identity);
 
-		instance.Rigidbody.velocity = velocity;
+		instance.Rigidbody.linearVelocity = velocity;
 
 		instance.GetComponent<SpriteRenderer>().sprite = aspidShotPrefab.GetComponent<SpriteRenderer>().sprite;
 
@@ -937,7 +937,7 @@ public class DownslashMove : CorruptedKinMove
 		{
 			jump.OnStun();
 		}
-		KinRigidbody.velocity = default(Vector2);
+		KinRigidbody.linearVelocity = default(Vector2);
 		base.OnStun();
 	}
 }

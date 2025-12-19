@@ -41,7 +41,7 @@ public class AirDashMove : CorruptedKinMove
 			//Kin.FacePlayer(false);
 			Kin.TurnTowardsPlayer();
 
-			KinRigidbody.velocity = default(Vector2);
+			KinRigidbody.linearVelocity = default(Vector2);
 
 			yield return Animator.PlayAnimationTillDone("Dash Antic 1");
 

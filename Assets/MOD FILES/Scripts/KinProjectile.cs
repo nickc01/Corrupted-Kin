@@ -56,7 +56,7 @@ public class KinProjectile : MonoBehaviour
 		transform.localScale = new Vector3(2f,2f,2f);
 		collider.enabled = true;
 		particles.Play();
-		rigidbody.velocity = new Vector2(rigidbody.velocity.x,-12f);
+		rigidbody.linearVelocity = new Vector2(rigidbody.linearVelocity.x,-12f);
 		StartCoroutine(Waiter());
 	}
 
@@ -125,14 +125,14 @@ public class KinProjectile : MonoBehaviour
 
 	void FaceTowardsVelocity()
 	{
-		var v = rigidbody.velocity;
+		var v = rigidbody.linearVelocity;
 		transform.rotation = Quaternion.Euler(0f,0f,Mathf.Atan2(v.y,v.x) * Mathf.Rad2Deg);
 	}
 
 	void Squash()
 	{
-		var stretchY = 1f - rigidbody.velocity.magnitude * stretchFactor * 0.01f;
-		var stretchX = 1f + rigidbody.velocity.magnitude * stretchFactor * 0.01f;
+		var stretchY = 1f - rigidbody.linearVelocity.magnitude * stretchFactor * 0.01f;
+		var stretchX = 1f + rigidbody.linearVelocity.magnitude * stretchFactor * 0.01f;
 		if (stretchX < xStretchMin)
 		{
 			stretchX = xStretchMin;
@@ -163,7 +163,7 @@ public class KinProjectile : MonoBehaviour
 
 		//var projectile = KinProjectilePool.Instantiate(position, Quaternion.identity).GetComponent<KinProjectile>();
 		var projectile = Pooling.Instantiate(CorruptedKinGlobals.Instance.KinProjectilePrefab, position, Quaternion.identity);
-		projectile.Rigidbody.velocity = velocity;
+		projectile.Rigidbody.linearVelocity = velocity;
 		return projectile;
 	}
 }

@@ -79,7 +79,7 @@ public class DashSlashMove : CorruptedKinMove
 			reverseSpeed = -reverseSpeed;
 		}
 
-		KinRigidbody.velocity = new Vector2(reverseSpeed, 0f);
+		KinRigidbody.linearVelocity = new Vector2(reverseSpeed, 0f);
 
 		yield return Animator.PlayAnimationTillDone("Dash Antic 1");
 
@@ -100,7 +100,7 @@ public class DashSlashMove : CorruptedKinMove
 
 		Animator.PlayAnimation("Dash Antic 2");
 
-		KinRigidbody.velocity = default(Vector2);
+		KinRigidbody.linearVelocity = default(Vector2);
 
 		yield return new WaitForSeconds(delay);
 
@@ -110,7 +110,7 @@ public class DashSlashMove : CorruptedKinMove
 
 		DashBurst.SetActive(true);
 
-		KinRigidbody.velocity = new Vector2(speed, 0f);
+		KinRigidbody.linearVelocity = new Vector2(speed, 0f);
 
 		yield return Animator.PlayAnimationTillDone("Dash Attack 1");
 
@@ -125,7 +125,7 @@ public class DashSlashMove : CorruptedKinMove
 
 		yield return Animator.PlayAnimationTillDone("Dash Attack 3");
 
-		KinRigidbody.velocity = default(Vector2);
+		KinRigidbody.linearVelocity = default(Vector2);
 
 		//Kin.StopBoundRoutine(limiterRoutine);
 

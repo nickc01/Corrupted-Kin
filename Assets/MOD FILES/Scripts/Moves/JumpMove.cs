@@ -34,17 +34,17 @@ public class JumpMove : CorruptedKinMove
 		Jumping = true;
 		//Debug.Log("JUMPING!");
 		IsFalling = false;
-		KinRigidbody.velocity = default(Vector2);
+		KinRigidbody.linearVelocity = default(Vector2);
 		yield return Animator.PlayAnimationTillDone("Jump Antic");
 
 		WeaverAudio.PlayAtPoint(Kin.JumpSound, transform.position);
 		Animator.PlayAnimation("Jump");
 
-		KinRigidbody.velocity = CalculateVelocities(fromX, toX, jumpHeight);
+		KinRigidbody.linearVelocity = CalculateVelocities(fromX, toX, jumpHeight);
 
 		//Debug.Log("Jumping With Velocity = " + KinRigidbody.velocity);
 		//Wait until the boss is starting to fall back down
-		while (KinRigidbody.velocity.y > 0f)
+		while (KinRigidbody.linearVelocity.y > 0f)
 		{
 			if (transform.position.x > Kin.RightX)
 			{
@@ -75,7 +75,7 @@ public class JumpMove : CorruptedKinMove
 		IsFalling = false;
 
 		WeaverAudio.PlayAtPoint(Kin.LandSound, transform.position);
-		KinRigidbody.velocity = default(Vector2);
+		KinRigidbody.linearVelocity = default(Vector2);
 		yield return Animator.PlayAnimationTillDone("Land");
 		//Kin.StopBoundRoutine(limiterRoutine);
 		Jumping = false;

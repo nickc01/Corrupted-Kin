@@ -141,7 +141,7 @@ public class ParasiteBalloon : MonoBehaviour
 		var clipDuration = animator.AnimationData.GetClipDuration("Spawn");
 		for (float i = 0; i < clipDuration; i += Time.deltaTime)
 		{
-			rigidbody.velocity = Vector2.Lerp(SpawnVelocity,default(Vector2),i / clipDuration);
+			rigidbody.linearVelocity = Vector2.Lerp(SpawnVelocity,default(Vector2),i / clipDuration);
 			yield return null;
 		}
 		collider.enabled = true;
@@ -167,7 +167,7 @@ public class ParasiteBalloon : MonoBehaviour
 			spawnedBalloons.Remove(this);
 		}
 		deathParticles.Play();
-		rigidbody.velocity = default(Vector2);
+		rigidbody.linearVelocity = default(Vector2);
 		collider.enabled = false;
 		tileDetector.enabled = false;
 		audioPlayer.Stop();
@@ -191,7 +191,7 @@ public class ParasiteBalloon : MonoBehaviour
 		rigidbody.AddForce(force);
 
 
-		rigidbody.velocity = Vector2.ClampMagnitude(rigidbody.velocity,maxSpeed);
+		rigidbody.linearVelocity = Vector2.ClampMagnitude(rigidbody.linearVelocity,maxSpeed);
 	}
 
 	public IEnumerator FaceObjectRoutine(Transform t, bool playAnimation = true)

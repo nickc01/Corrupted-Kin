@@ -119,8 +119,8 @@ public class ScuttlerBomb : MonoBehaviour
 
 		//var instance = ScuttlerBombPool.Instantiate<ScuttlerBomb>(position, Quaternion.identity);
 		var instance = Pooling.Instantiate(CorruptedKinGlobals.Instance.ScuttlerBombPrefab,position,Quaternion.identity);
-		instance.rigidbody.velocity = velocity;
-		instance.rigidbody.angularDrag = 0f;
+		instance.rigidbody.linearVelocity = velocity;
+		instance.rigidbody.angularDamping = 0f;
 		instance.rigidbody.angularVelocity = angularVelocity;
 		instance.SourceBoss = sourceBoss;
 

@@ -134,7 +134,7 @@ public class Scuttler : MonoBehaviour
 		scale = UnityEngine.Random.Range(scaleMin,scaleMax);
 		jumpDelay = UnityEngine.Random.Range(jumpDelayMin, jumpDelayMax);
 		transform.localScale = new Vector3(scale, scale, transform.GetZLocalScale());
-		rigidbody.velocity = startingVelocity;
+		rigidbody.linearVelocity = startingVelocity;
 		//transform.position += spawnOffset;
 		transform.SetZPosition(CorruptedKinGlobals.Instance.ScuttlerPrefab.transform.position.z);
 		if (startingVelocity.y > 0f)
@@ -165,7 +165,7 @@ public class Scuttler : MonoBehaviour
 	{
 		get
 		{
-			return rigidbody.velocity.y <= 0f;
+			return rigidbody.linearVelocity.y <= 0f;
 		}
 	}
 
@@ -186,7 +186,7 @@ public class Scuttler : MonoBehaviour
 			//Debug.Log("V = " + rigidbody.velocity.y);
 			//Debug.Log("Original Pos = " + originalZPos);
 			//Debug.Log("New Z Pos = " + newZPos);
-			transform.SetZPosition(Mathf.Lerp(newZPos, originalZPos,rigidbody.velocity.y));
+			transform.SetZPosition(Mathf.Lerp(newZPos, originalZPos,rigidbody.linearVelocity.y));
 			yield return null;
 		}
 
@@ -218,12 +218,12 @@ public class Scuttler : MonoBehaviour
 		}
 		while (Mathf.Abs(transform.position.x - (TargetObject.transform.position.x + TargetOffset.x)) >= minDistanceToTarget)
 		{
-			var newXVelocity = rigidbody.velocity.x + (directionalAcceleration * Time.deltaTime);
+			var newXVelocity = rigidbody.linearVelocity.x + (directionalAcceleration * Time.deltaTime);
 			if (newXVelocity > terminalVelocity)
 			{
 				newXVelocity = terminalVelocity;
 			}
-			rigidbody.velocity = new Vector2(newXVelocity, rigidbody.velocity.y);
+			rigidbody.linearVelocity = new Vector2(newXVelocity, rigidbody.linearVelocity.y);
 
 			yield return null;
 		}
@@ -232,7 +232,7 @@ public class Scuttler : MonoBehaviour
 
 		yield return new WaitForSeconds(jumpDelay);
 
-		rigidbody.velocity = Vector2.zero;
+		rigidbody.linearVelocity = Vector2.zero;
 
 		animator.PlayAnimation("Spawn");
 
@@ -241,17 +241,17 @@ public class Scuttler : MonoBehaviour
 
 		if (targetSpecificPoint)
 		{
-			rigidbody.velocity = MathUtilities.CalculateVelocityToReachPoint(transform.position - new Vector3(0f, 0.311f), ((Vector2)TargetObject.transform.position + (Vector2)TargetOffset) + specificJumpPoint, jumpTime - (heightDifference * 0.05f),rigidbody.gravityScale);
+			rigidbody.linearVelocity = MathUtilities.CalculateVelocityToReachPoint(transform.position - new Vector3(0f, 0.311f), ((Vector2)TargetObject.transform.position + (Vector2)TargetOffset) + specificJumpPoint, jumpTime - (heightDifference * 0.05f),rigidbody.gravityScale);
 		}
 		else
 		{
 			var jumpPoint = new Vector2(UnityEngine.Random.Range(targetRangeMin.x,targetRangeMax.x), UnityEngine.Random.Range(targetRangeMin.y,targetRangeMax.y));
-			rigidbody.velocity = MathUtilities.CalculateVelocityToReachPoint(transform.position - new Vector3(0f, 0.311f), ((Vector2)TargetObject.transform.position + (Vector2)TargetOffset) + jumpPoint, jumpTime - (heightDifference * 0.05f), rigidbody.gravityScale);
+			rigidbody.linearVelocity = MathUtilities.CalculateVelocityToReachPoint(transform.position - new Vector3(0f, 0.311f), ((Vector2)TargetObject.transform.position + (Vector2)TargetOffset) + jumpPoint, jumpTime - (heightDifference * 0.05f), rigidbody.gravityScale);
 		}
 
 		yield return new WaitForSeconds(jumpTime);
 		//yield return new WaitForSeconds(transfo)
-		rigidbody.velocity = default(Vector2);
+		rigidbody.linearVelocity = default(Vector2);
 		rigidbody.isKinematic = true;
 		renderer.enabled = false;
 		yield return OnSplat();

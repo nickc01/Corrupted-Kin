@@ -23,7 +23,7 @@ public class OverheadSlashMove : CorruptedKinMove
 	public override IEnumerator DoMove()
 	{
 		Animator.PlayAnimation("Overhead Antic");
-		KinRigidbody.velocity = default(Vector2);
+		KinRigidbody.linearVelocity = default(Vector2);
 
 		yield return new WaitForSeconds(overheadSlashDelay);
 

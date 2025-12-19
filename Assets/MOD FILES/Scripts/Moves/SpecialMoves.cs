@@ -402,7 +402,7 @@ public class SpecialMoves : CorruptedKinMove
 
 		Kin.Collider.enabled = false;
 		Kin.Rigidbody.isKinematic = true;
-		Kin.Rigidbody.velocity = default(Vector2);
+		Kin.Rigidbody.linearVelocity = default(Vector2);
 
 		var spawnPos = Kin.MiddleX;
 
@@ -732,9 +732,9 @@ public class SpecialMoves : CorruptedKinMove
 
 		Kin.Collider.enabled = false;
 
-		yield return new WaitUntil(() => KinRigidbody.velocity.y <= 0f);
+		yield return new WaitUntil(() => KinRigidbody.linearVelocity.y <= 0f);
 
-		KinRigidbody.velocity = default(Vector2);
+		KinRigidbody.linearVelocity = default(Vector2);
 
 		Kin.StopBoundRoutine(jumpRoutine);
 		KinRigidbody.isKinematic = true;
